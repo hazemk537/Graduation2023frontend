@@ -1,10 +1,13 @@
 بسم الله الرحمن الرحيم
 - [for all team](#for-all-team)
+- [front end references....](#front-end-references)
 - [for backend](#for-backend)
 - [for AI](#for-ai)
 - [for front end](#for-front-end)
+  - [use case 01](#use-case-01)
+  - [use case 02](#use-case-02)
 - [intialize repo](#intialize-repo)
-- [components](#components)
+- [components--sprint\_1](#components--sprint_1)
   - [home\_page](#home_page)
 - [myFeed\_page](#myfeed_page)
   - [login/signup\_page](#loginsignup_page)
@@ -15,7 +18,7 @@
   - [news\_item\_page](#news_item_page)
   - [news\_item\_page\_viewer](#news_item_page_viewer)
   - [preferences\_page](#preferences_page)
-- [design choices  ?](#design-choices--)
+- [design choices](#design-choices)
   - [in discover\_page.you\_may\_like\_this](#in-discover_pageyou_may_like_this)
   - [Summary\_article](#summary_article)
     - [upload just link to server  @DATABASE/SERVER](#upload-just-link-to-server--databaseserver)
@@ -23,7 +26,10 @@
 ## for all team
 -  model
 ![Alt text](imagesRef/image.png)
+- ask for anything you think not clear....
 - only see your for sections (search with ctrl+f)
+## front end references....
+- 
 ## for backend
 - search in this file  for ::: DATABASE/SERVER to know  backendend tasks
 - read carefully this is what needed..
@@ -33,6 +39,9 @@
 
 ## for front end
 - read carefully this is what needed..
+- you will find references (ان شاء الله) like this project (inspect what you need) 
+- inspect css and js from these sites !!!!
+- to learn css well (ان شاء الله)in this project, donot use CSS libraries like material UI, ANTD,bootstrap...
 - Read all the file carefully 
 - names with  underscores (_) is are pages and routed through ReactRouter..
 - page.anything means sub page implemented with hash routing...
@@ -42,7 +51,18 @@
 - if a page is written like that home_page.myFeed_page so  myFeed_page is children of home_page (React Router) donot worry
 - popups should made by conditional rendering only React..
 - the ? in this  files means not finished section
-- color scheme
+- use white colors !!!
+- when will we use BACKEND 
+### use case 01
+```
+if user first login system.... 
+   get all the state from server...
+else 
+read the state from something called redux resilient (library store data in local storage)
+```
+### use case 02
+- any update to the redux state...
+
 ## intialize repo
 - [ ] fork repo
 - [ ]  open vscode and go to the  project folder then  
@@ -51,8 +71,8 @@
 3. enter your forked link to repo
 4. choose folder to the project
 > if you donot know how To deal with commets, pull requests ask on group.....
-## components
-- create the redux logic
+## components--sprint_1
+- create the redux logic 
    - [ ] redux store
    - [ ] redux slice
 ### home_page
@@ -107,11 +127,11 @@
 ### news_item_page 
 - [ ]  thumbnail
 - [ ]  actions bar
-   - [ ]   on click **open** news_item_page_viewer
+   - [ ]  on click **open** news_item_page_viewer
    - [ ]  on click sum up icon **open**  Summary_article popup
-   - [ ]  on click icon unsubscribe **dispatch unsubscribe** from this publisher
-   - [ ]  on click  like **dispatch like**
-   - [ ]  on click  **dispatch like** 
+   - [ ]  on click icon unsubscribe Redux **dispatch unsubscribe** from this publisher
+   - [ ]  on click  like  Redux**dispatch like**
+   - [ ]  on click  Redux **dispatch like** 
 
 
 ###  news_item_page_viewer 
@@ -119,8 +139,9 @@
 
 ### preferences_page 
 - [ ] **show/edit/add/delete** interests
+- [ ]   Redux **dispatch interestes action** 
 
-## design choices  ?
+## design choices  
 ###  in discover_page.you_may_like_this
 - upload user preferences when needed ex: click on discover page..@DATABASE/SERVER
 > @AI Recommendation model is fed with (userVector,available articles) to generate ItemList in discover_page.you_may_like_this
