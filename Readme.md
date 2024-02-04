@@ -11,11 +11,10 @@
   - [logoPopup](#logopopup)
   - [resources\_page](#resources_page)
   - [add\_resource\_page](#add_resource_page)
-  - [discover\_page ?](#discover_page-)
-  - [trending\_page ?](#trending_page-)
-  - [news\_item\_page ?](#news_item_page-)
-  - [news\_item\_page\_viewer ?](#news_item_page_viewer-)
-  - [preferences\_page ?](#preferences_page-)
+  - [discover\_page](#discover_page)
+  - [news\_item\_page](#news_item_page)
+  - [news\_item\_page\_viewer](#news_item_page_viewer)
+  - [preferences\_page](#preferences_page)
 - [design choices  ?](#design-choices--)
   - [in discover\_page.you\_may\_like\_this](#in-discover_pageyou_may_like_this)
   - [Summary\_article](#summary_article)
@@ -43,6 +42,7 @@
 - if a page is written like that home_page.myFeed_page so  myFeed_page is children of home_page (React Router) donot worry
 - popups should made by conditional rendering only React..
 - the ? in this  files means not finished section
+- color scheme
 ## intialize repo
 - [ ] fork repo
 - [ ]  open vscode and go to the  project folder then  
@@ -52,6 +52,9 @@
 4. choose folder to the project
 > if you donot know how To deal with commets, pull requests ask on group.....
 ## components
+- create the redux logic
+   - [ ] redux store
+   - [ ] redux slice
 ### home_page
 - [ ]  navbar
   - [ ]  onClick userIcon **show**  logoPopup.
@@ -61,10 +64,10 @@
 - [ ]  onClick search **show** news_item_page
 - [ ]  onclick resources icon **show** resources_page
 ## myFeed_page
-- [ ]  show news_item_page
-- [ ]  onClick view options icons **change** shown 
+- [ ]  **show** news_item_page
+- [ ]  onClick **view** options icons **change** shown 
 - [ ]  spinner 
-- [ ]  load first 10 items
+- [ ]  **load** first 10 items
 - [ ]  store in redux ?
 - [ ]  donot store? 
 
@@ -75,64 +78,47 @@
 - [ ]  form with submit 
 - [ ] onLogin success
      - [ ] spinner
-     - [ ] fetch user subscription json state ,groups,channels,thumbnail,urls... 
-     - [ ] store fetched state  redux-resilient. donot worry
-     - [ ]  onClick a channel read its data from  its own server DATABASE/SERVER?
-     - [ ]  onClick a channel read data from our server ? 
+     - [ ] **fetch** user subscription json state ,groups,channels,thumbnail,urls... 
+     - [ ] **store** fetched state  redux-resilient. donot worry
+     - [ ]  onClick a channel **read** its data from  its own server DATABASE/SERVER?
+     - [ ]  onClick a channel **read** data from our server ? 
 ### logoPopup
-- [ ]  logout action
-    - [ ]   redirect to login/signup_page
-    - [ ]  delete token
- - [ ]  open preferences
-    - [ ]   open  preferences_page
+- logout 
+    - [ ]   **redirect** to login/signup_page
+    - [ ]  **delete** token
+- settings
+    - [ ]   **open**  preferences_page
+    - [ ]   
 ### resources_page
 - groups
-- [ ]  items in group
+- [ ]  **show** items in group
 - Actions
-   - [ ]  delete resource
-     - [ ] update subscripton on server
-   - [ ]  open add_resource_page
+   - [ ]  **delete** resource
+     - [ ] **update** subscripton on server
+   - [ ]  **open** add_resource_page
 ### add_resource_page
 - Rss
    - [ ] update subscripton on server
 - [ ]  Soon
-### discover_page ?
-- [ ]  trending
-- [ ]  you might like
-   
-### trending_page ?
-- [ ]  per topic
-### news_item_page ?
-- [ ]  like dislike soon
-- [ ]  sumbnail
-- [ ]  actions
-   - [ ]   on click open news_item_page_viewer
-   - [ ]  sum up
-     - [ ]  open Summary_article
-   - [ ]  unsubscribe from this publisher
-   - [ ]  see more like this 
-     - [ ]  update redux state 
-     > (item tags should be in likes array only)
-   - [ ]  see less like this 
-     - [ ]  update redux state 
+### discover_page 
+-  you might like section
+   - [ ] simple useEffect fetches 10 elements by 10 elements.... DATABASE/SERVER
+   - [ ] subscripe button  
+### news_item_page 
+- [ ]  thumbnail
+- [ ]  actions bar
+   - [ ]   on click **open** news_item_page_viewer
+   - [ ]  on click sum up icon **open**  Summary_article popup
+   - [ ]  on click icon unsubscribe **dispatch unsubscribe** from this publisher
+   - [ ]  on click  like **dispatch like**
+   - [ ]  on click  **dispatch like** 
 
 
-###  news_item_page_viewer ?
-- [ ]  copy link icon
-- [ ]  browser translate api
-- [ ]  darkmode,lightmode,
-- [ ]  speak article .....
-- [ ]  annotate article 
-   - [ ]  annotate
-   - [ ]  store in redux state
-   - [ ]  schedule upload redux state to server .....
-  
-### preferences_page ?
-- [ ]  settings tab
-- [ ]  interests
-- [ ]  liked  pages
-- [ ]  soon
+###  news_item_page_viewer 
+- [ ]  share link icon
 
+### preferences_page 
+- [ ] **show/edit/add/delete** interests
 
 ## design choices  ?
 ###  in discover_page.you_may_like_this
