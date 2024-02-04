@@ -63,9 +63,9 @@ read the state from something called redux resilient (library store data in loca
 ### use case 02
 - any update to the redux state...
 
-## intialize repo
-- [ ] fork repo
-- [ ]  open vscode and go to the  project folder then  
+## intialize repo  @zaki @sharkawy
+- [ ] fork repo  @zaki @sharkawy
+- [ ]  open vscode and go to the  project folder then    @zaki @sharkawy
 1. Press Ctrl+Shift+P to open the Command Palette.
 2. run  git clone
 3. enter your forked link to repo
