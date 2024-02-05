@@ -7,7 +7,6 @@
   - [how to finish tasks and references](#how-to-finish-tasks-and-references)
     - [previous works to get logic](#previous-works-to-get-logic)
   - [components](#components)
-  - [](#)
   - [css and components](#css-and-components)
   - [use case 01](#use-case-01)
   - [use case 02](#use-case-02)
@@ -65,8 +64,7 @@
 - https://github.com/GetStream/Winds/tree/master?tab=readme-ov-file
 ### components
 - https://uiverse.io/
-
-### 
+![Alt text](imagesRef/image-2.png)### 
 ### css and components
 ### use case 01
 ```
@@ -167,6 +165,7 @@ read the state from something called redux resilient (library store data in loca
 > @AI Recommendation model is fed with (userVector,available articles) to generate ItemList in discover_page.you_may_like_this
 > this require all news items to be topic classified ......  @AI
   ex: a donald trump newsItem should have an array in the database with (donaldtrump,usa,news,ploitics)
+> I suggest using about 500 rss feed to get recommendations from .... @DATABASE/SERVER collect data from 
 ### Summary_article
 #### upload just link to server  @DATABASE/SERVER
 - server should return summarized text.... @DATABASE/SERVER @AI
