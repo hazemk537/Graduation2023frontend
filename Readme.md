@@ -4,6 +4,11 @@
 - [for backend](#for-backend)
 - [for AI](#for-ai)
 - [for front end](#for-front-end)
+  - [how to finish tasks and references](#how-to-finish-tasks-and-references)
+    - [previous works to get logic](#previous-works-to-get-logic)
+  - [components](#components)
+  - [](#)
+  - [css and components](#css-and-components)
   - [use case 01](#use-case-01)
   - [use case 02](#use-case-02)
 - [intialize repo](#intialize-repo)
@@ -53,6 +58,16 @@
 - the ? in this  files means not finished section
 - use white colors !!!
 - when will we use BACKEND 
+### how to finish tasks and references
+- we need beautiful ui/ux with light/dark colors....
+- we need logic that works with the same methods illustrated in tasks  (ask about what you donot understand)
+#### previous works to get logic
+- https://github.com/GetStream/Winds/tree/master?tab=readme-ov-file
+### components
+- https://uiverse.io/
+
+### 
+### css and components
 ### use case 01
 ```
 if user first login system.... 
@@ -93,7 +108,7 @@ read the state from something called redux resilient (library store data in loca
 - [ ]  **load** first 10 items
 - [ ]  store in redux ?
 - [ ]  donot store? 
-
+> q how to store feeds with redux??
 ### login/signup_page
 - [ ]  logo
 - [ ]  login button
@@ -104,7 +119,9 @@ read the state from something called redux resilient (library store data in loca
      - [ ] **fetch** user subscription json state ,groups,channels,thumbnail,urls... 
      - [ ] **store** fetched state  redux-resilient. donot worry
      - [ ]  onClick a channel **read** its data from  its own server DATABASE/SERVER?
-     - [ ]  onClick a channel **read** data from our server ? 
+     - [ ]  onClick a channel **read** data from our server ?
+     - [ ]  
+> fetch articles from server or on our own server ??
 ### logoPopup
 - logout 
     - [ ]   **redirect** to login/signup_page
