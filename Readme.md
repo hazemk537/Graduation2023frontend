@@ -79,8 +79,8 @@ read the state from something called redux resilient (library store data in loca
 ## intialize repo  
 - [ ] install redux @hazem
 - [ ] install redux-persistence @hazemcd 
-- [ ] fork repo  @zaki @sharkawy
-- [ ]  open vscode and go to the  project folder then    @zaki @sharkawy
+- [x] fork repo   @sharkawy
+- [x]  open vscode and go to the  project folder then     @sharkawy
 1. Press Ctrl+Shift+P to open the Command Palette.
 2. run  git clone
 3. enter your forked link to repo
