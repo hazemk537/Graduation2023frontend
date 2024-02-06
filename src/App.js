@@ -1,5 +1,6 @@
 import './App.css';
 import MainLandingPage from './components/MainLandingPage';
+import Button from './components/Button';
 
 function App() {
   return (
