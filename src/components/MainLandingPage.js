@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
-// import NavBar from "./NavBar";
 import Button from "./Button";
 import "../styles/MainLandingpage.css";
+import LogoLightSvg from "../images/logo-light.svg"
+import LogoDarkSvg from "../images/logo-dark.svg"
+import Feature_3Dark from "../images/feature-03-dark.svg"
+import Feature_3Light from "../images/feature-03-light.svg"
+import Feature_2Dark from "../images/feature-02-dark.svg"
+import Feature_2Light from "../images/feature-02-light.svg"
+import Feature_1Dark from "../images/feature-01-dark.svg"
+import Feature_1Light from "../images/feature-01-light.svg"
+import Feature_illustration_light from"../images/features-illustration-light.svg"
+import Feature_Box_lightt from "../images/features-box-light.svg"
+import FeatureTopLight from "../images/features-illustration-top-light.svg"
+
 import ScrollReveal from "scrollreveal";
 function MainLandingPage() {
   let s = ScrollReveal();
@@ -30,16 +41,17 @@ function MainLandingPage() {
           <div className="container">
             <div className="site-header-inner">
               <div className="brand header-brand">
+    
                 <h1 className="m-0">
                   <a href="#">
                     <img
-                      className="header-logo-image asset-light"
-                      src="../images/logo-light.svg"
+                      className=""
+                      src={LogoLightSvg}
                       alt="Logo"
                     />
                     <img
                       className="header-logo-image asset-dark"
-                      src="../images/logo-dark.svg"
+                      src={LogoDarkSvg}
                       alt="Logo"
                     />
                   </a>
@@ -155,17 +167,17 @@ function MainLandingPage() {
                       />
                       <img
                         className="features-illustration asset-light"
-                        src="../images/features-illustration-light.svg"
+                        src={Feature_illustration_light}
                         alt="Feature illustration"
                       />
                       <img
                         className="features-box asset-light"
-                        src="../images/features-box-light.svg"
+                        src={Feature_Box_lightt}
                         alt="Feature box"
                       />
                       <img
                         className="features-illustration asset-light"
-                        src="../images/features-illustration-top-light.svg"
+                        src={FeatureTopLight}
                         alt="Feature illustration top"
                       />
                     </div>
@@ -177,12 +189,12 @@ function MainLandingPage() {
                       <div className="feature-icon">
                         <img
                           className="asset-light"
-                          src="../images/feature-01-light.svg"
+                          src={Feature_1Light}
                           alt="Feature 01"
                         />
                         <img
                           className="asset-dark"
-                          src="../images/feature-01-dark.svg"
+                          src={Feature_1Dark}
                           alt="Feature 01"
                         />
                       </div>
@@ -201,12 +213,12 @@ function MainLandingPage() {
                       <div className="feature-icon">
                         <img
                           className="asset-light"
-                          src="../images/feature-02-light.svg"
+                          src={Feature_2Light}
                           alt="Feature 02"
                         />
                         <img
                           className="asset-dark"
-                          src="../images/feature-02-dark.svg"
+                          src={Feature_2Dark}
                           alt="Feature 02"
                         />
                       </div>
@@ -225,12 +237,12 @@ function MainLandingPage() {
                       <div className="feature-icon">
                         <img
                           className="asset-light"
-                          src="../images/feature-03-light.svg"
+                          src={Feature_3Light}
                           alt="Feature 03"
                         />
                         <img
                           className="asset-dark"
-                          src="../images/feature-03-dark.svg"
+                          src={Feature_3Dark}
                           alt="Feature 03"
                         />
                       </div>
@@ -276,12 +288,12 @@ function MainLandingPage() {
                 <a href="#">
                   <img
                     className="asset-light"
-                    src="../images/logo-light.svg"
+                    src={LogoLightSvg}
                     alt="Logo"
                   />
                   <img
                     className="asset-dark"
-                    src="../images/logo-dark.svg"
+                    src={LogoDarkSvg}
                     alt="Logo"
                   />
                 </a>
