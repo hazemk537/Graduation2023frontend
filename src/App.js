@@ -1,47 +1,61 @@
-// import MainLandingPage from './components/MainLandingPage';
-// import Button from './components/Button';
-// import Create_Account from './components/Create_Account';
-// import Login from './components/Login';
-import Nav_Bar from './components/Nav_Bar';
+import React, {useState } from "react";
+import Nav_Bar from "./components/Nav_Bar";
+import Login from "./components/Login";
+import Create_Account from "./components/Create_Account";
 
-// class  App extends Component {
-//     render() {
-//         return (
-//         <BrowserRouter>
-//             <div className="App">
-//                 <Nav_Bar/>
-         
-//             </div>
-            
-//                  <Routes>
+function App () {  
+    const [showLoginPopup, setShowLoginPopup] = useState(false);
+    const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
+    // To display  (Login popup)  
+    const handleLoginClick = () => {
+      setShowLoginPopup(true);
+      document.querySelector('*').style.background = '#999'; // Change background color of the entire page
+      document.querySelector('nav').style.background = '#999';
+    };
+    // To display  (Create account popup) 
+    const handleCreateAccountClick = () => {
+      setShowCreateAccountPopup(true);
+      document.querySelector('*').style.background = '#999'; // Change background color of the entire page
+      document.querySelector('nav').style.background = '#999';
+    };
 
-//                 {/* <Route path="/" EXACT Component={MainLandingPage}></Route> */}
-//                 {/* <Route path="/About" Component={About}></Route> */}
-//                 <Route path="/Login" EXACT Component={Login}></Route>
-//                 {/* <Route path="/Create_Account" Component={Create_Account}></Route> */}
-//                 {/* <Route path="/Register" Component={Register}></Route> */}
-//                 {/* <Route path="/Reset_Password" Component={Reset_Password}></Route> */}
-
-//             </Routes>
-            
-//         </BrowserRouter>
-
-//         );
-//     }
-// }
-
-
-
-function App() {
-  return (
- 
-    <div className="App">
-      <Nav_Bar />
+    // to close ( Login ) popup
+    const handleLoginClose = () => {
+      setShowLoginPopup(false);
+      document.querySelector('*').style.background = ''; // Reset background color of the entire page
+      document.querySelector('nav').style.background = '';
+    };
+    // to close (creating account) popup
+    const handleSignupClose = () => {
+      setShowCreateAccountPopup(false);
+      document.querySelector('*').style.background = ''; // Reset background color of the entire page
+    document.querySelector('nav').style.background = '';
+  };
   
-    </div>
-  
-  
-  );
-}
+
+
+
+    return (
+      <div className="App">
+        <Nav_Bar onLoginClick={handleLoginClick} onCreateAccountClick={handleCreateAccountClick} />
+        
+        {showLoginPopup && (
+          <div >
+            <div >
+              <Login onClose={handleLoginClose} />
+            </div>
+          </div>
+        )}
+
+        {showCreateAccountPopup && (
+          <div >
+            <div >
+              <Create_Account onClose={handleSignupClose} />
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
 
 export default App;

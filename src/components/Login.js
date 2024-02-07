@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAt, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faAt, faLock,faTimes } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Login_Signup.css';
-// import {Link} from "react-router-dom";
 
-function LoginForm() {
 
-    
-    
+
+function LoginForm({onClose}) {
+
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -31,18 +30,16 @@ function LoginForm() {
 
         };
         
-    
-
-
-
-
     return (
 
 
         <div className="container">
             <div className="form_sign">
-                <h1 id="title">Login</h1>
+                <div className="close-button" onClick={onClose}>
+                    <FontAwesomeIcon icon={faTimes} id='X' />
+                </div>    
                 <form onSubmit={handleLogin} >
+                    <h1 id='title' >Login</h1>
                     <div className="input-group">
                         <div className="input-field">
                             <FontAwesomeIcon icon={faAt} beat id="awesome1" style={{ color: "#0740b0" }} />
@@ -70,7 +67,7 @@ function LoginForm() {
                     </div>
                     <div>
                         <b className="reset">
-                            forget password{' '}
+                            forget password{'    '}
                             <a href="/Reset_Password" rel="noopener noreferrer">
                                 click here
                             </a>

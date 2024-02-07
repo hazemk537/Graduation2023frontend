@@ -1,20 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import '../styles/Nav_Bar.css';
-import Login from './Login';
-import Create_Account from './Create_Account'
 
-function Navigation() {
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupContent, setPopupContent] = useState(null);
-
-  const handleLinkClick = (content) => {
-    setPopupContent(content);
-    setShowPopup(true);
-  };
+function Navigation({ onLoginClick, onCreateAccountClick }) {
 
   return (
     <div>
-      
       <nav>
         <ul>
           <li><a to="#" className="logo"> Logo</a></li>
@@ -23,35 +13,16 @@ function Navigation() {
           <li><a to="#" className="Discover"> Discover</a></li>
           <li><a to="#" className="Blog"> Blog</a></li>
           <li>
-            <a href="#" onClick={() => handleLinkClick('Sign in')}>Sign in</a>
+            <a href="#" onClick={onLoginClick}>Sign in</a>
           </li>
           
-          <li><a href="#" onClick={() => handleLinkClick('Create Account')}>
-                        <button type="submit" id="loginBtn">
-                            Create Account
-                        </button>
-          </a>
+          <li>
+            <a href="#" onClick={onCreateAccountClick}>Create Account</a>
           </li>  
 
         </ul>
       </nav>
-
-
-
-      {showPopup && (
-        <div className="popup-overlay">
-          <div className="popup-content">
-            <h2>{popupContent}</h2>
-            {/* Render the corresponding component based on the clicked link */}
-            {popupContent === 'Sign in' && <Login />}
-            {popupContent === 'Create Account' && <Create_Account />} 
-            
-            <button onClick={() => setShowPopup(false)}>Close</button>
-          </div>
-        </div>
-      )}
     </div>
-    
   );
 }
 

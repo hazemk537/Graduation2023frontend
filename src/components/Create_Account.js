@@ -1,21 +1,15 @@
 import React, { useState } from "react";
-import '../styles/Login_Signup.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faAt, faLock } from '@fortawesome/free-solid-svg-icons';
-// import {Link} from "react-router-dom";
+import { faUser, faAt, faLock, faTimes } from '@fortawesome/free-solid-svg-icons';
+import '../styles/Login_Signup.css';
 
-function Signup() {
+
+function Signup({ onClose }) {
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     };
-
-
-
-
-
-
 
     const handleSignup = (event) => {
         event.preventDefault();
@@ -32,21 +26,17 @@ function Signup() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(data)
-
-
         });
     };
-
-
-
-
 
     return (
         <div className="container">
             <div className="form_sign">
+                <div className="close-button" onClick={onClose}>
+                    <FontAwesomeIcon icon={faTimes} id="X"  />
+                </div>
                 <h1 id="title">Sign Up</h1>
                 <form onSubmit={handleSignup}>
-          
                     <div className="input-group">
                         <div className="input-field">
                             <FontAwesomeIcon icon={faUser} beat id="awesome1" style={{ color: "#1d3ee2" }} />
@@ -58,7 +48,6 @@ function Signup() {
                             />
                         </div>
                     </div>
-
                     <div className="input-group">
                         <div className="input-field">
                             <FontAwesomeIcon icon={faUser} beat id="awesome1" style={{ color: "#1d3ee2" }} />
@@ -70,13 +59,11 @@ function Signup() {
                             />
                         </div>
                     </div>
-
                     <div className="input-group">
                         <div className="input-field">
                             <FontAwesomeIcon icon={faAt} beat id="awesome1" style={{ color: "#0740b0" }} />
                             <input type="email" required placeholder="Email" name="email" />
                         </div>
-
                         <div className="input-field">
                             <FontAwesomeIcon icon={faLock} beat id="awesome1" />
                             <input
@@ -87,16 +74,14 @@ function Signup() {
                                 name="password"
                             />
                             <span className="show" onClick={togglePasswordVisibility}>
-                                {passwordVisible ? 'hide' : 'show'}</span>
+                                {passwordVisible ? 'hide' : 'show'}
+                            </span>
                         </div>
                     </div>
-
                     <div className="buttons">
-                        <a href="/Login">
                         <button type="submit" id="signupBtn">
                             Sign Up
                         </button>
-                        </a>
                     </div>
                 </form>
                 <div className="transmit">
