@@ -10,12 +10,22 @@ import Feature_2Light from "../images/feature-02-light.svg"
 import Feature_1Dark from "../images/feature-01-dark.svg"
 import Feature_1Light from "../images/feature-01-light.svg"
 import Feature_illustration_light from"../images/features-illustration-light.svg"
+import Feature_illustration_dark from"../images/features-illustration-dark.svg"
 import Feature_Box_lightt from "../images/features-box-light.svg"
+import Feature_Box_Dark from "../images/features-box-dark.svg"
 import FeatureTopLight from "../images/features-illustration-top-light.svg"
+import FeatureTopDark from "../images/features-illustration-top-dark.svg"
+import HeaderIllustrationLight from "../images/header-illustration-light.svg"
+import HeaderIllustrationDark from "../images/header-illustration-dark.svg"
+import HeroIllustLight from "../images/hero-media-illustration-light.svg"
+import HeroIllustDark from "../images/hero-media-illustration-dark.svg"
+import HeroMediaLight from "../images/hero-media-light.svg"
+import HeroMediaDark from "../images/hero-media-dark.svg"
+
 
 import ScrollReveal from "scrollreveal";
 function MainLandingPage() {
-  let s = ScrollReveal();
+  let s = (window.sr = ScrollReveal());
 
   const [darkTheme, setDarkTheme] = useState(0);
   const [loaded, setLoading] = useState(0);
@@ -31,17 +41,13 @@ function MainLandingPage() {
     
   });
   return (
-    <div
-      className={`is-boxed landing_page landing-has-animations ${
-        darkTheme ? "lights-off" : ""
-      } `}
-    >
+    <body
+      className={`is-boxed  has-animations is-loaded ${darkTheme?"lights-off ":""}`}>
       <div className={`site-header body-wrap boxed-container`}>
         <header className="">
           <div className="container">
             <div className="site-header-inner">
               <div className="brand header-brand">
-    
                 <h1 className="m-0">
                   <a href="#">
                     <img
@@ -101,36 +107,37 @@ function MainLandingPage() {
                   <div className={`header-illustration `}>
                     <img
                       className="header-illustration-image asset-light"
-                      src="../images/header-illustration-light.svg"
+                      src={HeaderIllustrationLight}
                       alt="Header illustration"
                     />
                     <img
                       className="header-illustration-image asset-dark"
-                      src="../images/header-illustration-dark.svg"
+                      src={HeaderIllustrationDark}
+
                       alt="Header illustration"
                     />
                   </div>
                   <div className="hero-media-illustration">
                     <img
                       className="hero-media-illustration-image asset-light"
-                      src="../images/hero-media-illustration-light.svg"
+                      src={HeroIllustLight}
                       alt="Hero media illustration"
                     />
                     <img
                       className="hero-media-illustration-image asset-dark"
-                      src="../images/hero-media-illustration-dark.svg"
+                      src={HeroIllustDark}
                       alt="Hero media illustration"
                     />
                   </div>
                   <div className="hero-media-container">
                     <img
                       className="hero-media-image asset-light"
-                      src="../images/hero-media-light.svg"
+                      src={HeroMediaLight}
                       alt="Hero media"
                     />
                     <img
                       className="hero-media-image asset-dark"
-                      src="../images/hero-media-dark.svg"
+                      src={HeroMediaDark}
                       alt="Hero media"
                     />
                   </div>
@@ -152,17 +159,17 @@ function MainLandingPage() {
                     <div className="features-image">
                       <img
                         className="features-illustration asset-dark"
-                        src="../images/features-illustration-dark.svg"
+                        src={Feature_illustration_dark}
                         alt="Feature illustration"
                       />
                       <img
                         className="features-box asset-dark"
-                        src="../images/features-box-dark.svg"
+                        src={Feature_Box_Dark}
                         alt="Feature box"
                       />
                       <img
                         className="features-illustration asset-dark"
-                        src="../images/features-illustration-top-dark.svg"
+                        src={FeatureTopDark}
                         alt="Feature illustration top"
                       />
                       <img
@@ -366,7 +373,7 @@ function MainLandingPage() {
           </div>
         </footer>
       </div>
-    </div>
+    </body>
   );
 }
 

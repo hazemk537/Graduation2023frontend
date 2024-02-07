@@ -1,9 +1,9 @@
-.landing_page {
+body {
 	line-height: 1.15;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 }
-.landing_page {
+body {
 	margin: 0;
 }
 article,
@@ -96,7 +96,6 @@ img {
 svg:not(:root) {
 	overflow: hidden;
 }
-/* ? */
 button,
 input,
 optgroup,
@@ -116,7 +115,7 @@ select {
 	text-transform: none;
 }
 button,
-.landing_page [type="button"],
+body [type="button"],
 [type="reset"],
 [type="submit"] {
 	-webkit-appearance: button;
@@ -189,7 +188,7 @@ template {
 [hidden] {
 	display: none;
 }
-.landing_page {
+body {
 	box-sizing: border-box;
 }
 *,
@@ -197,7 +196,7 @@ template {
 *:after {
 	box-sizing: inherit;
 }
-.landing_page {
+body {
 	background: #fff;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
@@ -277,15 +276,15 @@ th:last-child,
 td:last-child {
 	padding-right: 0;
 }
-.landing_page {
+body {
 	font-size: 20px;
 	line-height: 30px;
 }
-className= {
+body {
 	color: #6b7a90;
 	font-size: 1rem;
 }
-className=,
+body,
 button,
 input,
 select,
@@ -1019,7 +1018,7 @@ label {
 	height: 24px;
 	border-radius: 12px;
 	background: #fff;
-	transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-out;
 }
 .switch[type="checkbox"]:checked + label::before {
 	background: #535fd7;
@@ -1631,7 +1630,7 @@ main {
 	height: 1px;
 	background: #304057;
 }
-.landing_page,
+body,
 a,
 h1,
 h2,
@@ -1696,7 +1695,6 @@ hr::after,
 .is-loaded .header-logo-image {
 	animation: fadeInLogo 0.35s both cubic-bezier(0.3, 0, 0.2, 1);
 	will-change: transform;
-  
 }
 .is-loaded .hero-media-image {
 	animation: fadeInLeftMedia 1s 0.2s both cubic-bezier(0.3, 0, 0.2, 1);
