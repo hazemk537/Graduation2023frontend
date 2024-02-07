@@ -5,8 +5,8 @@ import Button from './components/Button';
 function App() {
   return (
     <div className="App">
-      {/* <MainLandingPage/> */}
-      <LoginForm/>
+      <MainLandingPage/>
+      {/* <LoginForm/> */}
     </div>
   );
 }

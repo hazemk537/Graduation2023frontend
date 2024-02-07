@@ -1,109 +1,359 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import NavBar from "./NavBar";
 import Button from "./Button";
-import styles from "../styles/MainLandingpage.module.css"
+import "../styles/MainLandingpage.css";
+import ScrollReveal from "scrollreveal";
 function MainLandingPage() {
+  let s = ScrollReveal();
+
+  const [darkTheme, setDarkTheme] = useState(0);
+  const [loaded, setLoading] = useState(0);
+  useEffect(() => {
+    setLoading(1);
+    s.reveal(".feature", {
+      duration: 600,
+      distance: "20px",
+      easing: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+      origin: "right",
+      viewFactor: 0.2,
+    });
+    
+  });
   return (
-    <div>
-      <div className={styles.landingpage_body}>
-        <div className={styles.landingpage_navbar}>
-          <div className={styles.landingpage_logo}>
-            <div className="landing-navbar-svg">
-              <svg
-                fill="#51a8bd"
-                viewBox="0 0 32 32"
-                xmlns="http://www.w3.org/2000/svg"
-                stroke="#51a8bd"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path d="m16 0c8.836556 0 16 7.163444 16 16s-7.163444 16-16 16-16-7.163444-16-16 7.163444-16 16-16zm1.0008661 2.0352252-.0008661 4.9647748h-2l.0001337-4.96484538c-6.9350811.48937684-12.47560224 6.02989798-12.96497908 12.96497908l4.96484538-.0001337v2l-4.9647748.0008661c.48983875 6.9346138 6.03016066 12.474626 12.9649085 12.9639793l-.0001337-4.9648454h2l.0008661 4.9647748c6.9342805-.4898152 12.4740935-6.0296282 12.9639087-12.9639087l-4.9647748-.0008661v-2l4.9648454.0001337c-.4893533-6.93474784-6.0293655-12.47506975-12.9639793-12.9649085zm-1.0008661 8.9647748c2.7614237 0 5 2.2385763 5 5s-2.2385763 5-5 5-5-2.2385763-5-5 2.2385763-5 5-5zm0 2c-1.6568542 0-3 1.3431458-3 3s1.3431458 3 3 3 3-1.3431458 3-3-1.3431458-3-3-3z"></path>
-                </g>
-              </svg>
-            </div>
-            <span className="landing-navbar-title"> Focus News </span>
-          </div >
-          <Button className="signin-btn" text="Sign In" />
-          <Button className="signup-btn" text="Sign Up" />
-        </div>
-        <h1 className={styles.landingpage_h1}>
-          Build your own newsfeed
-        </h1>
-        <span className="description-1">
-          With Focus, Follow your favorite websites , collect articles.
-        </span>
-        <div className=" layout-btns-header flex">
-          <Button className="signin-btn" text="Sign In" />
-          <Button className="viewfeatures-btn" text="View Features" />
-        </div>
-
-        <main>
-          screenshot of the app ان شاء الله
-          <div className="features-landingpage">
-            <div>
-              <img alt="error display " src="../../imagesRef/image-1.png"></img>
-
-              <div className="header-h3">
-                Follow your favorite websites and creators
-              </div>
-
-              <span className="description-2">
-                Bring the content that matters to you together and enjoy the
-                best from the web in a single place.
-              </span>
-            </div>
-            <div>
-              <div className="header-h3">Save time with Summarization</div>
-
-              <span className="description-2">
-                {" "}
-                No need to go read all the articles...
-              </span>
-            </div>
-            <div>
-              <img alt="error display " src="../../imagesRef/image-2.png" />
-              {/* reduedant names err */}
-              <div className="header-h3">
-                smart algorithms and recommendation engines
-              </div>
-
-              <span className="description-2">
-                {" "}
-                Customize your view and enjoy a personalized feed.
-              </span>
-            </div>{" "}
-            <div className="carossel">
-              <span>Discover Based on your likes</span>
-              <div>
-                <span>Recommended News</span>
-                <img alt="" />
-              </div>
-              <div>
-                <span>Tech News</span>
-                <img alt="" />
-              </div>{" "}
-              <div>
-                <span>Business & Finance</span>
-                <img alt="" />
-              </div>{" "}
-              <div>
-                <span>Marketing & Media </span>
-                <img alt="" />
-              </div>
-              <div>
-                <span>Hobby & Lifestyle</span>
-                <img alt="" />
+    <div
+      className={`is-boxed landing_page landing-has-animations ${
+        darkTheme ? "lights-off" : ""
+      } `}
+    >
+      <div className={`site-header body-wrap boxed-container`}>
+        <header className="">
+          <div className="container">
+            <div className="site-header-inner">
+              <div className="brand header-brand">
+                <h1 className="m-0">
+                  <a href="#">
+                    <img
+                      className="header-logo-image asset-light"
+                      src="../images/logo-light.svg"
+                      alt="Logo"
+                    />
+                    <img
+                      className="header-logo-image asset-dark"
+                      src="../images/logo-dark.svg"
+                      alt="Logo"
+                    />
+                  </a>
+                </h1>
               </div>
             </div>
           </div>
+        </header>
+
+        <main>
+          <section className="hero">
+            <div className="container">
+              <div className="hero-inner">
+                <div className="hero-copy">
+                  <h1 className="hero-title mt-0">Landing template for startups</h1>
+                  <p className="hero-paragraph">
+                    Our landing page template works on all devices, so you only
+                    have to set it up once, and get beautiful results forever.
+                  </p>
+                  <div className="hero-cta">
+                    <a className="button button-primary" href="#">
+                      Buy it now
+                    </a>
+                    <div className="lights-toggle">
+                      <input
+                        onClick={(event) =>
+                          setDarkTheme((old) => (old ? 0 : 1))
+                        }
+                        id="lights-toggle"
+                        type="checkbox"
+                        name="lights-toggle"
+                        className="switch"
+                        checked={darkTheme ? "" : "checked"}
+                      />
+                      <label htmlFor="lights-toggle" className="text-xs">
+                        <span>
+                          Turn me{" "}
+                          <span className="label-text">
+                            {darkTheme ? "light" : "dark"}
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div className="hero-media">
+                  <div className={`header-illustration `}>
+                    <img
+                      className="header-illustration-image asset-light"
+                      src="../images/header-illustration-light.svg"
+                      alt="Header illustration"
+                    />
+                    <img
+                      className="header-illustration-image asset-dark"
+                      src="../images/header-illustration-dark.svg"
+                      alt="Header illustration"
+                    />
+                  </div>
+                  <div className="hero-media-illustration">
+                    <img
+                      className="hero-media-illustration-image asset-light"
+                      src="../images/hero-media-illustration-light.svg"
+                      alt="Hero media illustration"
+                    />
+                    <img
+                      className="hero-media-illustration-image asset-dark"
+                      src="../images/hero-media-illustration-dark.svg"
+                      alt="Hero media illustration"
+                    />
+                  </div>
+                  <div className="hero-media-container">
+                    <img
+                      className="hero-media-image asset-light"
+                      src="../images/hero-media-light.svg"
+                      alt="Hero media"
+                    />
+                    <img
+                      className="hero-media-image asset-dark"
+                      src="../images/hero-media-dark.svg"
+                      alt="Hero media"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="features section">
+            <div className="container">
+              <div className="features-inner section-inner has-bottom-divider">
+                <div className="features-header text-center">
+                  <div className="container-sm">
+                    <h2 className="section-title mt-0">The Product</h2>
+                    <p className="section-paragraph">
+                      Lorem ipsum is common placeholder text used to demonstrate
+                      the graphic elements of a document or visual presentation.
+                    </p>
+                    <div className="features-image">
+                      <img
+                        className="features-illustration asset-dark"
+                        src="../images/features-illustration-dark.svg"
+                        alt="Feature illustration"
+                      />
+                      <img
+                        className="features-box asset-dark"
+                        src="../images/features-box-dark.svg"
+                        alt="Feature box"
+                      />
+                      <img
+                        className="features-illustration asset-dark"
+                        src="../images/features-illustration-top-dark.svg"
+                        alt="Feature illustration top"
+                      />
+                      <img
+                        className="features-illustration asset-light"
+                        src="../images/features-illustration-light.svg"
+                        alt="Feature illustration"
+                      />
+                      <img
+                        className="features-box asset-light"
+                        src="../images/features-box-light.svg"
+                        alt="Feature box"
+                      />
+                      <img
+                        className="features-illustration asset-light"
+                        src="../images/features-illustration-top-light.svg"
+                        alt="Feature illustration top"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="features-wrap">
+                  <div className="feature is-revealing">
+                    <div className="feature-inner">
+                      <div className="feature-icon">
+                        <img
+                          className="asset-light"
+                          src="../images/feature-01-light.svg"
+                          alt="Feature 01"
+                        />
+                        <img
+                          className="asset-dark"
+                          src="../images/feature-01-dark.svg"
+                          alt="Feature 01"
+                        />
+                      </div>
+                      <div className="feature-content">
+                        <h3 className="feature-title mt-0">Discover</h3>
+                        <p className="text-sm mb-0">
+                          Lorem ipsum dolor sit amet, consecte adipiscing elit,
+                          sed do eiusmod tempor incididunt ut labore et dolore
+                          magna aliqua dui.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="feature is-revealing">
+                    <div className="feature-inner">
+                      <div className="feature-icon">
+                        <img
+                          className="asset-light"
+                          src="../images/feature-02-light.svg"
+                          alt="Feature 02"
+                        />
+                        <img
+                          className="asset-dark"
+                          src="../images/feature-02-dark.svg"
+                          alt="Feature 02"
+                        />
+                      </div>
+                      <div className="feature-content">
+                        <h3 className="feature-title mt-0">Discover</h3>
+                        <p className="text-sm mb-0">
+                          Lorem ipsum dolor sit amet, consecte adipiscing elit,
+                          sed do eiusmod tempor incididunt ut labore et dolore
+                          magna aliqua dui.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="feature is-revealing">
+                    <div className="feature-inner">
+                      <div className="feature-icon">
+                        <img
+                          className="asset-light"
+                          src="../images/feature-03-light.svg"
+                          alt="Feature 03"
+                        />
+                        <img
+                          className="asset-dark"
+                          src="../images/feature-03-dark.svg"
+                          alt="Feature 03"
+                        />
+                      </div>
+                      <div className="feature-content">
+                        <h3 className="feature-title mt-0">Discover</h3>
+                        <p className="text-sm mb-0">
+                          Lorem ipsum dolor sit amet, consecte adipiscing elit,
+                          sed do eiusmod tempor incididunt ut labore et dolore
+                          magna aliqua dui.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="cta section">
+            <div className="container-sm">
+              <div className="cta-inner section-inner">
+                <div className="cta-header text-center">
+                  <h2 className="section-title mt-0">Get it and Switch</h2>
+                  <p className="section-paragraph">
+                    Lorem ipsum is common placeholder text used to demonstrate
+                    the graphic elements of a document or visual presentation.
+                  </p>
+                  <div className="cta-cta">
+                    <a className="button button-primary" href="#">
+                      Buy it now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </main>
-        <footer></footer>
-      </div>{" "}
+
+        <footer className="site-footer has-top-divider">
+          <div className="container">
+            <div className="site-footer-inner">
+              <div className="brand footer-brand">
+                <a href="#">
+                  <img
+                    className="asset-light"
+                    src="../images/logo-light.svg"
+                    alt="Logo"
+                  />
+                  <img
+                    className="asset-dark"
+                    src="../images/logo-dark.svg"
+                    alt="Logo"
+                  />
+                </a>
+              </div>
+              <ul className="footer-links list-reset">
+                <li>
+                  <a href="#">Contact</a>
+                </li>
+                <li>
+                  <a href="#">About us</a>
+                </li>
+                <li>
+                  <a href="#">FAQ's</a>
+                </li>
+                <li>
+                  <a href="#">Support</a>
+                </li>
+              </ul>
+              <ul className="footer-social-links list-reset">
+                <li>
+                  <a href="#">
+                    <span className="screen-reader-text">Facebook</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6.023 16L6 9H3V6h3V4c0-2.7 1.672-4 4.08-4 1.153 0 2.144.086 2.433.124v2.821h-1.67c-1.31 0-1.563.623-1.563 1.536V6H13l-1 3H9.28v7H6.023z"
+                        fill="#FFF"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span className="screen-reader-text">Twitter</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M16 3c-.6.3-1.2.4-1.9.5.7-.4 1.2-1 1.4-1.8-.6.4-1.3.6-2.1.8-.6-.6-1.5-1-2.4-1-1.7 0-3.2 1.5-3.2 3.3 0 .3 0 .5.1.7-2.7-.1-5.2-1.4-6.8-3.4-.3.5-.4 1-.4 1.7 0 1.1.6 2.1 1.5 2.7-.5 0-1-.2-1.5-.4C.7 7.7 1.8 9 3.3 9.3c-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.3 1.6 2.3 3.1 2.3-1.1.9-2.5 1.4-4.1 1.4H0c1.5.9 3.2 1.5 5 1.5 6 0 9.3-5 9.3-9.3v-.4C15 4.3 15.6 3.7 16 3z"
+                        fill="#FFF"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span className="screen-reader-text">Google</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z"
+                        fill="#FFF"
+                      />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+              <div className="footer-copyright">
+                &copy; 2018 Switch, all rights reserved
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }
