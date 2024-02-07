@@ -1,48 +1,42 @@
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import "../styles/MainLandingpage.css";
-import LogoLightSvg from "../images/logo-light.svg"
-import LogoDarkSvg from "../images/logo-dark.svg"
-import Feature_3Dark from "../images/feature-03-dark.svg"
-import Feature_3Light from "../images/feature-03-light.svg"
-import Feature_2Dark from "../images/feature-02-dark.svg"
-import Feature_2Light from "../images/feature-02-light.svg"
-import Feature_1Dark from "../images/feature-01-dark.svg"
-import Feature_1Light from "../images/feature-01-light.svg"
-import Feature_illustration_light from"../images/features-illustration-light.svg"
-import Feature_illustration_dark from"../images/features-illustration-dark.svg"
-import Feature_Box_lightt from "../images/features-box-light.svg"
-import Feature_Box_Dark from "../images/features-box-dark.svg"
-import FeatureTopLight from "../images/features-illustration-top-light.svg"
-import FeatureTopDark from "../images/features-illustration-top-dark.svg"
-import HeaderIllustrationLight from "../images/header-illustration-light.svg"
-import HeaderIllustrationDark from "../images/header-illustration-dark.svg"
-import HeroIllustLight from "../images/hero-media-illustration-light.svg"
-import HeroIllustDark from "../images/hero-media-illustration-dark.svg"
-import HeroMediaLight from "../images/hero-media-light.svg"
-import HeroMediaDark from "../images/hero-media-dark.svg"
-
+import LogoLightSvg from "../images/logo-light.svg";
+import LogoDarkSvg from "../images/logo-dark.svg";
+import Feature_3Dark from "../images/feature-03-dark.svg";
+import Feature_3Light from "../images/feature-03-light.svg";
+import Feature_2Dark from "../images/feature-02-dark.svg";
+import Feature_2Light from "../images/feature-02-light.svg";
+import Feature_1Dark from "../images/feature-01-dark.svg";
+import Feature_1Light from "../images/feature-01-light.svg";
+import Feature_illustration_light from "../images/features-illustration-light.svg";
+import Feature_illustration_dark from "../images/features-illustration-dark.svg";
+import Feature_Box_lightt from "../images/features-box-light.svg";
+import Feature_Box_Dark from "../images/features-box-dark.svg";
+import FeatureTopLight from "../images/features-illustration-top-light.svg";
+import FeatureTopDark from "../images/features-illustration-top-dark.svg";
+import HeaderIllustrationLight from "../images/header-illustration-light.svg";
+import HeaderIllustrationDark from "../images/header-illustration-dark.svg";
+import HeroIllustLight from "../images/hero-media-illustration-light.svg";
+import HeroIllustDark from "../images/hero-media-illustration-dark.svg";
+import HeroMediaLight from "../images/hero-media-light.svg";
+import HeroMediaDark from "../images/hero-media-dark.svg";
 
 import ScrollReveal from "scrollreveal";
 function MainLandingPage() {
-  let s = (window.sr = ScrollReveal());
 
   const [darkTheme, setDarkTheme] = useState(0);
   const [loaded, setLoading] = useState(0);
   useEffect(() => {
     setLoading(1);
-    s.reveal(".feature", {
-      duration: 600,
-      distance: "20px",
-      easing: "cubic-bezier(0.215, 0.61, 0.355, 1)",
-      origin: "right",
-      viewFactor: 0.2,
-    });
-    
+;
   });
   return (
     <body
-      className={`is-boxed  has-animations is-loaded ${darkTheme?"lights-off ":""}`}>
+      className={`is-boxed  has-animations ${loaded ? "is-loaded" : ""} ${
+        darkTheme ? "lights-off " : ""
+      }`}
+    >
       <div className={`site-header body-wrap boxed-container`}>
         <header className="">
           <div className="container">
@@ -50,11 +44,7 @@ function MainLandingPage() {
               <div className="brand header-brand">
                 <h1 className="m-0">
                   <a href="#">
-                    <img
-                      className=""
-                      src={LogoLightSvg}
-                      alt="Logo"
-                    />
+                    <img className="" src={LogoLightSvg} alt="Logo" />
                     <img
                       className="header-logo-image asset-dark"
                       src={LogoDarkSvg}
@@ -72,7 +62,9 @@ function MainLandingPage() {
             <div className="container">
               <div className="hero-inner">
                 <div className="hero-copy">
-                  <h1 className="hero-title mt-0">Landing template for startups</h1>
+                  <h1 className="hero-title mt-0">
+                    Landing template for startups
+                  </h1>
                   <p className="hero-paragraph">
                     Our landing page template works on all devices, so you only
                     have to set it up once, and get beautiful results forever.
@@ -113,7 +105,6 @@ function MainLandingPage() {
                     <img
                       className="header-illustration-image asset-dark"
                       src={HeaderIllustrationDark}
-
                       alt="Header illustration"
                     />
                   </div>
@@ -191,7 +182,7 @@ function MainLandingPage() {
                   </div>
                 </div>
                 <div className="features-wrap">
-                  <div className="feature is-revealing">
+                  <div className="feature ">
                     <div className="feature-inner">
                       <div className="feature-icon">
                         <img
@@ -215,7 +206,7 @@ function MainLandingPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="feature is-revealing">
+                  <div className="feature ">
                     <div className="feature-inner">
                       <div className="feature-icon">
                         <img
@@ -239,7 +230,7 @@ function MainLandingPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="feature is-revealing">
+                  <div className="feature ">
                     <div className="feature-inner">
                       <div className="feature-icon">
                         <img
@@ -293,16 +284,8 @@ function MainLandingPage() {
             <div className="site-footer-inner">
               <div className="brand footer-brand">
                 <a href="#">
-                  <img
-                    className="asset-light"
-                    src={LogoLightSvg}
-                    alt="Logo"
-                  />
-                  <img
-                    className="asset-dark"
-                    src={LogoDarkSvg}
-                    alt="Logo"
-                  />
+                  <img className="asset-light" src={LogoLightSvg} alt="Logo" />
+                  <img className="asset-dark" src={LogoDarkSvg} alt="Logo" />
                 </a>
               </div>
               <ul className="footer-links list-reset">
