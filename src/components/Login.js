@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAt, faLock,faTimes } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Login_Signup.css';
+import { Link } from 'react-router-dom';
 
 
-
-function LoginForm({onClose}) {
+function Login({onClose}) {
 
     const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -59,31 +59,31 @@ function LoginForm({onClose}) {
                         </div>
                     </div>
                     <div className="buttons">
-                        <a href="/Home">
+                        <Link to="/Home">
                             <button type="submit" id="signinBtn">
                                 Login
                             </button>
-                        </a>
+                        </Link>
                     </div>
                     <div>
                         <b className="reset">
                             forget password{'    '}
-                            <a href="/Reset_Password" rel="noopener noreferrer">
+                            <Link to="/Reset_Password" rel="noopener noreferrer">
                                 click here
-                            </a>
+                            </Link>
                         </b>
                     </div>
                 </form>
                 <div className="transmit">
-                    <a href="/Register">
+                    <Link to="/Register">
                         <button type="submit" id="signupBtn">
                             Sign up
                         </button>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
     );
 }
 
-export default LoginForm;
+export default Login;
