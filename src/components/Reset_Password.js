@@ -11,7 +11,7 @@ import "../styles/Reset_Password.css"
         <div className="text-center m-5-auto">
             <h2>Reset your password</h2>
             <h5>Enter your email address and we will send you a new password</h5>
-            <form action="/Login" class="ress-pass">
+            <form action="/" class="ress-pass">
 
                 <div className="input-field">
                     <FontAwesomeIcon icon={faAt} beat  id="awesome1" style={{ color: "#0740b0" }} />
@@ -23,7 +23,6 @@ import "../styles/Reset_Password.css"
                 </div>
             </form>
             <footer>
-                <p>First time? <Link class="Link" to="/Create_Account">Create an account</Link></p>
                 <p><Link class="Link" to="/">Back to Homepage</Link></p>
             </footer>
         </div>
