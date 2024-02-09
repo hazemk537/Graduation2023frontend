@@ -1,0 +1,27 @@
+
+nav {
+
+    width: 100%;
+    position: fixed;
+    background: #ffffff;
+}
+nav li {
+    display: inline-block;
+    list-style: none;
+}
+
+nav li a {
+    display: flex;
+    text-align: left;
+    padding: 16px 40px;
+    text-decoration: none;
+    color: #08234C;
+
+}
+
+nav li a:hover {
+    color: #1875F3;
+    cursor: pointer;
+    }
+
+
