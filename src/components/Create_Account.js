@@ -4,7 +4,7 @@ import { faUser, faAt, faLock, faTimes } from '@fortawesome/free-solid-svg-icons
 import '../styles/Login_Signup.css';
 
 
-function Signup({ onClose }) {
+function Create_Account({ onClose }) {
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -96,4 +96,4 @@ function Signup({ onClose }) {
     );
 }
 
-export default Signup;
+export default Create_Account;

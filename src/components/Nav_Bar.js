@@ -1,23 +1,23 @@
 import React from "react";
 import '../styles/Nav_Bar.css';
-
-function Navigation({ onLoginClick, onCreateAccountClick }) {
+import { Link } from 'react-router-dom';
+function Nav_Bar({ onLoginClick, onCreateAccountClick }) {
 
   return (
     <div>
       <nav>
         <ul>
-          <li><a to="#" className="logo"> Logo</a></li>
-          <li><a to="#" className="Features"> Features</a></li>
-          <li><a to="#" className="Pricing"> Pricing</a></li>
-          <li><a to="#" className="Discover"> Discover</a></li>
-          <li><a to="#" className="Blog"> Blog</a></li>
+          <li><Link to="#" className="logo"> Logo</Link></li>
+          <li><Link to="#" className="Features"> Features</Link></li>
+          <li><Link to="#" className="Pricing"> Pricing</Link></li>
+          <li><Link to="#" className="Discover"> Discover</Link></li>
+          <li><Link to="/Reset_Password" className="Blog"> Blog</Link></li>
           <li>
-            <a href="#" onClick={onLoginClick}>Sign in</a>
+            <Link href="#" onClick={onLoginClick}>Sign in</Link>
           </li>
           
           <li>
-            <a href="#" onClick={onCreateAccountClick}>Create Account</a>
+            <Link href="#" onClick={onCreateAccountClick}>Create Account</Link>
           </li>  
 
         </ul>
@@ -26,4 +26,4 @@ function Navigation({ onLoginClick, onCreateAccountClick }) {
   );
 }
 
-export default Navigation;
+export default Nav_Bar;

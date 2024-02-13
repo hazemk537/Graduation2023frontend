@@ -1,61 +1,59 @@
-import React, {useState } from "react";
+import  {React, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Nav_Bar from "./components/Nav_Bar";
 import Login from "./components/Login";
 import Create_Account from "./components/Create_Account";
+import Reset_Password from './components/Reset_Password';
 
-function App () {  
+ function App () {
+  
     const [showLoginPopup, setShowLoginPopup] = useState(false);
     const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
-    // To display  (Login popup)  
+
     const handleLoginClick = () => {
       setShowLoginPopup(true);
       document.querySelector('*').style.background = '#999'; // Change background color of the entire page
       document.querySelector('nav').style.background = '#999';
     };
-    // To display  (Create account popup) 
+
     const handleCreateAccountClick = () => {
       setShowCreateAccountPopup(true);
       document.querySelector('*').style.background = '#999'; // Change background color of the entire page
       document.querySelector('nav').style.background = '#999';
     };
 
-    // to close ( Login ) popup
     const handleLoginClose = () => {
       setShowLoginPopup(false);
       document.querySelector('*').style.background = ''; // Reset background color of the entire page
       document.querySelector('nav').style.background = '';
     };
-    // to close (creating account) popup
+
     const handleSignupClose = () => {
       setShowCreateAccountPopup(false);
       document.querySelector('*').style.background = ''; // Reset background color of the entire page
-    document.querySelector('nav').style.background = '';
-  };
-  
-
-
+      document.querySelector('nav').style.background = '';
+    };
 
     return (
-      <div className="App">
-        <Nav_Bar onLoginClick={handleLoginClick} onCreateAccountClick={handleCreateAccountClick} />
-        
-        {showLoginPopup && (
-          <div >
-            <div >
-              <Login onClose={handleLoginClose} />
-            </div>
-          </div>
-        )}
+      <BrowserRouter>
+        <header className="App">
+          <div><Nav_Bar onLoginClick={handleLoginClick} onCreateAccountClick={handleCreateAccountClick} /></div>
 
-        {showCreateAccountPopup && (
-          <div >
-            <div >
-              <Create_Account onClose={handleSignupClose} />
-            </div>
-          </div>
-        )}
-      </div>
+          <Routes>
+            <Route path="/Login" element={<Login onClose={handleLoginClose} />} />
+            <Route path="/Create_Account" element={<Create_Account onClose={handleSignupClose} />} />
+            <Route path="/Reset_Password" element={<Reset_Password />} />
+          </Routes>
+        </header>
+
+        {/* Popups */}
+        {showLoginPopup && <Login onClose={handleLoginClose} />}
+        {showCreateAccountPopup && <Create_Account onClose={handleSignupClose} />}
+      </BrowserRouter>
     );
   }
 
+
 export default App;
+
+
