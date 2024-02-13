@@ -12,6 +12,7 @@
   - [use case 02](#use-case-02)
 - [intialize repo](#intialize-repo)
 - [components--sprint\_1](#components--sprint_1)
+- [Landing page](#landing-page)
   - [home\_page](#home_page)
 - [myFeed\_page](#myfeed_page)
   - [login/signup\_page](#loginsignup_page)
@@ -78,7 +79,6 @@ read the state from something called redux resilient (library store data in loca
 
 ## intialize repo  
 - [ ] install redux @hazem
-- [ ] install redux-persistence @hazemcd 
 - [x] fork repo   @zaki
 - [x]  open vscode and go to the  project folder then     @zaki
 1. Press Ctrl+Shift+P to open the Command Palette.
@@ -86,13 +86,21 @@ read the state from something called redux resilient (library store data in loca
 3. enter your forked link to repo
 4. choose folder to the project
 > if you donot know how To deal with commets, pull requests ask on group.....
-5. run npm install to install required libraries react,...
+1. run npm install to install required libraries react,...
 ## components--sprint_1
-- create the redux logic 
+- create the redux logic  @hazem
    - [ ] redux store
-   - [ ] redux slice
+   - [ ] redux slices
+## Landing page
+- [ ] onClick route  @hazem
+- [ ] onClick login @hazem
+  - [ ] fetch user data
+  - [ ] store user data with redux and local storage
+  - [ ]  store user token local storage
+  - [ ]  route to homepage
+  - [ ]  protect homepage route
 ### home_page
-- [ ]  navbar
+- [ ]  navbar  @zaki
   - [ ]  onClick userIcon **show**  logoPopup.
   - [ ]   onClick theme Icon **toggle**  darkMode/lightModel 
 - [ ]  onClick discover icon **show**  home_page.discover_page

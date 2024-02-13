@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Button from "./Button";
+import Button from "../components/Button";
 import "../styles/MainLandingpage.css";
 import LogoLightSvg from "../images/logo-light.svg";
 import LogoDarkSvg from "../images/logo-dark.svg";
@@ -22,18 +22,17 @@ import HeroIllustDark from "../images/hero-media-illustration-dark.svg";
 import HeroMediaLight from "../images/hero-media-light.svg";
 import HeroMediaDark from "../images/hero-media-dark.svg";
 
-import ScrollReveal from "scrollreveal";
 function MainLandingPage() {
 
   const [darkTheme, setDarkTheme] = useState(0);
   const [loaded, setLoading] = useState(0);
   useEffect(() => {
     setLoading(1);
-;
-  });
+
+  },[ ]);
   return (
-    <body
-      className={`is-boxed  has-animations ${loaded ? "is-loaded" : ""} ${
+    <div
+      className={`landingpage-page is-boxed  has-animations ${loaded ? "is-loaded" : ""} ${
         darkTheme ? "lights-off " : ""
       }`}
     >
@@ -63,15 +62,15 @@ function MainLandingPage() {
               <div className="hero-inner">
                 <div className="hero-copy">
                   <h1 className="hero-title mt-0">
-                    Landing template for startups
+                    Welcome to Focus News
                   </h1>
                   <p className="hero-paragraph">
-                    Our landing page template works on all devices, so you only
-                    have to set it up once, and get beautiful results forever.
                   </p>
                   <div className="hero-cta">
                     <a className="button button-primary" href="#">
-                      Buy it now
+                     SignIn
+                    </a> <a className="button button-primary" href="#">
+                     SignUp
                     </a>
                     <div className="lights-toggle">
                       <input
@@ -350,13 +349,13 @@ function MainLandingPage() {
                 </li>
               </ul>
               <div className="footer-copyright">
-                &copy; 2018 Switch, all rights reserved
+                &copy; 2023 Focus APP, all rights reserved
               </div>
             </div>
           </div>
         </footer>
       </div>
-    </body>
+    </div>
   );
 }
 
