@@ -30,7 +30,7 @@ function Create_Account({ onClose }) {
     };
 
     return (
-        <div className="container">
+        <div className="login_logout_container">
             <div className="form_sign">
                 <div className="close-button" onClick={onClose}>
                     <FontAwesomeIcon icon={faTimes} id="X"  />

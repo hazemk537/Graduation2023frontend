@@ -9,15 +9,12 @@ function Nav_Bar({ onLoginClick, onCreateAccountClick }) {
         <ul>
           <li><Link to="#" className="logo"> Logo</Link></li>
           <li><Link to="#" className="Features"> Features</Link></li>
-          <li><Link to="#" className="Pricing"> Pricing</Link></li>
-          <li><Link to="#" className="Discover"> Discover</Link></li>
-          <li><Link to="/Reset_Password" className="Blog"> Blog</Link></li>
           <li>
-            <Link href="#" onClick={onLoginClick}>Sign in</Link>
+            <Link to="/login" onClick={onLoginClick}>Sign in</Link>
           </li>
           
           <li>
-            <Link href="#" onClick={onCreateAccountClick}>Create Account</Link>
+            <Link to="/Create_Account" onClick={onCreateAccountClick}>Create Account</Link>
           </li>  
 
         </ul>

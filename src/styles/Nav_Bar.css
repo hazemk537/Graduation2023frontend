@@ -3,7 +3,9 @@ nav {
 
     width: 100%;
     position: fixed;
-    background: #ffffff;
+    /* background: #dae5e8; */
+    z-index: 5;
+
 }
 nav li {
     display: inline-block;
@@ -20,8 +22,11 @@ nav li a {
 }
 
 nav li a:hover {
-    color: #1875F3;
+    color: #3c8dff;
     cursor: pointer;
+    text-decoration: none;
+
+    
     }
 
 

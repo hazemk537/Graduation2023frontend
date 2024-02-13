@@ -1,10 +1,13 @@
 import  {React, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter } from "react-router-dom";
 import Nav_Bar from "./components/Nav_Bar";
+import Err from './routes/Err'
+import HomePage from "./routes/HomePage"
 import Login from "./components/Login";
 import Create_Account from "./components/Create_Account";
+// #todo : try removing the used components and leave css
 import Reset_Password from './components/Reset_Password';
-
+import MainLandingPage from "./routes/MainLandingPage";
  function App () {
   
     const [showLoginPopup, setShowLoginPopup] = useState(false);
@@ -33,23 +36,36 @@ import Reset_Password from './components/Reset_Password';
       document.querySelector('*').style.background = ''; // Reset background color of the entire page
       document.querySelector('nav').style.background = '';
     };
-
+     const router = createBrowserRouter([
+      {
+        path: "/",
+        element: <MainLandingPage onLoginClick={showLoginPopup} onClickCreateAccount={showCreateAccountPopup} />,
+        errorElement: <Err />,
+      },
+      {
+        path: "home",
+        element: <HomePage onClickLogout={setShowLoginPopup} />,
+      },
+      ,
+      {
+        path: "login",
+        element: <Login onClose={handleLoginClose} />,
+      },
+      {
+        path: "create_account",
+        element: <Create_Account onClose={handleSignupClose} />,
+      },
+    
+      {
+    
+        path:"Reset_Password",
+        element:<Reset_Password/>
+      }
+    ]);
+    
     return (
-      <BrowserRouter>
-        <header className="App">
-          <div><Nav_Bar onLoginClick={handleLoginClick} onCreateAccountClick={handleCreateAccountClick} /></div>
-
-          <Routes>
-            <Route path="/Login" element={<Login onClose={handleLoginClose} />} />
-            <Route path="/Create_Account" element={<Create_Account onClose={handleSignupClose} />} />
-            <Route path="/Reset_Password" element={<Reset_Password />} />
-          </Routes>
-        </header>
-
-        {/* Popups */}
-        {showLoginPopup && <Login onClose={handleLoginClose} />}
-        {showCreateAccountPopup && <Create_Account onClose={handleSignupClose} />}
-      </BrowserRouter>
+    <RouterProvider router={router}/>
+      
     );
   }
 

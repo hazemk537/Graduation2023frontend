@@ -21,8 +21,9 @@ import HeroIllustLight from "../images/hero-media-illustration-light.svg";
 import HeroIllustDark from "../images/hero-media-illustration-dark.svg";
 import HeroMediaLight from "../images/hero-media-light.svg";
 import HeroMediaDark from "../images/hero-media-dark.svg";
+import Nav_Bar from "../components/Nav_Bar";
 
-function MainLandingPage() {
+function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
 
   const [darkTheme, setDarkTheme] = useState(0);
   const [loaded, setLoading] = useState(0);
@@ -31,6 +32,9 @@ function MainLandingPage() {
 
   },[ ]);
   return (
+  <>
+    <Nav_Bar onLoginClick={handleLoginClick} onClickCreateAccount={handleCreateAccountClick} />
+
     <div
       className={`landingpage-page is-boxed  has-animations ${loaded ? "is-loaded" : ""} ${
         darkTheme ? "lights-off " : ""
@@ -67,11 +71,7 @@ function MainLandingPage() {
                   <p className="hero-paragraph">
                   </p>
                   <div className="hero-cta">
-                    <a className="button button-primary" href="#">
-                     SignIn
-                    </a> <a className="button button-primary" href="#">
-                     SignUp
-                    </a>
+                 
                     <div className="lights-toggle">
                       <input
                         onClick={(event) =>
@@ -137,125 +137,7 @@ function MainLandingPage() {
           </section>
 
           <section className="features section">
-            <div className="container">
-              <div className="features-inner section-inner has-bottom-divider">
-                <div className="features-header text-center">
-                  <div className="container-sm">
-                    <h2 className="section-title mt-0">The Product</h2>
-                    <p className="section-paragraph">
-                      Lorem ipsum is common placeholder text used to demonstrate
-                      the graphic elements of a document or visual presentation.
-                    </p>
-                    <div className="features-image">
-                      <img
-                        className="features-illustration asset-dark"
-                        src={Feature_illustration_dark}
-                        alt="Feature illustration"
-                      />
-                      <img
-                        className="features-box asset-dark"
-                        src={Feature_Box_Dark}
-                        alt="Feature box"
-                      />
-                      <img
-                        className="features-illustration asset-dark"
-                        src={FeatureTopDark}
-                        alt="Feature illustration top"
-                      />
-                      <img
-                        className="features-illustration asset-light"
-                        src={Feature_illustration_light}
-                        alt="Feature illustration"
-                      />
-                      <img
-                        className="features-box asset-light"
-                        src={Feature_Box_lightt}
-                        alt="Feature box"
-                      />
-                      <img
-                        className="features-illustration asset-light"
-                        src={FeatureTopLight}
-                        alt="Feature illustration top"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="features-wrap">
-                  <div className="feature ">
-                    <div className="feature-inner">
-                      <div className="feature-icon">
-                        <img
-                          className="asset-light"
-                          src={Feature_1Light}
-                          alt="Feature 01"
-                        />
-                        <img
-                          className="asset-dark"
-                          src={Feature_1Dark}
-                          alt="Feature 01"
-                        />
-                      </div>
-                      <div className="feature-content">
-                        <h3 className="feature-title mt-0">Discover</h3>
-                        <p className="text-sm mb-0">
-                          Lorem ipsum dolor sit amet, consecte adipiscing elit,
-                          sed do eiusmod tempor incididunt ut labore et dolore
-                          magna aliqua dui.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="feature ">
-                    <div className="feature-inner">
-                      <div className="feature-icon">
-                        <img
-                          className="asset-light"
-                          src={Feature_2Light}
-                          alt="Feature 02"
-                        />
-                        <img
-                          className="asset-dark"
-                          src={Feature_2Dark}
-                          alt="Feature 02"
-                        />
-                      </div>
-                      <div className="feature-content">
-                        <h3 className="feature-title mt-0">Discover</h3>
-                        <p className="text-sm mb-0">
-                          Lorem ipsum dolor sit amet, consecte adipiscing elit,
-                          sed do eiusmod tempor incididunt ut labore et dolore
-                          magna aliqua dui.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="feature ">
-                    <div className="feature-inner">
-                      <div className="feature-icon">
-                        <img
-                          className="asset-light"
-                          src={Feature_3Light}
-                          alt="Feature 03"
-                        />
-                        <img
-                          className="asset-dark"
-                          src={Feature_3Dark}
-                          alt="Feature 03"
-                        />
-                      </div>
-                      <div className="feature-content">
-                        <h3 className="feature-title mt-0">Discover</h3>
-                        <p className="text-sm mb-0">
-                          Lorem ipsum dolor sit amet, consecte adipiscing elit,
-                          sed do eiusmod tempor incididunt ut labore et dolore
-                          magna aliqua dui.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          Carausel here
           </section>
 
           <section className="cta section">
@@ -356,6 +238,8 @@ function MainLandingPage() {
         </footer>
       </div>
     </div>
+  
+  </>
   );
 }
 
