@@ -1,27 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Button from "../components/Button";
 import "../styles/MainLandingpage.css";
 import LogoLightSvg from "../images/logo-light.svg";
 import LogoDarkSvg from "../images/logo-dark.svg";
-import Feature_3Dark from "../images/feature-03-dark.svg";
-import Feature_3Light from "../images/feature-03-light.svg";
-import Feature_2Dark from "../images/feature-02-dark.svg";
-import Feature_2Light from "../images/feature-02-light.svg";
-import Feature_1Dark from "../images/feature-01-dark.svg";
-import Feature_1Light from "../images/feature-01-light.svg";
-import Feature_illustration_light from "../images/features-illustration-light.svg";
-import Feature_illustration_dark from "../images/features-illustration-dark.svg";
-import Feature_Box_lightt from "../images/features-box-light.svg";
-import Feature_Box_Dark from "../images/features-box-dark.svg";
-import FeatureTopLight from "../images/features-illustration-top-light.svg";
-import FeatureTopDark from "../images/features-illustration-top-dark.svg";
 import HeaderIllustrationLight from "../images/header-illustration-light.svg";
 import HeaderIllustrationDark from "../images/header-illustration-dark.svg";
 import HeroIllustLight from "../images/hero-media-illustration-light.svg";
 import HeroIllustDark from "../images/hero-media-illustration-dark.svg";
 import HeroMediaLight from "../images/hero-media-light.svg";
 import HeroMediaDark from "../images/hero-media-dark.svg";
-import Nav_Bar from "../components/Nav_Bar";
+import NavBar from "../components/Nav_Bar";
 
 function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
 
@@ -33,7 +20,7 @@ function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
   },[ ]);
   return (
   <>
-    <Nav_Bar onLoginClick={handleLoginClick} onClickCreateAccount={handleCreateAccountClick} />
+    <NavBar onLoginClick={handleLoginClick} onClickCreateAccount={handleCreateAccountClick} />
 
     <div
       className={`landingpage-page is-boxed  has-animations ${loaded ? "is-loaded" : ""} ${
@@ -46,14 +33,13 @@ function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
             <div className="site-header-inner">
               <div className="brand header-brand">
                 <h1 className="m-0">
-                  <a href="#">
+                
                     <img className="" src={LogoLightSvg} alt="Logo" />
                     <img
                       className="header-logo-image asset-dark"
                       src={LogoDarkSvg}
                       alt="Logo"
                     />
-                  </a>
                 </h1>
               </div>
             </div>
@@ -150,9 +136,7 @@ function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
                     the graphic elements of a document or visual presentation.
                   </p>
                   <div className="cta-cta">
-                    <a className="button button-primary" href="#">
-                      Buy it now
-                    </a>
+                    
                   </div>
                 </div>
               </div>
@@ -164,28 +148,12 @@ function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
           <div className="container">
             <div className="site-footer-inner">
               <div className="brand footer-brand">
-                <a href="#">
                   <img className="asset-light" src={LogoLightSvg} alt="Logo" />
                   <img className="asset-dark" src={LogoDarkSvg} alt="Logo" />
-                </a>
               </div>
-              <ul className="footer-links list-reset">
-                <li>
-                  <a href="#">Contact</a>
-                </li>
-                <li>
-                  <a href="#">About us</a>
-                </li>
-                <li>
-                  <a href="#">FAQ's</a>
-                </li>
-                <li>
-                  <a href="#">Support</a>
-                </li>
-              </ul>
+             
               <ul className="footer-social-links list-reset">
                 <li>
-                  <a href="#">
                     <span className="screen-reader-text">Facebook</span>
                     <svg
                       width="16"
@@ -197,10 +165,8 @@ function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
                         fill="#FFF"
                       />
                     </svg>
-                  </a>
                 </li>
                 <li>
-                  <a href="#">
                     <span className="screen-reader-text">Twitter</span>
                     <svg
                       width="16"
@@ -212,10 +178,8 @@ function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
                         fill="#FFF"
                       />
                     </svg>
-                  </a>
                 </li>
                 <li>
-                  <a href="#">
                     <span className="screen-reader-text">Google</span>
                     <svg
                       width="16"
@@ -227,7 +191,6 @@ function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
                         fill="#FFF"
                       />
                     </svg>
-                  </a>
                 </li>
               </ul>
               <div className="footer-copyright">

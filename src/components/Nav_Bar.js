@@ -1,7 +1,7 @@
 import React from "react";
 import '../styles/Nav_Bar.css';
 import { Link } from 'react-router-dom';
-function Nav_Bar({ onLoginClick, onCreateAccountClick }) {
+function NavBar({ onLoginClick, onCreateAccountClick }) {
 
   return (
     <div>
@@ -23,4 +23,4 @@ function Nav_Bar({ onLoginClick, onCreateAccountClick }) {
   );
 }
 
-export default Nav_Bar;
+export default NavBar;
