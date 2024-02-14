@@ -22,6 +22,7 @@ import HeroIllustDark from "../images/hero-media-illustration-dark.svg";
 import HeroMediaLight from "../images/hero-media-light.svg";
 import HeroMediaDark from "../images/hero-media-dark.svg";
 import Nav_Bar from "../components/Nav_Bar";
+import Carousel from "../components/carousel" ;
 
 function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
 
@@ -137,7 +138,7 @@ function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
           </section>
 
           <section className="features section">
-          Carausel here
+          <Carousel/>
           </section>
 
           <section className="cta section">
