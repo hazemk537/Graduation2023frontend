@@ -1,10 +1,5 @@
 import  {React, useState } from "react";
-import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter } from "react-router-dom";
-import Nav_Bar from "./components/Nav_Bar";
-import Err from './routes/Err'
-import HomePage from "./routes/HomePage"
-import Login from "./components/Login";
-import Create_Account from "./components/Create_Account";
+import { RouterProvider , createBrowserRouter } from "react-router-dom";
 // #todo : try removing the used components and leave css
 import Reset_Password from './components/Reset_Password';
 import MainLandingPage from "./routes/MainLandingPage";
@@ -13,18 +8,7 @@ import MainLandingPage from "./routes/MainLandingPage";
     const [showLoginPopup, setShowLoginPopup] = useState(false);
     const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
 
-    const handleLoginClick = () => {
-      setShowLoginPopup(true);
-      document.querySelector('*').style.background = '#999'; // Change background color of the entire page
-      document.querySelector('nav').style.background = '#999';
-    };
-
-    const handleCreateAccountClick = () => {
-      setShowCreateAccountPopup(true);
-      document.querySelector('*').style.background = '#999'; // Change background color of the entire page
-      document.querySelector('nav').style.background = '#999';
-    };
-
+   
     const handleLoginClose = () => {
       setShowLoginPopup(false);
       document.querySelector('*').style.background = ''; // Reset background color of the entire page
