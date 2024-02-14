@@ -1,8 +1,13 @@
 import  {React, useState } from "react";
 import { RouterProvider , createBrowserRouter } from "react-router-dom";
 // #todo : try removing the used components and leave css
-import Reset_Password from './components/Reset_Password';
+import Err from "./routes/Err"
 import MainLandingPage from "./routes/MainLandingPage";
+import HomePage from "./routes/HomePage"
+
+import Login from "./components/Login";
+import ResetPassword from "./components/Reset_Password";
+import CreateAccount from "./components/Create_Account";
  function App () {
   
     const [showLoginPopup, setShowLoginPopup] = useState(false);
@@ -24,26 +29,25 @@ import MainLandingPage from "./routes/MainLandingPage";
       {
         path: "/",
         element: <MainLandingPage onLoginClick={showLoginPopup} onClickCreateAccount={showCreateAccountPopup} />,
-        errorElement: <Err />,
+        errorElement: <Err />
       },
       {
         path: "home",
-        element: <HomePage onClickLogout={setShowLoginPopup} />,
+        element: <HomePage onClickLogout={setShowLoginPopup} />
       },
-      ,
       {
         path: "login",
-        element: <Login onClose={handleLoginClose} />,
+        element: <Login onClose={handleLoginClose} />
       },
       {
         path: "create_account",
-        element: <Create_Account onClose={handleSignupClose} />,
+        element: <CreateAccount onClose={handleSignupClose} />
       },
     
       {
     
         path:"Reset_Password",
-        element:<Reset_Password/>
+        element:<ResetPassword/>
       }
     ]);
     
