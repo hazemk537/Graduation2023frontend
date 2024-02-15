@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-// #todo : try removing the used components and leave css
 import Err from "./routes/Err";
 import MainLandingPage from "./routes/MainLandingPage";
 import HomePage from "./routes/HomePage";
@@ -20,7 +19,6 @@ function App() {
       }
     });
 
-    // setShowCreateAccountPopup((old) => !old);
   };
 
   const ToggleSignupPopup = () => {
