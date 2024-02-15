@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ConsoleErrorViewer from "./routes/Err";
 import MainLandingPage from "./routes/MainLandingPage";
 import HomePage from "./routes/HomePage";
+import ResetPassword from './components/Reset_Password';
 
 function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
@@ -49,6 +50,10 @@ function App() {
     {
       path: "/home",
       element: <HomePage />,
+    },
+    {
+      path: "/Reset_Password",
+      element: <ResetPassword />,
     },
   ]);
   return (
