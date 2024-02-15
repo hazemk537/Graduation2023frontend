@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Err from "./routes/Err";
+import ConsoleErrorViewer from "./routes/Err";
 import MainLandingPage from "./routes/MainLandingPage";
 import HomePage from "./routes/HomePage";
 
@@ -44,15 +44,16 @@ function App() {
           onClickCreateAccount={ToggleSignupPopup}
         />
       ),
-      errorElement: <Err />,
+      errorElement: <ConsoleErrorViewer />,
     },
     {
-      path: "home",
+      path: "/home",
       element: <HomePage />,
     },
   ]);
   return (
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
+    
   );
 }
 
