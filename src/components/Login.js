@@ -119,6 +119,7 @@ function Login({ onClose }) {
     return (
         <div className="login_logout_container">
             <div className="form_sign">
+            <img src="../images/image1.jpg" alt="" />
                 <div className="close-button" onClick={onClose}>
                     <FontAwesomeIcon icon={faTimes} id='X' />
                 </div>
@@ -157,6 +158,7 @@ function Login({ onClose }) {
                     </div>
                 </form>
                 <div className="transmit">
+                <img src="../images/image1.jpg" alt="" />
                     <Link to="/Create_Account">
                         <button type="submit" id="signupBtn">
                             Sign up

@@ -8,7 +8,7 @@ function Nav_Bar({ onLoginClick, onCreateAccountClick }) {
       <nav>
         <ul>
           <li><Link to="#" className="logo"> Logo</Link></li>
-          <li><Link to="#" className="Features"> Features</Link></li>
+          <li><Link to="/test" className="Features"> Features</Link></li>
           <li>
             <Link to="/login" onClick={onLoginClick}>Sign in</Link>
           </li>

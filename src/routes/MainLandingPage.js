@@ -22,7 +22,9 @@ import HeroIllustDark from "../images/hero-media-illustration-dark.svg";
 import HeroMediaLight from "../images/hero-media-light.svg";
 import HeroMediaDark from "../images/hero-media-dark.svg";
 import Nav_Bar from "../components/Nav_Bar";
-import Carousel from "../components/carousel" ;
+import Carousel from "../components/Carousel_1";
+
+
 
 function MainLandingPage({handleLoginClick,handleCreateAccountClick}) {
 

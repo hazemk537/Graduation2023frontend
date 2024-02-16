@@ -8,6 +8,7 @@ import Create_Account from "./components/Create_Account";
 // #todo : try removing the used components and leave css
 import Reset_Password from './components/Reset_Password';
 import MainLandingPage from "./routes/MainLandingPage";
+import test from "./components/test";
  function App () {
   
     const [showLoginPopup, setShowLoginPopup] = useState(false);
@@ -60,7 +61,21 @@ import MainLandingPage from "./routes/MainLandingPage";
     
         path:"Reset_Password",
         element:<Reset_Password/>
+
+
       }
+,
+      {
+    
+        path:"Features" , 
+        element:<test/>
+
+        
+      }
+
+
+
+
     ]);
     
     return (
