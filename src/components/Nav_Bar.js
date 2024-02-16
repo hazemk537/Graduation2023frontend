@@ -1,20 +1,19 @@
 import React from "react";
 import '../styles/Nav_Bar.css';
-import { Link } from 'react-router-dom';
-function Nav_Bar({ onLoginClick, onCreateAccountClick }) {
+function NavBar({ onClickLogin, onClickCreateAccount }) {
 
   return (
     <div>
       <nav>
         <ul>
-          <li><Link to="#" className="logo"> Logo</Link></li>
-          <li><Link to="#" className="Features"> Features</Link></li>
+          <li><span to="#" className="logo"> Logo</span></li>
+          <li><span to="#" className="Features"> Features</span></li>
           <li>
-            <Link to="/login" onClick={onLoginClick}>Sign in</Link>
+            <span  onClick={onClickLogin}>Sign in</span>
           </li>
           
           <li>
-            <Link to="/Create_Account" onClick={onCreateAccountClick}>Create Account</Link>
+            <span  onClick={onClickCreateAccount}>Create Account</span>
           </li>  
 
         </ul>
@@ -23,4 +22,4 @@ function Nav_Bar({ onLoginClick, onCreateAccountClick }) {
   );
 }
 
-export default Nav_Bar;
+export default NavBar;

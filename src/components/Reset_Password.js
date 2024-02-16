@@ -4,10 +4,10 @@ import {faAt} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import "../styles/Reset_Password.css"
 
- function Reset_Password() {
+ function ResetPassword() {
     return (
 
-        <div className="container2">
+        <div className="reset_container">
         <div className="text-center m-5-auto">
             <h2>Reset your password</h2>
             <h5>Enter your email address and we will send you a new password</h5>
@@ -29,4 +29,5 @@ import "../styles/Reset_Password.css"
         </div>
     )
 }
-export default Reset_Password;
+
+export default ResetPassword;
