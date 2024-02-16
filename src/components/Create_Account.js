@@ -1,42 +1,47 @@
+// Create_Account.js
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faAt, faLock, faTimes } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Login_Signup.css';
 
-
-function Create_Account({ onClose }) {
+function Create_Account({ onClose, onSigninClick }) {
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     };
 
-    const handleSignup = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const firstName = form.firstName.value;
-        const lastName = form.lastName.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const data = { firstName, lastName, email, password };
+    // const handleSignup = (event) => {
+    //     event.preventDefault();
+    //     const form = event.target;
+    //     const firstName = form.firstName.value;
+    //     const lastName = form.lastName.value;
+    //     const email = form.email.value;
+    //     const password = form.password.value;
+    //     const data = { firstName, lastName, email, password };
 
-        fetch("#", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data)
-        });
-    };
+    //     fetch("#", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(data)
+    //     });
+    // };
+
 
     return (
-        <div className="login_logout_container">
+      <>
+        <div className="login_assist">
+        </div>
+
             <div className="form_sign">
                 <div className="close-button" onClick={onClose}>
                     <FontAwesomeIcon icon={faTimes} id="X"  />
                 </div>
                 <h1 id="title">Sign Up</h1>
-                <form onSubmit={handleSignup}>
+                {/* <form onSubmit={handleSignup}> */}
+                <form >
                     <div className="input-group">
                         <div className="input-field">
                             <FontAwesomeIcon icon={faUser} beat id="awesome1" style={{ color: "#1d3ee2" }} />
@@ -79,20 +84,16 @@ function Create_Account({ onClose }) {
                         </div>
                     </div>
                     <div className="buttons">
-                        <button type="submit" id="signupBtn">
-                            Sign Up
-                        </button>
+                        <a href="/">
+                            <button type="submit" id="signupBtn">Sign Up</button>
+                        </a>    
                     </div>
                 </form>
                 <div className="transmit">
-                    <a href="/Login">
-                        <button type="submit" id="signupBtn">
-                            Sign in
-                        </button>
-                    </a>
+                    <button type="button" id="signinBtn" onClick={onSigninClick}>Login</button>
                 </div>
             </div>
-        </div>
+      </>
     );
 }
 

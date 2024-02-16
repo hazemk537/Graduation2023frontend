@@ -1,12 +1,16 @@
 import ReactDOM from "react-dom/client";
 import React from "react";
 import App from "./App";
-// import Image from "./1698599783411.png";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+const clienid =
+  "938401369733-f3mj4an80f1e4l5fqvku6rcjr29dm22s.apps.googleusercontent.com";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <img src="./download(1).jpeg" alt="imaged:\download (1).jpeg" />
-  </React.StrictMode>
+  <GoogleOAuthProvider clientId={clienid}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </GoogleOAuthProvider>
 );
 

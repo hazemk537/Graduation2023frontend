@@ -1,18 +1,13 @@
-import  {React, useState } from "react";
-import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter } from "react-router-dom";
-import Nav_Bar from "./components/Nav_Bar";
-import Err from './routes/Err'
-import HomePage from "./routes/HomePage"
-import Login from "./components/Login";
-import Create_Account from "./components/Create_Account";
-// #todo : try removing the used components and leave css
-import Reset_Password from './components/Reset_Password';
+import { React, useState } from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import ConsoleErrorViewer from "./routes/Err";
 import MainLandingPage from "./routes/MainLandingPage";
-import test from "./components/test";
- function App () {
-  
-    const [showLoginPopup, setShowLoginPopup] = useState(false);
-    const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
+import HomePage from "./routes/HomePage";
+import ResetPassword from './components/Reset_Password';
+
+function App() {
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
 
     const handleLoginClick = () => {
       setShowLoginPopup(true);
@@ -61,21 +56,7 @@ import test from "./components/test";
     
         path:"Reset_Password",
         element:<Reset_Password/>
-
-
       }
-,
-      {
-    
-        path:"Features" , 
-        element:<test/>
-
-        
-      }
-
-
-
-
     ]);
     
     return (
@@ -86,5 +67,4 @@ import test from "./components/test";
 
 
 export default App;
-
 
