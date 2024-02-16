@@ -8,7 +8,7 @@ import HeroIllustLight from "../images/hero-media-illustration-light.svg";
 import HeroIllustDark from "../images/hero-media-illustration-dark.svg";
 import HeroMediaLight from "../images/hero-media-light.svg";
 import HeroMediaDark from "../images/hero-media-dark.svg";
-import NavBar from "../components/Nav_Bar";
+
 
 import Login from "../components/Login";
 // import ResetPassword from "./components/Reset_Password";
@@ -134,7 +134,7 @@ function MainLandingPage({
               </div>
             </section>
 
-            <section className="features section">Carausel here</section>
+
 
             <section className="cta section">
               <div className="container-sm">
