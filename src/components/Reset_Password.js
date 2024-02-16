@@ -29,4 +29,5 @@ import "../styles/Reset_Password.css"
         </div>
     )
 }
+
 export default ResetPassword;
