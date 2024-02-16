@@ -25,6 +25,7 @@ function MainLandingPage({
   useEffect(() => {
     setLoading(1);
   }, []);
+  
   return (
     <>
       {stateShowLoginPopup && !stateshowCreateAccountPopup && (
