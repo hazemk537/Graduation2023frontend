@@ -1,0 +1,54 @@
+ .profile-container {
+     position: relative;
+     padding-left: 93%
+ }
+
+ .profile-image {
+     cursor: pointer;
+ }
+
+ .profile-image img {
+     width: 40px;
+     height: 40px;
+     border-radius: 60%;
+     padding: 10px;
+ }
+
+ .dropdown-menu {
+     position: absolute;
+     top: 60px;
+     right: 15px;
+     background-color: #8fa0ee21;
+     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.959);
+     border-radius: 10px;
+     z-index: 4;
+ }
+
+ .menu-item {
+     padding: 10px;
+     cursor: pointer;
+     text-decoration: none;
+     display: flex;
+ }
+
+ .menu-item-user {
+     padding: 10px;
+     cursor: pointer;
+     text-decoration: none;
+     display: flex;
+     width: fit-content;
+     justify-content: space-between
+ }
+
+
+ .jump {
+     padding-left: 10px;
+     font: black bold;
+     text-decoration: solid;
+ }
+
+
+ .menu-item:hover,
+ .menu-item-user:hover {
+     background-color: #1b1b4b25;
+ }
