@@ -45,7 +45,7 @@ function App() {
           onClickCreateAccount={ToggleSignupPopup}
         />
       ),
-      errorElement: <ConsoleErrorViewer />,
+      errorElement: <ConsoleErrorViewer errText={"404 Page Not"}/>,
     },
     {
       path: "/home",
