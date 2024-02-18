@@ -13,6 +13,7 @@ import NavBar from "../components/Nav_Bar"
 import Login from "../components/Login";
 // import ResetPassword from "./components/Reset_Password";
 import CreateAccount from "../components/Create_Account";
+import Slider from "../components/Slider";
 
 function MainLandingPage({
   stateShowLoginPopup,
@@ -133,6 +134,7 @@ function MainLandingPage({
                 </div>
               </div>
             </section>
+            <Slider/>
 
 
 
@@ -141,10 +143,6 @@ function MainLandingPage({
                 <div className="cta-inner section-inner">
                   <div className="cta-header text-center">
                     <h2 className="section-title mt-0">Get it and Switch</h2>
-                    <p className="section-paragraph">
-                      Lorem ipsum is common placeholder text used to demonstrate
-                      the graphic elements of a document or visual presentation.
-                    </p>
                     <div className="cta-cta"></div>
                   </div>
                 </div>
