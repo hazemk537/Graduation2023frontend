@@ -11,58 +11,62 @@ function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
 
-  const ToggleLoginPopup = () => {
-    setShowLoginPopup((old) => {
-      if (old) {
-        setShowCreateAccountPopup(false)
-        return !old;
-      } else {
-        setShowCreateAccountPopup(false)
-        return !old;
-      }
-    });
+    const handleLoginClick = () => {
+      setShowLoginPopup(true);
+      document.querySelector('*').style.background = '#999'; // Change background color of the entire page
+      document.querySelector('nav').style.background = '#999';
+    };
 
-  };
+    const handleCreateAccountClick = () => {
+      setShowCreateAccountPopup(true);
+      document.querySelector('*').style.background = '#999'; // Change background color of the entire page
+      document.querySelector('nav').style.background = '#999';
+    };
 
-  const ToggleSignupPopup = () => {
-    setShowCreateAccountPopup((old) => {
-      if (old) {
-        setShowLoginPopup(false)
-        return !old;
-      } else {
-        setShowLoginPopup(false)
-        return !old;
-      }
-    });
+    const handleLoginClose = () => {
+      setShowLoginPopup(false);
+      document.querySelector('*').style.background = ''; // Reset background color of the entire page
+      document.querySelector('nav').style.background = '';
+    };
 
-  };
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <MainLandingPage
-          stateShowLoginPopup={showLoginPopup}
-          stateshowCreateAccountPopup={showCreateAccountPopup}
-          onClickLogin={ToggleLoginPopup}
-          onClickCreateAccount={ToggleSignupPopup}
-        />
-      ),
-      errorElement: <ConsoleErrorViewer errText={"404 Page Not"}/>,
-    },
-    {
-      path: "/home",
-      element: <HomePage />,
-    },
-    {
-      path: "/Reset_Password",
-      element: <ResetPassword />,
-    },
-  ]);
-  return (
-    <RouterProvider router={router} />
+    const handleSignupClose = () => {
+      setShowCreateAccountPopup(false);
+      document.querySelector('*').style.background = ''; // Reset background color of the entire page
+      document.querySelector('nav').style.background = '';
+    };
+     const router = createBrowserRouter([
+      {
+        path: "/",
+        element: <MainLandingPage onLoginClick={showLoginPopup} onClickCreateAccount={showCreateAccountPopup} />,
+        errorElement: <Err />,
+      },
+      {
+        path: "home",
+        element: <HomePage onClickLogout={setShowLoginPopup} />,
+      },
+      ,
+      {
+        path: "login",
+        element: <Login onClose={handleLoginClose} />,
+      },
+      {
+        path: "create_account",
+        element: <Create_Account onClose={handleSignupClose} />,
+      },
     
-  );
-}
+      {
+    
+        path:"Reset_Password",
+        element:<Reset_Password/>
+      }
+    ]);
+    
+    return (
+    <RouterProvider router={router}/>
+      
+    );
+  }
+
 
 export default App;
 
