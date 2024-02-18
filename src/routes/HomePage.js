@@ -1,6 +1,13 @@
 import React from "react";
 import "../styles/homepage.css";
+import Profile from "../components/Profile";
 function HomePage() {
+
+  const user = {
+    name: 'Mohamed Zaki',
+    image: 'http://1.gravatar.com/avatar/47db31bd2e0b161008607d84c74305b5?s=96&d=mm&r=g',
+    account: 'mo.Zaki@gmail.com',
+  };
 
   return (
     <>
@@ -84,9 +91,9 @@ function HomePage() {
                 <path d="M13.73 21a2 2 0 0 1-3.46 0" />
               </svg>
             </button>
-            <button className="profile-btn">
-              <span>Aybüke C.</span>
-            </button>
+            <>
+              <Profile userName={user.name} userImage={user.image} userAccount={user.account} />
+            </>
           </div>
           <button className="messages-btn">
             <svg
