@@ -6,7 +6,9 @@ import ResetPassword from './components/Reset_Password';
 import Alert from "./routes/Alert";
 
 // 3d model 
-// sign up 
+// sign up complete
+// css
+
 // login (token and data)
 
 // fetch user data 
@@ -15,7 +17,9 @@ import Alert from "./routes/Alert";
 // logout logic and dlt token
 
 
-
+//Alert component : center alert
+//Alert component : autohide
+//backend: add  jsonData.error if error happens
 function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
@@ -69,6 +73,7 @@ function App() {
   ]);
   return (
     <RouterProvider router={router} />
+   
     
   );
 }

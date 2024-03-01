@@ -8,7 +8,7 @@ import HeroIllustLight from "../images/hero-media-illustration-light.svg";
 import HeroIllustDark from "../images/hero-media-illustration-dark.svg";
 import HeroMediaLight from "../images/hero-media-light.svg";
 import HeroMediaDark from "../images/hero-media-dark.svg";
-import NavBar from "../components/Nav_Bar"
+import NavBar from "../components/Nav_Bar";
 
 import Login from "../components/Login";
 // import ResetPassword from "./components/Reset_Password";
@@ -26,17 +26,20 @@ function MainLandingPage({
   useEffect(() => {
     setLoading(1);
   }, []);
-  
+
   return (
     <>
       {stateShowLoginPopup && !stateshowCreateAccountPopup && (
         <Login onClose={onClickLogin} onSignupClick={onClickCreateAccount} />
       )}
       {!stateShowLoginPopup && stateshowCreateAccountPopup && (
-        <CreateAccount onClose={onClickCreateAccount} onSigninClick={onClickLogin} />
+        <CreateAccount
+          onClose={onClickCreateAccount}
+          onSigninClick={onClickLogin}
+        />
       )}
 
-      <NavBar 
+      <NavBar
         onClickLogin={onClickLogin}
         onClickCreateAccount={onClickCreateAccount}
       />
@@ -90,6 +93,16 @@ function MainLandingPage({
                             </span>
                           </span>
                         </label>
+
+                        <model-viewer
+                          animation-name="Running"
+                          autoplay
+                          src="./RobotExpressive.glb"
+                          alt="gg"
+                          shadow-intensity="1"
+                          camera-controls
+                          touch-action="pan-y"
+                        ></model-viewer>
                       </div>
                     </div>
                   </div>
@@ -134,9 +147,7 @@ function MainLandingPage({
                 </div>
               </div>
             </section>
-            <Slider/>
-
-
+            <Slider />
 
             <section className="cta section">
               <div className="container-sm">

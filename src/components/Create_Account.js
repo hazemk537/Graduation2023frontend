@@ -40,11 +40,16 @@ function Create_Account({ onClose, onSigninClick }) {
       })
       .then((jsonData) => {
         if (jsonData.error) {
+          
           setAlertType("err");
           setAlertMessage(jsonData.error);
         }
-        setAlertType("success")
-        setAlertMessage("Account Created,Plz login")
+        else{
+          setAlertType("success");
+          setAlertMessage("Account Created ,plz Login");
+        }
+
+        
       })
       .catch((error) => {
         setAlertType("err");
@@ -53,6 +58,7 @@ function Create_Account({ onClose, onSigninClick }) {
 
            
   };
+
 
   return (
     <>
@@ -92,6 +98,8 @@ function Create_Account({ onClose, onSigninClick }) {
               <input
                 type="text"
                 required
+                
+
                 placeholder="Last Name"
                 name="lastName"
               />
@@ -105,6 +113,7 @@ function Create_Account({ onClose, onSigninClick }) {
                 id="awesome1"
                 style={{ color: "#0740b0" }}
               />
+                
               <input type="email" required placeholder="Email" name="email" />
             </div>
             <div className="input-field">
@@ -113,6 +122,7 @@ function Create_Account({ onClose, onSigninClick }) {
                 type={passwordVisible ? "text" : "password"}
                 className="pass-key"
                 required
+
                 placeholder="Password"
                 name="password"
               />
