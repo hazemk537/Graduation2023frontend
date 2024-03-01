@@ -5,6 +5,15 @@ import HomePage from "./routes/HomePage";
 import ResetPassword from './components/Reset_Password';
 import Alert from "./routes/Alert";
 
+// 3d model 
+// sign up 
+// login (token and data)
+
+// fetch user data 
+// display user data
+
+// logout logic and dlt token
+
 
 
 function App() {
