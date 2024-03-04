@@ -49,6 +49,7 @@ html, body {
   width: 100%;
   height: 100vh;
   margin: 0;
+  position: absolute;
 }
 
 body {
@@ -88,6 +89,28 @@ button, a {
   width: 100%;
   padding: 16px 24px;
   position: relative;
+
+}
+.flex-homepage{
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 5vw;
+  width: 100vw;
+  height:100vh;
+  flex-flow: flex-start;
+
+
+  
+}
+.app-sidebar{
+  position: relative;
+  /* background-color: blue; */
+/* 
+  top:0px;
+  left:-44%;
+  right:0px; */
 }
 .app-header-left, .app-header-right {
   display: flex;

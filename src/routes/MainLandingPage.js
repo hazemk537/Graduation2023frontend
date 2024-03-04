@@ -95,8 +95,10 @@ function MainLandingPage({
                         </label>
 
                         <model-viewer
+                        className="model-viewer"
+
                           animation-name="Running"
-                          autoplay
+                          // autoplay
                           src="./RobotExpressive.glb"
                           alt="gg"
                           shadow-intensity="1"

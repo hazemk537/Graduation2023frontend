@@ -4,6 +4,7 @@ import { faAt, faLock, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Login_Signup.css";
 import GLogin from "./Google_Login";
 import Alert from "../routes/Alert";
+import { useNavigate } from "react-router";
 
 function LoginForm({ onClose, onSignupClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -14,7 +15,7 @@ function LoginForm({ onClose, onSignupClick }) {
     setPasswordVisible(!passwordVisible);
   };
 
- 
+ const NavigateFn=useNavigate()
 
 const handleSignin=(event)=>{
   // event.target.preventDefault()
@@ -45,9 +46,10 @@ const handleSignin=(event)=>{
         if(jsonData.token){
         setAlertType("success");
         setAlertMessage("Account Created ,plz Login");
-        // console.log(typeof(jsonData.token))
+        // console.log(jsonData.token)
 
         localStorage.setItem("token", JSON.stringify(jsonData.token));
+        NavigateFn("/home")
 
 
       }

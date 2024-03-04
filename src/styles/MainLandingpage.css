@@ -4,6 +4,13 @@ b.landingpage-page {
 	-webkit-text-size-adjust: 100%;
 }
 
+.model-viewer{
+	height:400px;
+	width:400px;
+	position: relative;
+
+}
+
 article,
 aside,
 footer,
