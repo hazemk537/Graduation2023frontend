@@ -97,7 +97,7 @@ read the state from something called redux resilient (library store data in loca
   - [ ] fetch user data
   - [ ] store user data with redux and local storage
   - [ ]  store user token local storage
-  - [ ]  route to homepage
+  - [x] route to homepage
   - [ ]  protect homepage route
 ### home_page
 - [ ]  navbar  @zaki

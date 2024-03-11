@@ -149,7 +149,7 @@ function HomePage() {
                 <polyline points="9 22 9 12 15 12 15 22" />
               </svg>
             </Link>
-            <Link to="/home/discover" className="app-sidebar-link">
+            <Link to="/home/addFeed" className="app-sidebar-link">
               <svg
                 className="link-icon"
                 xmlns="http://www.w3.org/2000/svg"

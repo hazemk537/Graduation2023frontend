@@ -4,7 +4,7 @@ import MainLandingPage from "./routes/MainLandingPage";
 import HomePage from "./routes/HomePage";
 import ResetPassword from "./components/Reset_Password";
 import Alert from "./routes/Alert";
-import DiscoverView from "./routes/DiscoverView";
+import AddFeed from "./routes/AddFeed";
 import FeedView from "./routes/FeedView";
 
 // login (token and data)
@@ -24,6 +24,7 @@ import FeedView from "./routes/FeedView";
 // login success msg after gauth
 //failed msg after gauth
 //css tutorial::: https://www.youtube.com/watch?v=OXGznpKZ_sA&pp=ygUcY3NzIHlvdXR1YmUgb25lIGZyZWVjb2RlY2FtcA%3D%3D
+// no folder from backend
 function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
@@ -75,8 +76,8 @@ function App() {
         },
 
         {
-          path: "/home/discover",
-          element: <DiscoverView /> },
+          path: "/home/addFeed",
+          element: <AddFeed /> },
       ],
     },
     {
