@@ -2,6 +2,7 @@ import react from "react";
 import {useRef,useState} from 'react'
 import addFeed from "../styles/addfeed.css"
 import PreviewFeed from '../components/PreviewFeed.js'
+// https://www.smh.com.au/rss/feed.xml
 const AddFeed =()=>{
   const [channel_obj,setChannelObj]=useState({
   channel_img_url:"",
