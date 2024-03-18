@@ -546,7 +546,7 @@ function FeedView() {
               </svg>
             </button>
             <div className="projects-section-header">
-              <p>Client Messages</p>
+              <p>Feeds</p>
             </div>
             <div className="messages">
               <div className="message-box">
