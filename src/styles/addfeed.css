@@ -39,10 +39,19 @@
 }
 
 /*Resize the wrap to see the search bar change!*/
-.wrap{
+.{
   width: 30%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.addFeed{
+  display:flex;
+  gap:30px;
+  align-items:center;
+  justify-content:center;
+
+
+
 }

@@ -1,12 +1,47 @@
 import react from "react";
-import {useRef} from 'react'
+import {useRef,useState} from 'react'
 import addFeed from "../styles/addfeed.css"
-
+import PreviewFeed from '../components/PreviewFeed.js'
 const AddFeed =()=>{
+  const [channel_obj,setChannelObj]=useState({
+  channel_img_url:"",
+  channel_img_title:"",
+  channel_title:"",
+  channel_description:"",
+  channel_language:"",
+  channel_updateDate:""
+})
+  const [articles_obj,setArticleObj]=useState({
+  article_category:"",
+  article_description:"",
+  article_title:"",
+  articlel_link:"",
+  article_enclosure:"",
+  article_pubDate:""
+})
+
+
+  let channel_obj1={
+  channel_img_url:"",
+  channel_img_title:"",
+  channel_title:"",
+  channel_description:"",
+  channel_language:"",
+  channel_updateDate:""
+}
+let article_ob1={
+  article_category:"",
+  article_description:"",
+  article_title:"",
+  articlel_link:"",
+  article_enclosure:"",
+  article_pubDate:""
+}
   const inputRef = useRef(null);
   return (
 
-<div class="wrap">
+<div class="addFeed">
+
    <div class="search">
       <input type="text" class="searchTerm" onChange={(event)=>{inputRef.current=event.target.value} } placeholder="Add Rss link"/>
       <button type="submit" class="searchButton" onClick={()=>{
@@ -23,35 +58,47 @@ fetch(UrlBase+inputRef.current)
     const xmlDoc = parser.parseFromString(xmlText, "text/xml");
 
 
-    // Access the parsed feed data
-    let newsFeed={
-  "thumbnail":`${xmlDoc.getElementsByTagName("image").getElementsByTagName("url")}`,
-    "websiteUrl":`${xmlDoc.getElementsByTagName("link")))}`,
-  "feedUrl":`${inputRef.current}`,
-  "title":`${xmlDoc.getElementsByTagName("title")}`
+
+channel_obj1.channel_description=xmlDoc.querySelector("description").textContent
+channel_obj1.channel_img_title=xmlDoc.querySelector("image title ").textContent
+channel_obj1.channel_img_url=xmlDoc.querySelector("image url").textContent
+channel_obj1.channel_language=xmlDoc.querySelector("language").textContent
+channel_obj1.channel_title=xmlDoc.querySelector("title").textContent
+channel_obj1.channel_updateDate=xmlDoc.querySelector("lastBuildDate").textContent
+
+
+setChannelObj(channel_obj1)
+
+let articles=xmlDoc.querySelectorAll("item")
+console.log(articles)
+
+for (let i in articles)
+{
+let innerHtmlchildren =articles[i].innerHTML
+
+// console.log(ddd)
+  console.log(articles[i].innerHtmlchildren)
 }
-// console.log(newsFeed.thumbnail.)
-    const items = xmlDoc.getElementsByTagName("item");
-console.log(xmlDoc)
-    for (let i = 0; i < items.length; i++) {
-      const title = items[i].getElementsByTagName("title")[0];
-      const link = items[i].getElementsByTagName("link")[0];
-      // console.log(title);
-      // console.log(link);
-      // Access other properties as needed
-
-     let currentFeeds= localStorage.getItem("feeds");
-      // localStorage.setItem("feeds", );
 
 
-    }
+
   });
       }}>
         <i class="fa fa-search"></i>
      </button>
    </div>
+   <PreviewFeed channel_obj={channel_obj}/>
+
+
+
+
+
+  }
 </div>
 
   )
 }
+
 export default AddFeed;
+
+
