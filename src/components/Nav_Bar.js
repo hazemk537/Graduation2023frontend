@@ -1,19 +1,22 @@
 import React from "react";
 import '../styles/Nav_Bar.css';
+import { Link } from "react-router-dom";
 function NavBar({ onClickLogin, onClickCreateAccount }) {
 
   return (
     <div>
-      <nav>
+      <nav className="nav_bar">
         <ul>
-          <li><span to="#" className="logo"> Logo</span></li>
-          <li><span to="#" className="Features"> Features</span></li>
+          
+          <li><a href="#contact_us" > Contact Us</a></li>
+          {/* #todo_2 */}
+          <li><Link to="/pricing" > Pricing</Link></li>
           <li>
             <span  onClick={onClickLogin}>Sign in</span>
           </li>
           
           <li>
-            <span  onClick={onClickCreateAccount}>Create Account</span>
+            <span  className="createAccount" onClick={onClickCreateAccount}>Create Account</span>
           </li>  
 
         </ul>

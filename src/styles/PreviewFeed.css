@@ -1,0 +1,27 @@
+.preview_channel_meta{
+    display:flex;
+    gap:2rem;
+    padding-bottom:20px;
+
+}
+
+.preview_channel_feed{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    background-color:#f2f5e6;
+    border-radius:5px;
+
+
+}
+
+.preview_channel_feed img{
+    height:50%;
+    width:50%;
+}
+
+.article-preview-cards{
+  display:flex;
+    align-items:center;
+
+}

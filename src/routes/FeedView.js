@@ -16,7 +16,8 @@ function FeedView() {
  
   return (
     <>
-        
+
+
         <div className="app-content">
          
           <div className="projects-section">

@@ -1,0 +1,105 @@
+/*  */
+      .contact-container {
+        display: flex;
+      
+        flex-direction: column;
+      
+        align-items: center;
+      
+        justify-content: center; /* Added to center the container */
+      
+      
+          
+        transition: background-color 0.3s; /* Added transition for background-color */
+      }
+      
+      
+      
+      .contact-heading {
+      
+        color: rgb(255, 255, 255);
+      
+      }
+      
+      
+  .contact-form{
+    background-color: rgb(20, 20, 20);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:30rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+      
+      
+      
+      .contact-label {
+      
+        color: white;
+      
+      }
+      
+      
+      
+      .contact-input,
+      
+      .contact-textarea {
+      
+        color: whitesmoke;
+      
+      
+        width:20rem;
+        border-radius: 5px;
+        background-color: rgba(55, 49, 49, 0.364);
+      
+        padding: 30px;
+
+        outline: none;
+      border:none;
+        margin: 10px;
+
+      
+      }
+
+       
+    
+    
+      .contact-input{
+        margin-top:30px;
+      }
+      
+      .contact-submit-btn {
+      
+        color: rgb(255, 255, 255);
+      
+        background-color: rgb(58, 29, 29);
+      
+        border: none;
+      
+        padding: 10px 20px;
+      
+        cursor: pointer;
+        border-radius: 5px;
+
+        transition: color 0.3s, background-color 0.3s; /* Added transition for color and background-color */
+    margin-bottom: 40px;
+    margin-top: 30px;
+      
+      }
+      
+      
+      .contact-submit-btn:hover {
+      
+        color: white;
+      
+        background-color: rgb(143, 49, 49);
+      
+      }
+      
+      
+      
+    

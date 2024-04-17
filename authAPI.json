@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "9cce8afc-99db-415c-9403-8633d3895de4",
+		"name": "AuthApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27255200",
+		"_collection_link": "https://www.postman.com/ahmedelshafey/workspace/newsapi/collection/26431110-9cce8afc-99db-415c-9403-8633d3895de4?action=share&source=collection_link&creator=27255200"
+	},
+	"item": [
+		{
+			"name": "LoginUserWithNoConfirmEmail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"string\",\r\n  \"lastName\": \"string\",\r\n  \"userName\": \"string\",\r\n  \"email\": \"string\",\r\n  \"password\": \"string\",\r\n  \"confirmPassword\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Domain}}/api/v1/Auth/Register",
+					"host": [
+						"{{Domain}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Auth",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"mazen\",\r\n  \"lastName\": \"kamal\",\r\n  \"userName\": \"mazen\",\r\n  \"email\": \"mazen@gmail.com\",\r\n  \"password\": \"Mazen@123\",\r\n  \"confirmPassword\": \"Mazen@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Domain}}/api/v1/Auth/Register",
+					"host": [
+						"{{Domain}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Auth",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConfirmEmail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Domain}}/api/v1/Auth/ConfirmEmail?userId=1038&Code=CfDJ8Eb9MXOdKD1At4D20nkBAiPTHuuCw%2FXIEsLO4NfImonl%2BT31I4BOLfLosqISSJjK75ExHiyCwcmFbgh4aCQoHM7Ybz8PHDIHWaWshoOm69Pv78XXLqLv9rUK7NLViL6qJPxr%2Bou50BPXS921Pj3IwTFDKlRjL015TS%2Brf%2BRwVwqV5bNlwCynSCoGyT6bHyWYjHmtorPhA4Y563nYV7v%2FKhY%3D",
+					"host": [
+						"{{Domain}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Auth",
+						"ConfirmEmail"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1038"
+						},
+						{
+							"key": "Code",
+							"value": "CfDJ8Eb9MXOdKD1At4D20nkBAiPTHuuCw%2FXIEsLO4NfImonl%2BT31I4BOLfLosqISSJjK75ExHiyCwcmFbgh4aCQoHM7Ybz8PHDIHWaWshoOm69Pv78XXLqLv9rUK7NLViL6qJPxr%2Bou50BPXS921Pj3IwTFDKlRjL015TS%2Brf%2BRwVwqV5bNlwCynSCoGyT6bHyWYjHmtorPhA4Y563nYV7v%2FKhY%3D"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LogInUserWithConfirmEmail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"ahmed\",\r\n  \"password\": \"Ahmed@123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Domain}}/api/v1/Auth/Login",
+					"host": [
+						"{{Domain}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Auth",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SendResetPassword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"aelshafey135@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Domain}}/api/v1/Auth/SendResetpassword",
+					"host": [
+						"{{Domain}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Auth",
+						"SendResetpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConfirmResetPassword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"code\": \"2384\",\r\n  \"email\": \"aelshafey135@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Domain}}/api/v1/Auth/ConfirmResetPassword",
+					"host": [
+						"{{Domain}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Auth",
+						"ConfirmResetPassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ResetPassword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"aelshafey135@gmail.com\",\r\n  \"password\": \"Ahmed@1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Domain}}/api/v1/Auth/ResetPassword",
+					"host": [
+						"{{Domain}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Auth",
+						"ResetPassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenerateRefreshToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxMDM4IiwiVXNlck5hbWUiOiJhaG1lZCIsIkVtYWlsIjoiYWVsc2hhZmV5MTM1QGdtYWlsLmNvbSIsIlJvbGUiOiJVc2VyIiwiZXhwIjoxNzA4ODQ5ODA4LCJpc3MiOiJBdXRoQXBpIiwiYXVkIjoiUmVhY3RDb25zdW1lciJ9.7iSAQiaCbC-dJA-_sMPRYeO1EIrgBXuxJd52l_sYDWA\",\r\n  \"refreshToken\": \"AA4Rcsd6Bs/s3pC1kFTKZw+S6Sf0olLA2SNTIFDhXP0=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Domain}}/api/v1/Auth/GenerateRefreshToken",
+					"host": [
+						"{{Domain}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Auth",
+						"GenerateRefreshToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckValidationToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7117/api/v1/Auth/CheckValidationToken?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxMDM4IiwiVXNlck5hbWUiOiJhaG1lZCIsIkVtYWlsIjoiYWVsc2hhZmV5MTM1QGdtYWlsLmNvbSIsIlJvbGUiOiJVc2VyIiwiZXhwIjoxNzA4ODUxODg2LCJpc3MiOiJBdXRoQXBpIiwiYXVkIjoiUmVhY3RDb25zdW1lciJ9.L5MqXiCcpmqXYqu3ASofY62nB0jnX1QMVfHqKxrOHNA",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7117",
+					"path": [
+						"api",
+						"v1",
+						"Auth",
+						"CheckValidationToken"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxMDM4IiwiVXNlck5hbWUiOiJhaG1lZCIsIkVtYWlsIjoiYWVsc2hhZmV5MTM1QGdtYWlsLmNvbSIsIlJvbGUiOiJVc2VyIiwiZXhwIjoxNzA4ODUxODg2LCJpc3MiOiJBdXRoQXBpIiwiYXVkIjoiUmVhY3RDb25zdW1lciJ9.L5MqXiCcpmqXYqu3ASofY62nB0jnX1QMVfHqKxrOHNA"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Domain",
+			"value": "http://www.newsauth.somee.com",
+			"type": "string"
+		},
+		{
+			"key": "name",
+			"value": ""
+		}
+	]
+}

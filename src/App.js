@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { React, useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLandingPage from "./routes/MainLandingPage";
@@ -6,6 +8,8 @@ import ResetPassword from "./components/Reset_Password";
 import Alert from "./routes/Alert";
 import AddFeed from "./routes/AddFeed";
 import FeedView from "./routes/FeedView";
+import './index.css'
+import PricingPage from "./routes/PricingPage";
 
 // login (token and data)
 // logout logic and dlt token
@@ -83,6 +87,9 @@ function App() {
     {
       path: "/Reset_Password",
       element: <ResetPassword />,
+    },{
+      path: "/pricing",
+      element: <PricingPage />,
     },
   ]);
   return <RouterProvider router={router} />;

@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+/* #todo_2  bad colors of free plan */
+/* #todo_2  bad button  on hover color */
+/* #todo_2  center component */
+/* #todo_2  remove footer  */
+.pricing-page{
+
+	background-color: black ;
+
+	font-family: 'Open Sans', sans-serif;
+
+	margin-bottom: 50px;
+
+	box-sizing: border-box;
+
+
+
+}
+
+
+
+.Welcome-message {
+
+	text-align: center;
+
+}
+
+
+
+
+
+
+
+.pricing-box-container {
+
+	display: flex;
+
+	align-items: center;
+
+	justify-content: center;
+
+	flex-wrap: wrap;
+
+}
+
+
+
+.user-pricing-box {
+
+	background-color: #ffffff;
+
+	box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.5);
+
+	text-align:center;
+
+	border-radius: 4px;
+
+	flex: 1;
+
+	padding: 0 30px 30px;
+
+	margin: 2%;
+
+	min-width: 250px;
+
+	max-width: 350px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.plan {
+
+	text-transform: uppercase;
+
+}
+
+
+
+
+
+.price {
+
+	margin: 24px 0;
+
+	font-size: 36px;
+
+	font-weight: 900;
+
+}
+
+
+
+.price sub, .price sup {
+
+	font-size: 16px;
+
+	font-weight: 100;
+
+}
+
+
+
+.subscr {
+
+	padding: 0;
+
+	list-style-type: none;
+
+}
+
+
+
+.subscr li {
+
+	font-weight: 100;
+
+	padding: 12px 0;
+
+	font-weight: 100;
+
+}
+
+
+
+.subscr li:not(:last-of-type) {
+
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+.user-btn {
+
+	border-radius: 25px;
+
+	border: none;
+
+	background-color: #EC1362;
+
+	color: #ffffff;
+
+	cursor: pointer;
+
+	padding: 10px 15px;
+
+	margin-top: 20px;
+
+	text-transform: uppercase;
+
+	transition: all 0.1s ease-in-out;
+
+}
+
+
+
+.user-btn:hover {
+
+	box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.5);
+
+	transform: translateY(-3px);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.writer-pricing-box {
+
+	background-color: #ffffff;
+
+	box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.5);
+
+	text-align:center;
+
+	border-radius: 4px;
+
+	flex: 1;
+
+	padding: 0 30px 30px;
+
+	margin: 2%;
+
+	min-width: 250px;
+
+	max-width: 350px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.bg-image {
+
+	background-image: url('https://images.unsplash.com/photo-1550029402-226115b7c579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80');
+
+	background-size: cover;
+
+	background-position: center center;
+
+	color: #ffffff;
+
+}
+
+
+
+.writer-btn {
+
+	border-radius: 25px;
+
+	border: none;
+
+	background-color: #EC1362;
+
+	color: #ffffff;
+
+	cursor: pointer;
+
+	padding: 10px 15px;
+
+	margin-top: 20px;
+
+	text-transform: uppercase;
+
+	transition: all 0.1s ease-in-out;
+
+}
+
+
+
+.writer-btn:hover {
+
+	box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.5);
+
+	transform: translateY(-3px);
+
+}
+
+
+
+footer {
+
+	background-color: #222;
+
+	color: #fff;
+
+	font-size: 14px;
+
+	bottom: 0;
+
+	position: fixed;
+
+	left: 0;
+
+	right: 0;
+
+	text-align: center;
+
+}
+
+
+
+footer p {
+
+	margin: 10px 0;
+
+}
+
+
+
+footer i {
+
+	color: red;
+
+}
+
+
+
+footer a {
+
+	color: #3C97BF;
+
+	text-decoration: none;
+
+}

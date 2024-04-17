@@ -1,32 +1,57 @@
 
-nav {
+.nav_bar {
 
     width: 100%;
-    position: fixed;
-    /* background: #dae5e8; */
-    z-index: 3;
 font-weight: 600;
+color:whitesmoke;
+display:flex;
+
 }
-nav li {
+
+.nav_bar li {
     display: inline-block;
     list-style: none;
 }
-
-nav li span{
+.nav_bar li a{
     display: flex;
     text-align: left;
     padding: 16px 40px;
     text-decoration: none;
-    color: #4a6ea5;
+    color: whitesmoke;
+
+}.nav_bar li a:hover{
+    color: rgb(177, 54, 54);
+
+    transition: color 0.3s, color 1s; /* Added transition for color and background-color */
+
+
+}
+.nav_bar li span{
+    display: flex;
+    text-align: left;
+    padding: 16px 40px;
+    text-decoration: none;
+    color: whitesmoke;
 
 }
 
-nav li span:hover {
-    color: #3c8dff;
+.nav_bar li span:hover {
+
+    color: rgb(177, 54, 54);
     cursor: pointer;
     text-decoration: none;
+        transition: color 0.3s, color 1s; /* Added transition for color and background-color */
 
     
     }
 
 
+
+    .createAccount{
+
+        background-color: rgb(228, 49, 49);
+        border-radius: 10px;
+    }   .createAccount:hover{
+
+        color:white !important;
+    }

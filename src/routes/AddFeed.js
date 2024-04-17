@@ -94,7 +94,7 @@ let innerHtmlchildren =articles[i].innerHTML
 
 
 
-  }
+  
 </div>
 
   )
