@@ -26,6 +26,7 @@ const handleSignin=(event)=>{
   const password = form.password.value;
   const data = { firstName, password };
 
+  // #todo_0 auto login
   fetch("https://portfolio-api-xi-ecru.vercel.app/api/auth/signin", {
     method: "POST",
     headers: {

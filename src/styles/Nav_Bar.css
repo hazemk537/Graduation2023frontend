@@ -1,10 +1,41 @@
 
-.nav_bar {
+.svg-logo svg{
+    border-radius: 50%;
+ width:3rem;
+    height: auto;
+    margin-left: 3rem;
 
-    width: 100%;
+ 
+    box-shadow: 10px 5px 5px rgb(46, 28, 28);
+
+
+
+}
+/* #todo_1 we need  transtion /animation on the logo auto play */
+.svg-logo svg path {
+    fill:rgb(255, 0, 0) ;
+
+
+}.svg-logo svg circle {
+    fill:rgb(255, 255, 255);
+
+
+}
+
+
+
+
+.nav_bar {
+    width: 100vw;
+    height:90px;
+    font-size: 1.5rem;
 font-weight: 600;
 color:whitesmoke;
 display:flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 0.1rem solid rgb(82, 80, 80) !important;
+
 
 }
 
@@ -51,7 +82,23 @@ display:flex;
 
         background-color: rgb(228, 49, 49);
         border-radius: 10px;
+        margin-right: 3rem;
     }   .createAccount:hover{
 
         color:white !important;
     }
+
+    .svg-logo {
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        gap:1rem;
+        
+    }
+    .svg-logo span{
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+        font-style: normal;
+    }
+

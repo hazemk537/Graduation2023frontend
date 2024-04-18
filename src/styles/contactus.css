@@ -8,7 +8,7 @@
       
         justify-content: center; /* Added to center the container */
       
-      
+      height: 100vh;
           
         transition: background-color 0.3s; /* Added transition for background-color */
       }

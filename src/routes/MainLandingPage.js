@@ -33,6 +33,11 @@ function MainLandingPage({
         onClickCreateAccount={onClickCreateAccount}
       />
 
+      
+<div className="quote-landingPage">
+<h1>Be Briefly  !</h1>
+<h1>Be Brillient  !</h1>
+</div>
 <ContactUs/>
 
      
