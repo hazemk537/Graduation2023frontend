@@ -117,7 +117,8 @@ function Create_Account({ onClose, onSigninClick }) {
               <input type="email" required placeholder="Email" name="email" />
             </div>
             <div className="input-field">
-              <FontAwesomeIcon icon={faLock} beat id="awesome1" />
+              <FontAwesomeIcon icon={faLock} beat id="awesome1"    style={{ color: "#0740b0" }}
+ />
               <input
                 type={passwordVisible ? "text" : "password"}
                 className="pass-key"
