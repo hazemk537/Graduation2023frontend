@@ -30,7 +30,7 @@ const AddFeed =()=>{
   channel_language:"",
   channel_updateDate:""
 }
-let article_ob1={
+let article_obj1={
   article_category:"",
   article_description:"",
   article_title:"",
@@ -63,22 +63,29 @@ fetch(UrlBase+inputRef.current)
 channel_obj1.channel_description=xmlDoc.querySelector("description").textContent
 channel_obj1.channel_img_title=xmlDoc.querySelector("image title ").textContent
 channel_obj1.channel_img_url=xmlDoc.querySelector("image url").textContent
-channel_obj1.channel_language=xmlDoc.querySelector("language").textContent
+channel_obj1.article_description=xmlDoc.querySelector("description").textContent
 channel_obj1.channel_title=xmlDoc.querySelector("title").textContent
-channel_obj1.channel_updateDate=xmlDoc.querySelector("lastBuildDate").textContent
+channel_obj1.article_pubDate=xmlDoc.querySelector("pubDate").textContent
 
+let article_obj1={
+  articlel_link:"",
+  article_enclosure:"",
+}
 
 setChannelObj(channel_obj1)
 
 let articles=xmlDoc.querySelectorAll("item")
-console.log(articles)
+// console.log(articles)
 
-for (let i in articles)
+for (let i=0 ;i<1;i++)
 {
 let innerHtmlchildren =articles[i].innerHTML
 
-// console.log(ddd)
-  console.log(articles[i].innerHtmlchildren)
+article_obj1.channel_description=innerHtmlchildren.querySelector("description").textContent
+article_obj1.channel_img_url=innerHtmlchildren.documentElement.getAttribute('url');
+article_obj1.channel_title=innerHtmlchildren.querySelector("title").textContent
+article_obj1.channel_updateDate=innerHtmlchildren.querySelector("lastBuildDate").textContent
+console.log(article_obj1)
 }
 
 
@@ -103,3 +110,5 @@ let innerHtmlchildren =articles[i].innerHTML
 export default AddFeed;
 
 
+// const rssList=["https://feeds.bbci.co.uk/news/world/rss.xml","https://feeds.bbci.co.uk/news/uk/rss.xml","https://feeds.bbci.co.uk/news/business/rss.xml","https://feeds.bbci.co.uk/news/technology/rss.xml","https://feeds.bbci.co.uk/news/science_and_environment/rss.xml"]
+// 
