@@ -86,10 +86,11 @@ const handleSignin=(event)=>{
                 id="awesome1"
                 style={{ color: "#0740b0" }}
               />
-              <input value={"test@test.com"} type="email" required placeholder="Email" name="email" />
+              <input  type="email" required placeholder="Email" name="email" />
             </div>
             <div className="input-field">
-              <FontAwesomeIcon icon={faLock} beat id="awesome1" />
+              <FontAwesomeIcon icon={faLock} beat id="awesome1" style={{ color: "#0740b0" }}
+ />
               <input
                 type={passwordVisible ? "text" : "password"}
                 className="pass-key"
@@ -112,7 +113,7 @@ const handleSignin=(event)=>{
           <div>
             <b className="reset">
               forget password{" "}
-              <a href="/Reset_Password" rel="noopener noreferrer">
+              <a className="reset_link" href="/Reset_Password" rel="noopener noreferrer">
                 click here
               </a>
             </b>
@@ -126,7 +127,7 @@ const handleSignin=(event)=>{
         <GLogin className="Glogin" />
       </div>
     </>
-  );
+  )
 }
 
 export default LoginForm;

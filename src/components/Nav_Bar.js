@@ -13,7 +13,7 @@ function NavBar({ onClickLogin, onClickCreateAccount }) {
         <ul>
 
           <li><a href="#contact_us" > Contact Us</a></li>
-          {/* #todo_2 */}
+          
           <li><Link to="/pricing" > Pricing</Link></li>
           <li>
             <span  onClick={onClickLogin}>Sign in</span>
