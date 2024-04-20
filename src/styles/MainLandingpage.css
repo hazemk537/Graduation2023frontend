@@ -1,3 +1,4 @@
+
 .landing-page{
 
     width:100%;
@@ -10,8 +11,11 @@
 
 
 }
+
+
+
 .quote-landingPage{
-    margin-top: 15rem;
+    align-self: center;
 }
 @keyframes query-animation {
     0% {
@@ -34,7 +38,7 @@
 }  .quote-landingPage {
     animation: query-animation  3s infinite;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     letter-spacing: 0.1rem;
     font-style: normal;
     background-color: rgb(35, 33, 33);

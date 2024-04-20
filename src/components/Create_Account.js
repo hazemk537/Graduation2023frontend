@@ -189,7 +189,7 @@ function Create_Account({ onClose, onSigninClick }) {
             </a>
           </div>
         </form>
-        <div className="transmit">
+        <div className="transmitCRT">
           <button type="button" id="signinBtn" onClick={onSigninClick}>
             Login
           </button>

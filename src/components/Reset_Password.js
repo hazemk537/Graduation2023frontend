@@ -22,9 +22,9 @@ import "../styles/Reset_Password.css"
                     <button id="sub_btn" type="submit"> Send password</button>
                 </div>
             </form>
-            <footer>
-                <p><Link class="Link" to="/">Back to Homepage</Link></p>
-            </footer>
+            <div >
+                <p><Link className="Link" to="/">Remembered my password</Link></p>
+            </div>
         </div>
         </div>
     )

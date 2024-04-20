@@ -1,23 +1,25 @@
-/*  */
-      .contact-container {
+
+       .contact-container {
+        border-top: 0.1rem solid rgb(82, 80, 80) !important;
+
         display: flex;
       
         flex-direction: column;
       
         align-items: center;
       
-        justify-content: center; /* Added to center the container */
-      
-      height: 100vh;
+        justify-content: center; 
+        position: relative;
           
-        transition: background-color 0.3s; /* Added transition for background-color */
-      }
+        /* transition: background-color 0.3s;  */
+      } 
       
       
       
       .contact-heading {
       
         color: rgb(255, 255, 255);
+        margin-top: 10px;
       
       }
       
@@ -29,8 +31,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width:30rem;
-    margin-top: 10px;
+    position:relative;
+    width: 120%;
     margin-bottom: 10px;
 
   }
@@ -49,13 +51,13 @@
       
       .contact-textarea {
       
-        color: whitesmoke;
+        color: rgb(245, 207, 207);
       
       
-        width:20rem;
+        width:25rem;
         border-radius: 5px;
         background-color: rgba(55, 49, 49, 0.364);
-      
+        max-width: 25rem;
         padding: 30px;
 
         outline: none;

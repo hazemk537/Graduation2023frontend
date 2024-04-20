@@ -15,10 +15,9 @@
 .form_sign {
   width: 100%;
   z-index: 5 !important;
-  position: relative;
-  bottom: -300px;
+  bottom:-300px;
   max-width: 450px;
-  max-height: 570px;
+  max-height: 750px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -26,7 +25,6 @@
   /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.089), rgba(0, 0, 0, 0.247)); */
   background-image: url('../images/login3.jpg');
 background-repeat: no-repeat;
-font-family: 'Open Sans', sans-serif;
 background-position: center;
 background-size: cover;
   box-shadow: 10px 10px 20px  rgba(255, 255, 255, 0.616);
@@ -66,7 +64,7 @@ background-size: cover;
 
 .form_sign h1 {
   font-size: 30px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   color: white;
   position: relative;
 }
@@ -79,14 +77,14 @@ background-size: cover;
   color: white;
   background-color: white;
   position: absolute;
-  bottom: -12px;
+  bottom: -15px;
   left: 50%;
   transform: translate(-50%);
 }
 
 .input-field {
   background: rgba(255, 255, 255, 0.877);
-  margin: 15px 0;
+  margin: 10px 0;
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -151,8 +149,8 @@ button:hover {
 
 .transmit button {
   flex-basis: 48%;
-  height: 30px;
-  width: 70px;
+  height: 40px;
+  width: 80px;
   border: 1;
   outline: 0;
   cursor: pointer;
@@ -165,9 +163,29 @@ button:hover {
   font-family: Tahoma;
 }
 
-.transmit button :hover {
-  background-color: white;
-  color: black;
+.transmitCRT button{
+  flex-basis: 48%;
+  height: 40px;
+  width: 80px;
+  border: 1;
+  outline: 0;
+  cursor: pointer;
+  color: white;
+  background-color: rgba(17, 16, 16, 0.11);
+  margin: 0;
+  padding-inline: 5px;
+  border-style: auto;
+  border-radius: 10%;
+  font-family: Tahoma;
+}
+
+.transmitCRT  :hover {
+  background-color:red;
+  color:white;
+}
+.transmit  :hover {
+  background-color:red;
+  color:white;
 }
 
 

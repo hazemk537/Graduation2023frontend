@@ -1,4 +1,4 @@
-
+// MainLandingPage.js
 import React, { useEffect, useState } from "react";
 import "../styles/MainLandingpage.css";
 import NavBar from "../components/Nav_Bar";
@@ -13,11 +13,8 @@ function MainLandingPage({
   onClickLogin,
   onClickCreateAccount,
 }) {
- 
-
   return (
-    < div className="landing-page">
-
+    <div className="landing-page">
       {stateShowLoginPopup && !stateshowCreateAccountPopup && (
         <Login onClose={onClickLogin} onSignupClick={onClickCreateAccount} />
       )}
@@ -33,17 +30,17 @@ function MainLandingPage({
         onClickCreateAccount={onClickCreateAccount}
       />
 
-      
-<div className="quote-landingPage">
-<h1>Be Briefly  !</h1>
-<h1>Be Brillient  !</h1>
-</div>
-<ContactUs/>
+      <div className="quote-landingPage">
+        <h1>Be Brief!</h1>
+        <h1>Be Brilliant!</h1>
+      </div>
 
-     
+      
+        <ContactUs />
+      
     </div>
+    
   );
 }
 
 export default MainLandingPage;
-
