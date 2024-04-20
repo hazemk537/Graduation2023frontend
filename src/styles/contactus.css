@@ -1,14 +1,9 @@
-/* MainLandingpage.css */
+
 
 .landing-page {
   position: relative;
 }
 
-.quote-landingPage {
-  /* Your existing styles for the quote section */
-}
-
-/* Styling for Contact Us component */
 .contact-container {
   border-top: 0.1rem solid rgb(82, 80, 80) !important;
   display: flex;

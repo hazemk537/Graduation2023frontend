@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../styles/MainLandingpage.css";
 import NavBar from "../components/Nav_Bar";
 import ContactUs from '../components/ContactUs.js'
@@ -42,7 +42,7 @@ function MainLandingPage({
 
       <ContactUs />
 
-      {/* Scroll to top arrow */}
+      
       <div className="scroll-to-top" onClick={handleScrollTop}>
         <i className="fa fa-arrow-up"></i>
       </div>
