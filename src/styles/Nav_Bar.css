@@ -27,15 +27,20 @@
 
 .nav_bar {
     width: 100vw;
-    height:90px;
-    font-size: 1.5rem;
+    height:70px;
+    font-size: 1rem;
 font-weight: 600;
 color:whitesmoke;
 display:flex;
 justify-content: space-between;
 align-items: center;
 border-bottom: 0.1rem solid rgb(82, 80, 80) !important;
-
+background-color: black;
+position :fixed;
+top: 0;
+    left: 0;
+    right: 0;
+    
 
 }
 

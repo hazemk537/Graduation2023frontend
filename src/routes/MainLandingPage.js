@@ -1,10 +1,8 @@
-// MainLandingPage.js
 import React, { useEffect, useState } from "react";
 import "../styles/MainLandingpage.css";
 import NavBar from "../components/Nav_Bar";
 import ContactUs from '../components/ContactUs.js'
 import Login from "../components/Login";
-// import ResetPassword from "./components/Reset_Password";
 import CreateAccount from "../components/Create_Account";
 
 function MainLandingPage({
@@ -13,6 +11,13 @@ function MainLandingPage({
   onClickLogin,
   onClickCreateAccount,
 }) {
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="landing-page">
       {stateShowLoginPopup && !stateshowCreateAccountPopup && (
@@ -35,11 +40,13 @@ function MainLandingPage({
         <h1>Be Brilliant!</h1>
       </div>
 
-      
-        <ContactUs />
-      
+      <ContactUs />
+
+      {/* Scroll to top arrow */}
+      <div className="scroll-to-top" onClick={handleScrollTop}>
+        <i className="fa fa-arrow-up"></i>
+      </div>
     </div>
-    
   );
 }
 
