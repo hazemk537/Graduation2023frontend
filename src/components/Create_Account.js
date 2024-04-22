@@ -198,7 +198,7 @@ console.log(data)
             </a>
           </div>
         </form>
-        <div className="transmit">
+        <div className="transmitCRT">
           <button type="button" id="signinBtn" onClick={onSigninClick}>
             Login
           </button>
