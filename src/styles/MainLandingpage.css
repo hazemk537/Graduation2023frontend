@@ -1,3 +1,5 @@
+ 
+
 .landing-page{
 
     width:100%;
@@ -7,12 +9,15 @@
     justify-content: center;
     flex-direction: column;
     gap:5rem;
-
+    position: relative; 
+    animation: bg-image-animation 10s infinite; 
+    background-position: center;
+    background-size:cover
 
 }
-.quote-landingPage{
-    margin-top: 15rem;
-}
+
+
+
 @keyframes query-animation {
     0% {
         color:rgb(255, 0, 0) ;
@@ -31,15 +36,29 @@
     animation: query-animation 3s infinite;
 
 
-}  .quote-landingPage {
-    animation: query-animation  3s infinite;
+} .quote-landingPage {
+    margin-top: 10%;
+    margin-bottom: 10%;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     letter-spacing: 0.1rem;
     font-style: normal;
-    background-color: rgb(35, 33, 33);
+    background-color: rgba(35, 33, 33, 0.945);
     padding-left: 3rem;
     padding-right: 3rem;
     border-radius: 10px;
-}
+    color: white; 
+    text-align: center; 
+}   
 
+
+
+
+@keyframes bg-image-animation {
+    0% { background-image: url('../images/news.jpg'); }
+    25% { background-image: url('../images/news2new.jpg'); }
+    50% { background-image: url('../images/news3.png'); }
+    75% { background-image:url('../images/news4.png');}
+    75% { background-image:url('../images/news.jpg'); 
+ 
+}}
