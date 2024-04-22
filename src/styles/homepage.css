@@ -75,12 +75,8 @@
   
 }
 .homepage-sidebar{
-  position: relative;
-  /* background-color: blue; */
-/* 
-  top:0px;
-  left:-44%;
-  right:0px; */
+  position: fixed;
+
 }
 .homepage-header-left, .homepage-header-right {
   display: flex;

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAt, faLock, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -17,76 +16,46 @@ function LoginForm({ onClose, onSignupClick }) {
     setPasswordVisible(!passwordVisible);
   };
 
- const NavigateFn=useNavigate()
+  const NavigateFn = useNavigate();
 
-const handleSignin=(event)=>{
-  // event.target.preventDefault()
-  event.preventDefault()
-  const form = event.target;
-  const firstName = form.email.value;
-  const password = form.password.value;
-  const data = { firstName, password };
+  const handleSignin = (event) => {
+    // event.target.preventDefault()
+    event.preventDefault();
+    const form = event.target;
+    const firstName = form.email.value;
+    const password = form.password.value;
+    const data = { firstName, password };
 
-  // fetch("http://www.newsauth.somee.com/api/v1/Auth/Register", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(data),
-  //   })
-  //     .then((response) => {
-        
-  //       return response.json();
-  //     })
-  //     .then((jsonData) => {
+    fetch("http://www.newsauth.somee.com/api/v1/Auth/Register", {
+      method: "POST",
 
-  //       if (jsonData.error) {
-  //         setAlertType("err");
-  //         setAlertMessage(jsonData.error);
-  //       } else {
-  //         setAlertType("success");
-  //         setAlertMessage("Account Created ,plz Login");
-  //       }
-  //     })
-  // #todo_0 auto login
-  fetch("http://www.newsauth.somee.com/api/v1/Auth/Register", {
-    method: "POST",
-  
-    body: JSON.stringify(data),
-  })
-    .then((response) => {
-      return response.json();
+      body: JSON.stringify(data),
     })
-    .then((jsonData) => {
-      console.log(jsonData)
+      .then((response) => {
+        return response.json();
+      })
+      .then((jsonData) => {
+        console.log(jsonData);
 
-      if (jsonData.error) {
-        
+        if (jsonData.error) {
+          setAlertType("err");
+          setAlertMessage(jsonData.error);
+        } else {
+          if (jsonData.token) {
+            setAlertType("success");
+            setAlertMessage("Account Created ,plz Login");
+            // console.log(jsonData.token)
+
+            localStorage.setItem("token", JSON.stringify(jsonData.token));
+            NavigateFn("/home");
+          }
+        }
+      })
+      .catch((error) => {
         setAlertType("err");
-        setAlertMessage(jsonData.error);
-      }
-      else{
-        if(jsonData.token){
-        setAlertType("success");
-        setAlertMessage("Account Created ,plz Login");
-        // console.log(jsonData.token)
-
-        localStorage.setItem("token", JSON.stringify(jsonData.token));
-        NavigateFn("/home")
-
-
-      }
-    }
-      
-    })
-    .catch((error) => {
-      setAlertType("err");
-      setAlertMessage(error);
-    });
-
- 
-
-}
+        setAlertMessage(error);
+      });
+  };
 
   return (
     <>
@@ -107,11 +76,15 @@ const handleSignin=(event)=>{
                 id="awesome1"
                 style={{ color: "#0740b0" }}
               />
-              <input  type="email" required placeholder="Email" name="email" />
+              <input type="email" required placeholder="Email" name="email" />
             </div>
             <div className="input-field">
-              <FontAwesomeIcon icon={faLock} beat id="awesome1" style={{ color: "#0740b0" }}
- />
+              <FontAwesomeIcon
+                icon={faLock}
+                beat
+                id="awesome1"
+                style={{ color: "#0740b0" }}
+              />
               <input
                 type={passwordVisible ? "text" : "password"}
                 className="pass-key"
@@ -134,7 +107,11 @@ const handleSignin=(event)=>{
           <div>
             <b className="reset">
               forget password{" "}
-              <a className="reset_link" href="/Reset_Password" rel="noopener noreferrer">
+              <a
+                className="reset_link"
+                href="/Reset_Password"
+                rel="noopener noreferrer"
+              >
                 click here
               </a>
             </b>
@@ -148,7 +125,8 @@ const handleSignin=(event)=>{
         <GLogin className="Glogin" />
       </div>
     </>
-  )
+  );
 }
 
 export default LoginForm;
+

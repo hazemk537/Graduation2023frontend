@@ -1,0 +1,30 @@
+
+.gallary_items{
+    display: flex;
+    gap:1rem;
+    flex-wrap: wrap;
+    background-color: rgb(0, 0, 0);
+    margin-top: 6500px;
+}
+.gallary_item{
+
+    background-color: rgb(39, 43, 43) ;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 5px 5px 5px  rgb(34, 34, 34);
+    background-color: rgb(0, 0, 0);
+    padding:1rem;
+    border:2px solid rgb(48, 48, 48);
+    width: 25vw;
+    margin: 10px;
+}
+
+.gallary_item img{
+
+width: 100%;
+height: auto;
+object-fit: cover;
+border-radius: 15px;
+
+}
