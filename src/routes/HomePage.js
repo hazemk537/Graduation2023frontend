@@ -24,7 +24,7 @@ function HomePage() {
   return (
     <>
       <div className="homepage-container">
-      
+  
         <div className="homepage-header">
           <div className="homepage-header-left">
             <span className="homepage-icon" />

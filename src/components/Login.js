@@ -6,6 +6,7 @@ import "../styles/Login_Signup.css";
 import GLogin from "./Google_Login";
 import Alert from "../routes/Alert";
 import { useNavigate } from "react-router";
+import { json } from "react-router-dom/dist/umd/react-router-dom.development";
 
 function LoginForm({ onClose, onSignupClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -26,18 +27,38 @@ const handleSignin=(event)=>{
   const password = form.password.value;
   const data = { firstName, password };
 
+  // fetch("http://www.newsauth.somee.com/api/v1/Auth/Register", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((response) => {
+        
+  //       return response.json();
+  //     })
+  //     .then((jsonData) => {
+
+  //       if (jsonData.error) {
+  //         setAlertType("err");
+  //         setAlertMessage(jsonData.error);
+  //       } else {
+  //         setAlertType("success");
+  //         setAlertMessage("Account Created ,plz Login");
+  //       }
+  //     })
   // #todo_0 auto login
-  fetch("https://portfolio-api-xi-ecru.vercel.app/api/auth/signin", {
+  fetch("http://www.newsauth.somee.com/api/v1/Auth/Register", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+  
     body: JSON.stringify(data),
   })
     .then((response) => {
       return response.json();
     })
     .then((jsonData) => {
+      console.log(jsonData)
 
       if (jsonData.error) {
         

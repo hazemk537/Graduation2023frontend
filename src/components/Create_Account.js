@@ -44,7 +44,6 @@ function Create_Account({ onClose, onSigninClick }) {
       "password":password,
       "confirmPassword":confirmPassword,
     };
-// #todo_0 hazem auth api errs
 // confirm email messaage
 // 0. store email to local storage
 // 1. input code from email
@@ -52,7 +51,7 @@ function Create_Account({ onClose, onSigninClick }) {
 // 3. msg confirmed or not
 // 4. forget password css
 //5. API end points 
-
+console.log(data)
     fetch("http://www.newsauth.somee.com/api/v1/Auth/Register", {
       method: "POST",
       headers: {
@@ -61,9 +60,11 @@ function Create_Account({ onClose, onSigninClick }) {
       body: JSON.stringify(data),
     })
       .then((response) => {
+        
         return response.json();
       })
       .then((jsonData) => {
+
         if (jsonData.error) {
           setAlertType("err");
           setAlertMessage(jsonData.error);
@@ -100,6 +101,7 @@ function Create_Account({ onClose, onSigninClick }) {
             <input
               type="text"
               required
+              value="haer"
               placeholder="First Name"
               name="firstName"
             />
@@ -114,6 +116,7 @@ function Create_Account({ onClose, onSigninClick }) {
             />
             <input
               type="text"
+
               required
               placeholder="User Name"
               name="userName"
@@ -124,11 +127,14 @@ function Create_Account({ onClose, onSigninClick }) {
             <FontAwesomeIcon
               icon={faUser}
               beat
+
               id="awesome1"
               style={{ color: "#1d3ee2" }}
             />
             <input
               type="text"
+              value="haer"
+
               required
               placeholder="Last Name"
               name="lastName"
@@ -157,6 +163,8 @@ function Create_Account({ onClose, onSigninClick }) {
               type={passwordVisible ? "text" : "password"}
               className="pass-key"
               required
+              value="123"
+
               placeholder="Password"
               name="password"
             />
@@ -176,6 +184,7 @@ function Create_Account({ onClose, onSigninClick }) {
               type={passwordVisible ? "text" : "password"}
               className="pass-key"
               required
+              value="123"
               placeholder=" Confirm Password"
               name="confirmPassword"
             />
