@@ -3,6 +3,7 @@ import React, { useEffect, useLayoutEffect } from "react";
 
 import "../styles/homepage.css";
 import Profile from "../components/Profile";
+import FeedView from "./FeedView";
 import { Outlet, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 function HomePage() {
@@ -22,11 +23,14 @@ function HomePage() {
   ];
 
   return (
-    <>
+    
       <div className="homepage-container">
   
         <div className="homepage-header">
+
+
           <div className="homepage-header-left">
+
             <span className="homepage-icon" />
             <p className="homepage-name"></p>
             <div className="homepage-search-wrapper">
@@ -110,10 +114,13 @@ function HomePage() {
             
       
           </div>
-          <Outlet />
+          
         </div>
+        
+        <div><FeedView /></div>
+
       </div>
-    </>
+    
   );
 }
 
