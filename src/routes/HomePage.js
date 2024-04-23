@@ -114,10 +114,10 @@ function HomePage() {
             
       
           </div>
-          
+
         </div>
         
-        <div><FeedView /></div>
+        <Outlet/>
 
       </div>
     
