@@ -58,8 +58,8 @@
   align-items: center;
   width: 100%;
   padding: 16px 24px;
-  position: relative;
-
+  /* position: fixed;
+z-index: 10; */
 }
 .flex-homepage{
   /* background-color: red; */
@@ -76,6 +76,7 @@
 }
 .homepage-sidebar{
   position: fixed;
+  
 
 }
 .homepage-header-left, .homepage-header-right {
@@ -92,16 +93,18 @@
   width: 26px;
   height: 2px;
   border-radius: 4px;
-  background-color: var(--homepage-main-color);
+  background-color: white;
   position: relative;
 }
+
+
 .homepage-icon:before, .homepage-icon:after {
   content: "";
   position: absolute;
   width: 12px;
   height: 2px;
   border-radius: 4px;
-  background-color: var(--homepage-main-color);
+  background-color: white;
   left: 50%;
   transform: translatex(-50%);
 }
@@ -177,8 +180,9 @@
 .homepage-sidebar {
   padding: 40px 16px;
   display: flex;
+  margin-top: 50%;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 }
 .homepage-sidebar-link {
   color: var(--homepage-main-color);
