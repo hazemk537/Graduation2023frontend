@@ -10,6 +10,7 @@ import AddFeed from "./routes/AddFeed";
 import FeedView from "./routes/FeedView";
 import './index.css'
 import PricingPage from "./routes/PricingPage";
+import Protected from "./components/Protected";
 
 // login (token and data)
 // logout logic and dlt token
@@ -71,7 +72,7 @@ function App() {
     },
     {
       path: "/home",
-      element: <HomePage />,
+      element: <Protected showLoginPopupfn={setShowLoginPopup}>  <HomePage /></Protected>,
       children: [
         {
           path: "/home/",
