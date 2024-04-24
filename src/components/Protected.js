@@ -9,8 +9,9 @@ function Protected({children,showLoginPopupfn}) {
       return children
 
       else {
-        showLoginPopupfn(true);
-         return <Navigate to="/"/>;
+        // showLoginPopupfn(true);
+        //  return <Navigate to="/"/>;
+        return children
 }}
 
 export default Protected

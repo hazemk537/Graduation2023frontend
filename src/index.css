@@ -40,3 +40,7 @@ button, a {
   h3 {
     font-weight: bold;
   }
+  input{
+    outline: none;
+    border-radius: 10%;
+  }
