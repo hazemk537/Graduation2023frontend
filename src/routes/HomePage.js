@@ -70,7 +70,6 @@ function HomePage() {
  
         </div>
 
-        <div className="flex-homepage">
         <div className="homepage-sidebar">
             <Link to="/home" className="homepage-sidebar-link active">
               <svg
@@ -115,7 +114,6 @@ function HomePage() {
       
           </div>
 
-        </div>
         
         <Outlet/>
 

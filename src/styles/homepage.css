@@ -57,9 +57,11 @@
   justify-content:center;
   align-items: center;
   width: 100%;
+  position: fixed;
+border-bottom:1px solid #3d3b3b !important;
   padding: 16px 24px;
-  /* position: fixed;
-z-index: 10; */
+z-index: 10; 
+background-color: #171619;
 }
 .flex-homepage{
   /* background-color: red; */
@@ -75,9 +77,8 @@ z-index: 10; */
   
 }
 .homepage-sidebar{
-  position: fixed;
-  
-
+position: fixed;
+top:25%;
 }
 .homepage-header-left, .homepage-header-right {
   display: flex;
@@ -180,9 +181,7 @@ z-index: 10; */
 .homepage-sidebar {
   padding: 40px 16px;
   display: flex;
-  margin-top: 50%;
   flex-direction: column;
-  /* align-items: center; */
 }
 .homepage-sidebar-link {
   color: var(--homepage-main-color);
