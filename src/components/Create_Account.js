@@ -6,22 +6,17 @@ import {
   faAt,
   faLock,
   faTimes,
-  fa0,
-  faIdCard,
-  faPerson,
-  faCode,
-  faArrowPointer,
+
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Login_Signup.css";
 import Alert from "../routes/Alert";
-import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
-import { faPassport } from "@fortawesome/free-solid-svg-icons/faPassport";
-import { faIdBadge } from "@fortawesome/free-solid-svg-icons/faIdBadge";
 
 function Create_Account({ onClose, onSigninClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
+  const [ErrState, setErrState] = useState(false);
+
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -32,27 +27,19 @@ function Create_Account({ onClose, onSigninClick }) {
     const form = event.target;
     const firstName = form.firstName.value;
     const lastName = form.lastName.value;
-    const userName = form.userName.value;
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
     const data = {
       "firstName":firstName,
       "lastName":lastName,
-      "userName":userName,
       "email":email,
       "password":password,
       "confirmPassword":confirmPassword,
     };
-// confirm email messaage
-// 0. store email to local storage
-// 1. input code from email
-// 2. send code,email to api
-// 3. msg confirmed or not
-// 4. forget password css
-//5. API end points 
-console.log(data)
-    fetch("http://www.newsauth.somee.com/api/v1/Auth/Register", {
+
+    
+    fetch("http://authnewsapi.runasp.net/api/v1/Auth/Register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -64,26 +51,30 @@ console.log(data)
         return response.json();
       })
       .then((jsonData) => {
+        console.log(`Response ... ${jsonData} `);
+// #todo_4 use statusCode and message fields
+        if (jsonData.statusCode!==201) {
+          setErrState(true)
 
-        if (jsonData.error) {
           setAlertType("err");
-          setAlertMessage(jsonData.error);
-        } else {
-          setAlertType("success");
-          setAlertMessage("Account Created ,plz Login");
-        }
+          setAlertMessage(jsonData.message);
+        } 
       })
       .catch((error) => {
         setAlertType("err");
         setAlertMessage(error);
+        setErrState(true)
       });
+      if (!ErrState)
+      {
+
+        setAlertType("success");
+          setAlertMessage("Account Created , Check Inbox for Confirmation ");}
   };
 
   return (
     <>
       {alertMessage && <Alert type={alertType} alertText={alertMessage} />}
-      <div className="login_assist"></div>
-
       <div className="form_sign">
         <div className="close-button" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} id="X" />
@@ -101,27 +92,11 @@ console.log(data)
             <input
               type="text"
               required
-              value="haer"
               placeholder="First Name"
               name="firstName"
             />
           </div>
-          {/* userName */}
-          <div className="input-field">
-            <FontAwesomeIcon
-              icon={faIdBadge}
-              beat
-              id="awesome1"
-              style={{ color: "#1d3ee2" }}
-            />
-            <input
-              type="text"
 
-              required
-              placeholder="User Name"
-              name="userName"
-            />
-          </div>
           {/* lastName */}
           <div className="input-field">
             <FontAwesomeIcon
@@ -133,7 +108,6 @@ console.log(data)
             />
             <input
               type="text"
-              value="haer"
 
               required
               placeholder="Last Name"
@@ -163,8 +137,7 @@ console.log(data)
               type={passwordVisible ? "text" : "password"}
               className="pass-key"
               required
-              value="123"
-
+              autoComplete="new-password"
               placeholder="Password"
               name="password"
             />
@@ -182,12 +155,16 @@ console.log(data)
             />
             <input
               type={passwordVisible ? "text" : "password"}
-              className="pass-key"
+              className="confirm-pass-key"
               required
-              value="123"
+              autoComplete="new-password"
               placeholder=" Confirm Password"
               name="confirmPassword"
             />
+            {/* FIX  */}
+            <span className="show" onClick={togglePasswordVisibility}>
+              {passwordVisible ? "hide" : "show"}
+            </span>
           </div>
 
           <div className="buttons">

@@ -5,12 +5,15 @@ import "../styles/Login_Signup.css";
 import GLogin from "./Google_Login";
 import Alert from "../routes/Alert";
 import { useNavigate } from "react-router";
-import { json } from "react-router-dom/dist/umd/react-router-dom.development";
+import { json } from "react-router/dist/umd/react-router.development";
 
 function LoginForm({ onClose, onSignupClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
+  //to not render success at begining
+  const [ErrState, setErrState] = useState(false);
+  let UserData;
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -22,12 +25,16 @@ function LoginForm({ onClose, onSignupClick }) {
     // event.target.preventDefault()
     event.preventDefault();
     const form = event.target;
-    const firstName = form.email.value;
+    const email = form.email.value;
     const password = form.password.value;
-    const data = { firstName, password };
+    //#todo_4 email Email usr_mail >> map
+    const data = { Email: email, password: password };
 
-    fetch("http://www.newsauth.somee.com/api/v1/Auth/Register", {
+    fetch("http://authnewsapi.runasp.net/api/v1/Auth/Login", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
 
       body: JSON.stringify(data),
     })
@@ -35,28 +42,46 @@ function LoginForm({ onClose, onSignupClick }) {
         return response.json();
       })
       .then((jsonData) => {
-        console.log(jsonData);
 
-        if (jsonData.error) {
+        // #todo_5 .succeeded,.error,status ,statusCode....
+        UserData=jsonData.data
+        //#TEST
+      // console.log(JSON.stringify(UserData));
+      // console.log(UserData);
+
+
+
+        if (jsonData.statusCode !== 200) {
+          setErrState(true);
           setAlertType("err");
-          setAlertMessage(jsonData.error);
-        } else {
-          if (jsonData.token) {
-            setAlertType("success");
-            setAlertMessage("Account Created ,plz Login");
-            // console.log(jsonData.token)
+          setAlertMessage(jsonData.message);
 
-            localStorage.setItem("token", JSON.stringify(jsonData.token));
-            NavigateFn("/home");
-          }
+        }else{
+
+          UserData=jsonData.data
+          
+
         }
       })
       .catch((error) => {
         setAlertType("err");
         setAlertMessage(error);
+        setErrState(true);
       });
+//go here only after .then sereis finish
+// #todo_4 why  the next if result undefined (it run before the chain promise complete )
+    // if (!ErrState  ) {
+    //   NavigateFn("/home");
+    //   localStorage.setItem("userData",JSON.stringify(UserData));
+      
+    // }
+    // #todo_4 why  the next if result with the data without undefined ,this mean the if condition runs twice! before the promise chain complete and after completion
+     if (!ErrState  && UserData) {
+      NavigateFn("/home");
+      localStorage.setItem("userData",JSON.stringify(UserData));
+      
+    }
   };
-
   return (
     <>
       {alertMessage && <Alert type={alertType} alertText={alertMessage} />}
@@ -76,7 +101,9 @@ function LoginForm({ onClose, onSignupClick }) {
                 id="awesome1"
                 style={{ color: "#0740b0" }}
               />
-              <input type="email" required placeholder="Email" name="email" />
+              <input type="email" required placeholder="Email" 
+              value='rakono5650@em2lab.com'
+              name="email" />
             </div>
             <div className="input-field">
               <FontAwesomeIcon
@@ -89,6 +116,7 @@ function LoginForm({ onClose, onSignupClick }) {
                 type={passwordVisible ? "text" : "password"}
                 className="pass-key"
                 required
+                value='Mazefddswef43n@123'
                 placeholder="Password"
                 name="password"
               />

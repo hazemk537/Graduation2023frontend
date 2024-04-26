@@ -8,7 +8,7 @@ const Alert = ({ alertText, type }) => {
       <div className={`alert_component ${type}_class`}>
         <div className="alert_assist"></div>
         <div className={`${type}_class`}>
-          <h1>{alertText} </h1>
+          <p>{alertText} </p>
         </div>
       </div>
     </div>
