@@ -1,43 +1,39 @@
-
-
 .homepage-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #020202;;
+  background-color: #020202;
   transition: 0.2s;
   max-width: 1800px;
 }
 
 .homepage-header {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   width: 100%;
   position: fixed;
-border-bottom:1px solid #3d3b3b !important;
+  border-bottom: 1px solid #3d3b3b !important;
   padding: 16px 24px;
-z-index: 10; 
-background-color: #171619;
+  z-index: 10;
+  background-color: #171619;
 }
-.flex-homepage{
+.flex-homepage {
   display: flex;
   align-items: center;
   gap: 5vw;
   width: 100vw;
-  height:100vh;
+  height: 100vh;
   flex-flow: flex-start;
-
-
-  
 }
-.homepage-sidebar{
-position: fixed;
-top:25%;
+.homepage-sidebar {
+  position: fixed;
+  top: 25%;
 }
 
-.homepage-header-left, .homepage-header-right {
+.homepage-header-left,
+.homepage-header-right {
   display: flex;
   align-items: center;
 }
@@ -48,41 +44,23 @@ top:25%;
   margin-left: 10px;
 }
 
-
-
-
 /* LOGOOOOOOO */
 
-
-
-
-
-.svg-logo{
+.svg-logo {
   border-radius: 50%;
-width:3rem;
+  width: 3rem;
   height: auto;
-  margin-left:2%;
-
+  margin-left: 2%;
 
   box-shadow: 10px 5px 5px rgb(63, 38, 38);
-
-
-
 }
 
-
-.svg-logo  path {
-  fill:rgb(255, 0, 0) ;
-
-
-}.svg-logo  circle {
-  fill:rgb(255, 255, 255);
-
-
+.svg-logo path {
+  fill: rgb(255, 0, 0);
 }
-
-
-
+.svg-logo circle {
+  fill: rgb(255, 255, 255);
+}
 
 .homepage-search-wrapper {
   border-radius: 20px;
@@ -95,10 +73,9 @@ width:3rem;
   width: 100%;
   max-width: 480px;
   color: black;
-  box-shadow:  10px 10px  0  rgba(255, 255, 255, 0.541);
+  box-shadow: 10px 10px 0 rgba(255, 255, 255, 0.541);
   overflow: hidden;
-  margin-left:25% !important;
-
+  margin-left: 25% !important;
 }
 
 .hidden {
@@ -108,12 +85,7 @@ width:3rem;
 .homepage-search-wrapper:hover {
   background-color: white;
   color: black;
-
-
 }
-
-
-
 
 .search-homepage-input {
   border: none;
@@ -122,7 +94,7 @@ width:3rem;
   height: 100%;
   padding: 0 20px;
   font-size: 16px;
-  background-color: #cddbee00;;
+  background-color: #cddbee00;
   color: #fff;
 }
 .search-homepage-input:placeholder {
@@ -131,8 +103,8 @@ width:3rem;
 }
 
 .search-homepage-input :focus {
-background-color:white ;
-color: black;
+  background-color: white;
+  color: black;
 }
 
 .profile-btn-homepage {
@@ -148,7 +120,7 @@ color: black;
   width: 32px;
   height: 32px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 50%;
   margin-right: 4px;
 }
@@ -159,16 +131,15 @@ color: black;
   font-weight: 700;
 }
 
-
-
 .homepage-sidebar {
   padding: 40px 16px;
   display: flex;
   flex-direction: column;
 }
-.homepage-sidebar-link,.add-feed-link {
+.homepage-sidebar-link,
+.add-feed-link {
   color: #fff;
-  color: rgba(255,255,255,.8);;
+  color: rgba(255, 255, 255, 0.8);
   background-color: #1f1c2e;
   margin: 16px 0;
   transition: 0.2s;
@@ -181,13 +152,19 @@ color: black;
   align-items: center;
 }
 
-.homepage-sidebar-link.active
-,
+.homepage-sidebar-link.active,
 .add-feed-link.active {
-  background-color:red;
+  background-color: red;
   color: whitesmoke;
 }
 
-
-
+.homepage_home_discoverSVG,
+.homepage_home_subscriptionsSVG,
+.homepage_home_addSVG,
+.homepage_home_homeSVG {
+  /* background-color: RED; */
+  height: 100%;
+  width: 100%;
+  padding: 20%;
+}
 

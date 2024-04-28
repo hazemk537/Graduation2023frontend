@@ -13,7 +13,7 @@ function SubscripedChannels() {
       .then((json) => console.log(json));
   });
 
-  return <ChannelsView type="discover_channels" channels={channels} />;
+  return <ChannelsView type="subscription_channels" channels={channels} />;
 }
 
 export default SubscripedChannels;

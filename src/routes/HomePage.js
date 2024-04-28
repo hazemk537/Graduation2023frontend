@@ -9,18 +9,7 @@ import { SubscriptionsSvg } from "../svgIcons/SubscriptionsSvg";
 import { DiscoverThin } from "../svgIcons/DiscoverSvg";
 
 function HomePage() {
-  const [homeActive, setHomeActive] = useState(false);
-  const [addFeedActive, setAddFeedActive] = useState(false);
-
-  const handleHomeClick = () => {
-    setHomeActive(true);
-    setAddFeedActive(false);
-  };
-
-  const handleAddFeedClick = () => {
-    setAddFeedActive(true);
-    setHomeActive(false);
-  };
+  const [iconActiveid, seticonActiveid] = useState(1); //icon id
 
   const user = {
     name: "Mohamed Zaki",
@@ -63,9 +52,10 @@ function HomePage() {
           </svg>
 
           <p className="homepage-name"></p>
+          {/* ihide when icon 2 is active */}
           <div
             className={`homepage-search-wrapper ${
-              addFeedActive ? "hidden" : ""
+              iconActiveid === 2 ? "hidden" : ""
             }`}
           >
             {/* search functionallity #todo_4 */}
@@ -104,10 +94,15 @@ function HomePage() {
         <Link
           key="1"
           to="/home"
-          className={`homepage-sidebar-link ${homeActive ? "active" : ""}`}
-          onClick={handleHomeClick}
+          className={`homepage-sidebar-link ${
+            iconActiveid === 1 ? "active" : ""
+          }`}
+          onClick={() => {
+            seticonActiveid(1);
+          }}
         >
           <svg
+            className="homepage_home_homeSVG"
             xmlns="http://www.w3.org/2000/svg"
             width={24}
             height={24}
@@ -125,10 +120,13 @@ function HomePage() {
         <Link
           key="2"
           to="/home/addFeed"
-          className={`add-feed-link ${addFeedActive ? "active" : ""}`}
-          onClick={handleAddFeedClick}
+          className={`add-feed-link ${iconActiveid === 2 ? "active" : ""}`}
+          onClick={() => {
+            seticonActiveid(2);
+          }}
         >
           <svg
+            className="homepage_home_addSVG"
             xmlns="http://www.w3.org/2000/svg"
             width={16}
             height={16}
@@ -146,18 +144,23 @@ function HomePage() {
         <Link
           key="3"
           to="/home/subscriptions"
-          className={`add-feed-link ${addFeedActive ? "active" : ""}`}
-          // onClick={handleAddFeedClick}
+          className={`add-feed-link ${iconActiveid === 3 ? "active" : ""}`}
+          onClick={() => {
+            seticonActiveid(3);
+          }}
         >
-          <SubscriptionsSvg />
+          {/* #todo_5 generic class to make any icon background change not for every icon */}
+          <SubscriptionsSvg className="homepage_home_subscriptionsSVG" />
         </Link>{" "}
         <Link
           key="4"
           to="/home/discover"
-          className={`add-feed-link ${addFeedActive ? "active" : ""}`}
-          // onClick={handleAddFeedClick}
+          className={`add-feed-link ${iconActiveid === 4 ? "active" : ""}`}
+          onClick={() => {
+            seticonActiveid(4);
+          }}
         >
-          <DiscoverThin />
+          <DiscoverThin className="homepage_home_discoverSVG" />
         </Link>
       </div>
 

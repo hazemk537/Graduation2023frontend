@@ -1,0 +1,18 @@
+.public_channels_h1{
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 8rem;
+    background-color: rgb(255, 0, 0);
+    color: rgb(219, 218, 216);
+    padding: 2rem;
+    border-radius: 20px;
+
+}
+
+.public_channels_class {
+    z-index: 0;
+    margin: 8% !important;
+  /* box-shadow: 20px 20px 20px 20px red; */
+  border-radius: 10px;
+  
+  }

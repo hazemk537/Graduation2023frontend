@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ChannelCard from "./ChannelCard";
 import "../styles/ChannelsView.css";
+import ArticleCard from "./ArticleCard";
 
-function ChannelsView({ channels, type }) {
-  const [intialChannels, setintialChannels] = useState([
+function UserArticles({articles}) {
+
+    
+  const [intialArticles, setIntialArticles] = useState([
     { thumbnail: "", description: "", title: "", id: "" },
     { thumbnail: "", description: "", title: "", id: "" },
     { thumbnail: "", description: "", title: "", id: "" },
@@ -18,24 +21,24 @@ function ChannelsView({ channels, type }) {
     { thumbnail: "", description: "", title: "", id: "" },
     { thumbnail: "", description: "", title: "", id: "" },
   ]);
-  if (channels)
+  if (articles)
     return (
-      <div className={`gallary_items ${type}_class`}>
-        {channels.map((item) => (
-          <ChannelCard item={item} />
+      <div className={`gallary_items `}>
+        {articles.map((item) => (
+          <ArticleCard item={item} />
         ))}
       </div>
     );
   else {
     return (
-      <div className={`gallary_items ${type}_class`}>
-        {intialChannels.map((item) => (
-          <ChannelCard type={type} item={item} />
+      <div className={`gallary_items `}>
+        {intialArticles.map((item) => (
+          <ArticleCard  item={item} />
         ))}
       </div>
     );
   }
 }
 
-export default ChannelsView;
+export default UserArticles;
 

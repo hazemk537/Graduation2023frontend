@@ -12,6 +12,7 @@ import PricingPage from "./routes/PricingPage";
 import Protected from "./components/Protected";
 import SubscripedChannels from "./components/SubscribedChannels";
 import DiscoverChannels from "./components/DiscoverChannels";
+import UserArticles from "./components/UserArticles";
 
 // login (token and data)
 // logout logic and dlt token
@@ -86,7 +87,7 @@ function App() {
         },
         {
           path: "/home",
-          element: <DiscoverChannels />,
+          element: <UserArticles/>,
         },
 
         {
