@@ -7,10 +7,11 @@ import HomePage from "./routes/HomePage";
 import ResetPassword from "./components/Reset_Password";
 import Alert from "./routes/Alert";
 import AddFeed from "./routes/AddFeed";
-import FeedView from "./routes/FeedView";
-import './index.css'
+import "./index.css";
 import PricingPage from "./routes/PricingPage";
 import Protected from "./components/Protected";
+import SubscripedChannels from "./components/SubscribedChannels";
+import DiscoverChannels from "./components/DiscoverChannels";
 
 // login (token and data)
 // logout logic and dlt token
@@ -72,23 +73,37 @@ function App() {
     },
     {
       path: "/home",
-      element: <Protected showLoginPopupfn={setShowLoginPopup}>  <HomePage /></Protected>,
+      element: (
+        <Protected showLoginPopupfn={setShowLoginPopup}>
+          {" "}
+          <HomePage />
+        </Protected>
+      ),
       children: [
         {
-          path: "/home/",
-        element:<FeedView />
-
+          path: "/home/subscriptions",
+          element: <SubscripedChannels />,
+        },
+        {
+          path: "/home",
+          element: <DiscoverChannels />,
         },
 
         {
           path: "/home/addFeed",
-          element: <AddFeed /> },
+          element: <AddFeed />,
+        },
+        {
+          path: "/home/discover",
+          element: <DiscoverChannels />,
+        },
       ],
     },
     {
       path: "/Reset_Password",
       element: <ResetPassword />,
-    },{
+    },
+    {
       path: "/pricing",
       element: <PricingPage />,
     },

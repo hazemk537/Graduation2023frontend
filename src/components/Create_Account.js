@@ -39,7 +39,7 @@ function Create_Account({ onClose, onSigninClick }) {
     };
 
     
-    fetch("http://authnewsapi.runasp.net/api/v1/Auth/Register", {
+    fetch("http://briefly.runasp.net/api/v1/Auth/Register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

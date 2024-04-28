@@ -1,0 +1,68 @@
+.subscribe_btn {
+  background-color: rgb(163, 24, 24);
+  border-radius: 10px;
+  margin-right: 3rem;
+  /* position: absolute; */
+  /* left:40%; */
+  width: 100%;
+  border: none;
+  height: 2rem;
+  margin-top: 20px;
+  box-shadow: none !important;
+}
+.subscribe_btn:hover {
+  color: rgb(0, 0, 0) !important;
+  background-color: rgb(255, 0, 0);
+}
+
+.followed_btn {
+  background-color: rgb(60, 58, 58);
+  border-radius: 10px;
+  margin-right: 3rem;
+  /* position: absolute; */
+  /* left:40%; */
+  width: 100%;
+  border: none;
+  height: 2rem;
+  margin-top: 20px;
+  box-shadow: none !important;
+}
+.receive_click_div_helper {
+  /* background-color: beige; */
+  /* position: absolute;
+    width:90%;
+    height:100%; */
+}
+/* Handler->fn */
+/* apis custom hook */
+/* symetric icons vscode extn 200000*/
+/* receive_click_div */
+
+.public_channels_class {
+  z-index: 0;
+  margin: 8% !important;
+/* box-shadow: 20px 20px 20px 20px red; */
+border-radius: 10px;
+
+}
+
+.gallary_item{
+  width: 20vw !important;
+}
+
+.public_channels_h1{
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 8rem;
+    background-color: rgb(255, 0, 0);
+    color: rgb(219, 218, 216);
+    padding: 2rem;
+    border-radius: 20px;
+
+}
+
+
+
+.nav_bar{
+  z-index: 5;
+}

@@ -9,7 +9,7 @@ function Protected({ children, showLoginPopupfn }) {
   let token = JSON.parse(localStorage.getItem("userData")).token;
   if (token) {
     fetch(
-      `http://authnewsapi.runasp.net/api/v1/Auth/CheckValidationToken?token=${token}`,
+      `http://briefly.runasp.net/api/v1/Auth/CheckValidationToken?token=${token}`,
       { method: "GET" }
     )
       .then((response) => {

@@ -3,9 +3,10 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import "../styles/homepage.css";
 
 import Profile from "../components/Profile";
-import FeedView from "./FeedView";
 import { Outlet, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { SubscriptionsSvg } from "../svgIcons/SubscriptionsSvg";
+import { DiscoverThin } from "../svgIcons/DiscoverSvg";
 
 function HomePage() {
   const [homeActive, setHomeActive] = useState(false);
@@ -62,7 +63,11 @@ function HomePage() {
           </svg>
 
           <p className="homepage-name"></p>
-          <div className={`homepage-search-wrapper ${addFeedActive ? 'hidden' : ''}`}>
+          <div
+            className={`homepage-search-wrapper ${
+              addFeedActive ? "hidden" : ""
+            }`}
+          >
             {/* search functionallity #todo_4 */}
             <input className="search-input" type="text" placeholder="Search" />
 
@@ -86,15 +91,20 @@ function HomePage() {
         </div>
         <div className="homepage-header-right">
           <>
-            <Profile userName={user.name} userImage={user.image} userAccount={user.account} />
+            <Profile
+              userName={user.name}
+              userImage={user.image}
+              userAccount={user.account}
+            />
           </>
         </div>
       </div>
 
       <div className="homepage-sidebar">
         <Link
+          key="1"
           to="/home"
-          className={`homepage-sidebar-link ${homeActive ? 'active' : ''}`}
+          className={`homepage-sidebar-link ${homeActive ? "active" : ""}`}
           onClick={handleHomeClick}
         >
           <svg
@@ -113,12 +123,12 @@ function HomePage() {
           </svg>
         </Link>
         <Link
+          key="2"
           to="/home/addFeed"
-          className={`add-feed-link ${addFeedActive ? 'active' : ''}`}
+          className={`add-feed-link ${addFeedActive ? "active" : ""}`}
           onClick={handleAddFeedClick}
         >
           <svg
-            className="add-btn-homepage-icon"
             xmlns="http://www.w3.org/2000/svg"
             width={16}
             height={16}
@@ -133,6 +143,22 @@ function HomePage() {
             <line x1={5} y1={12} x2={19} y2={12} />
           </svg>
         </Link>
+        <Link
+          key="3"
+          to="/home/subscriptions"
+          className={`add-feed-link ${addFeedActive ? "active" : ""}`}
+          // onClick={handleAddFeedClick}
+        >
+          <SubscriptionsSvg />
+        </Link>{" "}
+        <Link
+          key="4"
+          to="/home/discover"
+          className={`add-feed-link ${addFeedActive ? "active" : ""}`}
+          // onClick={handleAddFeedClick}
+        >
+          <DiscoverThin />
+        </Link>
       </div>
 
       <Outlet />
@@ -141,3 +167,4 @@ function HomePage() {
 }
 
 export default HomePage;
+

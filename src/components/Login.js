@@ -30,7 +30,7 @@ function LoginForm({ onClose, onSignupClick }) {
     //#todo_4 email Email usr_mail >> map
     const data = { Email: email, password: password };
 
-    fetch("http://authnewsapi.runasp.net/api/v1/Auth/Login", {
+    fetch("http://briefly.runasp.net/api/v1/Auth/Login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,6 +42,7 @@ function LoginForm({ onClose, onSignupClick }) {
         return response.json();
       })
       .then((jsonData) => {
+        console.log(jsonData)
 
         // #todo_5 .succeeded,.error,status ,statusCode....
         UserData=jsonData.data
@@ -102,7 +103,7 @@ function LoginForm({ onClose, onSignupClick }) {
                 style={{ color: "#0740b0" }}
               />
               <input type="email" required placeholder="Email" 
-              value='rakono5650@em2lab.com'
+              value='kifujame@pelagius.net'
               name="email" />
             </div>
             <div className="input-field">
@@ -116,7 +117,7 @@ function LoginForm({ onClose, onSignupClick }) {
                 type={passwordVisible ? "text" : "password"}
                 className="pass-key"
                 required
-                value='Mazefddswef43n@123'
+                value='JB768Jjbj@JMBkj'
                 placeholder="Password"
                 name="password"
               />
@@ -128,6 +129,7 @@ function LoginForm({ onClose, onSignupClick }) {
           <div className="buttons">
             <a href="/Home">
               <button type="submit" id="signinBtn">
+
                 Login
               </button>
             </a>
