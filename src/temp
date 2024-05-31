@@ -1,0 +1,7 @@
+- toolbar
+  - usestate(selected div)
+  - span (brown,width 90%)
+  - parent to 10 boxes
+  - box ( text ,span)
+  -  usestate(selected data)
+  - api with the state
