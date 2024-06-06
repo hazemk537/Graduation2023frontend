@@ -46,7 +46,8 @@ function MainLandingPage({
 
           }
         }).catch((err) => {
-          setErrContent(err)
+          setErrContent(err.message)//err is object  
+       
           setShowErrModal(true)
         })
     }
@@ -82,7 +83,7 @@ function MainLandingPage({
         localStorage.setItem('welcomeScreen', 'false')
       }
       } type='welcome' alertText='please, login/signup ' />}
-      {showErrModal && <Alert type='err' alertText={`${errContent}`} />}
+      {showErrModal && <Alert type='err' alertText={errContent} />}
 
       <NavBar
         onClickLogin={onClickLogin}

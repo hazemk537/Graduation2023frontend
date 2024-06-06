@@ -21,8 +21,8 @@ function ChannelsView({ channels, type }) {
   if (channels)
     return (
       <div className={`gallary_items ${type}_class`}>
-        {channels.map((item) => (
-          <ChannelCard  type={type} item={item} />
+        {channels.map((item,id) => (
+          <ChannelCard key={id}  type={type} item={item} />
         ))}
       </div>
     );

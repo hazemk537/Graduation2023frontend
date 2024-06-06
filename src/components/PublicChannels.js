@@ -57,26 +57,31 @@ function PublicChannels() {
     fetch(url)
       .then((res) => res.json())
       .then((json) => {
-        console.log(json)
-        let modifiedArticles = json.articles.map((item, index) => {
-          return {
-            thumbnail: item.image,
-            title: item.title,
-            description: item.description,
-            id: index,
-            content: item.content,
-            publishedAt: item.publishedAt,
-            src: item.src,
-            url: item.url
 
-          }
-        })
+        console.log(json)
+        let modifiedArticles;
+        if (json.articles) {
+           modifiedArticles = json.articles.map((item, index) => {
+            return {
+              thumbnail: item.image,
+              title: item.title,
+              description: item.description,
+              id: index,
+              content: item.content,
+              publishedAt: item.publishedAt,
+              src: item.src,
+              url: item.url
+
+            }
+          })
+        }
         console.log(modifiedArticles)
+        // localStorage.setItem('topArticles') refetch daily, save to local storage #todo
         setChannels(modifiedArticles)
       }
       ).catch((err) => {
         console.log(err)
-        
+
 
 
 
