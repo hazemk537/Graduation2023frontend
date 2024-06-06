@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAt, faLock, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Login_Signup.css";
 import GLogin from "./Google_Login";
-import Alert from "../routes/Alert";
+import Alert from "./Alert";
 import { useNavigate } from "react-router";
 import { json } from "react-router/dist/umd/react-router.development";
 
@@ -30,7 +30,7 @@ function LoginForm({ onClose, onSignupClick }) {
     //#todo_4 email Email usr_mail >> map
     const data = { Email: email, password: password };
 
-    fetch("http://briefly.runasp.net/api/v1/Auth/Login", {
+    fetch("https://briefly.runasp.net/api/v1/Auth/Login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -127,12 +127,12 @@ function LoginForm({ onClose, onSignupClick }) {
             </div>
           </div>
           <div className="buttons">
-            <a href="/Home">
+            {/* <a href="/Home"> */}
               <button type="submit" id="signinBtn">
 
                 Login
               </button>
-            </a>
+            {/* </a> */}
           </div>
           <div>
             <b className="reset">

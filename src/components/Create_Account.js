@@ -9,7 +9,7 @@ import {
 
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Login_Signup.css";
-import Alert from "../routes/Alert";
+import Alert from "./Alert";
 
 function Create_Account({ onClose, onSigninClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -30,6 +30,7 @@ function Create_Account({ onClose, onSigninClick }) {
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
+    console.log('handleSignup fn ...')
     const data = {
       "firstName":firstName,
       "lastName":lastName,
@@ -38,8 +39,9 @@ function Create_Account({ onClose, onSigninClick }) {
       "confirmPassword":confirmPassword,
     };
 
+    console.log(data)
     
-    fetch("http://briefly.runasp.net/api/v1/Auth/Register", {
+    fetch("https://briefly.runasp.net/api/v1/Auth/Register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +53,9 @@ function Create_Account({ onClose, onSigninClick }) {
         return response.json();
       })
       .then((jsonData) => {
-        console.log(`Response ... ${jsonData} `);
+        console.log(`CreateAccount response ... `);
+        console.log(jsonData);
+
 // #todo_4 use statusCode and message fields
         if (jsonData.statusCode!==201) {
           setErrState(true)
@@ -65,6 +69,7 @@ function Create_Account({ onClose, onSigninClick }) {
         setAlertMessage(error);
         setErrState(true)
       });
+      
       if (!ErrState)
       {
 

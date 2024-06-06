@@ -8,7 +8,10 @@
 .success_class {
   background-color: #b0cdae;
 }
+.welcome_class{
+  background-color: #27d327;
 
+}
 
 .alert_component {
   z-index: 20;

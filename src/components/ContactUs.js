@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/contactus.css";
+import { height } from "@fortawesome/free-solid-svg-icons/fa0";
 function ContactUs() {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -11,27 +12,27 @@ function ContactUs() {
     event.target.reset();
   };
   return (
-    
-    <div id="contact_us"  className="contact-container">
-      <h2 className="contact-heading">Contact Us</h2>
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <input
-          type="email"
-          className="contact-input"
-          placeholder="email@example.com"
-          required
-        />
+    <div style={{ height: "100vh", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div id="contact_us" className="contact-container">
+        <h2 className="contact-heading">Contact Us</h2>
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            className="contact-input"
+            placeholder="email@example.com"
+            required
+          />
 
-        <textarea
-          className="contact-textarea"
-          placeholder="Leave your message"
-          required
-        ></textarea>
-        <button type="submit" className="contact-submit-btn">
-          Submit
-        </button>
-      </form>
-    </div>
+          <textarea
+            className="contact-textarea"
+            placeholder="Leave your message"
+            required
+          ></textarea>
+          <button type="submit" className="contact-submit-btn">
+            Submit
+          </button>
+        </form>
+      </div></div>
   );
 }
 

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import '../styles/ChannelCard.css'
-function ChannelCard({ type,item }) {
+import ModalArticle from "./ModalArticle";
+function ChannelCard({ type, item }) {
+  const [modalVisible, setModalVisible] = useState(false)
+
   const [Subscribed, setSubscribed] = useState(false);
 
   const subscribeHandler = () => {
@@ -15,8 +18,12 @@ function ChannelCard({ type,item }) {
   };
 
   return (
-    <div className="gallary_item" key={item.id}>
+    <div className="gallary_item" key={item.id} onClick={() => {
+        //allow one articel modal
+      setModalVisible((old)=>!old)
+    }}>
       <div
+
         key={item.id}
         className="receive_click_div_helper"
         onClick={() => {
@@ -31,13 +38,14 @@ function ChannelCard({ type,item }) {
         <p className="gallary_item_description">{item.description}</p>
       </div>
       <div className="gallary_item_actions">
-     <button className="subscribe_btn" onClick={subscribeHandler}>
-        {type==="subscription_channels"?"Unsubscribe":"subscribe"}
-      </button>
+        {type !== "public_channels" && <button className="subscribe_btn" onClick={subscribeHandler}>
+          {type === "subscription_channels" ? "Unsubscribe" : "subscribe"}
+        </button>}
       </div>
 
-      
-    </div>
+      {modalVisible && <ModalArticle data={item} />
+      }    </div>
+
   );
 }
 

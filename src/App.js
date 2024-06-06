@@ -5,7 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLandingPage from "./routes/MainLandingPage";
 import HomePage from "./routes/HomePage";
 import ResetPassword from "./components/Reset_Password";
-import Alert from "./routes/Alert";
+import Alert from "./components/Alert";
 import AddFeed from "./routes/AddFeed";
 import "./index.css";
 import PricingPage from "./routes/PricingPage";
