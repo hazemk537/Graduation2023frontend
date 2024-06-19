@@ -1,4 +1,3 @@
-/* eslint-disable */
 
 import { React, useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -35,7 +34,7 @@ import UserArticles from "./components/UserArticles";
 function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
-
+  const errorStatus = 404;
   const ToggleLoginPopup = () => {
     setShowLoginPopup((old) => {
       if (old) {
@@ -70,7 +69,7 @@ function App() {
           onClickCreateAccount={ToggleSignupPopup}
         />
       ),
-      errorElement: <Alert alertText={"404 Page Not Found "} type="err" />,
+      errorElement: <Alert alertText={"404 Page Not Found "} type="err"  errorStatus={errorStatus}/>,
     },
     {
       path: "/home",
