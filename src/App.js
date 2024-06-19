@@ -1,10 +1,9 @@
-
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLandingPage from "./routes/MainLandingPage";
 import HomePage from "./routes/HomePage";
 import ResetPassword from "./components/Reset_Password";
-import Alert from "./components/Alert";
+// import Alert from "./components/Alert";
 import AddFeed from "./routes/AddFeed";
 import "./index.css";
 import PricingPage from "./routes/PricingPage";
@@ -12,29 +11,11 @@ import Protected from "./components/Protected";
 import SubscripedChannels from "./components/SubscribedChannels";
 import DiscoverChannels from "./components/DiscoverChannels";
 import UserArticles from "./components/UserArticles";
+import Notfound from "./components/Error404";
 
-// login (token and data)
-// logout logic and dlt token
-
-// fetch user data
-// parse rss links
-// display user data
-
-//ai:https://getstream.io/get_started/
-//3dmodel: reposition resize
-//Alert component : center alert
-//Alert component : autohide
-// protected route :protect home cildren
-//backend: add  jsonData.error if error happens
-//gauth::::how to fetch data from dackend :::
-// login success msg after gauth
-//failed msg after gauth
-//css tutorial::: https://www.youtube.com/watch?v=OXGznpKZ_sA&pp=ygUcY3NzIHlvdXR1YmUgb25lIGZyZWVjb2RlY2FtcA%3D%3D
-// no folder from backend
 function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
-  const errorStatus = 404;
   const ToggleLoginPopup = () => {
     setShowLoginPopup((old) => {
       if (old) {
@@ -58,6 +39,7 @@ function App() {
       }
     });
   };
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -69,13 +51,14 @@ function App() {
           onClickCreateAccount={ToggleSignupPopup}
         />
       ),
-      errorElement: <Alert alertText={"404 Page Not Found "} type="err"  errorStatus={errorStatus}/>,
+      errorElement: (
+        <Notfound/>
+      ),
     },
     {
       path: "/home",
       element: (
         <Protected showLoginPopupfn={setShowLoginPopup}>
-          {" "}
           <HomePage />
         </Protected>
       ),
@@ -86,9 +69,8 @@ function App() {
         },
         {
           path: "/home",
-          element: <UserArticles/>,
+          element: <UserArticles />,
         },
-
         {
           path: "/home/addFeed",
           element: <AddFeed />,
@@ -108,8 +90,8 @@ function App() {
       element: <PricingPage />,
     },
   ]);
+
   return <RouterProvider router={router} />;
 }
 
 export default App;
-

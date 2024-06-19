@@ -1,5 +1,6 @@
 .err_class {
-  background-color: #ffebee;
+  background-color: #f52121e1;
+  color:white
 }
 
 .noterr_class {
@@ -16,12 +17,11 @@
 
 .alert_container {
   position: fixed;
-  top: 10%;
-  left: 0;
-  width: 100%;
+  top: 20%;
+  width: 80%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  left: 20%;
+  text-align: center;
   z-index: 1000; /* Ensure it's above other content */
 }
 
