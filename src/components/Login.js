@@ -28,9 +28,36 @@ function LoginForm({ onClose, onSignupClick }) {
     const email = form.email.value;
     const password = form.password.value;
     //#todo_4 email Email usr_mail >> map
-    const data = { Email: email, password: password };
+    const data = { 'Email': email, 'password': password };
+    console.log(' handle login ....')
+    let apikey = '8e69a1db2fb43edac805be1306b74ae2';
+    let url = 'https://gnews.io/api/v4/top-headlines?category=global&lang=ar&country=eg&max=10&apikey=' + apikey;
+    fetch(url)
+      .then((res) => res.json())
+      .then((json) => {
 
-    fetch("https://briefly.runasp.net/api/v1/Auth/Login", {
+        console.log(json)
+        let modifiedArticles;
+        if (json.articles) {
+           modifiedArticles = json.articles.map((item, index) => {
+            return {
+              thumbnail: item.image,
+              title: item.title,
+              description: item.description,
+              id: index,
+              content: item.content,
+              publishedAt: item.publishedAt,
+              src: item.src,
+              url: item.url
+
+            }
+          })
+        }
+        console.log(modifiedArticles)
+      
+      }
+      )
+    fetch("https://BrieflyNews.runasp.net/api/v1/Auth/Login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,18 +65,13 @@ function LoginForm({ onClose, onSignupClick }) {
 
       body: JSON.stringify(data),
     })
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((jsonData) => {
         console.log(jsonData)
 
-        // #todo_5 .succeeded,.error,status ,statusCode....
-        UserData=jsonData.data
-        //#TEST
-      // console.log(JSON.stringify(UserData));
-      // console.log(UserData);
+     
 
+      
 
 
         if (jsonData.statusCode !== 200) {
@@ -57,9 +79,18 @@ function LoginForm({ onClose, onSignupClick }) {
           setAlertType("err");
           setAlertMessage(jsonData.message);
 
-        }else{
+        } else {
+             // #todo_5 .succeeded,.error,status ,statusCode....
+        //#TEST
+        // console.log(JSON.stringify(UserData));
+        // console.log(UserData);
 
-          UserData=jsonData.data
+          localStorage.setItem('data',JSON.stringify(jsonData.data))
+          setErrState(false);
+          setAlertType("success");
+          setAlertMessage(jsonData.message);
+          NavigateFn('/home')
+    
           
 
         }
@@ -69,19 +100,15 @@ function LoginForm({ onClose, onSignupClick }) {
         setAlertMessage(error);
         setErrState(true);
       });
-//go here only after .then sereis finish
-// #todo_4 why  the next if result undefined (it run before the chain promise complete )
+    //go here only after .then sereis finish
+    // #todo_4 why  the next if result undefined (it run before the chain promise complete )
     // if (!ErrState  ) {
     //   NavigateFn("/home");
     //   localStorage.setItem("userData",JSON.stringify(UserData));
-      
+
     // }
     // #todo_4 why  the next if result with the data without undefined ,this mean the if condition runs twice! before the promise chain complete and after completion
-     if (!ErrState  && UserData) {
-      NavigateFn("/home");
-      localStorage.setItem("userData",JSON.stringify(UserData));
-      
-    }
+  
   };
   return (
     <>
@@ -102,9 +129,8 @@ function LoginForm({ onClose, onSignupClick }) {
                 id="awesome1"
                 style={{ color: "#0740b0" }}
               />
-              <input type="email" required placeholder="Email" 
-              value='kifujame@pelagius.net'
-              name="email" />
+              <input type="email" required placeholder="Email"
+                name="email" />
             </div>
             <div className="input-field">
               <FontAwesomeIcon
@@ -117,7 +143,6 @@ function LoginForm({ onClose, onSignupClick }) {
                 type={passwordVisible ? "text" : "password"}
                 className="pass-key"
                 required
-                value='JB768Jjbj@JMBkj'
                 placeholder="Password"
                 name="password"
               />
@@ -128,10 +153,10 @@ function LoginForm({ onClose, onSignupClick }) {
           </div>
           <div className="buttons">
             {/* <a href="/Home"> */}
-              <button type="submit" id="signinBtn">
+            <button type="submit" id="signinBtn">
 
-                Login
-              </button>
+              Login
+            </button>
             {/* </a> */}
           </div>
           <div>

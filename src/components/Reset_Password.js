@@ -19,7 +19,7 @@ function ResetPassword() {
   const [showNewPasswordField, setNewPassword] = useState(false);
   let NavigateFn = useNavigate();
   function checkUserIdentityHandler() {
-    fetch("https://briefly.runasp.net/api/v1/Auth/ConfirmResetPassword", {
+    fetch("https://BrieflyNews.runasp.net/api/v1/Auth/ConfirmResetPassword", {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: emailInputRef.current.value,
@@ -58,7 +58,7 @@ function ResetPassword() {
   function requestPassHandler() {
     console.log(emailInputRef.current.value);
 
-    fetch("https://briefly.runasp.net/api/v1/Auth/SendResetpassword", {
+    fetch("https://BrieflyNews.runasp.net/api/v1/Auth/SendResetpassword", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +99,7 @@ function ResetPassword() {
 
   function ResetPasswordHandler() {
     // NewPasswordRef
-    fetch("https://briefly.runasp.net/api/v1/Auth/Resetpassword", {
+    fetch("https://BrieflyNews.runasp.net/api/v1/Auth/Resetpassword", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -120,6 +120,8 @@ function ResetPassword() {
           setAlertType("err");
           setAlertMessage(jsonData.message);
         }
+        console.log('Send new Password...')
+        console.log(jsonData)
       })
       .catch((error) => {
         setAlertType("err");

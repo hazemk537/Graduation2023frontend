@@ -6,11 +6,15 @@ import {
 
 function Protected({ children, showLoginPopupfn }) {
   const [isReturn, setIsReturn] = useState();
-  let token = JSON.parse(localStorage.getItem("token"));
+  let data = JSON.parse(localStorage.getItem("data"))
+  console.log(data);
+  let token=data.token
+  console.log(token);
+
   if (token) {
     fetch(
-      `https://briefly.runasp.net/api/v1/Auth/CheckValidationToken?token=${token}`,
-      { method: "GET" }
+      `https://BrieflyNews.runasp.net/api/v1/Auth/CheckValidationToken?token=${token}`,
+      { method: "POST" }
     )
       .then((response) => {
         return response.json();

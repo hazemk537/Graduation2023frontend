@@ -24,20 +24,23 @@ function MainLandingPage({
       behavior: "smooth",
     });
   };
-  let token = JSON.parse(localStorage.getItem("token"));
+  let data = JSON.parse(localStorage.getItem("data"));
 
 
 
   useEffect(() => {
     let payload = "";
-    if (token) {
-      fetch("https://briefly.runasp.net/api/v1/Auth/GenerateRefreshToken", {
+    if (data&&data.hasOwnProperty('token')) 
+      //this means we have data field in the local storage
+      {
+      fetch("https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken", {
         headers: { "Content-Type": "application/json" },
         method: "POST",
         body: JSON.stringify(payload),
       })
         .then((Response) => Response.json())
         .then((jsonData) => {
+          console.log('Validate Token ... ');
           console.log(jsonData);
 
           if (jsonData.statusCode === 404) {

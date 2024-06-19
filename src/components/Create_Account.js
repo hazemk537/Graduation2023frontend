@@ -10,12 +10,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Login_Signup.css";
 import Alert from "./Alert";
+import { useNavigate } from "react-router-dom/dist/umd/react-router-dom.development";
 
 function Create_Account({ onClose, onSigninClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
   const [ErrState, setErrState] = useState(false);
+  let NavigateFn=useNavigate()
 
 
   const togglePasswordVisibility = () => {
@@ -41,7 +43,7 @@ function Create_Account({ onClose, onSigninClick }) {
 
     console.log(data)
     
-    fetch("https://briefly.runasp.net/api/v1/Auth/Register", {
+    fetch("https://BrieflyNews.runasp.net/api/v1/Auth/Register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -62,6 +64,18 @@ function Create_Account({ onClose, onSigninClick }) {
 
           setAlertType("err");
           setAlertMessage(jsonData.message);
+        } 
+        else
+        {
+          setErrState(false)
+
+
+          localStorage.setItem('data',JSON.stringify(jsonData.data))
+          setErrState(false);
+          setAlertType("success");
+          setAlertMessage(jsonData.message);
+          NavigateFn('/home')
+          
         } 
       })
       .catch((error) => {
