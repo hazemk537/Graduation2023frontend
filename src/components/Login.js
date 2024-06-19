@@ -112,7 +112,7 @@ function LoginForm({ onClose, onSignupClick }) {
   };
   return (
     <>
-      {alertMessage && <Alert type={alertType} alertText={alertMessage} />}
+      {alertMessage &&<Alert type={alertType} alertText={alertMessage} />}
 
       <div className="login_assist"></div>
       <div className="form_sign">
