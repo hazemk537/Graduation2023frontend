@@ -34,10 +34,10 @@ function ModalArticle({ data }) {
 
 
             }}>
-                {data.content}
+                {data.description}
 
             </p>
-            <a target='_blank' href={`${data.url}`}><svg style={{
+            <a target='_blank' href={`${data.link}`}><svg style={{
                 position: 'absolute',
                 top: 0,
                 width: '10%',

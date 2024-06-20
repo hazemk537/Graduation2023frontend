@@ -2,7 +2,10 @@ import react from "react";
 import "../styles/PreviewFeed.css";
 
 const PreviewFeed = ({ channel_obj, articlesArr }) => {
-  //
+  //add custom Feed
+
+
+
   return (
     <div className="preview_channel_feed">
       <img
@@ -20,6 +23,8 @@ const PreviewFeed = ({ channel_obj, articlesArr }) => {
           <span> {channel_obj.channel_updateDate}</span>
         </div>
       </header>
+
+      
     </div>
   );
 };
