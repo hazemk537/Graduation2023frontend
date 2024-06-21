@@ -1,15 +1,72 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import "../styles/homepage.css";
-
 import Profile from "../components/Profile";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { SubscriptionsSvg } from "../svgIcons/SubscriptionsSvg";
 import { DiscoverThin } from "../svgIcons/DiscoverSvg";
 
 function HomePage() {
-  const [iconActiveid, seticonActiveid] = useState(1); //icon id
+  const location = useLocation();
+  const [iconActiveId, setIconActiveId] = useState(null); 
+  const [userName, setUserName] = useState("");
+  const [userAccount, setUserAccount] = useState("");
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/home":
+        setIconActiveId(1);
+        break;
+      case "/home/addFeed":
+        setIconActiveId(2);
+        break;
+      case "/home/subscriptions":
+        setIconActiveId(3);
+        break;
+      case "/home/discover":
+        setIconActiveId(4);
+        break;
+      default:
+        setIconActiveId(2); 
+    }
+  }, [location.pathname]);
+
+
+  const fetchUserData = async () => {
+    try {
+      // Make a POST request to the API endpoint
+      const response = await fetch(
+        "https://brieflynews.runasp.net/api/v1/Auth/Register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            // Include any necessary credentials or data for the request
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch user data");
+      }
+
+      // Assuming the API returns JSON with user data
+      const data = await response.json();
+      // Set userName and userAccount based on API response
+      setUserName(`${data.firstName} ${data.lastName}`);
+      setUserAccount(data.email);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      // Handle error fetching user data
+    }
+  };
+
+
+
+
+
+
 
   const user = {
     name: "Mohamed Zaki",
@@ -55,7 +112,7 @@ function HomePage() {
           {/* ihide when icon 2 is active */}
           <div
             className={`homepage-search-wrapper ${
-              iconActiveid === 2 ? "hidden" : ""
+              iconActiveId === 2 ? "hidden" : ""
             }`}
           >
             {/* search functionallity #todo_4 */}
@@ -95,10 +152,10 @@ function HomePage() {
           key="1"
           to="/home"
           className={`homepage-sidebar-link ${
-            iconActiveid === 1 ? "active" : ""
+            iconActiveId === 1 ? "active" : ""
           }`}
           onClick={() => {
-            seticonActiveid(1);
+            setIconActiveId(1);
           }}
         >
           <svg
@@ -120,9 +177,9 @@ function HomePage() {
         <Link
           key="2"
           to="/home/addFeed"
-          className={`add-feed-link ${iconActiveid === 2 ? "active" : ""}`}
+          className={`add-feed-link ${iconActiveId === 2 ? "active" : ""}`}
           onClick={() => {
-            seticonActiveid(2);
+            setIconActiveId(2);
           }}
         >
           <svg
@@ -144,9 +201,9 @@ function HomePage() {
         <Link
           key="3"
           to="/home/subscriptions"
-          className={`add-feed-link ${iconActiveid === 3 ? "active" : ""}`}
+          className={`add-feed-link ${iconActiveId === 3 ? "active" : ""}`}
           onClick={() => {
-            seticonActiveid(3);
+            setIconActiveId(3);
           }}
         >
           {/* #todo_5 generic class to make any icon background change not for every icon */}
@@ -155,9 +212,9 @@ function HomePage() {
         <Link
           key="4"
           to="/home/discover"
-          className={`add-feed-link ${iconActiveid === 4 ? "active" : ""}`}
+          className={`add-feed-link ${iconActiveId === 4 ? "active" : ""}`}
           onClick={() => {
-            seticonActiveid(4);
+            setIconActiveId(4);
           }}
         >
           <DiscoverThin className="homepage_home_discoverSVG" />
@@ -170,4 +227,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
