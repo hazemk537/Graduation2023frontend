@@ -6,13 +6,13 @@ import GLogin from "./Google_Login";
 import Alert from "./Alert";
 import { useNavigate } from "react-router";
 import { json } from "react-router/dist/umd/react-router.development";
+import { Link } from "react-router-dom";
 
 function LoginForm({ onClose, onSignupClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
   //to not render success at begining
-  const [ErrState, setErrState] = useState(false);
   let UserData;
 
   const togglePasswordVisibility = () => {
@@ -39,7 +39,7 @@ function LoginForm({ onClose, onSignupClick }) {
         console.log(json)
         let modifiedArticles;
         if (json.articles) {
-           modifiedArticles = json.articles.map((item, index) => {
+          modifiedArticles = json.articles.map((item, index) => {
             return {
               thumbnail: item.image,
               title: item.title,
@@ -54,7 +54,7 @@ function LoginForm({ onClose, onSignupClick }) {
           })
         }
         console.log(modifiedArticles)
-      
+
       }
       )
     fetch("https://BrieflyNews.runasp.net/api/v1/Auth/Login", {
@@ -69,36 +69,33 @@ function LoginForm({ onClose, onSignupClick }) {
       .then((jsonData) => {
         console.log(jsonData)
 
-     
 
-      
+
+
 
 
         if (jsonData.statusCode !== 200) {
-          setErrState(true);
           setAlertType("err");
           setAlertMessage(jsonData.message);
 
         } else {
-             // #todo_5 .succeeded,.error,status ,statusCode....
-        //#TEST
-        // console.log(JSON.stringify(UserData));
-        // console.log(UserData);
+          // #todo_5 .succeeded,.error,status ,statusCode....
+          //#TEST
+          // console.log(JSON.stringify(UserData));
+          // console.log(UserData);
 
-          localStorage.setItem('data',JSON.stringify(jsonData.data))
-          setErrState(false);
+          localStorage.setItem('data', JSON.stringify(jsonData.data))
           setAlertType("success");
           setAlertMessage(jsonData.message);
-          NavigateFn('/home')
-    
-          
+          NavigateFn('/home',{replace:true})
+
+
 
         }
       })
       .catch((error) => {
-        setAlertType("err");
         setAlertMessage(error);
-        setErrState(true);
+        setAlertType('err')
       });
     //go here only after .then sereis finish
     // #todo_4 why  the next if result undefined (it run before the chain promise complete )
@@ -108,11 +105,11 @@ function LoginForm({ onClose, onSignupClick }) {
 
     // }
     // #todo_4 why  the next if result with the data without undefined ,this mean the if condition runs twice! before the promise chain complete and after completion
-  
+
   };
   return (
     <>
-      {alertMessage &&<Alert type={alertType} alertText={alertMessage} />}
+      {alertMessage && <Alert type={alertType} alertText={alertMessage} />}
 
       <div className="login_assist"></div>
       <div className="form_sign">
@@ -162,13 +159,11 @@ function LoginForm({ onClose, onSignupClick }) {
           <div>
             <b className="reset">
               forget password{" "}
-              <a
-                className="reset_link"
-                href="/Reset_Password"
-                rel="noopener noreferrer"
-              >
+
+              <Link to={'/Reset_Password'} >
                 click here
-              </a>
+
+              </Link>
             </b>
           </div>
         </form>

@@ -43,7 +43,7 @@ const GLogin = () => {
                     setLoginSuccess("Login Success!");
 
                     setAlertMessage(jsonData.message);
-                    NavigateFn('/home')
+                    NavigateFn('/home',{replace:true})
                   }
                   else{
                     setErrState(true);

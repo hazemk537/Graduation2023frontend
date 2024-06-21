@@ -6,42 +6,74 @@ function DiscoverChannels() {
   const [channels, setChannels] = useState();
 
 
-  const [PageNumber, setPageNumber] = useState('1')
+  const [pageNumber, setPageNumber] = useState('1')
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
   //to not render success at begining
 
 
+  async function parrallelDiscover(allAllchannelsJsonPromise, subscribedChannelJsonPromise) {
+    //parallel fetch all subscriptions and all channels ,merge them 
+    //add subscribed filed in all subscriptions
+    let allAllchannelsPromise = fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/GetAll?PageNumber=${pageNumber}&PageSize=50`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    });
 
+    let subscribedChannelsPromise = fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All?PageNumber=${pageNumber}&PageSize=10`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    let [allChannelsResponse, subscribedChannelsResponse] = await Promise.all([allAllchannelsPromise, subscribedChannelsPromise])
+    if (allChannelsResponse.ok) {
+      console.log('allChannelsResponse.ok...')
+
+    }
+
+
+
+    if (subscribedChannelsResponse.ok) {
+      console.log('subscribedChannelsResponse.ok...')
+
+
+    }
+    if (allChannelsResponse.ok & subscribedChannelsResponse.ok) {
+
+      //add subscribed field to all channels json
+      //  setState(Newchannels)
+      let allchannelsJson = await allChannelsResponse.json()
+      let subscribedChannelJson = await subscribedChannelsResponse.json()
+
+      // if data empty  subscribedChannelJson.data will be undefined
+      let subscribtionIdArr = subscribedChannelJson.data?.map((item) => item.id)
+
+      console.log('subscribtionIdArr ...');
+      console.log(subscribtionIdArr);
+      
+      let isCurrentItemSubscribed = 0
+
+      let Newchannels = allchannelsJson.data.map((item) => {
+        if (subscribtionIdArr?.findIndex)//isarray
+        {
+          isCurrentItemSubscribed = subscribtionIdArr.includes(item.id) === false ? 0 : 1
+
+        }
+        return { ...item, 'subscribed': isCurrentItemSubscribed }
+      })
+      setChannels(Newchannels)
+      console.log(Newchannels);
+    }
+
+
+
+  }
   let token = JSON.parse(localStorage.getItem('data')).token
   useEffect(() => {
     // http://BrieflyNews.runasp.net/api/v1/Rss/GetAll?PageNumber=1&PageSize=50
 
-    fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/GetAll?PageNumber=1&PageSize=50`, {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      }
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error ${response.status}`);
-        }
-        console.log('Getting channels ...');
-        return response.json();
-      })
-      .then((jsonData) => {
-        if (jsonData.statusCode) {
-          setChannels(jsonData.data);
-          console.log(jsonData);
-
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        setAlertMessage(error)
-        setAlertType('error')
-      });
-
+    parrallelDiscover()
 
   }, []);
 
@@ -49,7 +81,7 @@ function DiscoverChannels() {
     <>
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
 
-      <ChannelsView type="discover_channels" channels={channels} /></>)
+      <ChannelsView parrallelDiscover={parrallelDiscover} type="discover_channels" channels={channels} /></>)
 }
 
 export default DiscoverChannels;

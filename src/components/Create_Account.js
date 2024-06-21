@@ -16,7 +16,6 @@ function Create_Account({ onClose, onSigninClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
-  const [ErrState, setErrState] = useState(false);
   let NavigateFn=useNavigate()
 
 
@@ -51,44 +50,39 @@ function Create_Account({ onClose, onSigninClick }) {
       body: JSON.stringify(data),
     })
       .then((response) => {
+        //better error catch
+        if (!response.ok)
+          {
+            console.log(response)
+          }
         
         return response.json();
       })
       .then((jsonData) => {
         console.log(`CreateAccount response ... `);
-        console.log(jsonData);
 
 // #todo_4 use statusCode and message fields
         if (jsonData.statusCode!==201) {
-          setErrState(true)
 
           setAlertType("err");
           setAlertMessage(jsonData.message);
         } 
         else
         {
-          setErrState(false)
-
 
           localStorage.setItem('data',JSON.stringify(jsonData.data))
-          setErrState(false);
           setAlertType("success");
           setAlertMessage(jsonData.message);
-          NavigateFn('/home')
+          NavigateFn('/home',{replace:true})
           
         } 
       })
       .catch((error) => {
         setAlertType("err");
         setAlertMessage(error);
-        setErrState(true)
       });
       
-      if (!ErrState)
-      {
-
-        setAlertType("success");
-          setAlertMessage("Account Created , Check Inbox for Confirmation ");}
+     
   };
 
   return (

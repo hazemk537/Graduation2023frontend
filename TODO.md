@@ -2,62 +2,106 @@
 
 اللهم علمنا ما ينفعنا وانفعنا بما علمتنا
 
-### TODO
+### TODO (low priority 🔼)
+    - [ ] inline #todo in the code
+    - popups for all apis ex:if token expire.
+    - pricing implementation @backend
+    - update all apis to latest version
+    - 
+    - replace <Navigate to="/" />; 
+    - [ ] optimize images 
+    - channesl modals, btn toggles ,array state with id
+    - redux,theme,translation
+    - next (routing,static pages   recommendation,know why to use)
+    - multipages navigation +<Channels/>
+    
 
-- [ ] in err msg no exit btn
-- [ ] OVERWRITIE browser stack (when use useNavigate)
-- [ ] inline #todo in the code
-- [ ] optimize images
-- [ ] remove token on logout
-- bad route to resetpassword (reload)
-- [ ] remove token on logout
-- conditional render create account and sign in if user is logined
-- [ ] remove token on logout
-- host , and make enhancements
-- [ ] remove token on logout
-- if we on /home/anypage then reload page, the focus of buttons of left will be first always
-- [ ] remove token on logout
-- follow/unfollow local state which change buttons follow and unfollow
-- [ ] remove token on logout
-- in channels,articles gallary close modal on click the wrapper
-- [ ] remove token on logout
-- modal not updates on multi clicks
-- [ ]  auth API v2 (admin endpoints. /rss/:id)
-- 
+### TODO (high 🔼🔼🔼)
+    - +<LandingPage/> conditional render create account and sign in if user is logined 
+    - +<LandingPage/> no images same endpoint result no categories
+    -  +<SubscripedChannels/>:50 (line 50 in component file) useeffect when state change log it (monitor system) usecallback,usememo 
+    - +<Protected/> blanc if invalid token,no popup states
+
+    - host {due:2024-06-22}
+      1. solve eslint problems @zaki 
+      2. check host @hazem
+      3. team tests @otherTeam
+      4. team active @otherTeam
+
+
+
+
+     
 
 ### In Progress
 
-- [ ] consume Articles API @zaki
+    - [ ] zaki install extntions @zaki
+    - [ ] +<UserArticles/> consume Articles API @zaki
+       - 🗄️ ![alt text](imagesRef/image-4.png)
+       - errors in api
+       - task is the same like other apis
+
+
+
+    -  bad model position and padding in +<ModalArticle> 
+    - when scroll position change @hazem
+    - record 2 endpoints @hazem
+    - 
 
 ### Done ✓
-
-- a[x] @zaki <Alert/> component in Login,createAccount:must be top all components
-- [x] @hazem consume rss API
-- [x] consume auth API
-- [x] store email to local storage
-- [x] input code from email
-- [x] send code,email to api
-- [x] msg confirmed or not
-- [x] forget password css
-- [x] API end points
-- [x] two logins appear success then err
-- [x] testing mahmoud example
-- [x] ~~ homepage ~~
-- [x] ~~google auth http://65470565009-pjolbjeuuds1s29b764lgv86vo0ova6i.apps.googleusercontent.com~~
-- [x] big msgs use Mazefdn@123
-- [x] ~~landingpage~~
-- [x] rm admin mail ahmed
-- [x] remove tring email and password
-- [x] login needs 2 clicks
-- [x] no backg img repeat
-- [x] From JWT token return the data
-- [x] rss database
-
+    - +<Home/> remove token on logout @zaki
+    - +<Home/>  if we on /home/anypage then reload page, the focus of buttons of left will be first always @zaki
+    - follow/unfollow local state which change buttons follow and unfollow @hazem
+      - +<Subscription/> 2apis_chain_promise on unflow request,immediatly remove from front end,update state
+      - +<dISCOVER> update button(follow/unflow) state
+    - merge request from zaki @hazem
+    -  screen from todo file progress @hazem 
+    -  auth API v2 (admin endpoints. /rss/:id) @hazem call backend
+    -  close modal on click the wrapper  @hazem
+    - modal not updates on multi clicks @hazem
+    -  OVERWRITIE browser stack (when use useNavigate) @hazem
+    - [x] in err msg no exit btn @zaki
+    - [x] @zaki +<Alert/> component in +<Login/> +<createAccount/> :must be top all components
+    - +<Login/> bad route to resetpassword (reload) @hazem
+    - +<login/> , with this data ,two messages appear success then failed   @hazem
+       ![alt text](imagesRef/image-3.png)
+    - [x] @hazem consume rss API
+    - [x] consume auth API
+    - [x] store email to local storage
+    - [x] input code from email
+    - [x] send code,email to api
+    - [x] msg confirmed or not
+    - [ء] meeting {due:2024-06-20} @team
+        - q/a anything
+        - what we did
+        - TODO file > a must
+        - contribute in file +,@
+        - TODO extention > 
+        - live demo 
+        - inProgress section discuss
+        - q/a anything
+    - [x] forget password css
+    - [x] API end points
+    - [x] two logins appear success then err
+    - [x] testing mahmoud example
+    - [x] ~~ homepage ~~
+    - [x] ~~google auth http://65470565009-pjolbjeuuds1s29b764lgv86vo0ova6i.apps.googleusercontent.com~~
+    - [x] big msgs use Mazefdn@123
+    - [x] ~~landingpage~~
+    - [x] rm admin mail ahmed
+    - [x] remove tring email and password
+    - [x] login needs 2 clicks
+    - [x] no backg img repeat
+    - [x] From JWT token return the data
+    - [x] rss database
+    
 # note
 
 - this account works :
   user: xr3c9k2yua@dpptd.com
   password:Mazefdn@12311
+
+- 
 
 # rss feeds
 

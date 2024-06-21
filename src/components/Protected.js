@@ -22,7 +22,7 @@ function Protected({ children, showLoginPopupfn }) {
       .then((jsonData) => {
         if (jsonData.statusCode !== 200) {
           showLoginPopupfn(true);
-          return <Navigate to="/" />;
+          return (<Navigate to="/" replace={true} />);
         } else {
           console.log(jsonData);
           setIsReturn(true);
@@ -32,7 +32,7 @@ function Protected({ children, showLoginPopupfn }) {
     //check token if exist in background
   } else {
     showLoginPopupfn(true);
-    return <Navigate to="/" />;
+    return <Navigate to="/" replace={true}/>;
   }
 
   if (isReturn) return children;

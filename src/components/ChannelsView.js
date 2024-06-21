@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ChannelCard from "./ChannelCard";
 import "../styles/ChannelsView.css";
+import ModalArticle from "./ModalArticle";
 
-function ChannelsView({ channels, type }) {
+function ChannelsView({ parrallelDiscover, GetSubscriptions, channels, type }) {
+  const [ModalData, setModalData] = useState('')
   const [intialChannels, setintialChannels] = useState([
     { image: "", description: "", title: "", id: "" },
     { image: "", description: "", title: "", id: "" },
@@ -19,19 +21,29 @@ function ChannelsView({ channels, type }) {
     { image: "", description: "", title: "", id: "" },
   ]);
 
-  
+
   if (channels)
     return (
+
       <div className={`gallary_items ${type}_class`}>
-        {channels.map((item,id) => (
-          <ChannelCard key={id}  type={type} item={item} />
+
+        {channels.map((item, id) => (
+          <ChannelCard
+            parrallelDiscover={parrallelDiscover}
+            GetSubscriptions={GetSubscriptions}
+            setModalData={(dataFromChild) => { setModalData(dataFromChild) }}
+            key={id}
+            type={type}
+            item={item} />
         ))}
+        {ModalData && <ModalArticle setModalData={setModalData} data={ModalData} />
+        }
       </div>
     );
   else {
     return (
       <div className={`gallary_items ${type}_class`}>
-        {intialChannels.map((item,id) => (
+        {intialChannels.map((item, id) => (
           <ChannelCard key={id} type={type} item={item} />
         ))}
       </div>
