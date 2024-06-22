@@ -14,6 +14,7 @@
     - redux,theme,translation
     - next (routing,static pages   recommendation,know why to use)
     - multipages navigation +<Channels/>
+    - #project_graduation signup second confirm pass field
     
 
 ### TODO (high 🔼🔼🔼)
@@ -22,20 +23,18 @@
     -  +<SubscripedChannels/>:50 (line 50 in component file) useeffect when state change log it (monitor system) usecallback,usememo 
     - +<Protected/> blanc if invalid token,no popup states
 
+
     - host {due:2024-06-22}
       1. solve eslint problems @zaki 
       2. check host @hazem
       3. team tests @otherTeam
       4. team active @otherTeam
 
-
-
-
-     
-
 ### In Progress
 
-    - [ ] zaki install extntions @zaki
+    - +<ALL_fetch_APIS/>  use Redux,set Err modal @hazem
+    - +<UserArticle/> show +<ArticleModal data={data}/>  @hazem
+
     - [ ] +<UserArticles/> consume Articles API @zaki
        - 🗄️ ![alt text](imagesRef/image-4.png)
        - errors in api
@@ -43,12 +42,16 @@
 
 
 
-    -  bad model position and padding in +<ModalArticle> 
-    - when scroll position change @hazem
-    - record 2 endpoints @hazem
-    - 
 
 ### Done ✓
+    - +<ArticleModal/> global in homeLayout ,to solve scroll problem
+    - +<SubscribedChannels/> show +<ArticleModal data={data}/> @hazem
+    - +<DiscoverChannels/> show +<ArticleModal data={data}/>  @hazem
+    - record 2 endpoints @hazem
+    -  bad model position and padding in +<ModalArticle>  @hazem
+    - when scroll position change @hazem
+    
+    - [ ] zaki install extntions @zaki
     - +<Home/> remove token on logout @zaki
     - +<Home/>  if we on /home/anypage then reload page, the focus of buttons of left will be first always @zaki
     - follow/unfollow local state which change buttons follow and unfollow @hazem

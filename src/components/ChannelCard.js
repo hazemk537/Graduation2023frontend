@@ -29,7 +29,7 @@ function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, key, t
   const token = getToken();
 
   const subscribeHandler = (resolve, id) => {
-    
+
     fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/RssUserSubscribe/${id}`, {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -59,7 +59,7 @@ function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, key, t
   };
 
   const unsubscribeHandler = (resolve, id) => {
-    
+
 
     console.log(id);
     fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/RssUserUnSubscribe/${id}`, {
@@ -95,18 +95,20 @@ function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, key, t
   };
 
   return (
-    <div className="gallary_item" key={item.id} onClick={() => {
-      //allow one articel modal
-      // setModalData(item)
-    }}>
-      <div className="gallary_img_wrapper">
-        <img src={item.image} alt={item.title} />
-      </div>
-      <div className="gallary_item_details">
-        <h2 className="gallary_item_headding">{item.title}</h2>
-        <p className="gallary_item_description">{item.description}</p>
-      </div>
-      <div className="gallary_item_actions">
+    <div>
+      <div className="gallary_item" key={item.id} onClick={() => {
+        //allow one articel modal
+        setModalData(item)
+      }}>
+        <div className="gallary_img_wrapper">
+          <img src={item.image} alt={item.title} />
+        </div>
+        <div className="gallary_item_details">
+          <h2 className="gallary_item_headding">{item.title}</h2>
+          <p className="gallary_item_description">{item.description}</p>
+        </div>
+
+      </div><div className="gallary_item_actions">
         {type === "subscription_channels" &&
           <button className="subscribe_btn" onClick={() => {
             new Promise((resolve, reject) => {
@@ -118,7 +120,7 @@ function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, key, t
             UnFollow
           </button>
         }
-        {type === "discover_channels" && item.subscribed ? 
+        {type === "discover_channels" && item.subscribed ?
           <button className="subscribe_btn" onClick={() => {
             new Promise((resolve, reject) => {
               unsubscribeHandler(resolve, item.id);
@@ -127,10 +129,10 @@ function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, key, t
             });
           }}>
             UnFollow
-          </button> 
-          : null 
+          </button>
+          : null
         }
-        {!item.subscribed && type === "discover_channels" && 
+        {!item.subscribed && type === "discover_channels" &&
           <button className="subscribe_btn" onClick={() => {
             new Promise((resolve, reject) => {
               subscribeHandler(resolve, item.id);

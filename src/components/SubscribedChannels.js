@@ -64,7 +64,10 @@ else{
   if (channels) {
     return (<>
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
-      <ChannelsView GetSubscriptions={GetSubscriptions} type="subscription_channels" channels={channels} /></>)
+      <ChannelsView 
+      GetSubscriptions={GetSubscriptions}
+       type="subscription_channels" 
+       channels={channels} /></>)
   }
   else {
     return (
