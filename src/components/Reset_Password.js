@@ -1,23 +1,26 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { faAt } from "@fortawesome/free-solid-svg-icons";
+import { Link, useNavigate } from "react-router-dom";
+import { faAt, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/Reset_Password.css";
-import {
-  json,
-  useNavigate,
-} from "react-router-dom/dist/umd/react-router-dom.development";
 import Alert from "./Alert";
+
 function ResetPassword() {
-  let emailInputRef = useRef(null);
-  let NewPasswordRef = useRef(null);
-  let confirmationCodeRef = useRef(null);
+  const emailInputRef = useRef(null);
+  const NewPasswordRef = useRef(null);
+  const confirmationCodeRef = useRef(null);
   const [ErrState, setErrState] = useState(false);
   const [AlertMsg, setAlertMessage] = useState(null);
   const [AlertType, setAlertType] = useState(false);
   const [showCodeField, setCodeField] = useState(false);
   const [showNewPasswordField, setNewPassword] = useState(false);
-  let NavigateFn = useNavigate();
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const navigate = useNavigate();
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
   function checkUserIdentityHandler() {
     fetch("https://BrieflyNews.runasp.net/api/v1/Auth/ConfirmResetPassword", {
       headers: { "Content-Type": "application/json" },
@@ -25,39 +28,28 @@ function ResetPassword() {
         email: emailInputRef.current.value,
         code: confirmationCodeRef.current.value,
       }),
-
       method: "POST",
     })
       .then((response) => response.json())
       .then((jsonData) => {
-        console.log(`Response `);
         console.log(jsonData);
         setAlertMessage(jsonData.message);
 
         if (jsonData.statusCode !== 200) {
           setErrState(true);
           setAlertType("err");
-        }
-        else{
+        } else {
           setNewPassword(true);
-
         }
       })
-
       .catch((error) => {
         setAlertType("err");
         setAlertMessage(error);
         setErrState(true);
       });
-    if (!ErrState) {
-      setAlertType("success");
-      console.log(ErrState);
-      // new input field
-    }
   }
-  function requestPassHandler() {
-    console.log(emailInputRef.current.value);
 
+  function requestPassHandler() {
     fetch("https://BrieflyNews.runasp.net/api/v1/Auth/SendResetpassword", {
       method: "POST",
       headers: {
@@ -65,24 +57,16 @@ function ResetPassword() {
       },
       body: JSON.stringify({ email: emailInputRef.current.value }),
     })
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((jsonData) => {
         console.log(jsonData);
-        // #todo_4 code 200/201
-        // direct get the msg from response
         setAlertMessage(jsonData.message);
 
         if (jsonData.statusCode !== 200) {
           setErrState(true);
           setAlertType("err");
-        }
-        //only if success
-        else {
-          // 1.disable the code field and change style
-          // 2. hidedn btn 1
-          // 3. displat btn2
+        } else {
+          setCodeField(true);
         }
       })
       .catch((error) => {
@@ -90,15 +74,9 @@ function ResetPassword() {
         setAlertMessage(error);
         setErrState(true);
       });
-    if (!ErrState) {
-      setAlertType("success");
-      console.log(ErrState);
-      setCodeField(true);
-    }
   }
 
   function ResetPasswordHandler() {
-    // NewPasswordRef
     fetch("https://BrieflyNews.runasp.net/api/v1/Auth/Resetpassword", {
       method: "POST",
       headers: {
@@ -109,30 +87,26 @@ function ResetPassword() {
         password: NewPasswordRef.current.value,
       }),
     })
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((jsonData) => {
-      setAlertMessage(jsonData.message);
+        setAlertMessage(jsonData.message);
 
         if (jsonData.statusCode !== 200) {
           setErrState(true);
           setAlertType("err");
           setAlertMessage(jsonData.message);
+        } else {
+          setAlertType("success");
+          navigate('/'); // Navigate to home page on success
         }
-        console.log('Send new Password...')
-        console.log(jsonData)
       })
       .catch((error) => {
         setAlertType("err");
         setAlertMessage(error);
         setErrState(true);
       });
-    if (!ErrState) {
-      setAlertType("success");
-      console.log(ErrState);
-    }
   }
+
   return (
     <>
       {AlertMsg && <Alert alertText={AlertMsg} type={AlertType} />}
@@ -165,7 +139,7 @@ function ResetPassword() {
           <div>
             <p>
               <Link className="Link" to="/">
-                 Home
+                Home
               </Link>
             </p>
           </div>
@@ -180,13 +154,25 @@ function ResetPassword() {
               />
             )}
             {showNewPasswordField && (
-              <input
-                type="password"
-                className="resetPassword_input"
-                placeholder="Enter New Password"
-                name="confirmationCode"
-                ref={NewPasswordRef}
-              />
+              <div className="input-field">
+                <FontAwesomeIcon
+                  icon={faLock}
+                  beat
+                  id="awesome1"
+                  style={{ color: "#0740b0" }}
+                />
+                <input
+                  type={passwordVisible ? "text" : "password"}
+                  className="pass-key"
+                  required
+                  placeholder="Password"
+                  name="password"
+                  ref={NewPasswordRef}
+                />
+                <span className="show" onClick={togglePasswordVisibility}>
+                  {passwordVisible ? "hide" : "show"}
+                </span>
+              </div>
             )}
             {showCodeField && !showNewPasswordField && (
               <button
@@ -212,4 +198,3 @@ function ResetPassword() {
 }
 
 export default ResetPassword;
-
