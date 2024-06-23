@@ -25,14 +25,14 @@
 
 ### In Progress
 
+- #project_graduation in +<ResetPassword/> component, if statuscode from API is 404 show err and donot show enter code  field @zaki
+- in <ArticleCard/> and <ChannelCard/> add placeholder images api doesnot provide one. @zaki
 - remove all chanells from +<Home/> backend not implement it @hazem
 - +<ALL_fetch_APIS/>  use Redux,set Err modal @hazem
 - new tasks to the grad project  @hazem
 - +<UserArticles/> bad when consume api/v1/Article/GetRssArticle/ bad article modal error  @hazem
 -  netwerk error #pro_grad @hazem
 
-- #project_graduation in +<ResetPassword/> component, if statuscode from API is 404 show err and donot show enter code  field
-- in <ArticleCard/> and <ChannelCard/> add placeholder images api doesnot provide one.
 
 
 
