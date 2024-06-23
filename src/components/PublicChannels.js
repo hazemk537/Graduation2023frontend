@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ChannelsView from "./ChannelsView";
 import "../styles/publicChannels.css";
 import { faL } from "@fortawesome/free-solid-svg-icons";
-import ModalArticle from "./ModalArticle";
+import ModalArticle from "./ChannelModal";
 const categories = [
   {
 

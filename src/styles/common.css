@@ -1,0 +1,10 @@
+.channelsHover:hover,.allChannelsHover:hover{
+background-color: rgb(37, 42, 40);
+padding-top: 1px;
+padding-bottom: 1px;
+padding-left: 10px;
+border-radius: 5px;
+cursor: pointer;
+
+}
+

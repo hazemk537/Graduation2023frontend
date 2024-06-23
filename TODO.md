@@ -15,8 +15,6 @@
     - next (routing,static pages   recommendation,know why to use)
     - multipages navigation +<Channels/>
     - #project_graduation signup second confirm pass field
-    
-
 ### TODO (high 🔼🔼🔼)
     - +<LandingPage/> conditional render create account and sign in if user is logined 
     - +<LandingPage/> no images same endpoint result no categories
@@ -32,23 +30,39 @@
 
 ### In Progress
 
-    - +<ALL_fetch_APIS/>  use Redux,set Err modal @hazem
-    - +<UserArticle/> show +<ArticleModal data={data}/>  @hazem
+- +<ALL_fetch_APIS/>  use Redux,set Err modal @hazem
+- +<UserArticles/> bad when consume api/v1/Article/GetRssArticle/ bad article modal error  @hazem
+- 
 
-    - [ ] +<UserArticles/> consume Articles API @zaki
-       - 🗄️ ![alt text](imagesRef/image-4.png)
-       - errors in api
-       - task is the same like other apis
 
+    
 
 
 
 ### Done ✓
+    - +<UserArticle/> show +<ArticleModal data={data}/>  @hazem
+    - [ ] +<UserArticles/> consume Articles API @zaki
+       - 🗄️ ![alt text](imagesRef/image-4.png)
+       - errors in api
+
+       - task is the same like other a     is
+
+    - articles and subsciptions view
+      - move +<SubscripedChannels/> into +<homeArticles>
+      - add subscription Horizontal into +<homeArticle>
+      - onClick list update Displayed Articles...
+      - +<Discover> onClick show Articles in +<ArticleModalList>
+
+      - PROS: 
+        1. user see  articles per RSS or all...
+        2. remove useless Subsciption route
+        3. subscription freindly next to articles
+        4. user see discover items before subscipe 
     - +<ArticleModal/> global in homeLayout ,to solve scroll problem
     - +<SubscribedChannels/> show +<ArticleModal data={data}/> @hazem
     - +<DiscoverChannels/> show +<ArticleModal data={data}/>  @hazem
     - record 2 endpoints @hazem
-    -  bad model position and padding in +<ModalArticle>  @hazem
+    -  bad model position and padding in +<ArticleModal>  @hazem
     - when scroll position change @hazem
     
     - [ ] zaki install extntions @zaki

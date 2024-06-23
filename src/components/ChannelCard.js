@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import '../styles/ChannelCard.css'
-import ModalArticle from "./ModalArticle";
+import ModalArticle from "./ChannelModal";
 
 function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, key, type, item }) {
   const [Subscribed, setSubscribed] = useState(false);
@@ -96,10 +96,12 @@ function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, key, t
 
   return (
     <div>
-      <div className="gallary_item" key={item.id} onClick={() => {
-        //allow one articel modal
-        setModalData(item)
-      }}>
+      <div className="gallary_item"
+        key={item.id}
+        onClick={() => {
+          //allow one articel modal
+          setModalData(item)
+        }}>
         <div className="gallary_img_wrapper">
           <img src={item.image} alt={item.title} />
         </div>

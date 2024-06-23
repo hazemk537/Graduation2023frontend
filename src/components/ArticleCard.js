@@ -1,24 +1,67 @@
 import React, { useState } from "react";
+import ArticleModal from "./ArticleModal";
+function ArticleCard({ type, item }) {
+  const [ArticleData, setArticleData] = useState('')
 
-function ArticleCard({ type,item }) {
-  const [Subscribed, setSubscribed] = useState(false);
+  const [alertMessage, setAlertMessage] = useState(false);
+  const [alertType, setAlertType] = useState(false);
 
-  const ViewArticleInfo = (id) => {
-    //API
-    console.log(id);
+  let token = JSON.parse(localStorage.getItem('data')).token
+
+  const GetArticleInfo = (id) => {
+      if (id) {
+        fetch(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${id}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }).then((response) => {
+          if (!response.ok) {
+            console.log('GetRssArticle !response.ok ...')
+
+            console.log(response)
+            setAlertMessage(response.statusCode)
+
+          }
+          else {
+            console.log('GetRssArticle response.ok ...')
+
+          }
+          return response.json()
+
+        }).then((jsonData) => {
+          if (jsonData.succeeded || jsonData.hasOwnProperty('data')) {
+            console.log('GetRssArticle jsonData.succeeded...')
+            setAlertMessage(jsonData.message)
+            setAlertMessage('success')
+            console.log(jsonData.data)
+            setArticleData(jsonData.data)
+            
+          }
+          else {
+            console.log('GetRssArticle !jsonData.succeeded...')
+
+          }
+
+        }).catch((err) => {
+          setAlertMessage(err)
+          setAlertType('err')
+        })
+      }
+
+    
+
+
   };
 
   return (
-    <div className="gallary_item" key={item.id}>
-      <div
-        key={item.id}
-        className="receive_click_div_helper"
-        onClick={() => {
-          ViewArticleInfo(item.id);
-        }}
-      ></div>
+    <div className="gallary_item" key={item.id}
+     onClick={() => {
+      GetArticleInfo(item.id);
+    }}>
+      {ArticleData && <ArticleModal data={ArticleData} setArticleData={setArticleData} />}
+      
       <div className="gallary_img_wrapper">
-        <img src={item.thumbnail} alt={item.title} />
+        <img src='../assets/Eo_circle_red_white_letter-b.png' alt={item.title} />
       </div>
       <div className="gallary_item_details">
         <h2 className="gallary_item_headding">{item.title}</h2>

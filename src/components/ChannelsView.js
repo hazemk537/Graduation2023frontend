@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ChannelCard from "./ChannelCard";
 import "../styles/ChannelsView.css";
-import ModalArticle from "./ModalArticle";
+import ChannelModal from "./ChannelModal";
 
 function ChannelsView({ parrallelDiscover, GetSubscriptions, channels, type }) {
   const [ModalData, setModalData] = useState('')
@@ -36,7 +36,7 @@ function ChannelsView({ parrallelDiscover, GetSubscriptions, channels, type }) {
             type={type}
             item={item} />
         ))}
-        {ModalData && <ModalArticle setModalData={setModalData} data={ModalData} />
+        {ModalData && <ChannelModal setModalData={setModalData} data={ModalData} />
         }
       </div>
     );

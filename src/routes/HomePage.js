@@ -5,7 +5,6 @@ import { Outlet, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { SubscriptionsSvg } from "../svgIcons/SubscriptionsSvg";
 import { DiscoverThin } from "../svgIcons/DiscoverSvg";
-import ModalArticle from "../components/ModalArticle";
 
 function HomePage() {
   const location = useLocation();

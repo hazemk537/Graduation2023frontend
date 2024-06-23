@@ -1,8 +1,8 @@
 import React from 'react'
 
 
-function ModalArticle({ data, setModalData }) {
-    console.log(data)
+function ChannelModal({ data, setModalData }) {
+    // console.log(data)
     return (
         <>
             <div
@@ -66,4 +66,4 @@ function ModalArticle({ data, setModalData }) {
     )
 }
 
-export default ModalArticle
+export default ChannelModal
