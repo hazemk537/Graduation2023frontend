@@ -4,23 +4,18 @@
 
 ### TODO (low priority 🔼)
     - [ ] inline #todo in the code
-    - popups for all apis ex:if token expire.
+    - +apis popups for all apis ex:if token expire.
     - pricing implementation @backend
-    - update all apis to latest version
-    - 
-    - replace <Navigate to="/" />; 
+    - +apis update all apis to latest version
     - [ ] optimize images 
-    - channesl modals, btn toggles ,array state with id
     - redux,theme,translation
     - next (routing,static pages   recommendation,know why to use)
-    - multipages navigation +<Channels/>
     - #project_graduation signup second confirm pass field
 ### TODO (high 🔼🔼🔼)
-    - +<LandingPage/> conditional render create account and sign in if user is logined 
-    - +<LandingPage/> no images same endpoint result no categories
+    - +<LandingPage/> conditional render create account and sign in if user is logined @zaki
+    - +<LandingPage/> if no images same endpoint result no categories
     -  +<SubscripedChannels/>:50 (line 50 in component file) useeffect when state change log it (monitor system) usecallback,usememo 
     - +<Protected/> blanc if invalid token,no popup states
-
 
     - host {due:2024-06-22}
       1. solve eslint problems @zaki 
@@ -30,9 +25,15 @@
 
 ### In Progress
 
+- remove all chanells from +<Home/> backend not implement it @hazem
 - +<ALL_fetch_APIS/>  use Redux,set Err modal @hazem
+- new tasks to the grad project  @hazem
 - +<UserArticles/> bad when consume api/v1/Article/GetRssArticle/ bad article modal error  @hazem
-- 
+-  netwerk error #pro_grad @hazem
+
+- #project_graduation in +<ResetPassword/> component, if statuscode from API is 404 show err and donot show enter code  field
+- in <ArticleCard/> and <ChannelCard/> add placeholder images api doesnot provide one.
+
 
 
     
@@ -40,6 +41,15 @@
 
 
 ### Done ✓
+
+-  #pro_grad all channels api in +</home/> 
+- #project_graduation on signup success bad state message
+- update,create,delete by admin, ?? #backend #pro_grad (current no )
+- [x] #project_graduation if sign with google ,store token,refresh token then forward to home
+
+    - channesl modals, btn toggles ,array state with id
+    - replace <Navigate to="/" />; 
+    - multipages navigation +<Channels/>
     - +<UserArticle/> show +<ArticleModal data={data}/>  @hazem
     - [ ] +<UserArticles/> consume Articles API @zaki
        - 🗄️ ![alt text](imagesRef/image-4.png)

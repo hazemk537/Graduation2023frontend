@@ -97,7 +97,7 @@ function SubscribedList({ GetRssArticles }) {
 
 
                 >
-                    <div className='allChannelsHover'
+                    {/* <div className='allChannelsHover'
                         onClick={() => { GetRssArticles('all') }}
 
                         style={horizontalCardsStyle} >
@@ -110,7 +110,7 @@ function SubscribedList({ GetRssArticles }) {
                             All Channels
                         </span>
 
-                    </div>
+                    </div> */}
 
                     {channels?.map((item,idx) => {
                         console.log(idx)
