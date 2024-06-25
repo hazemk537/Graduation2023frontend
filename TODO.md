@@ -30,7 +30,6 @@ triggerState_Get_noBody_Validationerr_noCommandField
 - draw ,track and optimise tree
 - #project_graduation in +<ResetPassword/> component, if statuscode from API is 404 show err and donot show enter code  field @zaki
 - in <ArticleCard/> and <ChannelCard/> add placeholder images api doesnot provide one. @zaki
-- remove all chanells from +<Home/> backend not implement it @hazem
 
 - +<SubscribedList/> state to color the selected rss >>> add its name before the articles
 - +<ALL_fetch_APIS/>  use Redux,set Err modal @hazem
@@ -38,16 +37,16 @@ triggerState_Get_noBody_Validationerr_noCommandField
   - [x] custom hook and 5 useDispatches...     @hazem 
   - 1. replace all react(fetch,useState,useEffect) with custom hook @hazem 
 
-      - +<PublicChannels/> ✔️ 
-      - +<SubscribedLIst/> ✔️
-      - +<SubscriptionsChannels> ✔️ 
-      - +<MainLandingPage/> ✔️
-      - +<create_Account/> ✔️
-      - +<UserArticles/> ✔️
-      - +<UserArticle/> ✔️
-      - +<ArticleCard/> ✔️
-      - +<login/> ✔️
-      - +<protected/> ✔️
+      - [x] +<PublicChannels/> ✔️ 
+      - [x] +<SubscribedLIst/> ✔️
+      - [x] +<SubscriptionsChannels> ✔️ 
+      - [x] +<MainLandingPage/> ✔️
+      - [x] +<create_Account/> ✔️
+      - [x] +<UserArticles/> ✔️
+      - [x] +<UserArticle/> ✔️
+      - [x] +<ArticleCard/> ✔️
+      - [x] +<login/> ✔️
+      - [x] +<protected/> ✔️
       - reset_password
       - addFeed
 
@@ -60,16 +59,16 @@ triggerState_Get_noBody_Validationerr_noCommandField
   - 2. useDispatches inside fetching without useFetch 
   
   
-  @hazem 
+ -  @hazem 
        - +<create_Account/>
        - +<ResetPassword/>
-  
   - 3. modal with useSelctor 
   - 4. netwerk error #pro_grad                @hazem
   - 5. troubleshoot website
   - new tasks to the grad project          @hazem 
 
-
+- bad fncs routing in Protected
+- bad modal close in +UserArticles
 
   - @zaki bad modal on click articles +<LandingPage/>
     - only visible in the galary
@@ -88,6 +87,7 @@ triggerState_Get_noBody_Validationerr_noCommandField
 
 
 ### Done ✓
+- remove all chanells from +<Home/> backend not implement it @hazem
 - +<UserArticles/> bad when consume api/v1/Article/GetRssArticle/ bad article modal error  @hazem
   - troubleshoot
   - solve
