@@ -1,65 +1,21 @@
 import React, { useState } from "react";
 import ArticleModal from "./ArticleModal";
-function ArticleCard({ type, item }) {
-  const [ArticleData, setArticleData] = useState('')
+import useFetch from "../customHooks/useFetch";
+function ArticleCard({ type, item,setArticleData }) {
+let itemId=item.id
 
-  const [alertMessage, setAlertMessage] = useState(false);
-  const [alertType, setAlertType] = useState(false);
 
   let token = JSON.parse(localStorage.getItem('data')).token
 
-  const GetArticleInfo = (id) => {
-      if (id) {
-        fetch(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${id}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        }).then((response) => {
-          if (!response.ok) {
-            console.log('GetRssArticle !response.ok ...')
-
-            console.log(response)
-            setAlertMessage(response.statusCode)
-
-          }
-          else {
-            console.log('GetRssArticle response.ok ...')
-
-          }
-          return response.json()
-
-        }).then((jsonData) => {
-          if (jsonData.succeeded || jsonData.hasOwnProperty('data')) {
-            console.log('GetRssArticle jsonData.succeeded...')
-            setAlertMessage(jsonData.message)
-            setAlertMessage('success')
-            console.log(jsonData.data)
-            setArticleData(jsonData.data)
-            
-          }
-          else {
-            console.log('GetRssArticle !jsonData.succeeded...')
-
-          }
-
-        }).catch((err) => {
-          setAlertMessage(err)
-          setAlertType('err')
-        })
-      }
-
-    
-
-
-  };
+  const [ArticleData,] = useFetch(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${itemId}`, { method: 'get', name: 'GetSubscibedList', token: token })
 
   return (
     <div className="gallary_item" key={item.id}
-     onClick={() => {
-      GetArticleInfo(item.id);
-    }}>
-      {ArticleData && <ArticleModal data={ArticleData} setArticleData={setArticleData} />}
-      
+    onClick={()=>{
+      setArticleData(ArticleData)
+    }}
+    
+     >
       <div className="gallary_img_wrapper">
         <img src='../assets/Eo_circle_red_white_letter-b.png' alt={item.title} />
       </div>

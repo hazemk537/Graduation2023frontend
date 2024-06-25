@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/common.css'
+import useFetch from '../customHooks/useFetch'
 let horizontalCardsStyle = {
     display: 'flex',
     flexDirection: 'row',
@@ -27,67 +28,16 @@ let verticalCardsStyle = {
 }
 let channelImage = { width: '4rem' }
 
-function SubscribedList({ GetRssArticles }) {
-    const [channels, setChannels] = useState();
+function SubscribedList({ GetRssArticlesById }) {
 
-    const [alertMessage, setAlertMessage] = useState(false);
-    const [alertType, setAlertType] = useState(false);
     let token = JSON.parse(localStorage.getItem('data')).token
 
 
-    // fetch all subscriptions .... no pages unless we need it
-    function GetSubscriptions() {
-        fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        }).then((response) => {
-            if (!response.ok) {
-                console.log('GetSubscriptions !response.ok ...')
 
-                console.log(response)
-                //#todo if it exist 
-                setAlertMessage(response.statusCode)
+    const [ChannelsData] = useFetch('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', { method: 'get', name: 'GetSubscibedList', token: token })
 
-            }
-            else {
-                console.log('GetSubscriptions response.ok ...')
-
-            }
-            return response.json()
-
-        }).then((jsonData) => {
-            if (jsonData.succeeded || jsonData.hasOwnProperty('data')) {
-                console.log('GetSubscriptions jsonData.succeeded...')
-                setAlertMessage(jsonData.message)
-                setAlertMessage('success')
-                setChannels(jsonData.data)
-            }
-            else {
-                console.log('GetSubscriptions !jsonData.succeeded...')
-
-            }
-
-        }).catch((err) => {
-            setAlertMessage(err)
-            setAlertType('err')
-        })
-
-    }
-    useEffect(() => {
-        //API subscribed AUTH channels
-        // change channels stateto rerender the component with the new channels updated value
-        GetSubscriptions()
-        //
-        // console.log(`channels updated ...`)
-        // console.log(channels)
-
-
-    }, []);
-
-
-
-    if (channels) {
+    
+    if (ChannelsData) {
         return (
 
             <div>
@@ -112,11 +62,11 @@ function SubscribedList({ GetRssArticles }) {
 
                     </div> */}
 
-                    {channels?.map((item,idx) => {
+                    {ChannelsData?.map((item, idx) => {
                         console.log(idx)
 
                         return (<div className='channelsHover' style={horizontalCardsStyle} key={idx} onClick={() => {
-                            GetRssArticles(item.id)
+                            GetRssArticlesById(item.id)
                         }}>
                             <div>
                                 <img style={channelImage} alt={item.title} src={item.image} />

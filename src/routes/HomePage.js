@@ -47,7 +47,7 @@ function HomePage() {
 
   return (
     <>
-    {/* <ModalArticle data={'werrrfwefwe'} ={()=>{console.log('r')}}/> */}
+    {/* modalStateVisible && <ModalArticle data={'werrrfwefwe'} ={()=>{console.log('r')}}/> */}
       <div className="homepage-container">
         <div className="homepage-header">
           <div className="homepage-header-left">
@@ -62,7 +62,7 @@ function HomePage() {
                 d="m36.929 34.225c-.688-.315-1.654-.479-2.899-.492h-7.143v7.736h7.045c1.258 0 2.238-.171 2.938-.512 1.271-.631 1.907-1.838 1.907-3.623 0-1.509-.616-2.545-1.848-3.109"
                 fill="#e53935"
               />
-              <path
+              <pat
                 d="m37.008 28.211c.785-.479 1.179-1.329 1.179-2.55 0-1.352-.52-2.244-1.558-2.677-.896-.303-2.04-.453-3.43-.453h-6.313v6.397h7.053c1.26.001 2.284-.239 3.069-.717"
                 fill="#e53935"
               />

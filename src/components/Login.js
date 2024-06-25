@@ -30,33 +30,6 @@ function LoginForm({ onClose, onSignupClick }) {
     //#todo_4 email Email usr_mail >> map
     const data = { 'Email': email, 'password': password };
     console.log(' handle login ....')
-    let apikey = '8e69a1db2fb43edac805be1306b74ae2';
-    let url = 'https://gnews.io/api/v4/top-headlines?category=global&lang=ar&country=eg&max=10&apikey=' + apikey;
-    fetch(url)
-      .then((res) => res.json())
-      .then((json) => {
-
-        console.log(json)
-        let modifiedArticles;
-        if (json.articles) {
-          modifiedArticles = json.articles.map((item, index) => {
-            return {
-              thumbnail: item.image,
-              title: item.title,
-              description: item.description,
-              id: index,
-              content: item.content,
-              publishedAt: item.publishedAt,
-              src: item.src,
-              url: item.url
-
-            }
-          })
-        }
-        console.log(modifiedArticles)
-
-      }
-      )
     fetch("https://BrieflyNews.runasp.net/api/v1/Auth/Login", {
       method: "POST",
       headers: {
@@ -109,7 +82,6 @@ function LoginForm({ onClose, onSignupClick }) {
   };
   return (
     <>
-      {alertMessage && <Alert type={alertType} alertText={alertMessage} />}
 
       <div className="login_assist"></div>
       <div className="form_sign">
