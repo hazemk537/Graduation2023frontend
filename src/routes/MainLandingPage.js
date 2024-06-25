@@ -6,7 +6,8 @@ import Login from "../components/Login";
 import CreateAccount from "../components/Create_Account";
 import PublicChannels from "../components/PublicChannels.js";
 import Alert from "../components/Alert.js";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import useFetch from "../customHooks/useFetch.js";
 
 function MainLandingPage({
   stateShowLoginPopup,
@@ -18,8 +19,8 @@ function MainLandingPage({
   const [showWelcomeModal, setWelcomeModal] = useState(false)
   const [showErrModal, setShowErrModal] = useState(false)
   const [errContent, setErrContent] = useState('')
-  let notifySliceState=useSelector((state)=>state.notifyState)
-  let dispatch=useDispatch()
+  let notifySliceState = useSelector((state) => state.notifyState)
+  let dispatch = useDispatch()
 
   const handleScrollTop = () => {
     window.scrollTo({
@@ -27,49 +28,16 @@ function MainLandingPage({
       behavior: "smooth",
     });
   };
-  let data = JSON.parse(localStorage.getItem("data"));
+  let TokenData = JSON.parse(localStorage.getItem("data"))
 
 
+  const [jsonData] = useFetch(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { useEffect:true,method: 'POST', name: 'GenerateRefreshToken', body: { token: TokenData.token, refreshtoken: TokenData.refreshToken.refreshTokenString } })
 
-  useEffect(() => {
-    let payload = "";
-    if (data&&data.hasOwnProperty('token')) 
-      //this means we have data field in the local storage
-      {
-      fetch("https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken", {
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-        body: JSON.stringify(payload),
-      })
-        .then((Response) => Response.json())
-        .then((jsonData) => {
-          console.log('Validate Token ... ');
-          console.log(jsonData);
+  if (jsonData.data) {
+    // backend returned the data.token and token.RefreshToken
 
-          if (jsonData.statusCode === 404) {
-
-            //get new token and refresh it in local storage
-
-
-          }
-        }).catch((err) => {
-          setErrContent(err.message)//err is object  
-       
-          setShowErrModal(true)
-        })
-    }
-    // welcoming scrren
-
-    console.log('welcoming screen....')
-    console.log(JSON.parse(localStorage.getItem("welcomeScreen")))
-    if (JSON.parse(localStorage.getItem("welcomeScreen")) !== false) {
-      setWelcomeModal(true)
-    }
-
-
-
-  });
-
+    localStorage.setItem('data', jsonData.data)
+  }
 
 
 

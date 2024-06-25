@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import '../styles/ChannelCard.css'
 import ModalArticle from "./ChannelModal";
 
-function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, type, item }) {
+function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, item }) {
   const [Subscribed, setSubscribed] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   const [alertMessage, setAlertMessage] = useState(false);
@@ -103,7 +103,7 @@ function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, type, 
           setModalData(item)
         }}>
         <div className="gallary_img_wrapper">
-          <img src={item.image} alt={item.title} />
+          <img src={item.image||item.thumbnail||item.img} alt={item.title} />
         </div>
         <div className="gallary_item_details">
           <h2 className="gallary_item_headding">{item.title}</h2>
@@ -116,7 +116,7 @@ function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, type, 
             new Promise((resolve, reject) => {
               unsubscribeHandler(resolve, item.id);
             }).then(() => {
-              GetSubscriptions();
+              setTriggerFetch((old)=>!old);
             });
           }}>
             UnFollow

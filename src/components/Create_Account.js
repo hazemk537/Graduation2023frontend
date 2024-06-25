@@ -42,6 +42,7 @@ function Create_Account({ onClose, onSigninClick }) {
 
     console.log(data)
     
+    
     fetch("https://BrieflyNews.runasp.net/api/v1/Auth/Register", {
       method: "POST",
       headers: {

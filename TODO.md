@@ -17,6 +17,7 @@
     -  +<SubscripedChannels/>:50 (line 50 in component file) useeffect when state change log it (monitor system) usecallback,usememo 
     - +<Protected/> blanc if invalid token,no popup states
 
+
     - host {due:2024-06-22}
       1. solve eslint problems @zaki 
       2. check host @hazem
@@ -24,21 +25,36 @@
       4. team active @otherTeam
 
 ### In Progress
-
+- rm strict mode
+triggerState_Get_noBody_Validationerr_noCommandField
+- draw ,track and optimise tree
 - #project_graduation in +<ResetPassword/> component, if statuscode from API is 404 show err and donot show enter code  field @zaki
 - in <ArticleCard/> and <ChannelCard/> add placeholder images api doesnot provide one. @zaki
 - remove all chanells from +<Home/> backend not implement it @hazem
 
-
-
+- +<SubscribedList/> state to color the selected rss >>> add its name before the articles
 - +<ALL_fetch_APIS/>  use Redux,set Err modal @hazem
 
 - global error manage system with redux
   - [x] custom hook and 5 useDispatches...     @hazem 
   - 1. replace all react(fetch,useState,useEffect) with custom hook @hazem 
-  - 2. useDispatches inside fetching without useFetch @hazem 
+
+      - +<PublicChannels/> ✔️ 
+      - +<SubscribedLIst/> ✔️
+      - +<SubscriptionsChannels> ✔️ 
+      - +<MainLandingPage/> ✔️
+      - 
+
+  - 2. useDispatches inside fetching without useFetch 
+  
+  
+  @hazem 
+       - +<create_Account/>
+       - +<Login/>
+       - +<ResetPassword/>
+  
   - 3. modal with useSelctor 
-  -  4. netwerk error #pro_grad                @hazem
+  - 4. netwerk error #pro_grad                @hazem
   - 5. troubleshoot website
   - new tasks to the grad project          @hazem 
 

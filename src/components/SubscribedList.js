@@ -34,10 +34,10 @@ function SubscribedList({ GetRssArticlesById }) {
 
 
 
-    const [ChannelsData] = useFetch('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', { method: 'get', name: 'GetSubscibedList', token: token })
+    const [jsonData] = useFetch('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', { useEffect:true,method: 'get', name: 'GetSubscibedList', token: token })
 
     
-    if (ChannelsData) {
+    if (jsonData.data) {
         return (
 
             <div>
@@ -62,11 +62,18 @@ function SubscribedList({ GetRssArticlesById }) {
 
                     </div> */}
 
-                    {ChannelsData?.map((item, idx) => {
+                    {jsonData.data?.map((item, idx) => {
                         console.log(idx)
 
-                        return (<div className='channelsHover' style={horizontalCardsStyle} key={idx} onClick={() => {
+                        return (<div 
+                            className='fchannelsHover'
+                            style={horizontalCardsStyle} 
+                            key={idx} 
+                            onClick={() => {
+                            // chng style direct without reload component
+
                             GetRssArticlesById(item.id)
+
                         }}>
                             <div>
                                 <img style={channelImage} alt={item.title} src={item.image} />
