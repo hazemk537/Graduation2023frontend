@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import '../styles/ChannelCard.css'
 import ModalArticle from "./ChannelModal";
 
-function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, key, type, item }) {
+function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, type, item }) {
   const [Subscribed, setSubscribed] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   const [alertMessage, setAlertMessage] = useState(false);

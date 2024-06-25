@@ -13,26 +13,15 @@ function useFetch(url, options) {
 
             dispatch(actions.setPending(`${options?.name}`))
             // this .? handle if the options. is not exist
-            let optionsObj
-            if (!options?.token && !options?.body) {
-                optionsObj = {
-                    method: options?.method, headers: {
-                        'Content-Type': 'application/json',
 
-                    }
+
+            let response = await fetch(url, {
+                method: options.method || 'GET',
+                headers: {
+                    ...(options.method === 'POST' && { 'Content-Type': 'application/json' }),
+                    ...(options.token && { Authorization: `Bearer ${options.token}` }),
                 }
-            }
-            else if (!options?.body) {
-                optionsObj = {
-                    method: options?.method, headers: {
-                        'Content-Type': 'application/json',
-
-                        'Authorization': `Bearer ${options.token}`
-
-                    }
-                }
-            } 
-            let response = await fetch(url,optionsObj)
+            })
 
 
             try {
@@ -53,13 +42,15 @@ function useFetch(url, options) {
                 }
 
                 let jsonData = await response.json()
+                console.log(jsonData)
 
                 if (jsonData.succeeded || jsonData.hasOwnProperty('data')) {
                     console.log(` jsonData.succeeded in ${options?.name} ...`)//for devs
                     dispatch(actions.setError(`Err in ${options?.name} `))//for user
 
                     setData(jsonData.data)
-
+                    console.log(`jsonData`)
+                    console.log(jsonData)
 
                 }
 

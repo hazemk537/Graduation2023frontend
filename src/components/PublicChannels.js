@@ -50,8 +50,7 @@ function PublicChannels() {
   //#todo if go back from any page , should fetch from loval storge no rerequest
   let apikey = '8e69a1db2fb43edac805be1306b74ae2';
 
-  const [data,] = useFetch(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan].name}&lang=ar&country=any&max=50&apikey=${apikey}`, { method: 'post', name: 'GnewsAPI' })
-  console.log(data)
+  const [data,setData] = useFetch(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan].name}&lang=ar&country=any&max=50&apikey=${apikey}`, { method: 'Get', name: 'GnewsAPI' })
   let modifiedArticles
   if (data.articles) {
     modifiedArticles = data.articles.map((item, index) => {
