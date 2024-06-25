@@ -141,15 +141,12 @@ const AddFeed = () => {
 
       {showPreview && <PreviewFeed channel_obj={channel_obj} />}
       {/* show if preview is visible */}
-      {showPreview && <button style={{
-        backgroundColor: 'whiteSmoke',
-        borderRadius: '10px',
-        padding: '7px',
-        cursor: 'pointer'
-
-      }} onClick={() => { addCustomFeed(feedLink) }}>
+      {
+      showPreview && <button  className ='sub_btn' 
+       onClick={() => { addCustomFeed(feedLink) }}>
         Subscribe
-      </button>}
+      </button>
+      }
     </div>
   );
 };
