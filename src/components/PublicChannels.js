@@ -15,9 +15,16 @@ function PublicChannels() {
   //#todo set err state if ex: no internet connection and display msg
   //#todo if go back from any page , should fetch from loval storge no rerequest
   let apikey = '8e69a1db2fb43edac805be1306b74ae2';
-  let dependArray = [selectedSpan]
   //we need the useeffect inside the hook depend only on selectedSpan
-  const [data, setData] = useFetch(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan]}&lang=ar&country=any&max=50&apikey=${apikey}`, {useEffect:true, method: 'Get', name: 'GnewsAPI' }, dependArray)
+  const [data, setData, sendRequest] = useFetch()
+
+
+  useEffect(() => {
+
+    sendRequest(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan]}&lang=ar&country=any&max=50&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'GnewsAPI' })
+
+  },[selectedSpan])
+
 
   let modifiedArticles
   if (data.articles) {

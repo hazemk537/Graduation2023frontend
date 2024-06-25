@@ -1,33 +1,18 @@
 import React, { useEffect, useState } from "react";
 import '../styles/ChannelCard.css'
-import ModalArticle from "./ChannelModal";
-
+import useFetch from "../customHooks/useFetch";
+ 
 function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, item }) {
-  const [Subscribed, setSubscribed] = useState(false);
-  const [pageNumber, setPageNumber] = useState(1);
+ 
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
-  const [, setSelectedChannel] = useState();
 
-  const getToken = () => {
-    try {
-      const storedData = localStorage.getItem('data');
-      if (!storedData) {
-        return null;
-      }
-      const parsedData = JSON.parse(storedData);
-      if (!parsedData.token) {
-        return null;
-      }
-      return parsedData.token;
-    } catch (error) {
-      console.error('Error parsing localStorage data', error);
-      return null;
-    }
-  };
+  let token
+  if (localStorage.getItem("data") !== 'undefined') {
 
-  const token = getToken();
+    token = JSON.parse(localStorage.getItem('data')).token
 
+  }
   const subscribeHandler = (resolve, id) => {
 
     fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/RssUserSubscribe/${id}`, {
@@ -57,7 +42,7 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
       setAlertType('error');
     });
   };
-
+   
   const unsubscribeHandler = (resolve, id) => {
 
 

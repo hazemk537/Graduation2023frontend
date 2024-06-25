@@ -34,7 +34,6 @@ triggerState_Get_noBody_Validationerr_noCommandField
 
 - +<SubscribedList/> state to color the selected rss >>> add its name before the articles
 - +<ALL_fetch_APIS/>  use Redux,set Err modal @hazem
-
 - global error manage system with redux
   - [x] custom hook and 5 useDispatches...     @hazem 
   - 1. replace all react(fetch,useState,useEffect) with custom hook @hazem 
@@ -43,14 +42,26 @@ triggerState_Get_noBody_Validationerr_noCommandField
       - +<SubscribedLIst/> ✔️
       - +<SubscriptionsChannels> ✔️ 
       - +<MainLandingPage/> ✔️
-      - 
+      - +<create_Account/> ✔️
+      - +<UserArticles/> ✔️
+      - +<UserArticle/> ✔️
+      - +<ArticleCard/> ✔️
+      - +<login/> ✔️
+      - +<protected/> ✔️
+      - reset_password
+      - addFeed
+
+      - chanllenging paralel fetch
+        - +ChannelCard
+        - +discover
+        - +google_login
+        - +<Login/>
 
   - 2. useDispatches inside fetching without useFetch 
   
   
   @hazem 
        - +<create_Account/>
-       - +<Login/>
        - +<ResetPassword/>
   
   - 3. modal with useSelctor 

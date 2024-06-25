@@ -30,13 +30,24 @@ let channelImage = { width: '4rem' }
 
 function SubscribedList({ GetRssArticlesById }) {
 
-    let token = JSON.parse(localStorage.getItem('data')).token
+    let token
+    if (localStorage.getItem("data") !== 'undefined') {
+  
+      token = JSON.parse(localStorage.getItem('data')).token
+  
+    }
+    const [jsonData, setData, sendRequest] = useFetch()
 
 
 
-    const [jsonData] = useFetch('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', { useEffect:true,method: 'get', name: 'GetSubscibedList', token: token })
+    useEffect(() => {
 
-    
+        sendRequest('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', {   method: 'get', name: 'GetSubscibedList', token: token })
+
+    }, [])
+
+
+
     if (jsonData.data) {
         return (
 
@@ -65,16 +76,16 @@ function SubscribedList({ GetRssArticlesById }) {
                     {jsonData.data?.map((item, idx) => {
                         console.log(idx)
 
-                        return (<div 
+                        return (<div
                             className='fchannelsHover'
-                            style={horizontalCardsStyle} 
-                            key={idx} 
+                            style={horizontalCardsStyle}
+                            key={idx}
                             onClick={() => {
-                            // chng style direct without reload component
+                                // chng style direct without reload component
 
-                            GetRssArticlesById(item.id)
+                                GetRssArticlesById(item.id)
 
-                        }}>
+                            }}>
                             <div>
                                 <img style={channelImage} alt={item.title} src={item.image} />
                             </div>

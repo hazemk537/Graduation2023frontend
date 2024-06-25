@@ -1,23 +1,35 @@
-import React, { useState } from "react";
-import ArticleModal from "./ArticleModal";
+import React  from "react";
 import useFetch from "../customHooks/useFetch";
-function ArticleCard({ type, item,setArticleData }) {
-let itemId=item.id
+function ArticleCard({ item,setArticleModalData}) {
 
 
-  let token = JSON.parse(localStorage.getItem('data')).token
+let token 
+  if (localStorage.getItem("data") !== 'undefined') {
 
-  const [ArticleData,] = useFetch(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${itemId}`, { method: 'get', name: 'GetSubscibedList', token: token })
+ token = JSON.parse(localStorage.getItem('data')).token
+  }
+
+  const [jsonData, setData, sendRequest] = useFetch()
+
+if(jsonData.data)
+  {
+    console.log(jsonData.data);
+    setArticleModalData(jsonData.data)
+
+  }
 
   return (
     <div className="gallary_item" key={item.id}
-    onClick={()=>{
-      setArticleData(ArticleData)
-    }}
-    
-     >
+      onClick={() => {
+        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item.id}`, { method: 'get', name: 'GetSubscibedList', token: token })
+
+        //setArticleModalData('')
+
+      }}
+
+    >
       <div className="gallary_img_wrapper">
-        <img src='../assets/Eo_circle_red_white_letter-b.png' alt={item.title} />
+        <img  src={item.image||item.thumbnail} alt={item.title} />
       </div>
       <div className="gallary_item_details">
         <h2 className="gallary_item_headding">{item.title}</h2>

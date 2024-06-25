@@ -28,18 +28,30 @@ function MainLandingPage({
       behavior: "smooth",
     });
   };
-  let TokenData = JSON.parse(localStorage.getItem("data"))
+  let TokenData
+  if (localStorage.getItem("data") !== 'undefined') {
 
+    TokenData = JSON.parse(localStorage.getItem("data"))
 
-  const [jsonData] = useFetch(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { useEffect:true,method: 'POST', name: 'GenerateRefreshToken', body: { token: TokenData.token, refreshtoken: TokenData.refreshToken.refreshTokenString } })
-
-  if (jsonData.data) {
-    // backend returned the data.token and token.RefreshToken
-
-    localStorage.setItem('data', jsonData.data)
   }
+  const [jsonData, setData, sendRequest] = useFetch()
+
+  useEffect(() => {
+    //first step to check token,to have one
+    if (TokenData) {
+
+      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { method: 'POST', name: 'GenerateRefreshToken', body: { token: TokenData?.token, refreshtoken: TokenData?.refreshToken.refreshTokenString, onSuccess: handleExpiredToken } })
+
+    }
+  }, [])
+
+  function handleExpiredToken() {
+
+    localStorage.setItem('data', JSON.stringify(jsonData.data))
 
 
+
+  }
 
   return (
     <div className="landing-page">

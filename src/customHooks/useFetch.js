@@ -2,21 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { actions } from '../redux/slices/NotifySlice';
 
-function useFetch(url, options, dependArray) {
-    if (!dependArray) //if not provided
-        dependArray = []
+function useFetch() {
 
-
-    let response
     const [data, setData] = useState('');
     const dispatch = useDispatch()
 
+    async function sendRequest(url, options) {
 
-
-    async function sendRequest() {
+        let response
         dispatch(actions.setPending(`${options?.name}`))
         // this .? handle if the options. is not exist
-        if (options.method.toUpperCase() === 'GET') {
+        if ( options.method.toUpperCase() === 'GET') {
 
             response = await fetch(url, {
                 method: 'GET',
@@ -53,6 +49,11 @@ function useFetch(url, options, dependArray) {
                     console.log(`jsonData`)
                     console.log(jsonData)
                     setData(jsonData)
+                    // call the callback 
+                    // 1. ex add Token to local Storage
+                    // 2. navigate to other route
+                    // call onSuccess with the new state
+                    options.onSuccess(jsonData)
 
                 }
 
@@ -62,6 +63,8 @@ function useFetch(url, options, dependArray) {
                     setData(jsonData)
                     console.log(`jsonData`)
                     console.log(jsonData)
+                    options.onFailed(jsonData)
+
 
 
                 }
@@ -106,13 +109,7 @@ function useFetch(url, options, dependArray) {
 
 
     }
-    useEffect(() => {
-        if (options.useEffect) {
 
-            sendRequest()
-        }
-
-    }, [...dependArray])
 
     return [data, setData, sendRequest]//return the result state
 

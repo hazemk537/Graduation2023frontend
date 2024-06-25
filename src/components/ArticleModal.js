@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function ArticleModal({ data, resetArticleData }) {
+function ArticleModal({ data, setArticleModalData }) {
     console.log('ArticleModal .... ')
     console.log(data)
     return (
@@ -12,12 +12,14 @@ function ArticleModal({ data, resetArticleData }) {
                     width: '100vw',
                     height: '100vh',
                     position: 'fixed',
-                    zIndex: '400',
-            }}
+                    cursor:'pointer',
+                    zIndex: 800,
+                     backgroundColor: 'red'
+                }}
                 className="receive_click_div_helper"
                 onClick={() => {
                     console.log('clicked wrapper');
-                    resetArticleData('')//close modal
+                    setArticleModalData(false)//close modal
 
                 }}
             >
@@ -30,13 +32,13 @@ function ArticleModal({ data, resetArticleData }) {
                         backgroundColor: 'rgb(74, 67, 67)',
                         width: '600px',
                         height: '300px',
-                        zIndex:'500'
+                        zIndex: 900
                         , position: 'fixed',
                         //-half width
-                       
+
                         left: 'calc(50% - 300px )',
                         //-half height
-                       
+
                         top: 'calc(50% - 150px )',
                         borderRadius: '20px'
 
@@ -52,9 +54,9 @@ function ArticleModal({ data, resetArticleData }) {
                 <p>summary:{data.summary}</p>
                 <p>image:{data.link}</p>
                 <p>image:{data.image}</p>
-                
- 
-             </div >
+
+
+            </div >
         </>
     )
 }
