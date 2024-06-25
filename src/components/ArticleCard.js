@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ArticleModal from "./ArticleModal";
+import briefimg from  '../assets/Eo_circle_red_white_letter-b.svg';
+
 function ArticleCard({ type, item }) {
   const [ArticleData, setArticleData] = useState('')
 
@@ -61,12 +63,23 @@ function ArticleCard({ type, item }) {
       {ArticleData && <ArticleModal data={ArticleData} setArticleData={setArticleData} />}
       
       <div className="gallary_img_wrapper">
-        <img src='../assets/Eo_circle_red_white_letter-b.png' alt={item.title} />
+        <img
+            src='' 
+            alt='' 
+            onError={(e) => {
+              e.target.onerror = null; 
+              e.target.src = briefimg;
+            }}  />
       </div>
       <div className="gallary_item_details">
         <h2 className="gallary_item_headding">{item.title}</h2>
         <p className="gallary_item_description">{item.description}</p>
       </div>
+
+
+
+
+
       <div className="gallary_item_actions">
         <svg
           className="gallary_item_action_like"
