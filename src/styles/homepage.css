@@ -46,7 +46,7 @@
 
 /* LOGOOOOOOO */
 
-.svg-logo {
+.svg2-logo {
   border-radius: 50%;
   width: 3rem;
   height: auto;
@@ -55,10 +55,10 @@
   box-shadow: 10px 5px 5px rgb(63, 38, 38);
 }
 
-.svg-logo path {
+.svg2-logo {
   fill: rgb(255, 0, 0);
 }
-.svg-logo circle {
+.svg2-logo {
   fill: rgb(255, 255, 255);
 }
 

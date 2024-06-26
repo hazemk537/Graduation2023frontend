@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/common.css'
+import briefimg from  '../assets/Eo_circle_red_white_letter-b.svg';
+
 let horizontalCardsStyle = {
     display: 'flex',
     flexDirection: 'row',
@@ -25,6 +27,7 @@ let verticalCardsStyle = {
 
 
 }
+
 let channelImage = { width: '4rem' }
 
 function SubscribedList({ GetRssArticles }) {
@@ -119,7 +122,13 @@ function SubscribedList({ GetRssArticles }) {
                             GetRssArticles(item.id)
                         }}>
                             <div>
-                                <img style={channelImage} alt={item.title} src={item.image} />
+                                <img style={channelImage}  src={item.image} 
+                                alt='' 
+                                onError={(e) => {
+                                  e.target.onerror = null; 
+                                  e.target.src = briefimg;
+                                }} 
+                                />
                             </div>
                             <p style={{
                                 fontSize: '1rem',

@@ -3,7 +3,7 @@ import ChannelCard from "./ChannelCard";
 import "../styles/ChannelsView.css";
 import ArticleCard from "./ArticleCard";
 import SubscribedList from "./SubscribedList";
-
+import { Spinner } from "react-bootstrap";
 function UserArticles( ) {
   //default all value means > find allarticles by default
   const [alertMessage, setAlertMessage] = useState(false);
@@ -97,7 +97,7 @@ function UserArticles( ) {
           </div>
           :
           <div className={`gallary_items `}>
-            <h1 style={{ position: 'fixed',top:'50%',left:'48%',  fontWeight: 'lighter', opacity: '0.5', fontSize: '2rem' }}>No Articles</h1>
+                <Spinner/>
           </div>
 
       }
