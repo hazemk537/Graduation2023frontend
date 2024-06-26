@@ -25,28 +25,21 @@ function LoginForm({ onClose, onSignupClick }) {
     const password = form.password.value;
     //#todo_4 email Email usr_mail >> map
     const data = { 'Email': email, 'password': password };
-    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/Login`, { method: 'POST', name: 'POSTlogin', body: data, onSuccess: handleSuccessSignIn })
-
-
+    //#Note_case_useless_state direct receive updated json value insteead of using state (uselessState)
+    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/Login`, { method: 'POST', name: 'POSTlogin', body: data, onSucceed: handleSuccessSignIn })
   };
 
-  // useEffect(()=>{
-
-  //   console.log(jsonData.data);
-
-  // },[jsonData])
 
   function handleSuccessSignIn(jsonData) {
-    //assume jsonData.data have our desired data (token,refreshtoken)
-    //should set data first, there are apis work in the /home to test token...so it should be exist first
-    //you pass value before setting it !!! js clossures
-    // WE need pass fn with the value when it upates !!!!
+    // #Note_case set token then forward user to login..
+    // #Note_case j clossures we cannot use jsonData state directlt
+
+
     localStorage.setItem('data', JSON.stringify(jsonData.data))
+
     NavigateFn('/home', { replace: true })
 
   }
-
-  //  pass a callback to fn if data.succeed 
   return (
     <>
 

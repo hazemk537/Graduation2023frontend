@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { actions } from '../redux/slices/NotifySlice';
+import { json } from 'react-router-dom/dist/umd/react-router-dom.development';
 
 function useFetch() {
 
@@ -12,7 +13,7 @@ function useFetch() {
         let response
         dispatch(actions.setPending(`${options?.name}`))
         // this .? handle if the options. is not exist
-        if ( options.method.toUpperCase() === 'GET') {
+        if (options.method.toUpperCase() === 'GET') {
 
             response = await fetch(url, {
                 method: 'GET',
@@ -24,7 +25,7 @@ function useFetch() {
             });
         }
         else {
-
+           // #debug console.log(options.body);
             response = await fetch(url, {
                 method: options.method,
                 headers: {
@@ -41,9 +42,17 @@ function useFetch() {
         try {
 
             if (response.ok) {
+                if (options?.onOk) {
+                    options.onOk(response)
+                    console.log('fffffffffff')
+                }
                 let jsonData = await response.json()
                 console.log(jsonData)
                 if (jsonData.statusCode === 200 || jsonData.statusCode === 201) {
+                    if (options?.onSucceed) {
+                        options.onSucceed(jsonData)
+                    }
+
                     console.log(` response.ok success , jsonData.statusCode success in ${options?.name} ...`)//for devs
                     dispatch(actions.setSuccess(`success  ${options?.name} `))//for user
                     console.log(`jsonData`)
@@ -53,7 +62,7 @@ function useFetch() {
                     // 1. ex add Token to local Storage
                     // 2. navigate to other route
                     // call onSuccess with the new state
-                    options.onSuccess(jsonData)
+
 
                 }
 
@@ -63,7 +72,6 @@ function useFetch() {
                     setData(jsonData)
                     console.log(`jsonData`)
                     console.log(jsonData)
-                    options.onFailed(jsonData)
 
 
 
@@ -73,16 +81,23 @@ function useFetch() {
 
 
             } else {
+                if (options?.onOk) {
+                    options.onOkFailed(response)
+                }
                 dispatch(actions.setError(`response.ok failed in ${options?.name} `))//for user
 
                 let jsonData = await response.json()
                 console.log(jsonData)
-                if (jsonData.statusCode === 200 || jsonData.statusCode === 201) {
+                if (jsonData.statusCode === 200 || jsonData.statusCode === 201 || json.succeeded) {
 
                     console.log(`response.ok failed , jsonData.statusCode success in ${options?.name} ...`)
                     console.log(`jsonData`)
                     console.log(jsonData)
                     setData(jsonData)
+                    if (options?.onSucceed) {
+                        options.onSucceed(jsonData)
+                    }
+
 
                 }
 
@@ -93,6 +108,11 @@ function useFetch() {
 
                     console.log(`jsonData`)
                     console.log(jsonData)
+                    if (options?.onSucceedFailed) {
+                        options.onSucceedFailed(jsonData)
+                    }
+
+
                 }
 
                 throw new Error(`throw Err from response.ok ${options?.name} ...`)

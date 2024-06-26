@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import '../styles/ChannelCard.css'
 import useFetch from "../customHooks/useFetch";
- 
+
 function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, item }) {
- 
+
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
 
   let token
-  if (localStorage.getItem("data") !== 'undefined') {
-
+  // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
+  if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
     token = JSON.parse(localStorage.getItem('data')).token
 
   }
+
   const subscribeHandler = (resolve, id) => {
 
     fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/RssUserSubscribe/${id}`, {
@@ -42,7 +43,7 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
       setAlertType('error');
     });
   };
-   
+
   const unsubscribeHandler = (resolve, id) => {
 
 
@@ -88,7 +89,7 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
           setModalData(item)
         }}>
         <div className="gallary_img_wrapper">
-          <img src={item.image||item.thumbnail||item.img} alt={item.title} />
+          <img src={item.image || item.thumbnail || item.img} alt={item.title} />
         </div>
         <div className="gallary_item_details">
           <h2 className="gallary_item_headding">{item.title}</h2>
@@ -101,7 +102,7 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
             new Promise((resolve, reject) => {
               unsubscribeHandler(resolve, item.id);
             }).then(() => {
-              setTriggerFetch((old)=>!old);
+              setTriggerFetch((old) => !old);
             });
           }}>
             UnFollow

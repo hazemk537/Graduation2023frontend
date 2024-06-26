@@ -11,7 +11,8 @@ function SubscripedChannels() {
   const [alertType, setAlertType] = useState(false);
   //to not render success at begining
   let token
-  if (localStorage.getItem("data") !== 'undefined') {
+  // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
+  if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
 
     token = JSON.parse(localStorage.getItem('data')).token
 

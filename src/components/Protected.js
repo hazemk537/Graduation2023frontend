@@ -1,44 +1,51 @@
-import React, { useEffect, useState } from "react";
-import {
-  Navigate,
-} from "react-router-dom/dist/umd/react-router-dom.development";
+import { useEffect } from "react";
 import useFetch from "../customHooks/useFetch";
 
 function Protected({ children, showLoginPopupfn }) {
-  const [jsonData, , sendRequest] = useFetch()
+  // Note: not intersted
+  const [, , sendRequest] = useFetch()
   let token
-  // handle json.parse(undefined),throw err
-  if (localStorage.getItem("data") !== 'undefined') {
+  // #Note_case: Token not defined 
+  //#Note_case: localStorage data not null
+  // #Note_case: handle json.parse(undefined),throw err
 
+  if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
     let data = JSON.parse(localStorage.getItem("data"))
     token = data.token
 
   }
-
-
   useEffect(() => {
+    // #Note_case: Token not defined 
 
-    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/CheckValidationToken?token=${token}`, { method: 'POST', name: 'POSTcheckToken', onSuccess: handleCorrectToken, onFailed: handleBadToken })
+    if (token) {
+      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/CheckValidationToken?token=${token}`, { method: 'POST', name: 'POSTcheckToken', onOk: handleCorrectToken, onOkFailed: handleBadToken })
+    }
+      // #Note_case: User Not Logined
 
+    else {
+
+      throw new Error('Plz, Login First')
+
+    }
   }, [])
 
-
-
-
-
   function handleCorrectToken() {
-    return (children);
+    // in our api returns 200 ,means good token
+    // return children
   }
 
   function handleBadToken() {
-    return ({children});
+      // #Note_case: Bad Token
+
+    throw new Error('Plz, Login First')
+
   }
 
-  //solve fncs not work
-    return children
-
+  // #Note_case user without thrown errors ,is authenticated one
+  return children
 
 }
+
 
 export default Protected;
 

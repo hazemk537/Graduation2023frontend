@@ -29,18 +29,22 @@ function MainLandingPage({
     });
   };
   let TokenData
-  if (localStorage.getItem("data") !== 'undefined') {
+  // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
+  if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
 
     TokenData = JSON.parse(localStorage.getItem("data"))
+
+    TokenData = { token: TokenData?.token, refreshtoken: TokenData?.refreshToken.refreshTokenString }
 
   }
   const [jsonData, setData, sendRequest] = useFetch()
 
   useEffect(() => {
     //first step to check token,to have one
-    if (TokenData) {
+    //#Note_Case_only_strict_format only this is allowed by API, if user changed in localStorage 
+    if (TokenData?.token && TokenData?.refreshToken) {
 
-      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { method: 'POST', name: 'GenerateRefreshToken', body: { token: TokenData?.token, refreshtoken: TokenData?.refreshToken.refreshTokenString, onSuccess: handleExpiredToken } })
+      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onSucceed: handleExpiredToken })
 
     }
   }, [])

@@ -10,12 +10,15 @@ function UserArticles() {
   const [ArticleModalData, setArticleModalData] = useState(false)
   const [pageNumber,] = useState(1)
 
-  console.log(ArticleModalData);
   // v1 set state ,then rerun useeffect based on statechange
   // v2 set state ,then rerun component with the fetch ,change state,rerender
   //v3 pass par to fn then seTstate
-  let token = JSON.parse(localStorage.getItem('data')).token
 
+ // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
+ let token
+ if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null){ 
+   token = JSON.parse(localStorage.getItem('data')).token
+ }
   const [jsonData, , sendRequest] = useFetch()
 
   

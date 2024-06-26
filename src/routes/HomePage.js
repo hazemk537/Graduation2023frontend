@@ -9,9 +9,8 @@ import { DiscoverThin } from "../svgIcons/DiscoverSvg";
 function HomePage() {
   const location = useLocation();
   const [iconActiveId, setIconActiveId] = useState(null);
-  const [userName, setUserName] = useState("");
-  const [userAccount, setUserAccount] = useState("");
-  useEffect(() => {
+
+   useEffect(() => {
     switch (location.pathname) {
       case "/home":
         setIconActiveId(1);
@@ -30,13 +29,7 @@ function HomePage() {
     }
   }, [location.pathname]);
 
-
-  const fetchUserData = async () => {
-
-    // use api to fetch user data (backend havenot make it yet)
-
-  };
-
+ 
   const user = {
     name: "Mohamed Zaki",
     image:

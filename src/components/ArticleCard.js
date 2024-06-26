@@ -4,9 +4,10 @@ function ArticleCard({ item,setArticleModalData}) {
 
 
 let token 
-  if (localStorage.getItem("data") !== 'undefined') {
+  // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
+  if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
 
- token = JSON.parse(localStorage.getItem('data')).token
+ token = JSON.parse(localStorage.getItem('data')).tokenp
   }
 
   const [jsonData, setData, sendRequest] = useFetch()
