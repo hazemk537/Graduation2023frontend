@@ -91,6 +91,7 @@ function UserArticles( ) {
       {
         articles ?
           <div className={`gallary_items `}>
+            <h2></h2>
             {articles.map((item) => (
               <ArticleCard key={item.id} item={item} />
             ))}
