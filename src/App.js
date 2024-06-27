@@ -11,6 +11,7 @@ import Protected from "./components/Protected";
 import SubscripedChannels from "./components/SubscribedChannels";
 import DiscoverChannels from "./components/DiscoverChannels";
 import UserArticles from "./components/UserArticles";
+import ErrorBoundary from "./components/ErrorBound";
 import Notfound from "./components/Error404";
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
         />
       ),
       errorElement: (
-        <Notfound/>
+        <Notfound errorType="404"/>
       ),
     },
     {
@@ -91,7 +92,9 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return <ErrorBoundary>
+  <RouterProvider router={router} />
+</ErrorBoundary>;
 }
 
 export default App;
