@@ -4,20 +4,41 @@
 - +apis popups for all apis ex:if token expire.
 - pricing implementation @backend
 - [ ] optimize images
-- theme,translation
-- next (routing,static pages   recommendation,know why to use)
+- theme,translation 
+- +backend @zaki #pro_grad useless /checkvalidation
+- #pro_grad slow update in gnews apis
+- #pro_grad lazy loading
 
 - +<LandingPage/> conditional render create account and sign in if user is logined @zaki
 -  +<SubscripedChannels/>:50 (line 50 in component file) useeffect when state change log it (monitor system) usecallback,usememo
 - @backend {{Domain}}/api/v1/Auth/ResetPassword , public, no need the reset code
+- +backend saved articles,
+- #pro_grad countries carousel 5 in +landingpage
+
+
+- #pro_grad src/routes/AddFeed.js:8 todo #zaki //2.move it  inside the addFeed fn  component// 3. and try subscribe to an rss  //4. find why there is error
+
+- #pro_grad frammerMotion  addFeed ,gallaries,landingPage
+- #pro_grad cache apis
+
+### High
+- #pro_grad modal styling
+
 - host {due:2024-06-22}
 1. solve eslint problems @zaki
 2. check host @hazem
 3. team tests @otherTeam
 4. team active @otherTeam
-- robust cases
-- draw ,track and optimise tree
-- senior reviews
+
+- rss name in +userArticles before articles
+- #pro_grad +<publicChannels/> add countries in same way
+- #pro_grad +PublicChannels bad text general world,.. capital case
+- in +userArticles +discover ,+publicChannels replcae intial articles with spinner #pro_grad
+- make/userdata +backend
+- #pro_grad <Subscriptions/> on click bad rectangle on border radius
+
+- #pro_grad rm hacker image ,change project name in +landingPage be briefed  +landingPage +<Login/>
+
 -  add new tasks  @hazem {due:2024-06-27}
 -  shaib meeting install react  @hazem {due:2024-06-30}
 
@@ -27,24 +48,45 @@
 
 - 3. modal with useSelctor
 - 4. netwerk error #pro_grad @hazem
-
-- add error boundry to catch all thrown errors 
-#TEST ex: rm token, try go /home
  
 - +<ALL_fetch_APIS/> use Redux,set Err modal @hazem
 - global error manage system with redux
-- +<SubscribedList/> state to color the selected rss >>> add its name before the articles
 - all components using useFetch , send prop to disable setState if it donot use it
-- style profile component +<Home/>
+-  bad style in +subscribedlist when #pro_grad
+- spinner between req and response #pro_grad
+- #pro_grad search in local 
+- #pro_grad in /home/addfeed bad mobile screen
+- #pro_grad in /home/addfeed  undefined . if rss https://electronicintifada.net/rss.xml(make it resilient)
+- #pro_grad remove useless components and eslint erro
+-  @backend contact us form  @zaki {due:2024-06-27}
+
+
 
 ### In Progress
 -  upload videos  @hazem {due:2024-06-27|e2d} {cm:2024-06-27}
--  @backend contact us form  @zaki {due:2024-06-27}
-- +<NavBar/> bad logotext @zaki {due:2024-06-27} 
+- add error boundry to catch all thrown errors 
+#TEST ex: rm token, try go /home @zaki
+
+
+
 
 
 
 ### Done ✓
+- #pro_grad default subsciption choice in +userArtickles
+
+- {{Domain}}/api/v1/Rss/4 #pro_grad #backend donot add neww info,cannot use it
+- #project_graduation on resetPassword, display enter code input field when confirm model appear
+
+- bad images #backend #pro_grad
+      ![alt text](imagesRef/image-1.png)
+- #pro_grad spinner intead empty card intially in +<PublicChannels @zaki
+- #pro_gra token expire blank /home
+
+- +<SubscribedList/> state to color the selected rss >>> add its name before the articles @zaki
+- style profile component +<Home/>  @zaki 
+- +<NavBar/> bad logotext @zaki {due:2024-06-27} 
+- bad modal  
 -  custom Hook  @hazem {due:2024-06-27}
  - [x] +<PublicChannels/> 
  - [x] +<SubscribedLIst/> 
