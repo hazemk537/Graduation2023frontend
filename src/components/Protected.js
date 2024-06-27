@@ -1,42 +1,51 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import {
-  Navigate,
-  useActionData,
-} from "react-router-dom/dist/umd/react-router-dom.development";
+import { useEffect } from "react";
+import useFetch from "../customHooks/useFetch";
 
 function Protected({ children, showLoginPopupfn }) {
-  const [isReturn, setIsReturn] = useState();
-  let data = JSON.parse(localStorage.getItem("data"))
-  console.log(data);
-  let token=data.token
-  console.log(token);
+  // Note: not intersted
+  const [, , sendRequest] = useFetch()
+  let token
+  // #Note_case: Token not defined 
+  //#Note_case: localStorage data not null
+  // #Note_case: handle json.parse(undefined),throw err
 
-  if (token) {
-    fetch(
-      `https://BrieflyNews.runasp.net/api/v1/Auth/CheckValidationToken?token=${token}`,
-      { method: "POST" }
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((jsonData) => {
-        if (jsonData.statusCode !== 200) {
-          showLoginPopupfn(true);
-          return (<Navigate to="/" replace={true} />);
-        } else {
-          console.log(jsonData);
-          setIsReturn(true);
-          // return  children; donot work caz .then will return promise
-        }
-      });
-    //check token if exist in background
-  } else {
-    showLoginPopupfn(true);
-    return <Navigate to="/" replace={true}/>;
+  if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
+    let data = JSON.parse(localStorage.getItem("data"))
+    token = data.token
+
+  }
+  useEffect(() => {
+    // #Note_case: Token not defined 
+
+    if (token) {
+      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/CheckValidationToken?token=${token}`, { method: 'POST', name: 'POSTcheckToken', onOk: handleCorrectToken, onOkFailed: handleBadToken })
+    }
+      // #Note_case: User Not Logined
+
+    else {
+
+      throw new Error('Plz, Login First')
+
+    }
+  }, [])
+
+  function handleCorrectToken() {
+    // in our api returns 200 ,means good token
+    // return children
   }
 
-  if (isReturn) return children;
+  function handleBadToken() {
+      // #Note_case: Bad Token
+
+    throw new Error('Plz, Login First')
+
+  }
+
+  // #Note_case user without thrown errors ,is authenticated one
+  return children
+
 }
+
 
 export default Protected;
 

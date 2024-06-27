@@ -11,14 +11,18 @@ import {
 import "../styles/Login_Signup.css";
 import Alert from "./Alert";
 import { useNavigate } from "react-router-dom/dist/umd/react-router-dom.development";
+import useFetch from "../customHooks/useFetch";
 
 function Create_Account({ onClose, onSigninClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
-  let NavigateFn=useNavigate()
+  let NavigateFn = useNavigate()
+
+  const [JsonData, , sendRequest] = useFetch()
 
 
+  console.log(FormData)
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -33,58 +37,19 @@ function Create_Account({ onClose, onSigninClick }) {
     const confirmPassword = form.confirmPassword.value;
     console.log('handleSignup fn ...')
     const data = {
-      "firstName":firstName,
-      "lastName":lastName,
-      "email":email,
-      "password":password,
-      "confirmPassword":confirmPassword,
+      "firstName": firstName,
+      "lastName": lastName,
+      "email": email,
+      "password": password,
+      "confirmPassword": confirmPassword,
     };
+    sendRequest('https://BrieflyNews.runasp.net/api/v1/Auth/Register', { method: 'POST', name: 'POSTCreateAccount', body: data })
+  }
 
-    console.log(data)
-    
-    fetch("https://BrieflyNews.runasp.net/api/v1/Auth/Register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        //better error catch
-        if (!response.ok)
-          {
-            console.log(response)
-          }
-        
-        return response.json();
-      })
-      .then((jsonData) => {
-        console.log(`CreateAccount response ... `);
-
-// #todo_4 use statusCode and message fields
-        if (jsonData.statusCode!==201) {
-
-          setAlertType("err");
-          setAlertMessage(jsonData.message);
-        } 
-        else
-        {
-
-          localStorage.setItem('data',JSON.stringify(jsonData.data))
-          setAlertType("success");
-          setAlertMessage(jsonData.message);
-          NavigateFn('/home',{replace:true})
-          
-        } 
-      })
-      .catch((error) => {
-        setAlertType("err");
-        setAlertMessage(error);
-      });
-      
-     
-  };
-
+  if (JsonData){
+    console.log(JsonData);
+  }
+  
   return (
     <>
       {alertMessage && <Alert type={alertType} alertText={alertMessage} />}

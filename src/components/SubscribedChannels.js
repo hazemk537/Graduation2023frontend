@@ -2,72 +2,36 @@ import React, { useEffect, useState } from "react";
 import ChannelsView from "./ChannelsView";
 import '../styles/subscripedChannels.css'
 import Alert from "./Alert";
+import useFetch from "../customHooks/useFetch";
 
 function SubscripedChannels() {
-  const [channels, setChannels] = useState();
+  const [triggerFetch, setTriggerFetch] = useState(false)
   const [pageNumber, setPageNumber] = useState(1);
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
   //to not render success at begining
+  let token
+  // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
+  if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
 
-  let token = JSON.parse(localStorage.getItem('data')).token
+    token = JSON.parse(localStorage.getItem('data')).token
 
-function GetSubscriptions(){
-  fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All?PageNumber=${pageNumber}&PageSize=10`, {
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  }).then((response) => {
-    if (!response.ok) {
-    console.log('GetSubscriptions !response.ok ...')
+  }
 
-      console.log(response)
-      //#todo if it exist 
-      setAlertMessage(response.statusCode)
-
-    }
-    else{
-    console.log('GetSubscriptions response.ok ...')
-
-    }
-    return response.json()
-
-  }).then((jsonData) => {
-    if (jsonData.succeeded||jsonData.hasOwnProperty('data')) {
-      console.log('GetSubscriptions jsonData.succeeded...')
-      setAlertMessage(jsonData.message)
-      setAlertMessage('success')
-      setChannels(jsonData.data)
-    }
-else{
-  console.log('GetSubscriptions !jsonData.succeeded...')
-
-}
-
-  }).catch((err) => {
-    setAlertMessage(err)
-    setAlertType('err')
-  })
-
-}
+  const [jsonData, setData, sendRequest] = useFetch()
   useEffect(() => {
-    //API subscribed AUTH channels
-    // change channels stateto rerender the component with the new channels updated value
-    GetSubscriptions()
-    //
-    // console.log(`channels updated ...`)
-    // console.log(channels)
-    
 
-  }, []);
+    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All?PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GnewsGetSubscriptionsAPI', token: token })
+  }, [triggerFetch])
 
-  if (channels) {
+
+  if (jsonData.data) {
     return (<>
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
-      <ChannelsView 
-      GetSubscriptions={GetSubscriptions}
-       type="subscription_channels" 
-       channels={channels} /></>)
+      <ChannelsView
+        setTriggerFetch={setTriggerFetch}
+        type="subscription_channels"
+        channels={jsonData.data} /></>)
   }
   else {
     return (

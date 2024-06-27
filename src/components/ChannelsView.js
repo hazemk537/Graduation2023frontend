@@ -3,7 +3,7 @@ import ChannelCard from "./ChannelCard";
 import "../styles/ChannelsView.css";
 import ChannelModal from "./ChannelModal";
 
-function ChannelsView({ parrallelDiscover, GetSubscriptions, channels, type }) {
+function ChannelsView({ parrallelDiscover, setTriggerFetch, channels, type }) {
   const [ModalData, setModalData] = useState('')
   const [intialChannels, setintialChannels] = useState([
     { image: "", description: "", title: "", id: "" },
@@ -30,7 +30,7 @@ function ChannelsView({ parrallelDiscover, GetSubscriptions, channels, type }) {
         {channels.map((item, id) => (
           <ChannelCard
             parrallelDiscover={parrallelDiscover}
-            GetSubscriptions={GetSubscriptions}
+            setTriggerFetch={setTriggerFetch}
             setModalData={(dataFromChild) => { setModalData(dataFromChild) }}
             key={id}
             type={type}

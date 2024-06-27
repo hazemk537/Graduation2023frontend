@@ -3,13 +3,33 @@ import '../styles/SumWindow.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-function ArticleModal({ data, setArticleData }) {
+
+function ArticleModal({ data, setArticleModalData }) {
+    console.log(`🖌️ ArticleModal`) // #debug 
+    // console.log(data)
+
     return (
         <>
-            <div className="receive_click_div_helper"
+            <div
+                style={{
+
+                    width: '100vw',
+                    height: '100vh',
+                    position: 'fixed',
+                    cursor: 'pointer',
+                    zIndex: '800',
+                }}
+                className="receive_click_div_helper"
                 onClick={() => {
                     console.log('clicked wrapper');
-                    setArticleData(''); 
+                    setArticleModalData((old) => {
+                        if (old !== '')
+                            return ''
+
+
+
+                    })//close modal
+
                 }}
             >
             </div>
@@ -43,6 +63,7 @@ function ArticleModal({ data, setArticleData }) {
                     </button>
                 </div>
             </div> 
+
         </>
     );
 }

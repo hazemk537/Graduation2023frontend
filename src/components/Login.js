@@ -3,23 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAt, faLock, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Login_Signup.css";
 import GLogin from "./Google_Login";
-import Alert from "./Alert";
 import { useNavigate } from "react-router";
-import { json } from "react-router/dist/umd/react-router.development";
 import { Link } from "react-router-dom";
+import useFetch from "../customHooks/useFetch";
 
 function LoginForm({ onClose, onSignupClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [alertMessage, setAlertMessage] = useState(false);
-  const [alertType, setAlertType] = useState(false);
+  const NavigateFn = useNavigate()
   //to not render success at begining
-  let UserData;
-
+  const [jsonData, d, sendRequest] = useFetch()
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const NavigateFn = useNavigate();
 
   const handleSignin = (event) => {
     // event.target.preventDefault()
@@ -29,87 +25,23 @@ function LoginForm({ onClose, onSignupClick }) {
     const password = form.password.value;
     //#todo_4 email Email usr_mail >> map
     const data = { 'Email': email, 'password': password };
-    console.log(' handle login ....')
-    let apikey = '8e69a1db2fb43edac805be1306b74ae2';
-    let url = 'https://gnews.io/api/v4/top-headlines?category=global&lang=ar&country=eg&max=10&apikey=' + apikey;
-    fetch(url)
-      .then((res) => res.json())
-      .then((json) => {
-
-        console.log(json)
-        let modifiedArticles;
-        if (json.articles) {
-          modifiedArticles = json.articles.map((item, index) => {
-            return {
-              thumbnail: item.image,
-              title: item.title,
-              description: item.description,
-              id: index,
-              content: item.content,
-              publishedAt: item.publishedAt,
-              src: item.src,
-              url: item.url
-
-            }
-          })
-        }
-        console.log(modifiedArticles)
-
-      }
-      )
-    fetch("https://BrieflyNews.runasp.net/api/v1/Auth/Login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((jsonData) => {
-        console.log(jsonData)
-
-
-
-
-
-
-        if (jsonData.statusCode !== 200) {
-          setAlertType("err");
-          setAlertMessage(jsonData.message);
-
-        } else {
-          // #todo_5 .succeeded,.error,status ,statusCode....
-          //#TEST
-          // console.log(JSON.stringify(UserData));
-          // console.log(UserData);
-
-          localStorage.setItem('data', JSON.stringify(jsonData.data))
-          setAlertType("success");
-          setAlertMessage(jsonData.message);
-          NavigateFn('/home',{replace:true})
-
-
-
-        }
-      })
-      .catch((error) => {
-        setAlertMessage(error);
-        setAlertType('err')
-      });
-    //go here only after .then sereis finish
-    // #todo_4 why  the next if result undefined (it run before the chain promise complete )
-    // if (!ErrState  ) {
-    //   NavigateFn("/home");
-    //   localStorage.setItem("userData",JSON.stringify(UserData));
-
-    // }
-    // #todo_4 why  the next if result with the data without undefined ,this mean the if condition runs twice! before the promise chain complete and after completion
-
+    //#Note_case_useless_state direct receive updated json value insteead of using state (uselessState)
+    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/Login`, { method: 'POST', name: 'POSTlogin', body: data, onSucceed: handleSuccessSignIn })
   };
+
+
+  function handleSuccessSignIn(jsonData) {
+    // #Note_case set token then forward user to login..
+    // #Note_case j clossures we cannot use jsonData state directlt
+
+
+    localStorage.setItem('data', JSON.stringify(jsonData.data))
+
+    NavigateFn('/home', { replace: true })
+
+  }
   return (
     <>
-      {alertMessage && <Alert type={alertType} alertText={alertMessage} />}
 
       <div className="login_assist"></div>
       <div className="form_sign">

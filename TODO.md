@@ -1,141 +1,198 @@
 # Project
-
 اللهم علمنا ما ينفعنا وانفعنا بما علمتنا
-
 ### TODO (low priority 🔼)
-    - [ ] inline #todo in the code
-    - +apis popups for all apis ex:if token expire.
-    - pricing implementation @backend
-    - +apis update all apis to latest version
-    - [ ] optimize images 
-    - redux,theme,translation
-    - next (routing,static pages   recommendation,know why to use)
-    - #project_graduation signup second confirm pass field
-### TODO (high 🔼🔼🔼)
-    - +<LandingPage/> conditional render create account and sign in if user is logined @zaki
-    - +<LandingPage/> if no images same endpoint result no categories
-    -  +<SubscripedChannels/>:50 (line 50 in component file) useeffect when state change log it (monitor system) usecallback,usememo 
-    - +<Protected/> blanc if invalid token,no popup states
+- +apis popups for all apis ex:if token expire.
+- pricing implementation @backend
+- [ ] optimize images
+- theme,translation
+- next (routing,static pages   recommendation,know why to use)
 
-    - host {due:2024-06-22}
-      1. solve eslint problems @zaki 
-      2. check host @hazem
-      3. team tests @otherTeam
-      4. team active @otherTeam
+- +<LandingPage/> conditional render create account and sign in if user is logined @zaki
+-  +<SubscripedChannels/>:50 (line 50 in component file) useeffect when state change log it (monitor system) usecallback,usememo
+- @backend {{Domain}}/api/v1/Auth/ResetPassword , public, no need the reset code
+- host {due:2024-06-22}
+1. solve eslint problems @zaki
+2. check host @hazem
+3. team tests @otherTeam
+4. team active @otherTeam
+- robust cases
+- draw ,track and optimise tree
+- senior reviews
+-  add new tasks  @hazem {due:2024-06-27}
+-  shaib meeting install react  @hazem {due:2024-06-30}
+
+- style +reset_password
+- search algolio , in +homePage
+- Note_case_useless_state , statful or not flag,if condition to update state 
+
+- 3. modal with useSelctor
+- 4. netwerk error #pro_grad @hazem
+
+- add error boundry to catch all thrown errors 
+#TEST ex: rm token, try go /home
+ 
+- +<ALL_fetch_APIS/> use Redux,set Err modal @hazem
+- global error manage system with redux
+- +<SubscribedList/> state to color the selected rss >>> add its name before the articles
+- all components using useFetch , send prop to disable setState if it donot use it
+- style profile component +<Home/>
 
 ### In Progress
-
-- #project_graduation in 
-
-- remove all chanells from +<Home/> backend not implement it @hazem
-- +<ALL_fetch_APIS/>  use Redux,set Err modal @hazem
-- new tasks to the grad project  @hazem
-- +<UserArticles/> bad when consume api/v1/Article/GetRssArticle/ bad article modal error  @hazem
--  netwerk error #pro_grad @hazem
-
-
-
-
-    
+-  upload videos  @hazem {due:2024-06-27|e2d} {cm:2024-06-27}
+-  @backend contact us form  @zaki {due:2024-06-27}
+- +<NavBar/> bad logotext @zaki {due:2024-06-27} 
 
 
 
 ### Done ✓
+-  custom Hook  @hazem {due:2024-06-27}
+ - [x] +<PublicChannels/> 
+ - [x] +<SubscribedLIst/> 
+ - [x] +<SubscriptionsChannels> 
+ - [x] +<MainLandingPage/> 
+ - [x] +<create_Account/> 
+ - [x] +<UserArticles/> 
+ - [x] +<UserArticle/> 
+ - [x] +<ArticleCard/> 
+ - [x] +<login/> 
+ - [x] +<protected/> 
+ - [x] +<Login/>
+ - [x] +<create_Account/>
+ - [x] +<ResetPassword/>    
+ -   +<addFeed/>,+google_login,+ChannelCard,+discover
 
--  #pro_grad all channels api in +</home/> 
+- bad modal close in +UserArticles @hazem  
+- +<LandingPage/> if no images same endpoint result no categories @zaki
+- in <ArticleCard/> and <ChannelCard/> add placeholder images api doesnot provide one. @zaki
+
+- [x] custom hook and 5 useDispatches... @hazem
+
+- bad fncs routing in Protected
+- +<ArticleModal> make good component for an article @zaki
+- +<ArticleModal> @backend null article category,summary,images in
+- remove all chanells from +<Home/> backend not implement it @hazem
+- +<UserArticles/> bad when consume api/v1/Article/GetRssArticle/ bad article modal error @hazem
+- [x] #project_graduation if sign with google ,store token,refresh token then forward to home
+- #pro_grad all channels api in +</home/>
 - #project_graduation on signup success bad state message
 - update,create,delete by admin, ?? #backend #pro_grad (current no )
-- [x] #project_graduation if sign with google ,store token,refresh token then forward to home
+- channesl modals, btn toggles ,array state with id
+- replace <Navigate to="/" />;
+- multipages navigation +<Channels/>
+- +<UserArticle/> show +<ArticleModal data={data}/> @hazem
+- [ ] +<UserArticles/> consume Articles API @zaki
 
-    - channesl modals, btn toggles ,array state with id
-    - replace <Navigate to="/" />; 
-    - multipages navigation +<Channels/>
-    - +<UserArticle/> show +<ArticleModal data={data}/>  @hazem
-    - [ ] +<UserArticles/> consume Articles API @zaki
-       - 🗄️ ![alt text](imagesRef/image-4.png)
-       - errors in api
+    - 🗄️ ![alt text](imagesRef/image-4.png)
+    - errors in api
 
-       - task is the same like other a     is
+    - task is the same like other a is
+    - +<Protected/> blanc if invalid token,no popup states
 
-    - articles and subsciptions view
-      - move +<SubscripedChannels/> into +<homeArticles>
-      - add subscription Horizontal into +<homeArticle>
-      - onClick list update Displayed Articles...
-      - +<Discover> onClick show Articles in +<ArticleModalList>
+  - articles and subsciptions view
 
-      - PROS: 
-        1. user see  articles per RSS or all...
-        2. remove useless Subsciption route
-        3. subscription freindly next to articles
-        4. user see discover items before subscipe 
-    - +<ArticleModal/> global in homeLayout ,to solve scroll problem
-    - +<SubscribedChannels/> show +<ArticleModal data={data}/> @hazem
-    - +<DiscoverChannels/> show +<ArticleModal data={data}/>  @hazem
-    - record 2 endpoints @hazem
-    -  bad model position and padding in +<ArticleModal>  @hazem
-    - when scroll position change @hazem
-    
-    - [ ] zaki install extntions @zaki
-    - +<Home/> remove token on logout @zaki
-    - +<Home/>  if we on /home/anypage then reload page, the focus of buttons of left will be first always @zaki
-    - follow/unfollow local state which change buttons follow and unfollow @hazem
-      - +<Subscription/> 2apis_chain_promise on unflow request,immediatly remove from front end,update state
-      - +<dISCOVER> update button(follow/unflow) state
-    - merge request from zaki @hazem
-    -  screen from todo file progress @hazem 
-    -  auth API v2 (admin endpoints. /rss/:id) @hazem call backend
-    -  close modal on click the wrapper  @hazem
-    - modal not updates on multi clicks @hazem
-    -  OVERWRITIE browser stack (when use useNavigate) @hazem
-    - [x] in err msg no exit btn @zaki
-    - [x] @zaki +<Alert/> component in +<Login/> +<createAccount/> :must be top all components
-    - +<Login/> bad route to resetpassword (reload) @hazem
-    - +<login/> , with this data ,two messages appear success then failed   @hazem
-       ![alt text](imagesRef/image-3.png)
-    - [x] @hazem consume rss API
-    - [x] consume auth API
-    - [x] store email to local storage
-    - [x] input code from email
-    - [x] send code,email to api
-    - [x] msg confirmed or not
-    - [ء] meeting {due:2024-06-20} @team
-        - q/a anything
-        - what we did
-        - TODO file > a must
-        - contribute in file +,@
-        - TODO extention > 
-        - live demo 
-        - inProgress section discuss
-        - q/a anything
-    - [x] forget password css
-    - [x] API end points
-    - [x] two logins appear success then err
-    - [x] testing mahmoud example
-    - [x] ~~ homepage ~~
-    - [x] ~~google auth http://65470565009-pjolbjeuuds1s29b764lgv86vo0ova6i.apps.googleusercontent.com~~
-    - [x] big msgs use Mazefdn@123
-    - [x] ~~landingpage~~
-    - [x] rm admin mail ahmed
-    - [x] remove tring email and password
-    - [x] login needs 2 clicks
-    - [x] no backg img repeat
-    - [x] From JWT token return the data
-    - [x] rss database
-    
-  +<ResetPassword/> component, if statuscode from API is 404 show err and donot show enter code  field @zaki
+    - move +<SubscripedChannels/> into +<homeArticles>
+    - add subscription Horizontal into +<homeArticle>
+    - onClick list update Displayed Articles...
+    - +<Discover> onClick show Articles in +<ArticleModalList>
 
-  - in <ArticleCard/> and <ChannelCard/> add placeholder images api doesnot provide one. @zaki
+    - PROS:
+      1. user see articles per RSS or all...
+      2. remove useless Subsciption route
+      3. subscription freindly next to articles
+      4. user see discover items before subscipe
 
-    
-# note
+  - +<ArticleModal/> global in homeLayout ,to solve scroll problem
+  - +<SubscribedChannels/> show +<ArticleModal data={data}/> @hazem
+  - +<DiscoverChannels/> show +<ArticleModal data={data}/> @hazem
+  - record 2 endpoints @hazem
+  - bad model position and padding in +<ArticleModal> @hazem
+  - when scroll position change @hazem
+
+  - [ ] zaki install extntions @zaki
+  - +<Home/> remove token on logout @zaki
+  - +<Home/> if we on /home/anypage then reload page, the focus of buttons of left will be first always @zaki
+  - follow/unfollow local state which change buttons follow and unfollow @hazem
+    - +<Subscription/> 2apis_chain_promise on unflow request,immediatly remove from front end,update state
+    - +<dISCOVER> update button(follow/unflow) state
+  - merge request from zaki @hazem
+  - screen from todo file progress @hazem
+  - auth API v2 (admin endpoints. /rss/:id) @hazem call backend
+  - close modal on click the wrapper @hazem
+  - modal not updates on multi clicks @hazem
+  - OVERWRITIE browser stack (when use useNavigate) @hazem
+  - [x] in err msg no exit btn @zaki
+  - [x] @zaki +<Alert/> component in +<Login/> +<createAccount/> :must be top all components
+  - +<Login/> bad route to resetpassword (reload) @hazem
+  - +<login/> , with this data ,two messages appear success then failed @hazem
+    ![alt text](imagesRef/image-3.png)
+  - [x] @hazem consume rss API
+  - [x] consume auth API
+  - [x] store email to local storage
+  - [x] input code from email
+  - [x] send code,email to api
+  - [x] msg confirmed or not
+  - [ء] meeting {due:2024-06-20} @team
+   - q/a anything
+   - what we did
+   - TODO file > a must
+   - contribute in file +,@
+   - TODO extention >
+   - live demo
+   - inProgress section discuss
+   - q/a anything
+  - [x] forget password css
+  - [x] API end points
+  - [x] two logins appear success then err
+  - [x] testing mahmoud example
+  - [x] ~~ homepage ~~
+  - [x] ~~google auth http://65470565009-pjolbjeuuds1s29b764lgv86vo0ova6i.apps.googleusercontent.com~~
+  - [x] big msgs use Mazefdn@123
+  - [x] ~~landingpage~~
+  - [x] rm admin mail ahmed
+  - [x] remove tring email and password
+  - [x] login needs 2 clicks
+  - [x] no backg img repeat
+  - [x] From JWT token return the data
+  - [x] rss database
+- #project_graduation signup second confirm pass field
+- #project_graduation in +<ResetPassword/> component, if statuscode from API is 404 show err and donot show enter code field @zaki
+- +<ResetPassword/> @hazem
+ * states
+ when state 1>input state 1 
+ when state 1>span state 0 
+  1. toggleEmailInput1/btn1/other_mail(span)0
+  2. toggleCodeInput/btn
+  3. togglwPasswordInputs/inputs
+   
+ * setStates
+   1. onSucceed:sendCodeHandler ->   set 1
+   2. onSucceed:verifyCodeHandler -> set 2
+   3. onSucceed:resetPaaswordHandler -> set 3
+
+
+- rm strict mode @hazem
+# notes
+
+- // #Note_case user without thrown errors ,is authenticated one
+- // Note_case: Token not defined
+
+- book https://onedrive.live.com/edit?id=674A5A774401A7D9!sb36bc5f14f6a4e4e89b7d2228c08e7c2&resid=674A5A774401A7D9!sb36bc5f14f6a4e4e89b7d2228c08e7c2&cid=674a5a774401a7d9&ithint=file%2Cdocx&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3cvYy82NzRhNWE3NzQ0MDFhN2Q5L0VmSEZhN05xVDA1T2liZlNJb3dJNThJQkk1cWhNX2NuYzQtNUR4Ukp6QmxDRWc_ZT1Wa2tsemQ&migratedtospo=true&wdo=2 ِ@hazem
+
 
 - this account works :
   user: xr3c9k2yua@dpptd.com
   password:Mazefdn@12311
 
-- 
-
-# rss feeds
+-
+## react Book
+- reactjs book @hazem  
+ - how
+ - cross platform
+ - from js to nextjs and reactjs
+ - optimization in app
+ - clean code in app
+ - senior reviews how we handles
+## rss feeds
 
 // const rssList=["https://feeds.bbci.co.uk/news/world/rss.xml",
 // "https://feeds.bbci.co.uk/news/uk/rss.xml",
@@ -146,7 +203,7 @@
 // bad rss feeds
 https://www.singaporelawwatch.sg/Portals/0/RSS/Headlines.xml
 
-# apis
+## apis
 
 - auth
   https://www.postman.com/ahmedelshafey/workspace/newsapi/collection/26431110-9cce8afc-99db-415c-9403-8633d3895de4?action=share&creator=26431110&active-environment=26431110-756a9d34-ad97-4aae-9b2c-82a98b47e7a7

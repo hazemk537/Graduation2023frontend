@@ -51,7 +51,7 @@ function DiscoverChannels() {
 
       console.log('subscribtionIdArr ...');
       console.log(subscribtionIdArr);
-      
+
       let isCurrentItemSubscribed = 0
 
       let Newchannels = allchannelsJson.data.map((item) => {

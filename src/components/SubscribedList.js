@@ -1,63 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import '../styles/common.css';
+import React, { useEffect, useState } from 'react'
+import '../styles/common.css'
+import useFetch from '../customHooks/useFetch'
+import { current } from '@reduxjs/toolkit'
+ import '../styles/common.css';
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg';
+  
 
-function SubscribedList({ GetRssArticles }) {
-    const [channels, setChannels] = useState();
-    const [activeChannel, setActiveChannel] = useState(null); // State to track active channel ID
 
-    const [alertMessage, setAlertMessage] = useState(false);
-    const [alertType, setAlertType] = useState(false);
-    let token = JSON.parse(localStorage.getItem('data')).token;
+function SubscribedList({ GetRssArticlesById }) {
+    console.log(`🖌️ subscribedList`) // #debug 
 
-    const getActiveChannelFromStorage = () => {
-        const storedActiveChannel = localStorage.getItem('activeChannel');
-        return storedActiveChannel ? parseInt(storedActiveChannel) : null;
-    };
-
-    const setActiveChannelInStorage = (channelId) => {
-        localStorage.setItem('activeChannel', channelId.toString());
-    };
-
-    function GetSubscriptions() {
-        fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        }).then((response) => {
-            if (!response.ok) {
-                console.log('GetSubscriptions !response.ok ...');
-                console.log(response);
-                setAlertMessage(response.statusCode);
-            } else {
-                console.log('GetSubscriptions response.ok ...');
-            }
-            return response.json();
-        }).then((jsonData) => {
-            if (jsonData.succeeded || jsonData.hasOwnProperty('data')) {
-                console.log('GetSubscriptions jsonData.succeeded...');
-                setAlertMessage(jsonData.message);
-                setAlertType('success');
-                setChannels(jsonData.data);
-
-                const storedActiveChannel = getActiveChannelFromStorage();
-                if (storedActiveChannel) {
-                    setActiveChannel(storedActiveChannel);
-                } else if (jsonData.data && jsonData.data.length > 0) {
-                    setActiveChannel(jsonData.data[0].id);
-                }
-            } else {
-                console.log('GetSubscriptions !jsonData.succeeded...');
-            }
-        }).catch((err) => {
-            setAlertMessage(err);
-            setAlertType('error');
-        });
+    let token
+    // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
+  if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
+  
+      token = JSON.parse(localStorage.getItem('data')).token
+  
     }
+    const [jsonData, setData, sendRequest] = useFetch()
+
+
 
     useEffect(() => {
-        GetSubscriptions();
-    }, []);
+
+        sendRequest('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', {   method: 'get', name: 'GetSubscibedList', token: token })
+
+    }, [])
 
     useEffect(() => {
         if (activeChannel !== null) {
@@ -65,7 +33,7 @@ function SubscribedList({ GetRssArticles }) {
         }
     }, [activeChannel]);
 
-    if (channels) {
+    if (jsonData.data) {
         return (
             <div>
                 <div className="verticalCards">
@@ -78,7 +46,7 @@ function SubscribedList({ GetRssArticles }) {
                             }}
                             key={idx}
                         >
-                            <div>
+     <div>
                                 <img
                                     className="channelImage"
                                     src={item.image}

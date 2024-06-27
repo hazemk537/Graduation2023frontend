@@ -1,33 +1,20 @@
 import React, { useEffect, useState } from "react";
-import '../styles/ChannelCard.css';
-import ModalArticle from "./ChannelModal";
+import '../styles/ChannelCard.css'
+import useFetch from "../customHooks/useFetch";
 import briefimg from  '../assets/Eo_circle_red_white_letter-b.svg';
+import ModalArticle from "./ChannelModal";
 
-function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, key, type, item }) {
-  const [Subscribed, setSubscribed] = useState(false);
-  const [pageNumber, setPageNumber] = useState(1);
+function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, item }) {
+
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
-  const [, setSelectedChannel] = useState();
 
-  const getToken = () => {
-    try {
-      const storedData = localStorage.getItem('data');
-      if (!storedData) {
-        return null;
-      }
-      const parsedData = JSON.parse(storedData);
-      if (!parsedData.token) {
-        return null;
-      }
-      return parsedData.token;
-    } catch (error) {
-      console.error('Error parsing localStorage data', error);
-      return null;
-    }
-  };
+  let token
+  // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
+  if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
+    token = JSON.parse(localStorage.getItem('data')).token
 
-  const token = getToken();
+  }
 
   const subscribeHandler = (resolve, id) => {
     fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/RssUserSubscribe/${id}`, {
@@ -101,13 +88,14 @@ function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, key, t
         }}>
         <div className="gallary_img_wrapper">
           <img 
-            src={item.image} 
+            src=={item.image || item.thumbnail || item.img}
             alt='' 
             onError={(e) => {
               e.target.onerror = null; 
               e.target.src = briefimg;
             }} 
           />
+
         </div>
         <div className="gallary_item_details">
           <h2 className="gallary_item_headding">{item.title}</h2>
@@ -120,7 +108,7 @@ function ChannelCard({ parrallelDiscover, GetSubscriptions, setModalData, key, t
             new Promise((resolve, reject) => {
               unsubscribeHandler(resolve, item.id);
             }).then(() => {
-              GetSubscriptions();
+              setTriggerFetch((old) => !old);
             });
           }}>
             UnFollow

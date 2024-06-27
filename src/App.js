@@ -58,7 +58,7 @@ function App() {
     {
       path: "/home",
       element: (
-        <Protected showLoginPopupfn={setShowLoginPopup}>
+        <Protected >
           <HomePage />
         </Protected>
       ),
