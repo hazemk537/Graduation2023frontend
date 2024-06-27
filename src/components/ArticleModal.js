@@ -38,7 +38,13 @@ function ArticleModal({ data, setArticleModalData }) {
                 <div className="close-button" 
                     onClick={() => {
                         console.log('clicked close button');
-                        setArticleData(''); 
+                        setArticleModalData((old) => {
+                            if (old !== '')
+                                return ''
+    
+    
+                        })//close modal
+    
                     }}
                 >
                     <FontAwesomeIcon icon={faTimes} id="X" />

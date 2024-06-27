@@ -1,6 +1,7 @@
 
 import React from "react";
 import useFetch from "../customHooks/useFetch";
+import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
 function ArticleCard({ item, setArticleModalData }) {
 
   console.log(`🖌️ ArticleCard`) // #debug
@@ -27,7 +28,7 @@ function ArticleCard({ item, setArticleModalData }) {
     >
       <div className="gallary_img_wrapper">
         <img
-            src={$`{item.image || item.thumbnail}`}
+            src={item.image || item.thumbnail}
             alt='' 
             onError={(e) => {
               e.target.onerror = null; 

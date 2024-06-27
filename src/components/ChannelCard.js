@@ -88,7 +88,7 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
         }}>
         <div className="gallary_img_wrapper">
           <img 
-            src=={item.image || item.thumbnail || item.img}
+            src={item.image || item.thumbnail}
             alt='' 
             onError={(e) => {
               e.target.onerror = null; 
