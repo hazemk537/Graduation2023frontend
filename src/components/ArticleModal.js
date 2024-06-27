@@ -2,8 +2,9 @@ import React from 'react'
 
 
 function ArticleModal({ data, setArticleModalData }) {
-    console.log('ArticleModal .... ')
-    console.log(data)
+    console.log(`🖌️ ArticleModal`) // #debug 
+    // console.log(data)
+
     return (
         <>
             <div
@@ -12,14 +13,19 @@ function ArticleModal({ data, setArticleModalData }) {
                     width: '100vw',
                     height: '100vh',
                     position: 'fixed',
-                    cursor:'pointer',
-                    zIndex: 800,
-                     backgroundColor: 'red'
+                    cursor: 'pointer',
+                    zIndex: '800',
                 }}
                 className="receive_click_div_helper"
                 onClick={() => {
                     console.log('clicked wrapper');
-                    setArticleModalData(false)//close modal
+                    setArticleModalData((old) => {
+                        if (old !== '')
+                            return ''
+
+
+
+                    })//close modal
 
                 }}
             >
@@ -32,7 +38,7 @@ function ArticleModal({ data, setArticleModalData }) {
                         backgroundColor: 'rgb(74, 67, 67)',
                         width: '600px',
                         height: '300px',
-                        zIndex: 900
+                        zIndex: '900'
                         , position: 'fixed',
                         //-half width
 

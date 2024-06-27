@@ -1,36 +1,31 @@
-import React  from "react";
+import React from "react";
 import useFetch from "../customHooks/useFetch";
-function ArticleCard({ item,setArticleModalData}) {
+function ArticleCard({ item, setArticleModalData }) {
 
-
-let token 
+  console.log(`🖌️ ArticleCard`) // #debug
+  let token
   // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
   if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
 
- token = JSON.parse(localStorage.getItem('data')).tokenp
+    token = JSON.parse(localStorage.getItem('data')).token
   }
 
-  const [jsonData, setData, sendRequest] = useFetch()
-
-if(jsonData.data)
-  {
-    console.log(jsonData.data);
-    setArticleModalData(jsonData.data)
-
+  const [, , sendRequest] = useFetch()
+  function handleSetModalData(jsonData) {
+    setArticleModalData(jsonData)
   }
 
   return (
     <div className="gallary_item" key={item.id}
       onClick={() => {
-        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item.id}`, { method: 'get', name: 'GetSubscibedList', token: token })
+        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData })
 
-        //setArticleModalData('')
 
       }}
 
     >
       <div className="gallary_img_wrapper">
-        <img  src={item.image||item.thumbnail} alt={item.title} />
+        <img src={item.image || item.thumbnail} alt={item.title} />
       </div>
       <div className="gallary_item_details">
         <h2 className="gallary_item_headding">{item.title}</h2>
@@ -44,11 +39,11 @@ if(jsonData.data)
           xmlns="http://www.w3.org/2000/svg"
           stroke="#5c5757"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
             {" "}
@@ -93,24 +88,24 @@ if(jsonData.data)
           {'{" "}{" "}'}
         </svg>
         <svg
-          class="gallary_item_action_open"
+          className="gallary_item_action_open"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
             {" "}
             <path
               d="M5 12V6C5 5.44772 5.44772 5 6 5H18C18.5523 5 19 5.44772 19 6V18C19 18.5523 18.5523 19 18 19H12M8.11111 12H12M12 12V15.8889M12 12L5 19"
               stroke="#5c5757"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></path>{" "}
           </g>
         </svg>

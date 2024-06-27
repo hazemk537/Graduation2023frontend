@@ -6,8 +6,11 @@ import useFetch from "../customHooks/useFetch";
 import ArticleModal from "./ArticleModal";
 
 function UserArticles() {
+  console.log(`🖌️ UserArticles`) // #debug 
+
   //default all value means > find allarticles by default
-  const [ArticleModalData, setArticleModalData] = useState(false)
+  const [ArticleModalData, setArticleModalData] = useState('')
+
   const [pageNumber,] = useState(1)
 
   // v1 set state ,then rerun useeffect based on statechange
@@ -33,7 +36,6 @@ function UserArticles() {
     GetRssArticlesById('')
 
   }, []);
-
 
   return (
 

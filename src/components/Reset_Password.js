@@ -1,14 +1,19 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { faAt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/Reset_Password.css";
 import useFetch from "../customHooks/useFetch";
+//donot touch file
 function ResetPassword() {
 
   // let emailInputRef = useRef(null);
   // #Note_case provide array with 3 refs
-  let inputFields =useRef({});
+  const [emailInput, setEmailInput] = useState();
+  const [passwordInput, setPasswordInput] = useState();
+  const [codeInput, setCodeInput] = useState();
+  let inputFields = useState();
   // let NewPasswordRef = useRef(null);
   // let  inputFields[2] = useRef(null);
 
@@ -20,15 +25,14 @@ function ResetPassword() {
   const [, , sendgetResetCode] = useFetch()
   const [, , sendNewPassword] = useFetch()
   const [, , sendconfirmResetCode] = useFetch()
-useEffect(()=>{
-  console.log(inputFields);
-})
+
   function resetPasswordHandler() {
     setoggleSuccessReset(1)
   }
   function verifyCodeHandler() {
 
     setoggleEnterPassword(1)
+
   }
 
   function sendCodeHandler() {
@@ -51,9 +55,12 @@ useEffect(()=>{
             setoggleEnterPassword(0)
             setoggleSuccessReset(0)
             setogglesCodeSent(0)
+            setEmailInput('')
+            setCodeInput('')
+            setPasswordInput('')
           }}>enter other email</Link>
         </div>
-
+        {/* disappear when  togglesCodeForm =1 */}
         {!togglesCodeForm && <div className="input-field">
 
           <h5>Enter your email address and we will send you a new password</h5>
@@ -64,52 +71,62 @@ useEffect(()=>{
             style={{ color: "#0740b0" }}
           />
           <input
-           
+
             type="email"
             required
             placeholder="Email"
             name="email"
-            ref={(element) => {inputFields['email'].current= element}}
-          />
+            onChange={(event) => setEmailInput(event.target.value)}
+
+            value={emailInput} />
+
           {/* #Note_case email.current or email.value > gives #react_bug  Converting circular structure to JSON ,"The JSON value could not be converted to System.String. Path: $.email | LineNumber: 0 | BytePositionInLine: 10."*/}
           <button onClick={() => {
-            sendgetResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/SendResetpassword`, { method: 'POST', name: 'POSTsendgetResetCode', body: { 'email': inputFields['email'].current.value }, onSucceed: sendCodeHandler })
+            sendgetResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/SendResetpassword`, { method: 'POST', name: 'POSTsendgetResetCode', body: { 'email': emailInput }, onSucceed: sendCodeHandler })
           }}>send code </button>
         </div>}
 
         {/* #Note_case inclusive states , component 1 active if only first one state is active etc*/}
 
-        {togglesCodeForm && !toggleSuccessReset && !toggleSuccessReset ?
+        {/* disappear when  toggleEnterPassword =1 */}
+        {/* appear when  togglesCodeForm =1 */}
+        {togglesCodeForm && !toggleEnterPassword ?
           (<div>
             <input
-             
+
               type="text"
               className="resetPassword_input"
               placeholder="Enter Code"
               name="confirmationCode"
-              ref={(element) => {inputFields.current[1] = element}}
-              />
+              onChange={(event) => setCodeInput(event.target.value)}
+
+              value={codeInput} />
+
             <button id="sub_btn" onClick={() => {
               // #debug console.log('enter code btn');
-              sendconfirmResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/ConfirmResetPassword`, { method: 'POST', name: 'POSTsendconfirmResetCode', body: { 'email': inputFields['email'].current.value, 'code':  inputFields['confirmCode'].current.value }, onSucceed: verifyCodeHandler })
+              sendconfirmResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/ConfirmResetPassword`, { method: 'POST', name: 'POSTsendconfirmResetCode', body: { 'email': emailInput, 'code': codeInput }, onSucceed: verifyCodeHandler })
             }}>
               Enter Code
             </button>
 
           </div>) : null
         }
-        {toggleEnterPassword && !toggleSuccessReset && !togglesCodeForm ? (<div>
+        {/* disappear when  toggleSuccessReset =1 */}
+        {/* appear when  toggleEnterPassword =1 */}
+        {toggleEnterPassword && !toggleSuccessReset ? (<div>
           <input
             type="password"
             className="resetPassword_input"
             placeholder="Enter New Password"
             name="confirmationCode"
-            ref={(element) => {inputFields.current[2] = element}}
+            value={passwordInput}
+            onChange={(event) => setPasswordInput(event.target.value)}
           />
+
           <button
             className="resetPassword_btn"
             onClick={() => {
-              sendNewPassword(` https://BrieflyNews.runasp.net/api/v1/Auth/Resetpassword`, { method: 'POST', name: 'POSTsendNewPaasword', body: { 'password': inputFields['password'].current.value }, onSucceed: resetPasswordHandler })
+              sendNewPassword(` https://BrieflyNews.runasp.net/api/v1/Auth/Resetpassword`, { method: 'POST', name: 'POSTsendNewPaasword', body: { 'email': emailInput, 'password': passwordInput }, onSucceed: resetPasswordHandler })
             }}
           >
             Submit
@@ -117,14 +134,10 @@ useEffect(()=>{
         </div>) : null
         }
 
-        {toggleSuccessReset &&
+        {toggleSuccessReset ?
 
-          <h1>Password Changed successfully ✔️ </h1>
+          <h1>Password Changed successfully ✔️ </h1> : null
         }
-
-
-
-
       </div>
     </>
   );

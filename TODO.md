@@ -1,73 +1,71 @@
 # Project
 اللهم علمنا ما ينفعنا وانفعنا بما علمتنا
 ### TODO (low priority 🔼)
+- +apis popups for all apis ex:if token expire.
+- pricing implementation @backend
+- [ ] optimize images
+- theme,translation
+- next (routing,static pages   recommendation,know why to use)
 
-    - +apis popups for all apis ex:if token expire.
-    - pricing implementation @backend
-    - [ ] optimize images
-    - redux,theme,translation
-    - next (routing,static pages   recommendation,know why to use)
-
-    - +<LandingPage/> conditional render create account and sign in if user is logined @zaki
-    -  +<SubscripedChannels/>:50 (line 50 in component file) useeffect when state change log it (monitor system) usecallback,usememo
-
+- +<LandingPage/> conditional render create account and sign in if user is logined @zaki
+-  +<SubscripedChannels/>:50 (line 50 in component file) useeffect when state change log it (monitor system) usecallback,usememo
 - @backend {{Domain}}/api/v1/Auth/ResetPassword , public, no need the reset code
 - host {due:2024-06-22}
-    1. solve eslint problems @zaki
-    2. check host @hazem
-    3. team tests @otherTeam
-    4. team active @otherTeam
+1. solve eslint problems @zaki
+2. check host @hazem
+3. team tests @otherTeam
+4. team active @otherTeam
 - robust cases
 - draw ,track and optimise tree
 - senior reviews
+-  add new tasks  @hazem {due:2024-06-27}
+-  shaib meeting install react  @hazem {due:2024-06-30}
 
 ### TODO (high 🔼🔼🔼)
+- redux based on jsonData.message or okFailed in +useFetch, +<addFeed/>,+google_login,+ChannelCard,+discover
+
+- style +reset_password
 - search algolio , in +homePage
 - Note_case_useless_state , statful or not flag,if condition to update state 
 
 - 3. modal with useSelctor
 - 4. netwerk error #pro_grad @hazem
 
-- add error boundry to catch all thrown errors ,ex: rm token, try go /home
+- add error boundry to catch all thrown errors 
+#TEST ex: rm token, try go /home
+ 
 - +<ALL_fetch_APIS/> use Redux,set Err modal @hazem
 - global error manage system with redux
 - +<SubscribedList/> state to color the selected rss >>> add its name before the articles
-### In Progress
--  @backend contact us form  @zaki {due:2024-06-27}
-- reactjs book @hazem {due:2024-06-26|e1d}
-    - how
-    - cross platform
-    - from js to nextjs and reactjs
-    - optimization in app
-    - clean code in app
-    - senior reviews how we handles
- 
--  custom Hook  @hazem {due:2024-06-27}
-    - [x] +<PublicChannels/> 
-    - [x] +<SubscribedLIst/> 
-    - [x] +<SubscriptionsChannels> 
-    - [x] +<MainLandingPage/> 
-    - [x] +<create_Account/> 
-    - [x] +<UserArticles/> 
-    - [x] +<UserArticle/> 
-    - [x] +<ArticleCard/> 
-    - [x] +<login/> 
-    - [x] +<protected/> 
-    - [x] +<Login/>
-    - [x] +<create_Account/>
-    - [x] +<ResetPassword/>    
-    -  +<addFeed/>
-    -  +ChannelCard
-    -  +discover
-    -  +google_login
+- all components using useFetch , send prop to disable setState if it donot use it
+- style profile component +<Home/>
 
-- bad modal close in +UserArticles @hazem
-- +resetPassword bad refs  @hazem {due:2024-06-27}
-- +<NavBar/> bad logotext @zaki {due:2024-06-27}
+### In Progress
+-  upload videos  @hazem {due:2024-06-27|e2d} {cm:2024-06-27}
+-  @backend contact us form  @zaki {due:2024-06-27}
+- +<NavBar/> bad logotext @zaki {due:2024-06-27} 
+
+
 
 ### Done ✓
-- +<LandingPage/> if no images same endpoint result no categories @zaki
+-  custom Hook  @hazem {due:2024-06-27}
+ - [x] +<PublicChannels/> 
+ - [x] +<SubscribedLIst/> 
+ - [x] +<SubscriptionsChannels> 
+ - [x] +<MainLandingPage/> 
+ - [x] +<create_Account/> 
+ - [x] +<UserArticles/> 
+ - [x] +<UserArticle/> 
+ - [x] +<ArticleCard/> 
+ - [x] +<login/> 
+ - [x] +<protected/> 
+ - [x] +<Login/>
+ - [x] +<create_Account/>
+ - [x] +<ResetPassword/>    
+ -   +<addFeed/>,+google_login,+ChannelCard,+discover
 
+- bad modal close in +UserArticles @hazem  
+- +<LandingPage/> if no images same endpoint result no categories @zaki
 - in <ArticleCard/> and <ChannelCard/> add placeholder images api doesnot provide one. @zaki
 
 - [x] custom hook and 5 useDispatches... @hazem
@@ -77,17 +75,15 @@
 - +<ArticleModal> @backend null article category,summary,images in
 - remove all chanells from +<Home/> backend not implement it @hazem
 - +<UserArticles/> bad when consume api/v1/Article/GetRssArticle/ bad article modal error @hazem
-
+- [x] #project_graduation if sign with google ,store token,refresh token then forward to home
 - #pro_grad all channels api in +</home/>
 - #project_graduation on signup success bad state message
 - update,create,delete by admin, ?? #backend #pro_grad (current no )
-- [x] #project_graduation if sign with google ,store token,refresh token then forward to home
-
-  - channesl modals, btn toggles ,array state with id
-  - replace <Navigate to="/" />;
-  - multipages navigation +<Channels/>
-  - +<UserArticle/> show +<ArticleModal data={data}/> @hazem
-  - [ ] +<UserArticles/> consume Articles API @zaki
+- channesl modals, btn toggles ,array state with id
+- replace <Navigate to="/" />;
+- multipages navigation +<Channels/>
+- +<UserArticle/> show +<ArticleModal data={data}/> @hazem
+- [ ] +<UserArticles/> consume Articles API @zaki
 
     - 🗄️ ![alt text](imagesRef/image-4.png)
     - errors in api
@@ -139,14 +135,14 @@
   - [x] send code,email to api
   - [x] msg confirmed or not
   - [ء] meeting {due:2024-06-20} @team
-    - q/a anything
-    - what we did
-    - TODO file > a must
-    - contribute in file +,@
-    - TODO extention >
-    - live demo
-    - inProgress section discuss
-    - q/a anything
+   - q/a anything
+   - what we did
+   - TODO file > a must
+   - contribute in file +,@
+   - TODO extention >
+   - live demo
+   - inProgress section discuss
+   - q/a anything
   - [x] forget password css
   - [x] API end points
   - [x] two logins appear success then err
@@ -167,9 +163,9 @@
  * states
  when state 1>input state 1 
  when state 1>span state 0 
-    1. toggleEmailInput1/btn1/other_mail(span)0
-    2. toggleCodeInput/btn
-    3. togglwPasswordInputs/inputs
+  1. toggleEmailInput1/btn1/other_mail(span)0
+  2. toggleCodeInput/btn
+  3. togglwPasswordInputs/inputs
    
  * setStates
    1. onSucceed:sendCodeHandler ->   set 1
@@ -179,6 +175,7 @@
 
 - rm strict mode @hazem
 # notes
+
 - // #Note_case user without thrown errors ,is authenticated one
 - // Note_case: Token not defined
 
@@ -190,7 +187,14 @@
   password:Mazefdn@12311
 
 -
-
+## react Book
+- reactjs book @hazem  
+ - how
+ - cross platform
+ - from js to nextjs and reactjs
+ - optimization in app
+ - clean code in app
+ - senior reviews how we handles
 ## rss feeds
 
 // const rssList=["https://feeds.bbci.co.uk/news/world/rss.xml",
