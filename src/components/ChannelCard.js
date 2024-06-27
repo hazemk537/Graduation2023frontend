@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import '../styles/ChannelCard.css'
 import useFetch from "../customHooks/useFetch";
+import briefimg from  '../assets/Eo_circle_red_white_letter-b.svg';
+import ModalArticle from "./ChannelModal";
 
 function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, item }) {
 
@@ -15,13 +17,12 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
   }
 
   const subscribeHandler = (resolve, id) => {
-
     fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/RssUserSubscribe/${id}`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }, method: 'POST'
     }).then((response) => {
-      console.log('Subscriping ...')
+      console.log('Subscribing ...');
       if (!response.ok) {
         console.log(response);
         setAlertMessage(response.status);
@@ -45,32 +46,30 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
   };
 
   const unsubscribeHandler = (resolve, id) => {
-
-
     console.log(id);
     fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/RssUserUnSubscribe/${id}`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }, method: 'POST'
     }).then((response) => {
-      console.log(' response ...');
+      console.log('Unsubscribing ...');
       if (!response.ok) {
-        console.log('GetUnSubscriping !response.ok...');
+        console.log('GetUnSubscribing !response.ok...');
         console.log(response);
         setAlertMessage(response.status);
         setAlertType('error');
       } else {
-        console.log('GetUnSubscriping response.ok...');
+        console.log('GetUnSubscribing response.ok...');
       }
       return response.json();
     }).then((jsonData) => {
       if (jsonData.succeeded) {
-        console.log('GetUnSubscriping jsonData.succeeded');
+        console.log('GetUnSubscribing jsonData.succeeded');
         setAlertMessage(jsonData.message);
         setAlertType('success');
         resolve();
       } else {
-        console.log('GetUnSubscriping !jsonData.succeeded');
+        console.log('GetUnSubscribing !jsonData.succeeded');
         setAlertMessage(jsonData.message);
         setAlertType('error');
       }
@@ -85,18 +84,25 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
       <div className="gallary_item"
         key={item.id}
         onClick={() => {
-          //allow one articel modal
           setModalData(item)
         }}>
         <div className="gallary_img_wrapper">
-          <img src={item.image || item.thumbnail || item.img} alt={item.title} />
+          <img 
+            src=={item.image || item.thumbnail || item.img}
+            alt='' 
+            onError={(e) => {
+              e.target.onerror = null; 
+              e.target.src = briefimg;
+            }} 
+          />
+
         </div>
         <div className="gallary_item_details">
           <h2 className="gallary_item_headding">{item.title}</h2>
           <p className="gallary_item_description">{item.description}</p>
         </div>
-
-      </div><div className="gallary_item_actions">
+      </div>
+      <div className="gallary_item_actions">
         {type === "subscription_channels" &&
           <button className="subscribe_btn" onClick={() => {
             new Promise((resolve, reject) => {

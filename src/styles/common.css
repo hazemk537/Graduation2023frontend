@@ -1,10 +1,52 @@
-.channelsHover:hover,.allChannelsHover:hover{
-background-color: rgb(37, 42, 40);
-padding-top: 1px;
-padding-bottom: 1px;
-padding-left: 10px;
-border-radius: 5px;
-cursor: pointer;
-
+.verticalCards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 20%;
+    right: 1rem;
+    z-index: 5;
+    width: 12%;
+    height: 70vh; 
+    border-left: 2px solid #cccccc86; 
+    padding-left: 1rem; 
+    overflow-y: auto; 
+    border-radius: 5%;
+    box-shadow: 5px 0 10px rgb(172, 172, 172);
 }
 
+.verticalCards::-webkit-scrollbar {
+    width: 0; 
+}
+
+.horizontalCards {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.channelImage {
+    width: 4rem;
+}
+
+.channelsHover {
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.channelsHover:hover {
+    background-color: rgba(211, 211, 211, 0.548);
+}
+
+.activeChannel {
+    margin-top: 10px;
+    background-color: rgba(76, 76, 77, 0.685);
+    box-shadow: 2px 0px 10px white;
+    border-radius: 5px;
+}

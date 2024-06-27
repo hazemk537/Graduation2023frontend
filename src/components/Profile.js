@@ -39,7 +39,7 @@ const ProfileImage = ({ userName, userImage, userAccount }) => {
         <div className="dropdown-menu">
           <div className="menu-item-user">
             <div>
-              <img src={userImage} alt="User Avatar" />
+              <img className='avatar' src={userImage} alt="User Avatar" />
               <p>{userName}</p>
             </div>
             <div>
@@ -48,12 +48,12 @@ const ProfileImage = ({ userName, userImage, userAccount }) => {
           </div>
 
           <div className="menu-item">
-            <span><img src={settings} alt="Settings Icon" /></span>
+            <span><img className='svg' src={settings} alt="Settings Icon" /></span>
             <a className='jump' href='#'>Account Settings</a>
           </div>
 
           <div className="menu-item" onClick={handleLogout}>
-            <span><img src={logout} alt="Logout Icon" /></span>
+            <span><img className='svg' src={logout} alt="Logout Icon" /></span>
             <a className='jump' href='#'>Logout</a>
           </div>
         </div>

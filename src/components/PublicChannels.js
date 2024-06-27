@@ -87,7 +87,7 @@ function PublicChannels() {
 
               {index === selectedSpan && <span style={{
                 borderBottomStyle: 'solid',
-                borderColor: 'rgb(75, 95, 95)',
+                borderColor: 'rgb(255, 0, 0)',
                 display: 'block',
               }}></span>}
 

@@ -1,3 +1,4 @@
+
 import React from "react";
 import useFetch from "../customHooks/useFetch";
 function ArticleCard({ item, setArticleModalData }) {
@@ -25,12 +26,23 @@ function ArticleCard({ item, setArticleModalData }) {
 
     >
       <div className="gallary_img_wrapper">
-        <img src={item.image || item.thumbnail} alt={item.title} />
-      </div>
+        <img
+            src={$`{item.image || item.thumbnail}`}
+            alt='' 
+            onError={(e) => {
+              e.target.onerror = null; 
+              e.target.src = briefimg;
+            }}  />
+       </div>
       <div className="gallary_item_details">
         <h2 className="gallary_item_headding">{item.title}</h2>
         <p className="gallary_item_description">{item.description}</p>
       </div>
+
+
+
+
+
       <div className="gallary_item_actions">
         <svg
           className="gallary_item_action_like"

@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+
+
+import Spinner from './Spinner';
 import "../styles/ChannelsView.css";
 import ArticleCard from "./ArticleCard";
 import SubscribedList from "./SubscribedList";
@@ -39,6 +42,7 @@ function UserArticles() {
 
   return (
 
+
     <>
 
       {ArticleModalData && <ArticleModal setArticleModalData={setArticleModalData} data={ArticleModalData} />}
@@ -58,7 +62,7 @@ function UserArticles() {
             </div>
             :
             <div className={`gallary_items `}>
-              <h1 style={{ position: 'fixed', top: '50%', left: '48%', fontWeight: 'lighter', opacity: '0.5', fontSize: '2rem' }}>No Articles</h1>
+               <Spinner/>
             </div>
 
         }

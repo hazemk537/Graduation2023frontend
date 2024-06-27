@@ -36,3 +36,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.sub_btn {
+  background-color: whitesmoke;
+  border-radius: 8px;
+  padding: 7px;
+  cursor: pointer;
+  color: black; /* Default text color */
+}
+
+.sub_btn:hover {
+  background-color: red;
+  color: white;
+}

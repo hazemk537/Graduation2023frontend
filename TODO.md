@@ -21,9 +21,6 @@
 -  add new tasks  @hazem {due:2024-06-27}
 -  shaib meeting install react  @hazem {due:2024-06-30}
 
-### TODO (high 🔼🔼🔼)
-- redux based on jsonData.message or okFailed in +useFetch, +<addFeed/>,+google_login,+ChannelCard,+discover
-
 - style +reset_password
 - search algolio , in +homePage
 - Note_case_useless_state , statful or not flag,if condition to update state 
