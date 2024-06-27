@@ -66,7 +66,8 @@ function SubscribedList({ GetRssArticlesById }) {
                             className={`channelsHover ${activeChannel === item.id ? 'activeChannel' : ''}`}
                             onClick={() => {
                                 setActiveChannel(item.id);
-                                GetRssArticlesById(item.id); // Corrected function call
+
+                                GetRssArticlesById(item.id,item.title); // Corrected function call
                             }}
                             key={idx}
                         >

@@ -29,7 +29,7 @@
 2. check host @hazem
 3. team tests @otherTeam
 4. team active @otherTeam
-
+- 
 - rss name in +userArticles before articles
 - #pro_grad +<publicChannels/> add countries in same way
 - #pro_grad +PublicChannels bad text general world,.. capital case
@@ -53,7 +53,8 @@
 - global error manage system with redux
 - all components using useFetch , send prop to disable setState if it donot use it
 -  bad style in +subscribedlist when #pro_grad
-- spinner between req and response #pro_grad
+- spinner /lazy loading between req and response #pro_grad in  +articleModal,+channelModal,+userArticles,+publModal, on all routes/modals
+-   #pro_grad
 - #pro_grad search in local 
 - #pro_grad in /home/addfeed bad mobile screen
 - #pro_grad in /home/addfeed  undefined . if rss https://electronicintifada.net/rss.xml(make it resilient)

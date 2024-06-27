@@ -13,22 +13,24 @@ function UserArticles() {
 
   //default all value means > find allarticles by default
   const [ArticleModalData, setArticleModalData] = useState('')
-
+  const [RssTitle, setRssTitle] = useState()
   const [pageNumber,] = useState(1)
 
   // v1 set state ,then rerun useeffect based on statechange
   // v2 set state ,then rerun component with the fetch ,change state,rerender
   //v3 pass par to fn then seTstate
 
- // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
- let token
- if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null){ 
-   token = JSON.parse(localStorage.getItem('data')).token
- }
+  // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
+  let token
+  //no need to mae it a state,it is computed on the fly when 
+  if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
+    token = JSON.parse(localStorage.getItem('data')).token
+  }
   const [jsonData, , sendRequest] = useFetch()
 
-  
-  function GetRssArticlesById(id) {
+
+  function GetRssArticlesById(id, title) {
+    setRssTitle(title)
     if (id) {
       sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GETuserArticles', token: token })
     }
@@ -51,6 +53,10 @@ function UserArticles() {
         {/* no need to flex we need the second a fixed */}
         {/* sets the id of the channel */}
         <SubscribedList GetRssArticlesById={GetRssArticlesById} />
+        <div style={{textAlign:'center',marginTop:'120px'}}>
+
+        <h1 style={{color:'salmon'}}>{RssTitle}</h1>
+        </div>
 
         {
           jsonData.data ?
@@ -62,7 +68,7 @@ function UserArticles() {
             </div>
             :
             <div className={`gallary_items `}>
-               <Spinner/>
+              <Spinner />
             </div>
 
         }
