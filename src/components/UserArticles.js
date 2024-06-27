@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ChannelCard from "./ChannelCard";
+import Spinner from './Spinner';
 import "../styles/ChannelsView.css";
 import ArticleCard from "./ArticleCard";
 import SubscribedList from "./SubscribedList";
-import { Spinner } from "react-bootstrap";
 function UserArticles( ) {
   //default all value means > find allarticles by default
   const [alertMessage, setAlertMessage] = useState(false);

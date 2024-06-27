@@ -1,12 +1,25 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
-import { Spinner } from 'react-bootstrap'; // Import Spinner component
-const CustomSpinner = () => {
+import '../styles/Spinner.css'; 
+
+const Spinner = () => {
     return (
-        <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-        </Spinner>
+        <div className='spin-container'>
+            <div>Loading .....</div>
+            
+            <div className="spinner-grow text-success1" role="status">
+                <span className="sr-only"></span>
+            </div>
+            <div className="spinner-grow text-success2" role="status">
+                <span className="sr-only"></span>
+            </div>
+            <div className="spinner-grow text-success3" role="status">
+                <span className="sr-only"></span>
+            </div>
+            <div className="spinner-grow text-success4" role="status">
+                <span className="sr-only"></span>
+            </div>
+        </div>
     );
 };
 
-export default CustomSpinner;
+export default Spinner;

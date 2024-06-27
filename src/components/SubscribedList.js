@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/common.css'
 import briefimg from  '../assets/Eo_circle_red_white_letter-b.svg';
-
 let horizontalCardsStyle = {
     display: 'flex',
     flexDirection: 'row',
