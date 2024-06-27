@@ -30,9 +30,9 @@
 3. team tests @otherTeam
 4. team active @otherTeam
 - 
-- rss name in +userArticles before articles
 - #pro_grad +<publicChannels/> add countries in same way
 - #pro_grad +PublicChannels bad text general world,.. capital case
+
 - in +userArticles +discover ,+publicChannels replcae intial articles with spinner #pro_grad
 - make/userdata +backend
 - #pro_grad <Subscriptions/> on click bad rectangle on border radius
@@ -67,7 +67,9 @@
 -  upload videos  @hazem {due:2024-06-27|e2d} {cm:2024-06-27}
 - add error boundry to catch all thrown errors 
 #TEST ex: rm token, try go /home @zaki
-
+- @hazem +userArtickles article styling
+- rss name in +userArticles before articles @hazem
+- +<SubscribedList/> bad styling @hazem
 
 
 
