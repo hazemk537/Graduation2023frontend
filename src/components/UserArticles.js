@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from "react";
 import Spinner from './Spinner';
-import "../styles/ChannelsView.css";
 import ArticleCard from "./ArticleCard";
 import SubscribedList from "./SubscribedList";
 import useFetch from "../customHooks/useFetch";
 import ArticleModal from "./ArticleModal";
 
 function UserArticles() {
-  console.log(`🖌️ UserArticles`) // #debug 
+  const [subscribedChannelsExist, setSubscribedChannelsExist] = useState(true); // Define setSubscribedChannelsExist
 
-  // default all value means > find all articles by default
   const [ArticleModalData, setArticleModalData] = useState('');
   const [RssTitle, setRssTitle] = useState(null);
   const [pageNumber] = useState(1);
-  const [subscribedChannelsExist, setSubscribedChannelsExist] = useState(false);
   const [loading, setLoading] = useState(false); // New state for loading
 
   let token;
-  // no need to make it a state, it is computed on the fly when 
   if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
     token = JSON.parse(localStorage.getItem('data')).token;
   }
+
   const [jsonData, , sendRequest] = useFetch();
 
   function GetRssArticlesById(id, title) {
@@ -33,11 +30,12 @@ function UserArticles() {
   }
 
   useEffect(() => {
-    // by default get all articles on /home load 
+    // Fetch data on component mount or refresh
     GetRssArticlesById('');
   }, []);
 
   useEffect(() => {
+    // Update subscribed channels existence based on fetched data
     if (jsonData.data && jsonData.data.length > 0) {
       setSubscribedChannelsExist(true);
     } else {
@@ -49,7 +47,8 @@ function UserArticles() {
     <>
       {ArticleModalData && <ArticleModal setArticleModalData={setArticleModalData} data={ArticleModalData} />}
       <div>
-        <SubscribedList GetRssArticlesById={GetRssArticlesById} />
+        {/* Pass loading state to SubscribedList */}
+        <SubscribedList GetRssArticlesById={GetRssArticlesById} loading={loading} />
         <div style={{ textAlign: 'center', marginTop: '120px' }}>
           <h1 style={{ color: 'salmon' }}>{RssTitle}</h1>
         </div>

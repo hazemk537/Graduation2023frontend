@@ -2,21 +2,17 @@ import React, { useEffect, useState } from 'react';
 import '../styles/common.css';
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg';
 import useFetch from '../customHooks/useFetch';
-import { useNavigate } from "react-router-dom"; 
-
-function SubscribedList({ GetRssArticlesById }) {
-    console.log(`🖌️ subscribedList`);  
-
+import { useNavigate } from "react-router-dom";
+import Spinner from './Spinner';
+function SubscribedList({ GetRssArticlesById, loading }) {
     let token;
     if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
         token = JSON.parse(localStorage.getItem('data')).token;
     }
 
-    const [jsonData, setData, sendRequest] = useFetch();
+    const [jsonData, , sendRequest] = useFetch();
     const [activeChannel, setActiveChannel] = useState(null);
-    const [alertMessage, setAlertMessage] = useState('');
-    const [alertType, setAlertType] = useState('');
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const getActiveChannelFromStorage = () => {
         const storedActiveChannel = localStorage.getItem('activeChannel');
@@ -28,35 +24,23 @@ function SubscribedList({ GetRssArticlesById }) {
     };
 
     useEffect(() => {
+        // Fetch subscribed channels
         sendRequest('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', { method: 'GET', name: 'GetSubscribedList', token: token });
     }, []);
 
     useEffect(() => {
-        if (activeChannel !== null) {
-            setActiveChannelInStorage(activeChannel.id, activeChannel.title);
-        }
-    }, [activeChannel]);
-
-    useEffect(() => {
         if (jsonData.succeeded || jsonData.hasOwnProperty('data')) {
-            setAlertMessage(jsonData.message);
-            setAlertType('success');
-
             const storedActiveChannel = getActiveChannelFromStorage();
             if (jsonData.data && jsonData.data.length > 0) {
                 if (storedActiveChannel) {
                     setActiveChannel(storedActiveChannel);
                     GetRssArticlesById(storedActiveChannel.id, storedActiveChannel.title);
                 } else {
-                    // Set the active channel to the first channel in the list
                     const firstChannel = jsonData.data[0];
                     setActiveChannel({ id: firstChannel.id, title: firstChannel.title });
                     GetRssArticlesById(firstChannel.id, firstChannel.title);
                 }
             }
-        } else {
-            setAlertMessage('Failed to fetch subscriptions');
-            setAlertType('error');
         }
     }, [jsonData]);
 
@@ -65,7 +49,14 @@ function SubscribedList({ GetRssArticlesById }) {
         GetRssArticlesById(item.id, item.title);
     };
 
-    if (jsonData.data && jsonData.data.length > 0) {
+    if (loading) {
+        return (
+            <div className="gallary_items">
+                {/* Show spinner while loading */}
+                <Spinner />
+            </div>
+        );
+    } else if (jsonData.data && jsonData.data.length > 0) {
         return (
             <div>
                 <div className="verticalCards">
@@ -98,25 +89,20 @@ function SubscribedList({ GetRssArticlesById }) {
         return (
             <div className='No-channels'
                 style={{
-                    color:'white',
+                    color: 'white',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     fontFamily: 'Arial',
-                    height: '100vh', 
-                    
+                    height: '100vh',
                 }}
             >
-                <h1>No Subscriptions ,Subscribe to show articles </h1>
-
-
+                <h1>No Subscriptions, Subscribe to show articles </h1>
                 <button
-                
-                onClick={() => navigate('/home/discover')}
-              >
-                Discover 
-              </button>
-            
+                    onClick={() => navigate('/home/discover')}
+                >
+                    Discover
+                </button>
             </div>
         );
     }
