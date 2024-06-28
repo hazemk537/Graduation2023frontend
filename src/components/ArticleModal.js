@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/SumWindow.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faL, faTimes } from "@fortawesome/free-solid-svg-icons";
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
+import { useSearchParams } from 'react-router-dom';
 
 
 
 function ArticleModal({ data, setArticleModalData }) {
+    const [showSummary, setshowSummary] = useState(false)
     //article data in data.data
     console.log(`🖌️ ArticleModal`) // #debug 
     console.log(data) // #debug 
@@ -76,7 +78,7 @@ function ArticleModal({ data, setArticleModalData }) {
                             fontWeight: '700',
                             borderRadius: '30px',
 
-                        }}>{data.data.category||'No Categories'}</span>
+                        }}>{data.data.category || 'No Categories'}</span>
 
 
                         {/* creation */}
@@ -109,7 +111,12 @@ function ArticleModal({ data, setArticleModalData }) {
                         <div className="content">
                             {/* link title */}
                             {/* #Note_case fallback image if err */}
+                            
 
+<div style={{display:'flex'}}>
+                                <span className={` articelTab ${showSummary ? '' : 'selectedTab'}`} onClick={() => { setshowSummary(false) }} >description</span>
+                                <span className={`articelTab  ${!showSummary ? '' : 'selectedTab'}`} onClick={() => { setshowSummary(true) }}>Summary</span>
+                                </div>
                             <p
                                 style={{
                                     fontFamily: 'roboto,sans-serif',
@@ -122,40 +129,35 @@ function ArticleModal({ data, setArticleModalData }) {
                                 }                    </p>
 
                             {/* description */}
-                            <div>                            <p style={{
+                            {!showSummary && <div style={{
                                 color: 'beige',
                                 marginLeft: '3rem',
                                 fontSize: '20px',
                                 fontWeight: 'lighter'
-                            }}>{data.data.description}</p>
-
-</div>
-
-                            {/* summary */}
-
-                            <div style={{
-                                display: 'flex',
-                                fontSize: '20px',
-                                placeContent: 'center',
-                                /* border-left: aliceblue s,lid 1px; */
-                                color: 'burlywood',
-                                fontWeight: '700',
-                                borderBottomStyle: 'double',
-                            }} >
-
-                                <span style={{
-                                    fontFamily: 'fantasy',
-                                    fontSize: '15px',
-                                    fontWeight: 'bold'
-                                }}>Summary </span>
-                                {/* if first not fond display second #Note_case fallback render */}
-                                <p> {data.data.summarized || 'no summarization Available'} </p>
+                            }} dangerouslySetInnerHTML={{ __html: data.data.description }}>
 
 
                             </div>
+                            }
+                            {/* summary */}
+                            {showSummary &&
+                                <div style={{
+                                    display: 'flex',
+                                    fontSize: '20px',
+                                    placeContent: 'center',
+                                    /* border-left: aliceblue s,lid 1px; */
+                                    color: 'burlywood',
+                                    fontWeight: '700',
+                                }} >
 
+                                    {/* if first not fond display second #Note_case fallback render */}
+                                    <p className='p_summarization'> {data.data.summarized || 'no summarization Available'} </p>
+
+
+                                </div>
+                            }
                         </div></>}
-                <button style={{marginTop:'20px',marginBottom:'20px'}} className='Full-Article-button'>
+                <button style={{ marginTop: '20px', marginBottom: '20px' }} className='Full-Article-button'>
                     <a target='_blank' rel="noreferrer" href={`${data.data.link}`}>
                         <svg className='Full-Article' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <g fill="currentColor">

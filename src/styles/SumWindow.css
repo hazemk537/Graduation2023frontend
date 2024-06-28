@@ -13,7 +13,32 @@ body::-webkit-scrollbar-thumb {
     z-index: 1000;
     /* background-color: aliceblue; */
 }
+/* .tabBar{
+   
+    width: 80%;
+   
+    background-color: #686666;
+    border-radius: 20px;
+} */
+.articelTab {
+    font-weight: bolder;
+    padding: 26px;
+    display: inline-block;
+    width: 50%;
+    border-radius: 15px;
+    color: bisque;
+}
+.tabBar span:hover{
+    cursor: pointer;
+}
+.p_summarization
+{position: absolute;
+    top: 75%;}
 
+.selectedTab{
+    background-color: black;
+
+}
 .sumwindow {
     background-color: rgb(49, 46, 46);
     width: 600px;
@@ -26,7 +51,6 @@ body::-webkit-scrollbar-thumb {
     border: solid 0px rgba(12, 12, 12, 0.726);
     /* display: flex;    /* affect height */
     /* #NOTE_Model_long */
-    margin-top: 20px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -36,8 +60,7 @@ body::-webkit-scrollbar-thumb {
         scrollbar-width: thin;
     /* overflow-wrap: anywhere;     affect height */
 
-    top: 0px;
-    left: calc(50% - 300px);
+     left: calc(50% - 300px);
   
     height: calc(100%);
     overflow: auto;
@@ -84,6 +107,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .Full-Article-button {
+    position: absolute;
+    bottom: 10px;
+    left: 44%;
     cursor: pointer;
     border-radius: 50%;
     background-color: rgba(245, 245, 245);
