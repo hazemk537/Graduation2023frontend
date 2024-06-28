@@ -3,7 +3,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLandingPage from "./routes/MainLandingPage";
 import HomePage from "./routes/HomePage";
 import ResetPassword from "./components/Reset_Password";
-// import Alert from "./components/Alert";
 import AddFeed from "./routes/AddFeed";
 import "./index.css";
 import PricingPage from "./routes/PricingPage";
@@ -17,6 +16,7 @@ import Notfound from "./components/Error404";
 function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
+
   const ToggleLoginPopup = () => {
     setShowLoginPopup((old) => {
       if (old) {
@@ -52,16 +52,16 @@ function App() {
           onClickCreateAccount={ToggleSignupPopup}
         />
       ),
-      errorElement: (
-        <Notfound errorType="404"/>
-      ),
+      errorElement: <Notfound errorType="404" />,
     },
     {
       path: "/home",
       element: (
-        <Protected >
-          <HomePage />
-        </Protected>
+        <ErrorBoundary>
+          <Protected>
+            <HomePage />
+          </Protected>
+        </ErrorBoundary>
       ),
       children: [
         {
@@ -92,9 +92,11 @@ function App() {
     },
   ]);
 
-  return <ErrorBoundary>
-  <RouterProvider router={router} />
-</ErrorBoundary>;
+  return (
+    <ErrorBoundary>
+      <RouterProvider router={router} />
+    </ErrorBoundary>
+  );
 }
 
 export default App;

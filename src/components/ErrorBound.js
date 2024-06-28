@@ -1,37 +1,34 @@
-// ErrorBoundary.jsx
-import React, { useState, useEffect } from 'react';
-import Error404 from './Error404'; // Assuming you have a custom error component
+import React, { Component } from "react";
+import Error404 from './Error404'; // Adjust the import path as necessary
 
-const ErrorBoundary = ({ children }) => {
-    const [error, setError] = useState(null);
-    const [errorInfo, setErrorInfo] = useState(null);
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
 
-    useEffect(() => {
-        const handleError = (error, errorInfo) => {
-            console.error("Error Boundary caught an error", error, errorInfo);
-            setError(error);
-            setErrorInfo(errorInfo);
-        };
+    this.state = {
+      hasError: false,
+      error: null,
+    };
+  }
 
-        // Reset error state on component mount
-        setError(null);
-        setErrorInfo(null);
+  static getDerivedStateFromError(error) {
+    return {
+      hasError: true,
+      error,
+    };
+  }
 
-        // Cleanup function to reset error state
-        return () => {
-            setError(null);
-            setErrorInfo(null);
-        };
-    }, []);
+  componentDidCatch(error, errorInfo) {
+    console.error("Uncaught error:", error, errorInfo);
+  }
 
-    if (error) {
-        // Determine error type based on error status or other criteria
-        const errorType = error.status === 404 ? "404" : "other";
-
-        return <Error404 errorType={errorType} error={error} />;
+  render() {
+    if (this.state.hasError) {
+      return <Error404 errorType="error" errorMessage={this.state.error.message} />;
     }
 
-    return children;
-};
+    return this.props.children;
+  }
+}
 
 export default ErrorBoundary;
