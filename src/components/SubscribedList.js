@@ -24,8 +24,8 @@ function SubscribedList({ GetRssArticlesById, loading }) {
     };
 
     useEffect(() => {
-        // Fetch subscribed channels
-        sendRequest('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', { method: 'GET', name: 'GetSubscribedList', token: token });
+
+        sendRequest('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', { method: 'GET', name: 'GetSubscribedList', token: token ,jsonSuccessProp:'message',jsonFailProp:'message'});
     }, []);
 
     useEffect(() => {

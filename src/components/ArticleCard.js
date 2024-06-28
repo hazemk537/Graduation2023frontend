@@ -21,7 +21,7 @@ function ArticleCard({ item, setArticleModalData }) {
     <div className="gallary_item" key={item.id}
 
       onClick={() => {
-        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData })
+        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData, jsonSuccessProp: 'message', jsonFailProp: 'message' })
 
 
       }}
@@ -55,13 +55,13 @@ function ArticleCard({ item, setArticleModalData }) {
         
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        
+
           {item?.createdAt.match(/\d+-\d+-\d+/) ? <span style={{
-          fontFamily: 'fantasy'
-          , fontSize: '1.5rem',
-          fontWeight: '600',
-          color: 'beige'
-        }}>{item?.createdAt.match(/\d+-\d+-\d+/)[0]}</span> : 'no date'}</div>
+            fontFamily: 'fantasy'
+            , fontSize: '1.5rem',
+            fontWeight: '600',
+            color: 'beige'
+          }}>{item?.createdAt.match(/\d+-\d+-\d+/)[0]}</span> : 'no date'}</div>
 
 
         <svg

@@ -24,8 +24,9 @@ function UserArticles() {
     setRssTitle(title);
     if (id) {
       setLoading(true); // Set loading to true before request
-      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GETuserArticles', token: token })
+      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GETuserArticles', token: token,jsonSuccessProp:'message',jsonFailProp:'message' })
         .finally(() => setLoading(false)); // Set loading to false after request
+
     }
   }
 
