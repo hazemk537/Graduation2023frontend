@@ -12,7 +12,7 @@ function ChannelModal({ data, setModalData }) {
                     height: '100vh',
                     position: 'fixed',
                     zIndex: '10'
-            }}
+                }}
                 className="receive_click_div_helper"
                 onClick={() => {
                     console.log('clicked wrapper');
@@ -31,10 +31,10 @@ function ChannelModal({ data, setModalData }) {
                         height: '300px'
                         , position: 'fixed',
                         //-half width
-                       
+
                         left: 'calc(50% - 300px )',
                         //-half height
-                       
+
                         top: 'calc(50% - 150px )',
                         borderRadius: '20px'
 
@@ -56,7 +56,11 @@ function ChannelModal({ data, setModalData }) {
                     {data.description}
 
                 </p>
-                <a target='_blank' rel="noreferrer" href={`${data.link}`}><svg style={{
+                <a style={{
+                    position: 'absolute',
+                    bottom: '0',
+                    left: '40%'
+                }} target='_blank' rel="noreferrer" href={`${data.link}`}><svg style={{
                     width: '4rem',
                     height: '4rem',
 

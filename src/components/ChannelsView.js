@@ -2,26 +2,11 @@ import React, { useEffect, useState } from "react";
 import ChannelCard from "./ChannelCard";
 import "../styles/ChannelsView.css";
 import ChannelModal from "./ChannelModal";
+import Spinner from "./Spinner";
 
 function ChannelsView({ parrallelDiscover, setTriggerFetch, channels, type }) {
   const [ModalData, setModalData] = useState('')
-  const [intialChannels, setintialChannels] = useState([
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-    { image: "", description: "", title: "", id: "" },
-  ]);
-
-
+  
   if (channels)
     return (
 
@@ -43,9 +28,7 @@ function ChannelsView({ parrallelDiscover, setTriggerFetch, channels, type }) {
   else {
     return (
       <div className={`gallary_items ${type}_class`}>
-        {intialChannels.map((item, id) => (
-          <ChannelCard key={id} type={type} item={item} />
-        ))}
+       <Spinner style={{position:'static',height:'auto'}} />
       </div>
     );
   }

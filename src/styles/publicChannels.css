@@ -8,7 +8,9 @@
     border-radius: 20px;
 
 }
-
+.selectedCountryOrCategry{
+ 
+}
 .public_channels_class {
     z-index: 0;
     margin: 8% !important;

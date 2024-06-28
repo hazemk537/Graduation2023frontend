@@ -8,8 +8,36 @@ const categories = ["general", "world", "nation", "business", "technology", "ent
 
 ]
 
+
+const countries = [
+  {
+    "name": "Egypt",
+    "key": "eg"
+  },
+  {
+    "name": "Australia",
+    "key": "au"
+  },
+  {
+    "name": "Brazil",
+    "key": "br"
+  },
+  {
+    "name": "Canada",
+    "key": "ca"
+  },
+  {
+    "name": "China",
+    "key": "cn"
+  },
+  {
+    "name": "France",
+    "key": "fr"
+  }]
+
 function PublicChannels() {
-  const [selectedSpan, setSelectedSpan] = useState(1)
+  const [selectedSpan, setSelectedSpan] = useState(1)//catgory
+  const [selectedCountry, setSelectedCountry] = useState(0)//country
   const [categorisHover, setCategorisHover] = useState(false)
   //#todo move this state to seperate compoent to avoid useless re-render
   //#todo set err state if ex: no internet connection and display msg
@@ -21,9 +49,9 @@ function PublicChannels() {
 
   useEffect(() => {
 
-    sendRequest(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan]}&lang=ar&country=any&max=50&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'GnewsAPI' ,jsonSuccessProp:null,jsonFailProp:'errors' })
+    sendRequest(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan]}&lang=ar&country=${countries[selectedCountry].key}&max=50&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'GnewsAPI', jsonSuccessProp: null, jsonFailProp: 'errors' })
 
-  },[selectedSpan])
+  }, [selectedSpan, selectedCountry])
 
 
   let modifiedArticles
@@ -46,7 +74,7 @@ function PublicChannels() {
 
   return (
     <>
-      <h1 className="public_channels_h1">Egypt top headlines..</h1>
+      <h1 className="public_channels_h1"> World top headlines..</h1>
 
       <div style={{
         display: 'flex',
@@ -96,7 +124,52 @@ function PublicChannels() {
         })}
 
 
+
+
       </div>
+      <div style={{
+        display: 'flex',
+        width: '80%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: categorisHover ? 'default' : 'pointer',
+
+        backgroundColor: ' #3b3b3b',
+        borderRadius: '20px'
+      }}>
+        {countries.map((item, index) => {
+          return (
+            <div className={index === selectedCountry ? 'selectedCountryOrCategry' : ''} key={index}
+              style={{
+                width: '11.1%',
+
+              }}
+
+              onClick={() => {
+                setSelectedCountry(index)
+
+
+              }}
+
+            >
+
+              <p style={{
+                textAlign: 'center',
+
+              }}
+              >
+                {item.name}
+              </p>
+
+              {index === selectedCountry && <span style={{
+                borderBottomStyle: 'solid',
+                borderColor: 'rgb(174 161 161)',
+                display: 'block',
+              }}></span>}
+            </div>
+          )
+        })}
+      </div >
       <ChannelsView type="public_channels" channels={modifiedArticles} />
     </>
 

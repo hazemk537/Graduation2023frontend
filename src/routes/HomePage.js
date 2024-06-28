@@ -42,7 +42,9 @@ function HomePage() {
 console.log(notifySliceState);
   return (
     <>
-    {notifySliceState.message && <Alert type={notifySliceState.type}  alertText={notifySliceState.message.payload} />}
+    {notifySliceState.message.payload && <Alert 
+    type={notifySliceState.type}
+    alertText={notifySliceState.message.payload} />}
     <div className="homepage-container">
         <div className="homepage-header">
           <div className="homepage-header-left">
