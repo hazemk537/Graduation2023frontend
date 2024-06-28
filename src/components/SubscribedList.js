@@ -7,23 +7,22 @@ function SubscribedList({ GetRssArticlesById }) {
     console.log(`🖌️ subscribedList`); // #debug 
 
     let token;
-    // First condition to avoid bad data: undefined value, second to avoid if the data entry does not exist in localStorage
     if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
         token = JSON.parse(localStorage.getItem('data')).token;
     }
 
     const [jsonData, setData, sendRequest] = useFetch();
-    const [activeChannel, setActiveChannel] = useState(null); // State to track active channel ID
-    const [alertMessage, setAlertMessage] = useState(false);
-    const [alertType, setAlertType] = useState(false);
+    const [activeChannel, setActiveChannel] = useState(null);
+    const [alertMessage, setAlertMessage] = useState('');
+    const [alertType, setAlertType] = useState('');
 
     const getActiveChannelFromStorage = () => {
         const storedActiveChannel = localStorage.getItem('activeChannel');
-        return storedActiveChannel ? parseInt(storedActiveChannel) : null;
+        return storedActiveChannel ? JSON.parse(storedActiveChannel) : null;
     };
 
-    const setActiveChannelInStorage = (channelId) => {
-        localStorage.setItem('activeChannel', JSON.stringify({ id: `${jsonData.data[0].id}`, title: `${jsonData.data[0].title}` }));
+    const setActiveChannelInStorage = (channelId, channelTitle) => {
+        localStorage.setItem('activeChannel', JSON.stringify({ id: channelId, title: channelTitle }));
     };
 
     useEffect(() => {
@@ -32,7 +31,7 @@ function SubscribedList({ GetRssArticlesById }) {
 
     useEffect(() => {
         if (activeChannel !== null) {
-            setActiveChannelInStorage(activeChannel);
+            setActiveChannelInStorage(activeChannel.id, activeChannel.title);
         }
     }, [activeChannel]);
 
@@ -45,10 +44,12 @@ function SubscribedList({ GetRssArticlesById }) {
             if (jsonData.data && jsonData.data.length > 0) {
                 if (storedActiveChannel) {
                     setActiveChannel(storedActiveChannel);
-                    GetRssArticlesById(storedActiveChannel.id);
+                    GetRssArticlesById(storedActiveChannel.id, storedActiveChannel.title);
                 } else {
-                    setActiveChannel({ id: `${jsonData.data[0].id}`, title: `${jsonData.data[0].title}` });
-                    GetRssArticlesById(jsonData.data[0].id);
+                    // Set the active channel to the first channel in the list
+                    const firstChannel = jsonData.data[0];
+                    setActiveChannel({ id: firstChannel.id, title: firstChannel.title });
+                    GetRssArticlesById(firstChannel.id, firstChannel.title);
                 }
             }
         } else {
@@ -57,18 +58,19 @@ function SubscribedList({ GetRssArticlesById }) {
         }
     }, [jsonData]);
 
+    const handleChannelClick = (item) => {
+        setActiveChannel({ id: item.id, title: item.title });
+        GetRssArticlesById(item.id, item.title);
+    };
+
     if (jsonData.data && jsonData.data.length > 0) {
         return (
             <div>
                 <div className="verticalCards">
                     {jsonData.data.map((item, idx) => (
                         <div
-                            className={`channelsHover ${activeChannel === item.id ? 'activeChannel' : ''}`}
-                            onClick={() => {
-                                setActiveChannel({ id: `${jsonData.data[0].id}`, title: `${jsonData.data[0].title}` });
-
-                                GetRssArticlesById(item.id, item.title); // Corrected function call
-                            }}
+                            className={`channelsHover ${activeChannel && activeChannel.id === item.id ? 'activeChannel' : ''}`}
+                            onClick={() => handleChannelClick(item)}
                             key={idx}
                         >
                             <div className='channelImageBox'>
@@ -83,7 +85,7 @@ function SubscribedList({ GetRssArticlesById }) {
                                 />
                             </div>
                             <div className='channelTitleBox'>
-                            <p className='channelTitle'>{item.title}</p>
+                                <p className='channelTitle'>{item.title}</p>
                             </div>
                         </div>
                     ))}
@@ -99,6 +101,7 @@ function SubscribedList({ GetRssArticlesById }) {
                     alignItems: 'center',
                     backgroundColor: 'whitesmoke',
                     fontFamily: 'fantasy',
+                    height: '100vh', // Ensure it takes up full height of viewport
                 }}
             >
                 <h1>No Subscriptions</h1>
