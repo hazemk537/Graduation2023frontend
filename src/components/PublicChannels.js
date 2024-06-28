@@ -16,12 +16,12 @@ function PublicChannels() {
   //#todo if go back from any page , should fetch from loval storge no rerequest
   let apikey = '8e69a1db2fb43edac805be1306b74ae2';
   //we need the useeffect inside the hook depend only on selectedSpan
-  const [data, setData, sendRequest] = useFetch()
+  const [data, , sendRequest] = useFetch()
 
 
   useEffect(() => {
 
-    sendRequest(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan]}&lang=ar&country=any&max=50&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'GnewsAPI' })
+    sendRequest(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan]}&lang=ar&country=any&max=50&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'GnewsAPI' ,jsonSuccessProp:null,jsonFailProp:'errors' })
 
   },[selectedSpan])
 

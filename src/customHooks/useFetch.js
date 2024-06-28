@@ -25,7 +25,7 @@ function useFetch() {
             });
         }
         else {
-           // #debug console.log(options.body);
+            // #debug console.log(options.body);
             response = await fetch(url, {
                 method: options.method,
                 headers: {
@@ -42,6 +42,7 @@ function useFetch() {
         try {
 
             if (response.ok) {
+
                 if (options?.onOk) {
                     options.onOk(response)
                     console.log('fffffffffff')
@@ -54,7 +55,10 @@ function useFetch() {
                     }
 
                     console.log(` response.ok success , jsonData.statusCode success in ${options?.name} ...`)//for devs
-                    dispatch(actions.setSuccess(`success  ${options?.name} `))//for user
+                    if (!options.jsonSuccessProp) {
+
+                        dispatch(actions.setSuccess(`${jsonData[options.jsonSuccessProp]}`))//for user
+                    }
                     console.log(`jsonData`)
                     console.log(jsonData)
                     setData(jsonData)
@@ -68,7 +72,19 @@ function useFetch() {
 
                 else {
                     console.log(` response.ok success , jsonData.statusCode failed in ${options?.name} ...`)//for devs
-                    dispatch(actions.setError(`Err in ${options?.name} `))//for user
+                    //an api have jsonData.errors
+                    if (options.jsonFailProp) {
+                        //if method exist its arrary
+                        if (options.jsonFailProp.foreach) {
+                            console.log(jsonData[options.jsonFailProp][0]);
+                            dispatch(actions.setError(`${jsonData[options.jsonFailProp][0]}`))
+                        }
+                        else {
+                            dispatch(actions.setError(`${jsonData[options.jsonFailProp]}`))
+
+                        }
+
+                    }
                     setData(jsonData)
                     console.log(`jsonData`)
                     console.log(jsonData)
@@ -84,40 +100,35 @@ function useFetch() {
                 if (options?.onOk) {
                     options.onOkFailed(response)
                 }
-                dispatch(actions.setError(`response.ok failed in ${options?.name} `))//for user
-
                 let jsonData = await response.json()
+
+                console.log(` response.ok failed   ${options?.name} ...`)//for devs
+                if (options.jsonFailProp) {
+                    //if method exist its arrary
+                    if (options.jsonFailProp.foreach) {
+                        console.log(jsonData[options.jsonFailProp][0]);
+                        dispatch(actions.setError(`${jsonData[options.jsonFailProp][0]}`))
+                    }
+                    else {
+                        dispatch(actions.setError(`${jsonData[options.jsonFailProp]}`))
+
+                    }
+
+                }
+                setData(jsonData)
+
+                console.log(`jsonData`)
                 console.log(jsonData)
-                if (jsonData.statusCode === 200 || jsonData.statusCode === 201 || json.succeeded) {
-
-                    console.log(`response.ok failed , jsonData.statusCode success in ${options?.name} ...`)
-                    console.log(`jsonData`)
-                    console.log(jsonData)
-                    setData(jsonData)
-                    if (options?.onSucceed) {
-                        options.onSucceed(jsonData)
-                    }
-
-
+                if (options?.onSucceedFailed) {
+                    options.onSucceedFailed(jsonData)
                 }
 
-                else {
-                    console.log(` response.ok failed , jsonData.statusCode failed  ${options?.name} ...`)//for devs
-                    dispatch(actions.setError(` response.ok failed , jsonData.statusCode  ${options?.name} ...`))//for user
-                    setData(jsonData)
 
-                    console.log(`jsonData`)
-                    console.log(jsonData)
-                    if (options?.onSucceedFailed) {
-                        options.onSucceedFailed(jsonData)
-                    }
-
-
-                }
-
-                throw new Error(`throw Err from response.ok ${options?.name} ...`)
             }
+
+            // throw new Error(`throw Err from response.ok ${options?.name} ...`)
         }
+
 
         catch (err) {
 

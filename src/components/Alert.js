@@ -1,28 +1,40 @@
 import React, { useState, useEffect } from "react";
 import "../styles/alert.css"; // Your main alert styles
+import { useDispatch } from "react-redux";
+import { actions } from "../redux/slices/NotifySlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Alert = ({ alertText, type }) => {
-  const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    if (alertText) {
-      setVisible(true);
-      const timer = setTimeout(() => {
-        setVisible(false);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [alertText, type]);
+  const dispatch = useDispatch()
 
   return (
     <>
-      {visible && (
-        <div className="alert_container">
-          <div className={`alert_component ${type === '404' ? 'error404_class' : `${type}_class`}`}>
-            <div className="text">{alertText}</div>
-          </div>
+     
+      <div className="alert_container"  >
+    
+
+
+        <div  className={`alert_component ${type === '404' ? 'error404_class' : `${type}_class`}`}>
+        <div style={{
+        position: 'absolute',
+        top: '0',
+        right: '10px'
+      }}
+        onClick={() => {
+          console.log('clicked close button');
+          dispatch(actions.setError(null))//for user
+
+
+        }}
+      >
+        <FontAwesomeIcon  style={{color:'white'}} icon={faTimes} id="X" />
+      </div>
+          <div className="text">{alertText}</div>
         </div>
-      )}
+      </div>
+
     </>
   );
 };

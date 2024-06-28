@@ -5,10 +5,13 @@ import { Outlet, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { SubscriptionsSvg } from "../svgIcons/SubscriptionsSvg";
 import { DiscoverThin } from "../svgIcons/DiscoverSvg";
+import Alert from "../components/Alert";
+import { useSelector } from "react-redux";
 
 function HomePage() {
   const location = useLocation();
   const [iconActiveId, setIconActiveId] = useState(null);
+  let notifySliceState = useSelector((state) => state.notifyState)
 
    useEffect(() => {
     switch (location.pathname) {
@@ -36,12 +39,11 @@ function HomePage() {
       "http://1.gravatar.com/avatar/47db31bd2e0b161008607d84c74305b5?s=96&d=mm&r=g",
     account: "mo.Zaki@gmail.com",
   };
-
-
+console.log(notifySliceState);
   return (
     <>
-    {/* modalStateVisible && <ModalArticle data={'werrrfwefwe'} ={()=>{console.log('r')}}/> */}
-      <div className="homepage-container">
+    {notifySliceState.message && <Alert type={notifySliceState.type}  alertText={notifySliceState.message.payload} />}
+    <div className="homepage-container">
         <div className="homepage-header">
           <div className="homepage-header-left">
             <svg

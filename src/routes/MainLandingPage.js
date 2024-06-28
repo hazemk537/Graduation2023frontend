@@ -6,8 +6,8 @@ import Login from "../components/Login";
 import CreateAccount from "../components/Create_Account";
 import PublicChannels from "../components/PublicChannels.js";
 import Alert from "../components/Alert.js";
-import { useSelector, useDispatch } from "react-redux";
 import useFetch from "../customHooks/useFetch.js";
+import { useSelector } from "react-redux";
 
 function MainLandingPage({
   stateShowLoginPopup,
@@ -20,7 +20,7 @@ function MainLandingPage({
   const [showErrModal, setShowErrModal] = useState(false)
   const [errContent, setErrContent] = useState('')
   let notifySliceState = useSelector((state) => state.notifyState)
-  let dispatch = useDispatch()
+
 
   const handleScrollTop = () => {
     window.scrollTo({
@@ -28,6 +28,9 @@ function MainLandingPage({
       behavior: "smooth",
     });
   };
+
+
+
   let TokenData
   // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
   if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
@@ -44,7 +47,7 @@ function MainLandingPage({
     //#Note_Case_only_strict_format only this is allowed by API, if user changed in localStorage 
     if (TokenData?.token && TokenData?.refreshToken) {
 
-      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onSucceed: handleExpiredToken })
+      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onSucceed: handleExpiredToken,jsonSuccessProp:'message',jsonFailProp:'message' })
 
     }
   }, [])
@@ -59,7 +62,7 @@ function MainLandingPage({
 
   return (
     <div className="landing-page">
-      {/* {notifySliceState && <Alert type={notifySliceState.type} alertText={notifySliceState} />} */}
+    { notifySliceState.message.payload && <Alert type={notifySliceState.type}  alertText={notifySliceState.message.payload} />}
 
       {stateShowLoginPopup && !stateshowCreateAccountPopup && (
         <Login onClose={onClickLogin} onSignupClick={onClickCreateAccount} />

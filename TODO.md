@@ -64,7 +64,7 @@
 
 - in +userArticles +discover ,+publicChannels replcae intial articles with spinner #pro_grad
 
-
+- #pro_grad chng spinner of mouse when click to trigger request in +resetpassword pn clik send password send code spinner inside btn
 
 
 

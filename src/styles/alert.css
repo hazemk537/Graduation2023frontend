@@ -1,4 +1,8 @@
-.err_class {
+.error_class {
+  background-color: #f52121e1;
+  color:white
+}
+.notify_class {
   background-color: #f52121e1;
   color:white
 }
@@ -27,6 +31,8 @@
 
 .alert_component {
   z-index: 20;
+  position: relative;
+
   width: 30%;
   padding: 20px;
   border-radius: 5px;

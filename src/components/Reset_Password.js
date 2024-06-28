@@ -4,6 +4,8 @@ import { faAt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/Reset_Password.css";
 import useFetch from "../customHooks/useFetch";
+import { useSelector } from "react-redux";
+import Alert from "./Alert";
 //donot touch file
 function ResetPassword() {
   // let emailInputRef = useRef(null);
@@ -14,6 +16,7 @@ function ResetPassword() {
   let inputFields = useState();
   // let NewPasswordRef = useRef(null);
   // let  inputFields[2] = useRef(null);
+  let notifySliceState = useSelector((state) => state.notifyState)
 
   const [togglesCodeForm, setogglesCodeSent] = useState(0)
   const [toggleEnterPassword, setoggleEnterPassword] = useState(0)
@@ -40,6 +43,8 @@ function ResetPassword() {
 
   return (
     <>
+        { notifySliceState.message.payload && <Alert type={notifySliceState.type}  alertText={notifySliceState.message.payload} />}
+
       <div className="reset_container">
         <h2>Reset your password</h2>
         <div>
@@ -80,7 +85,7 @@ function ResetPassword() {
 
           {/* #Note_case email.current or email.value > gives #react_bug  Converting circular structure to JSON ,"The JSON value could not be converted to System.String. Path: $.email | LineNumber: 0 | BytePositionInLine: 10."*/}
           <button onClick={() => {
-            sendgetResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/SendResetpassword`, { method: 'POST', name: 'POSTsendgetResetCode', body: { 'email': emailInput }, onSucceed: sendCodeHandler })
+            sendgetResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/SendResetpassword`, { method: 'POST', name: 'POSTsendgetResetCode', body: { 'email': emailInput }, onSucceed: sendCodeHandler,jsonSuccessProp:'message',jsonFailProp:'message' })
           }}>send code </button>
         </div>}
 
@@ -102,7 +107,7 @@ function ResetPassword() {
 
             <button id="sub_btn" onClick={() => {
               // #debug console.log('enter code btn');
-              sendconfirmResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/ConfirmResetPassword`, { method: 'POST', name: 'POSTsendconfirmResetCode', body: { 'email': emailInput, 'code': codeInput }, onSucceed: verifyCodeHandler })
+              sendconfirmResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/ConfirmResetPassword`, { method: 'POST', name: 'POSTsendconfirmResetCode', body: { 'email': emailInput, 'code': codeInput }, onSucceed: verifyCodeHandler ,jsonSuccessProp:'message',jsonFailProp:'message'})
             }}>
               Enter Code
             </button>
@@ -121,7 +126,7 @@ function ResetPassword() {
           <button
             className="resetPassword_btn"
             onClick={() => {
-              sendNewPassword(` https://BrieflyNews.runasp.net/api/v1/Auth/Resetpassword`, { method: 'POST', name: 'POSTsendNewPaasword', body: { 'email': emailInput, 'password': passwordInput }, onSucceed: resetPasswordHandler })
+              sendNewPassword(` https://BrieflyNews.runasp.net/api/v1/Auth/Resetpassword`, { method: 'POST', name: 'POSTsendNewPaasword', body: { 'email': emailInput, 'password': passwordInput }, onSucceed: resetPasswordHandler,jsonSuccessProp:'message',jsonFailProp:'message' })
             }}
           >
             Submit

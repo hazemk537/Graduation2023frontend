@@ -33,7 +33,7 @@ function UserArticles() {
     let localStorageChanTitle=JSON.parse(localStorage.getItem('activeChannel')).title
     setRssTitle(localStorageChanTitle)
     if (id) {
-      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GETuserArticles', token: token })
+      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GETuserArticles', token: token,jsonSuccessProp:'message',jsonFailProp:'message' })
     }
   }
 

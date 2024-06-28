@@ -43,7 +43,7 @@ function Create_Account({ onClose, onSigninClick }) {
       "password": password,
       "confirmPassword": confirmPassword,
     };
-    sendRequest('https://BrieflyNews.runasp.net/api/v1/Auth/Register', { method: 'POST', name: 'POSTCreateAccount', body: data })
+    sendRequest('https://BrieflyNews.runasp.net/api/v1/Auth/Register', { method: 'POST', name: 'POSTCreateAccount', body: data ,jsonSuccessProp:'message',jsonFailProp:'message'})
   }
 
   if (JsonData){
