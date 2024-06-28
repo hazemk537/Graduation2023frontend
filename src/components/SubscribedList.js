@@ -23,7 +23,7 @@ function SubscribedList({ GetRssArticlesById }) {
     };
 
     const setActiveChannelInStorage = (channelId) => {
-        localStorage.setItem('activeChannel', channelId.toString());
+        localStorage.setItem('activeChannel', JSON.stringify({ id: `${jsonData.data[0].id}`, title: `${jsonData.data[0].title}` }));
     };
 
     useEffect(() => {
@@ -45,9 +45,9 @@ function SubscribedList({ GetRssArticlesById }) {
             if (jsonData.data && jsonData.data.length > 0) {
                 if (storedActiveChannel) {
                     setActiveChannel(storedActiveChannel);
-                    GetRssArticlesById(storedActiveChannel);
+                    GetRssArticlesById(storedActiveChannel.id);
                 } else {
-                    setActiveChannel(jsonData.data[0].id);
+                    setActiveChannel({ id: `${jsonData.data[0].id}`, title: `${jsonData.data[0].title}` });
                     GetRssArticlesById(jsonData.data[0].id);
                 }
             }
@@ -65,13 +65,13 @@ function SubscribedList({ GetRssArticlesById }) {
                         <div
                             className={`channelsHover ${activeChannel === item.id ? 'activeChannel' : ''}`}
                             onClick={() => {
-                                setActiveChannel(item.id);
+                                setActiveChannel({ id: `${jsonData.data[0].id}`, title: `${jsonData.data[0].title}` });
 
-                                GetRssArticlesById(item.id,item.title); // Corrected function call
+                                GetRssArticlesById(item.id, item.title); // Corrected function call
                             }}
                             key={idx}
                         >
-                            <div>
+                            <div className='channelImageBox'>
                                 <img
                                     className="channelImage"
                                     src={item.image}
@@ -82,7 +82,9 @@ function SubscribedList({ GetRssArticlesById }) {
                                     }}
                                 />
                             </div>
-                            <p style={{ fontSize: '1rem' }}>{item.title}</p>
+                            <div className='channelTitleBox'>
+                            <p className='channelTitle'>{item.title}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

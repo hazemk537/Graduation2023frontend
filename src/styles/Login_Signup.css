@@ -19,15 +19,17 @@
   max-width: 450px;
   max-height: 750px;
   position: absolute;
-  top: 50%;
+  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: rgb(61, 61, 61);
+  border-radius: 10px;
   /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.089), rgba(0, 0, 0, 0.247)); */
-  background-image: url('../images/login3.jpg');
+  /* background-image: url('../images/login3.jpg'); */
 background-repeat: no-repeat;
 background-position: center;
 background-size: cover;
-  box-shadow: 10px 10px 20px  rgba(255, 255, 255, 0.616);
+  box-shadow: 10px 10px 20px  rgba(53, 50, 50, 0.616);
 
   border-radius: 15px;
   padding: 50px 60px 70px;

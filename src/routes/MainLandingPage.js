@@ -83,7 +83,7 @@ function MainLandingPage({
       />
       <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div className="quote-landingPage">
-          <h1>Be Brief!</h1>
+          <h1>Be Briefed!</h1>
           <h1>Be Brilliant!</h1>
         </div>
       </div>

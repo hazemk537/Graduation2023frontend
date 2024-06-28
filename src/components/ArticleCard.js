@@ -19,6 +19,7 @@ function ArticleCard({ item, setArticleModalData }) {
 
   return (
     <div className="gallary_item" key={item.id}
+
       onClick={() => {
         sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData })
 
@@ -28,16 +29,22 @@ function ArticleCard({ item, setArticleModalData }) {
     >
       <div className="gallary_img_wrapper">
         <img
-            src={item.image || item.thumbnail}
-            alt='' 
-            onError={(e) => {
-              e.target.onerror = null; 
-              e.target.src = briefimg;
-            }}  />
-       </div>
+          src={item.image || item.thumbnail}
+          alt=''
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = briefimg;
+          }} />
+      </div>
       <div className="gallary_item_details">
-        <h2 className="gallary_item_headding">{item.title}</h2>
-        <p className="gallary_item_description">{item.description}</p>
+        <h2 style={{ height: '5.3rem' }} className="gallary_item_headding">{item.title}</h2>
+        <p style={{
+          textWrap: 'wrap',
+          fontSize: '1rem',
+          color: '#c5c5c5',
+          height: '1.3rem',
+          display: 'inline-block'
+        }}>{item.description.substring(0, 90)} ...</p>
       </div>
 
 
@@ -45,7 +52,7 @@ function ArticleCard({ item, setArticleModalData }) {
 
 
       <div className="gallary_item_actions">
-        <svg
+        {/* <svg
           className="gallary_item_action_like"
           viewBox="0 0 24 24"
           fill="none"
@@ -65,7 +72,19 @@ function ArticleCard({ item, setArticleModalData }) {
               fill="#5c5757"
             ></path>{" "}
           </g>
-        </svg>
+        </svg> */}
+
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {/* <svg fill="#5C577F" stroke="#5C572B" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g   strokeLinecap="round" strokeLinejoin="round"></g><g  ><path  d="M29.126 12.16l-3.644 3.64-3.612-3.64c-.45-.464-1.2.234-.71.71l3.967 3.993c.186.186.525.186.71 0l4-3.994c.49-.488-.238-1.18-.71-.71zM15.53 4.012c-4.307-.187-8.5 2.164-10.467 6.28-.288.6.59 1 .875.44 2.39-5 8.41-7.13 13.437-4.75 3.038 1.437 5.14 4.282 5.625 7.592.095.693 1.102.46 1-.156-.534-3.642-2.88-6.765-6.22-8.345-1.377-.652-2.813-1-4.25-1.062zM.875 17.843l3.644-3.64 3.612 3.64c.45.464 1.2-.234.71-.71L4.873 13.14c-.186-.186-.525-.186-.71 0l-4 3.993c-.49.488.238 1.18.71.71zM14.47 25.99c4.307.187 8.5-2.165 10.468-6.28.287-.6-.592-1-.875-.44-2.39 5-8.41 7.13-13.438 4.75C7.587 22.584 5.485 19.74 5 16.428c-.095-.693-1.102-.458-1 .156.534 3.642 2.88 6.764 6.22 8.344 1.377.653 2.813 1 4.25 1.063z"></path></g></svg>
+           */}
+          {item?.createdAt.match(/\d+-\d+-\d+/) ? <span style={{
+          fontFamily: 'fantasy'
+          , fontSize: '1.5rem',
+          fontWeight: '600',
+          color: 'beige'
+        }}>{item?.createdAt.match(/\d+-\d+-\d+/)[0]}</span> : 'no date'}</div>
+
+
         <svg
           className="gallary_item_action_comment"
           viewBox="0 0 32 32"
@@ -83,7 +102,7 @@ function ArticleCard({ item, setArticleModalData }) {
             {'{" "}{" "}{" "}'}
           </g>
         </svg>
-        <svg
+        {/* <svg
           className="gallary_item_action_summarize"
           fill="#5c5757"
           xmlns="http://www.w3.org/2000/svg"
@@ -121,11 +140,11 @@ function ArticleCard({ item, setArticleModalData }) {
               strokeLinejoin="round"
             ></path>{" "}
           </g>
-        </svg>
+        </svg> */}
       </div>
 
 
-    </div>
+    </div >
   );
 }
 

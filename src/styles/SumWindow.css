@@ -1,3 +1,11 @@
+/* body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+} */
 .receive_click_div_helper {
     width: 100vw;
     height: 100vh;
@@ -10,20 +18,36 @@
     background-color: rgb(49, 46, 46);
     width: 600px;
     position: fixed;
-    left: calc(50% - 300px);
-    top: 10px;
+  
     border-radius: 30px;
     z-index: 1001;
     opacity: 1;
-    box-shadow: 10px 5px 5px rgba(255, 255, 255, 0.39);
-    border: solid 1px rgba(12, 12, 12, 0.726);
-    padding: 2rem;
-    display: flex;
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.39);
+    border: solid 0px rgba(12, 12, 12, 0.726);
+    /* display: flex;    /* affect height */
+    /* #NOTE_Model_long */
+    margin-top: 20px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
+    /* overflow-x: auto;
+    overflow-y: scroll;
+    overflow-x: hidden; */
+        scrollbar-width: thin;
+    /* overflow-wrap: anywhere;     affect height */
 
+    top: 0px;
+    left: calc(50% - 300px);
+  
+    height: calc(100%);
+    overflow: auto;
+    /* display: none; */
+
+    /* padding-top: 316px;/ */
+
+
+}
+/* 
 .close-button {
     position: absolute;
     top: 5%;
@@ -36,7 +60,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 
 .content {

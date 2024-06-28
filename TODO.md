@@ -20,9 +20,9 @@
 
 - #pro_grad frammerMotion  addFeed ,gallaries,landingPage
 - #pro_grad cache apis
+-  @backend contact us form  @zaki {due:2024-06-27}
 
 ### High
-- #pro_grad modal styling
 
 - host {due:2024-06-22}
 1. solve eslint problems @zaki
@@ -30,52 +30,54 @@
 3. team tests @otherTeam
 4. team active @otherTeam
 - 
-- #pro_grad +<publicChannels/> add countries in same way
-- #pro_grad +PublicChannels bad text general world,.. capital case
-
-- in +userArticles +discover ,+publicChannels replcae intial articles with spinner #pro_grad
 - make/userdata +backend
-- #pro_grad <Subscriptions/> on click bad rectangle on border radius
 
-- #pro_grad rm hacker image ,change project name in +landingPage be briefed  +landingPage +<Login/>
 
 -  add new tasks  @hazem {due:2024-06-27}
 -  shaib meeting install react  @hazem {due:2024-06-30}
 
-- style +reset_password
-- search algolio , in +homePage
 - Note_case_useless_state , statful or not flag,if condition to update state 
 
-- 3. modal with useSelctor
-- 4. netwerk error #pro_grad @hazem
  
-- +<ALL_fetch_APIS/> use Redux,set Err modal @hazem
-- global error manage system with redux
-- all components using useFetch , send prop to disable setState if it donot use it
--  bad style in +subscribedlist when #pro_grad
 - spinner /lazy loading between req and response #pro_grad in  +articleModal,+channelModal,+userArticles,+publModal, on all routes/modals
 -   #pro_grad
-- #pro_grad search in local 
 - #pro_grad in /home/addfeed bad mobile screen
-- #pro_grad in /home/addfeed  undefined . if rss https://electronicintifada.net/rss.xml(make it resilient)
 - #pro_grad remove useless components and eslint erro
--  @backend contact us form  @zaki {due:2024-06-27}
 
-
+- +landingpage bad modal  ![alt text](imagesRef/image-5.png)
 
 ### In Progress
--  upload videos  @hazem {due:2024-06-27|e2d} {cm:2024-06-27}
+- 4. netwerk error #pro_grad @hazem
+
+- #pro_grad in +addfeed  undefined . if rss https://electronicintifada.net/rss.xml(make it resilient)
+- +addfeed style
+- +resetpassword styling
+- #pro_grad search in local 
+- global error manage system with redux
+-  upload videos  @hazem {due:2024-06-27|e2d}
 - add error boundry to catch all thrown errors 
 #TEST ex: rm token, try go /home @zaki
-- @hazem +userArtickles article styling
-- rss name in +userArticles before articles @hazem
-- +<SubscribedList/> bad styling @hazem
+- #pro_grad modal styling
+
+- - #pro_grad +<publicChannels/> add countries in same way
+- #pro_grad +PublicChannels bad text general world,.. capital case
+
+- in +userArticles +discover ,+publicChannels replcae intial articles with spinner #pro_grad
 
 
 
 
 
 ### Done ✓
+- #pro_grad <Subscriptions/> on click bad rectangle on border radius
+
+- #pro_grad rm hacker image ,change project name in +landingPage be briefed  +landingPage +<Login/>
+
+-  bad style in +subscribedlist when #pro_grad
+
+- @hazem +userArtickles article styling
+- rss name in +userArticles before articles @hazem
+- +<SubscribedList/> bad styling @hazem
 - #pro_grad default subsciption choice in +userArtickles
 
 - {{Domain}}/api/v1/Rss/4 #pro_grad #backend donot add neww info,cannot use it
