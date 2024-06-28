@@ -58,6 +58,8 @@ function useFetch() {
                     if (options.jsonSuccessProp) {
 
                         dispatch(actions.setSuccess(`${jsonData[options.jsonSuccessProp]}`))//for user
+                        setTimeout(()=>dispatch(actions.setSuccess(``)), 3000)
+
                     }
                     console.log(`jsonData`)
                     console.log(jsonData)
@@ -78,11 +80,14 @@ function useFetch() {
                         if (options.jsonFailProp.foreach) {
                             console.log(jsonData[options.jsonFailProp][0]);
                             dispatch(actions.setError(`${jsonData[options.jsonFailProp][0]}`))
+
                         }
                         else {
                             dispatch(actions.setError(`${jsonData[options.jsonFailProp]}`))
 
                         }
+                        setTimeout(()=>dispatch(actions.setError(``)), 2000)
+
 
                     }
                     setData(jsonData)
@@ -113,6 +118,7 @@ function useFetch() {
                         dispatch(actions.setError(`${jsonData[options.jsonFailProp]}`))
 
                     }
+                    setTimeout(()=>dispatch(actions.setError(``)), 3000)
 
                 }
                 setData(jsonData)

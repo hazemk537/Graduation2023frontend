@@ -17,19 +17,7 @@ const Alert = ({ alertText, type }) => {
 
 
         <div   className={`alert_component ${type === '404' ? 'error404_class' : `${type}_class`}`}>
-        <div style={{
-              position: 'absolute',
-              right: '10px'
-      }}
-        onClick={() => {
-          console.log('clicked close button');
-          dispatch(actions.setError(null))//for user
-
-
-        }}
-      >
-        <FontAwesomeIcon  style={{color:'white'}} icon={faTimes} id="X" />
-      </div>
+       
           <div className="text">{alertText}</div>
         </div>
       </div>
