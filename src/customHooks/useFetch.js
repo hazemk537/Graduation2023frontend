@@ -55,7 +55,7 @@ function useFetch() {
                     }
 
                     console.log(` response.ok success , jsonData.statusCode success in ${options?.name} ...`)//for devs
-                    if (!options.jsonSuccessProp) {
+                    if (options.jsonSuccessProp) {
 
                         dispatch(actions.setSuccess(`${jsonData[options.jsonSuccessProp]}`))//for user
                     }

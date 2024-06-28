@@ -30,8 +30,10 @@
 }
 
 .alert_component {
+  position: fixed;
+  top: 19px;
+  left: 305px;
   z-index: 20;
-  position: relative;
 
   width: 30%;
   padding: 20px;

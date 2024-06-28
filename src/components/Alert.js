@@ -16,11 +16,10 @@ const Alert = ({ alertText, type }) => {
     
 
 
-        <div  className={`alert_component ${type === '404' ? 'error404_class' : `${type}_class`}`}>
+        <div   className={`alert_component ${type === '404' ? 'error404_class' : `${type}_class`}`}>
         <div style={{
-        position: 'absolute',
-        top: '0',
-        right: '10px'
+              position: 'absolute',
+              right: '10px'
       }}
         onClick={() => {
           console.log('clicked close button');

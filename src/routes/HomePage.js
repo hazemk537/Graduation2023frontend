@@ -71,12 +71,13 @@ console.log(notifySliceState);
 
             <p className="homepage-name"></p>
             {/* ihide when icon 2 is active */}
-            <div
+            {/*
+             <div
               className={`homepage-search-wrapper ${iconActiveId === 2 ? "hidden" : ""
                 }`}
             >
               {/* search functionallity #todo_4 */}
-              <input className="search-input" type="text" placeholder="Search" />
+              {/* <input className="search-input" type="text" placeholder="Search" />
 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +95,7 @@ console.log(notifySliceState);
                 <circle cx={11} cy={11} r={8} />
                 <path d="M21 21l-4.35-4.35" />
               </svg>
-            </div>
+            </div> */} 
           </div>
           <div className="homepage-header-right">
             <>
