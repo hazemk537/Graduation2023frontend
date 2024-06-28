@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import '../styles/common.css';
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg';
 import useFetch from '../customHooks/useFetch';
+import { useNavigate } from "react-router-dom"; 
 
 function SubscribedList({ GetRssArticlesById }) {
-    console.log(`🖌️ subscribedList`); // #debug 
+    console.log(`🖌️ subscribedList`);  
 
     let token;
     if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
@@ -15,6 +16,7 @@ function SubscribedList({ GetRssArticlesById }) {
     const [activeChannel, setActiveChannel] = useState(null);
     const [alertMessage, setAlertMessage] = useState('');
     const [alertType, setAlertType] = useState('');
+    const navigate = useNavigate(); 
 
     const getActiveChannelFromStorage = () => {
         const storedActiveChannel = localStorage.getItem('activeChannel');
@@ -94,17 +96,27 @@ function SubscribedList({ GetRssArticlesById }) {
         );
     } else {
         return (
-            <div
+            <div className='No-channels'
                 style={{
+                    color:'white',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    backgroundColor: 'whitesmoke',
-                    fontFamily: 'fantasy',
-                    height: '100vh', // Ensure it takes up full height of viewport
+                    fontFamily: 'Arial',
+                    height: '100vh', 
+                    
                 }}
             >
-                <h1>No Subscriptions</h1>
+                <h1>No Subscriptions ,Subscribe to show articles </h1>
+
+
+                <button
+                
+                onClick={() => navigate('/home/discover')}
+              >
+                Discover 
+              </button>
+            
             </div>
         );
     }
