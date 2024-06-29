@@ -2,12 +2,15 @@ import React, { useRef, useState } from "react";
 import PreviewFeed from "../components/PreviewFeed.js";
 import Alert from "../components/Alert.js";
 import '../styles/addfeed.css'
+import useFetch from "../customHooks/useFetch.js";
 // https://www.smh.com.au/rss/feed.xml
 
-let feedLink; 
+let feedLink;
 
 
 const AddFeed = () => {
+  const [jsonData, , sendRequest] = useFetch();
+
   //we need feedlink it once ,no need to use state
   // states are used if we need ,to reload ui after js value change.
   const [alertMessage, setAlertMessage] = useState(false);
@@ -32,20 +35,22 @@ const AddFeed = () => {
     fetch(UrlBase + inputRef.current.value)
       .then((response) => response.text())
       .then((xmlText) => {
+        console.log(xmlText);
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "text/xml");
 
+
+        // #graduation_discution thow error
         const channel_obj1 = {
-          channel_description: xmlDoc.querySelector("description").textContent,
-          channel_img_title: xmlDoc.querySelector("image title ").textContent,
-          channel_img_url: xmlDoc.querySelector("image url").textContent,
-          channel_title: xmlDoc.querySelector("title").textContent,
-          channel_pubDate: xmlDoc.querySelector("pubDate").textContent
+          channel_description: xmlDoc.querySelector("description")?.textContent,
+          channel_img_title: xmlDoc.querySelector("image title ")?.textContent,
+          channel_img_url: xmlDoc.querySelector("image url")?.textContent,
+          channel_title: xmlDoc.querySelector("title")?.textContent,
+          channel_pubDate: xmlDoc.querySelector("pubDate")?.textContent
         };
 
         setChannelObj(channel_obj1);
         setShowPreview(true); // Show PreviewFeed after search
-
         const articles = xmlDoc.querySelectorAll("item");
         for (let i = 0; i < articles.length; i++) {
           const innerHtmlChildren = new DOMParser().parseFromString(articles[i].innerHTML, 'text/html');
@@ -65,8 +70,8 @@ const AddFeed = () => {
 
   const handleKeyPress = (event) => {
     //reserve it before clear the field
-     feedLink = inputRef.current.value
-     console.log(feedLink);
+    feedLink = inputRef.current.value
+    console.log(feedLink);
 
     if (event.key === "Enter") {
       handleSearch();
@@ -75,35 +80,16 @@ const AddFeed = () => {
   function addCustomFeed(feedLink) {
     let token = JSON.parse(localStorage.getItem('data')).token
     console.log(feedLink);
-    fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/CreateUserRss?rssUrl=${feedLink}`, {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }, method:
-        'POST'
+    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Rss/CreateUserRss?rssUrl=${feedLink}`, {
+      method: 'POST', name: 'POSTADDrss', token: token, jsonSuccessProp: 'message', onSucceed: () => {
 
-    }).then((response) => {
-      console.log('adding feed ...')
-      if (!response.ok) {
-        console.log(response)
-        //#todo if it exist 
-        setAlertMessage(response.statusCode)
-
-      }
-      return response.json()
-
-    }).then((jsonData) => {
-      console.log(jsonData)
-
-      if (jsonData.succeeded) {
-        setAlertMessage(jsonData.message)
-        setAlertMessage('success')
-      }
-
-
-    }).catch((err) => {
-      setAlertMessage(err)
-      setAlertType('err')
+      }, jsonFailProp: 'message'
     })
+
+
+
+
+
   }
   return (
 
@@ -138,14 +124,9 @@ const AddFeed = () => {
         </svg>
       </div>
 
-      {showPreview && <PreviewFeed channel_obj={channel_obj} />}
+      {showPreview && <PreviewFeed feedLink={feedLink} showPreview={showPreview} channel_obj={channel_obj} addCustomFeed={addCustomFeed}/>}
       {/* show if preview is visible */}
-      {
-      showPreview && <button  className ='sub_btn' 
-       onClick={() => { addCustomFeed(feedLink) }}>
-        Subscribe
-      </button>
-      }
+      
     </div>
   );
 };

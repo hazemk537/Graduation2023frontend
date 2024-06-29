@@ -27,29 +27,30 @@
 2. check host @hazem
 3. team tests @otherTeam
 4. team active @otherTeam
-- 
-
-### High
--
--  add new tasks ,mobile/lap/reset  @hazem {due:2024-06-27}
--  shaib meeting install react  @hazem {due:2024-06-30}
-- spinner /lazy loading between req and response #pro_grad in  +articleModal,+channelModal,+userArticles,+publModal, on all routes/modals
--   #pro_grad
+- #pro_grad chng spinner of mouse when click to trigger request in +resetpassword pn clik send password send code spinner inside btn
 - #pro_grad in /home/addfeed bad mobile screen
 
-- #pro_grad chng spinner of mouse when click to trigger request in +resetpassword pn clik send password send code spinner inside btn
+- spinner /lazy loading between req and response #pro_grad in  +articleModal,+channelModal,+userArticles,+publModal, on all routes/modals
+
+- 4. netwerk error #pro_grad @hazem
+
+### High
+
 
 ### In Progress
-- 4. netwerk error #pro_grad @hazem
-- #pro_grad in +addfeed  undefined . if rss https://electronicintifada.net/rss.xml(make it resilient)
-- +addfeed style
-- #pro_grad pagenationq 
-- shoaib ppt @hazem
+- host and bugs
+- #pro_grad pagenation   
 - docs @hazem
 
+-  shaib meeting install react  @hazem {due:2024-06-30}
 
 
 ### Done ✓
+- #pro_grad in +addfeed  undefined . if rss https://electronicintifada.net/rss.xml(make it resilient)
+- +addfeed style
+
+-  add new tasks ,mobile/lap/reset  @hazem {due:2024-06-27}
+
 - make/userdata +backend
 
 - Note_case_useless_state , statful or not flag,if condition to update state 

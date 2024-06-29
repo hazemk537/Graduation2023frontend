@@ -10,22 +10,32 @@
 
 
 .preview_channel_feed{
-    display:flex;
-    align-items:center;
-    gap:5px;
-    background-color:#faf9f9;
-    box-shadow: 10px 10px 0 rgb(90, 88, 88);
-    border-radius:10px;
-    border: 1px solid rgba(255, 255, 255, 0.171) ;
+ 
+    /* gap: 5px; */
+    background-color: #faf9f9;
+    /* box-shadow: 10px 10px 0 rgb(90, 88, 88); */
+    border-radius: 10px;
     color: rgb(7, 7, 7);
+    background-color: #6c6c6c;
+    padding: 11px;
     
 }
 
+.preview_channel_feed h3{
+    padding-left:3rem;
+}
 
-
+.preview_channel_feed p{
+    padding:1rem;
+}
 .preview_channel_feed img{
-    height:50%;
-    width:50%;
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+    opacity: 0.9;
+    border-radius: 10px;
+
+
 }
 
 

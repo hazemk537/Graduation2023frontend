@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/PreviewFeed.css";
 
-const PreviewFeed = ({ channel_obj, articlesArr }) => {
+const PreviewFeed = ({ channel_obj, articlesArr,showPreview,addCustomFeed,feedLink }) => {
   //add custom Feed
 
 
@@ -15,7 +15,8 @@ const PreviewFeed = ({ channel_obj, articlesArr }) => {
 
       <header className="preview_channel__info">
         <h3>{channel_obj.channel_title} </h3>
-        <p>{channel_obj.channel_description}</p>
+        <div dangerouslySetInnerHTML={{__html:channel_obj.channel_description}}>      
+        </div>
 
         <div className="preview_channel_meta">
           {" "}
@@ -23,8 +24,14 @@ const PreviewFeed = ({ channel_obj, articlesArr }) => {
           <span> {channel_obj.channel_updateDate}</span>
         </div>
       </header>
-
-      
+      <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+      {
+        showPreview && <button className='sub_btn'
+          onClick={() => { addCustomFeed(feedLink) }}>
+          Subscribe
+        </button>
+      }
+</div>
     </div>
   );
 };

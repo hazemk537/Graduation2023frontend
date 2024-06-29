@@ -12,7 +12,8 @@ function UserArticles() {
   const [ArticleModalData, setArticleModalData] = useState('');
   const [RssTitle, setRssTitle] = useState(null);
   const [pageNumber] = useState(1);
-  const [loading, setLoading] = useState(false); // New state for loading
+  const [loading, setLoading] = useState(true); // New state for loading
+  
 
   let token;
   if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
@@ -24,9 +25,10 @@ function UserArticles() {
   function GetRssArticlesById(id, title) {
     setRssTitle(title);
     if (id) {
-      setLoading(true); // Set loading to true before request
-      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GETuserArticles', token: token, jsonSuccessProp: 'message', jsonFailProp: 'message' })
-        .finally(() => setLoading(false)); // Set loading to false after request
+     // Set loading to true after request succeed
+      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GETuserArticles', token: token, jsonSuccessProp: 'message',onSucceed:()=>{
+        setLoading(false)
+      }, jsonFailProp: 'message' })
 
     }
   }

@@ -38,17 +38,17 @@
 }
 
 .sub_btn {
-  background-color: whitesmoke;
+  background-color: #808080;
   border-radius: 8px;
+  position: fixed;
   padding: 7px;
+  font-weight: 700;
+  top: 109%;
+  left: 70%;
   cursor: pointer;
-  color: black; /* Default text color */
+  color: black;
 }
 
-.sub_btn:hover {
-  background-color: red;
-  color: white;
-}
 
 .search-input{
   color:red;
