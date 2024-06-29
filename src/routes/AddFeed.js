@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import PreviewFeed from "../components/PreviewFeed.js";
 import Alert from "../components/Alert.js";
-
+import '../styles/addfeed.css'
 // https://www.smh.com.au/rss/feed.xml
 
 let feedLink; 
