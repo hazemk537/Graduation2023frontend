@@ -81,18 +81,16 @@ function LoginForm({ onClose, onSignupClick }) {
             </div>
           </div>
           <div className="buttons">
-            {/* <a href="/Home"> */}
             <button type="submit" id="signinBtn">
 
               Login
             </button>
-            {/* </a> */}
           </div>
           <div>
             <b className="reset">
               forget password{" "}
 
-              <Link style={{color:'black'}}  to={'/Reset_Password'} >
+              <Link   to={'/Reset_Password'} >
                 click here
 
               </Link>
@@ -100,7 +98,7 @@ function LoginForm({ onClose, onSignupClick }) {
           </div>
         </form>
         <div className="transmit">
-          <button style={{backgroundColor:'black'}}  type="button" id="signupBtn" onClick={onSignupClick}>
+          <button   type="button" id="signupBtn" onClick={onSignupClick}>
             Sign up
           </button>
         </div>

@@ -152,7 +152,7 @@ function Create_Account({ onClose, onSigninClick }) {
           </div>
         </form>
         <div className="transmitCRT">
-          <button  style={{backgroundColor:'black'}}  type="button" id="signinBtn" onClick={onSigninClick}>
+          <button   type="button" id="signinBtn" onClick={onSigninClick}>
             Login
           </button>
         </div>
