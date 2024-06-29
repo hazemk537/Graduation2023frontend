@@ -17,6 +17,19 @@ function ArticleCard({ item, setArticleModalData }) {
     setArticleModalData(jsonData)
   }
 
+  const checkImageUrl = (item) => {
+    {/* #Note_image if  image link is bad ex - ,_ */}
+    let src = item.image
+    console.log(item.image);
+    // #graduation_disccution error boundry
+    // if src=none/null/number no match
+    if (!src?.match(/http(\w|\W)+/)){
+    src = briefimg
+    }
+
+    return src
+  }
+
   return (
     <div className="gallary_item" key={item.id}
 
@@ -29,7 +42,7 @@ function ArticleCard({ item, setArticleModalData }) {
     >
       <div className="gallary_img_wrapper">
         <img
-          src={item.image || item.thumbnail}
+          src={checkImageUrl(item)}
           alt=''
           onError={(e) => {
             e.target.onerror = null;

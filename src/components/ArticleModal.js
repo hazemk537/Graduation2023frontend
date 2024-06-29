@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/SumWindow.css';
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
+import { retry } from '@reduxjs/toolkit/query';
 
 
 
@@ -9,6 +10,31 @@ function ArticleModal({ data, setArticleModalData }) {
     //article data in data.data
     console.log(`🖌️ ArticleModal`) // #debug 
     console.log(data) // #debug 
+
+    // function ExtractImage(){
+    {/* #Note_case sometimes img in descirption ,and no src diectly in .link */ }
+
+    // let ImgRegex=new RegExp("(https?:\/\/www.(\w|\W)+.(png|jpg|svg|webp|jpeg))")
+    // #Project_discution #Error_boundry
+    // let imgUrl =data.data.description.match(ImgRegex)[0]?.replace('src="')
+
+    // console.log(data.data.description.match(ImgRegex))
+    // validate url link 
+
+
+    // return data.data?.image|| briefimg
+    // }
+
+    const checkImageUrl = (item) => {
+        {/* #Note_image if  image link is bad ex - ,_ */}
+        let src = item.image
+        console.log(item.image);
+        if (!src?.match(/http(\w|\W)+/)){
+        src = briefimg
+        }
+    
+        return src
+      }
 
     return (
         <>
@@ -91,6 +117,8 @@ function ArticleModal({ data, setArticleModalData }) {
                             fontWeight: '700',
                             borderRadius: '30px',
                         }}>{data.data.createdAt.match(/\d+-\d+-\d+/)}</span>
+                        {/* #Note_case sometimes img in descirption ,and no src diectly in .link */}
+
                         <img style={{
                             maxHeight: '400px',
                             width: '100%',
@@ -99,10 +127,15 @@ function ArticleModal({ data, setArticleModalData }) {
                             opacity: '0.7'
                             , borderRadius: '20px'
                         }}
-                            
 
-                            src={data.data.image || data?.data?.thumbnail || briefimg}
-                            alt={data.data.description}
+                            src={checkImageUrl(data.data)}
+                            alt=''
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = briefimg;
+                            }}
+
+
 
                         />
                     </div>
@@ -133,7 +166,6 @@ function ArticleModal({ data, setArticleModalData }) {
                                 fontSize: '20px',
                                 fontWeight: 'lighter'
                             }} dangerouslySetInnerHTML={{ __html: data.data.description }}>
-
 
 
                             </div>

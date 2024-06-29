@@ -1,6 +1,6 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import '../styles/ChannelCard.css'
-import briefimg from  '../assets/Eo_circle_red_white_letter-b.svg';
+import briefimg from '../assets/Eo_circle_red_white_letter-b.svg';
 
 function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, item }) {
 
@@ -12,6 +12,18 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
   if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
     token = JSON.parse(localStorage.getItem('data')).token
 
+  }
+
+  const checkImageUrl = (item) => {
+    {/* #Note_image if  image link is bad ex - ,_ */}
+    let src = item.image
+    console.log(item.image);
+    // #graduation_disccution error boundry
+    if (!src.match(/http(\w|\W)+/)){
+    src = briefimg
+    }
+
+    return src
   }
 
   const subscribeHandler = (resolve, id) => {
@@ -84,14 +96,15 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
         onClick={() => {
           setModalData(item)
         }}>
+          {/* #Note_image if 404 image >callback */}
         <div className="gallary_img_wrapper">
-          <img 
-            src={item.image || item.thumbnail}
-            alt='' 
+          <img
+            src={checkImageUrl(item)}
+            alt=''
             onError={(e) => {
-              e.target.onerror = null; 
-              e.target.src = briefimg;
-            }} 
+              e.target.onerror = null;
+              e.target.src=briefimg
+            }}
           />
 
         </div>
