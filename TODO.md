@@ -39,13 +39,14 @@
 
 ### In Progress
 - host and bugs
-- #pro_grad pagenation   
 - docs @hazem
 
--  shaib meeting install react  @hazem {due:2024-06-30}
+-  shaib meeting @hazem {due:2024-06-30}
 
 
 ### Done ✓
+- #pro_grad pagenation   
+
 - #pro_grad in +addfeed  undefined . if rss https://electronicintifada.net/rss.xml(make it resilient)
 - +addfeed style
 

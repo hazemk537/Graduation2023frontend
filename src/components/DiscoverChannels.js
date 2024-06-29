@@ -6,22 +6,22 @@ function DiscoverChannels() {
   const [channels, setChannels] = useState();
 
 
-  const [pageNumber, setPageNumber] = useState('1')
-  const [alertMessage, setAlertMessage] = useState(false);
-  const [alertType, setAlertType] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1)
+  const [alertMessage, ] = useState(false);
+  const [alertType, ] = useState(false);
   //to not render success at begining
 
 
   async function parrallelDiscover(allAllchannelsJsonPromise, subscribedChannelJsonPromise) {
     //parallel fetch all subscriptions and all channels ,merge them 
     //add subscribed filed in all subscriptions
-    let allAllchannelsPromise = fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/GetAll?PageNumber=${pageNumber}&PageSize=50`, {
+    let allAllchannelsPromise = fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/GetAll?PageNumber=${pageNumber}&PageSize=7`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
     });
 
-    let subscribedChannelsPromise = fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All?PageNumber=${pageNumber}&PageSize=10`, {
+    let subscribedChannelsPromise = fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -71,17 +71,17 @@ function DiscoverChannels() {
   }
   let token = JSON.parse(localStorage.getItem('data')).token
   useEffect(() => {
-    // http://BrieflyNews.runasp.net/api/v1/Rss/GetAll?PageNumber=1&PageSize=50
+    // http://BrieflyNews.runasp.net/api/v1/Rss/GetAll?PageNumber=1&PageSize=5
 
     parrallelDiscover()
 
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumber]);
 
   return (
     <>
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
-
-      <ChannelsView parrallelDiscover={parrallelDiscover} type="discover_channels" channels={channels} /></>)
+      <ChannelsView pageNumber={pageNumber} setPageNumber={setPageNumber}  parrallelDiscover={parrallelDiscover} type="discover_channels" channels={channels} /></>)
 }
 
 export default DiscoverChannels;

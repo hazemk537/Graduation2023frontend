@@ -20,7 +20,7 @@ function ArticleCard({ item, setArticleModalData }) {
   const checkImageUrl = (item) => {
     {/* #Note_image if  image link is bad ex - ,_ */}
     let src = item.image
-    console.log(item.image);
+    // console.log(item.image);
     // #graduation_disccution error boundry
     // if src=none/null/number no match
     if (!src?.match(/http(\w|\W)+/)){

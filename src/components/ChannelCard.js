@@ -17,9 +17,9 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
   const checkImageUrl = (item) => {
     {/* #Note_image if  image link is bad ex - ,_ */}
     let src = item.image
-    console.log(item.image);
+    // console.log(item.image);
     // #graduation_disccution error boundry
-    if (!src.match(/http(\w|\W)+/)){
+    if (!src?.match(/http(\w|\W)+/)){
     src = briefimg
     }
 

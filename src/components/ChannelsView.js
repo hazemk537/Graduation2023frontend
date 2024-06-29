@@ -3,8 +3,13 @@ import ChannelCard from "./ChannelCard";
 import "../styles/ChannelsView.css";
 import Spinner from "./Spinner";
 import ChannelModal from "./ChannelModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+faPlus,faMinus
 
-function ChannelsView({ parrallelDiscover, setTriggerFetch, channels, type }) {
+} from "@fortawesome/free-solid-svg-icons";
+import Pagination from "./Pagination";
+function ChannelsView({   pageNumber,setPageNumber,parrallelDiscover, setTriggerFetch, channels, type }) {
   const [ModalData, setModalData] = useState('')
   // when state of model updates scrolling behavior updates 
   // #Note_case direct_manipulate_dom
@@ -12,16 +17,18 @@ function ChannelsView({ parrallelDiscover, setTriggerFetch, channels, type }) {
 
     const body = document.body;
     if (ModalData) {
-        body.style.overflow = 'hidden';
+      body.style.overflow = 'hidden';
     } else {
-        body.style.overflow = 'auto';
-    }},[ModalData]) 
+      body.style.overflow = 'auto';
+    }
+  }, [ModalData])
 
   if (channels)
     return (
       <>
-      {ModalData && <ChannelModal setModalData={setModalData} data={ModalData} />}
+        {ModalData && <ChannelModal setModalData={setModalData} data={ModalData} />}
         <div className={`gallary_items ${type}_class`}>
+        <Pagination  pageNumber={pageNumber} setPageNumber={setPageNumber}/>
 
           {channels.map((item, id) => (
             <ChannelCard

@@ -3,6 +3,7 @@ import ChannelsView from "./ChannelsView";
 import '../styles/subscripedChannels.css'
 import Alert from "./Alert";
 import useFetch from "../customHooks/useFetch";
+import Pagination from "./Pagination";
 
 function SubscripedChannels() {
   const [triggerFetch, setTriggerFetch] = useState(false)
@@ -21,14 +22,17 @@ function SubscripedChannels() {
   const [jsonData, setData, sendRequest] = useFetch()
   useEffect(() => {
 
-    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All?PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GnewsGetSubscriptionsAPI', token: token })
-  }, [triggerFetch])
+    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All?PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GETSubscribedRss', token: token })
+    console.log(pageNumber)
+  }, [triggerFetch,pageNumber])
 
 
   if (jsonData.data) {
     return (<>
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
       <ChannelsView
+      pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
         setTriggerFetch={setTriggerFetch}
         type="subscription_channels"
         channels={jsonData.data} /></>)

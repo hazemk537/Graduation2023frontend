@@ -25,30 +25,37 @@ function SubscribedList({ GetRssArticlesById, loading }) {
 
     useEffect(() => {
 
-        sendRequest('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', { method: 'GET', name: 'GetSubscribedList', token: token ,jsonSuccessProp:'message',jsonFailProp:'message'});
+        sendRequest('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', { method: 'GET', name: 'GetSubscribedList', token: token, jsonSuccessProp: 'message', jsonFailProp: 'message' });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         if (jsonData.succeeded || jsonData.hasOwnProperty('data')) {
             const storedActiveChannel = getActiveChannelFromStorage();
             if (jsonData.data && jsonData.data.length > 0) {
+                console.log('----------------------');
+
                 if (storedActiveChannel) {
+                    console.log('----------------------');
+
                     setActiveChannel(storedActiveChannel);
                     GetRssArticlesById(storedActiveChannel.id, storedActiveChannel.title);
                 } else {
+                    console.log('----------------------');
                     const firstChannel = jsonData.data[0];
                     setActiveChannel({ id: firstChannel.id, title: firstChannel.title });
                     GetRssArticlesById(firstChannel.id, firstChannel.title);
                 }
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [jsonData]);
 
     const handleChannelClick = (item) => {
         setActiveChannel({ id: item.id, title: item.title });
         GetRssArticlesById(item.id, item.title);
-    };
-
+        setActiveChannelInStorage(item.id, item.title)
+    }
     if (loading) {
         return (
             <div className="gallary_items">

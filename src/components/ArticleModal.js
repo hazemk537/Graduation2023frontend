@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/SumWindow.css';
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
-import { retry } from '@reduxjs/toolkit/query';
 
 
 
@@ -12,7 +11,7 @@ function ArticleModal({ data, setArticleModalData }) {
     console.log(data) // #debug 
 
     // function ExtractImage(){
-    {/* #Note_case sometimes img in descirption ,and no src diectly in .link */ }
+    /* #Note_case sometimes img in descirption ,and no src diectly in .link */ 
 
     // let ImgRegex=new RegExp("(https?:\/\/www.(\w|\W)+.(png|jpg|svg|webp|jpeg))")
     // #Project_discution #Error_boundry
@@ -26,7 +25,7 @@ function ArticleModal({ data, setArticleModalData }) {
     // }
 
     const checkImageUrl = (item) => {
-        {/* #Note_image if  image link is bad ex - ,_ */}
+        /* #Note_image if  image link is bad ex - ,_ */
         let src = item.image
         console.log(item.image);
         if (!src?.match(/http(\w|\W)+/)){

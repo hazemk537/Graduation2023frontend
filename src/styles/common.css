@@ -18,7 +18,15 @@
     border-radius: 5%;
     box-shadow: 5px 0 10px rgb(172, 172, 172);
 }
-
+.articlesNavbar{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 67px;
+        position: absolute;
+        top: 20px;
+        z-index: 37;
+}
 .verticalCards::-webkit-scrollbar {
     width: 10px;
 }
