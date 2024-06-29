@@ -21,49 +21,46 @@
 - #pro_grad frammerMotion  addFeed ,gallaries,landingPage
 - #pro_grad cache apis
 -  @backend contact us form  @zaki {due:2024-06-27}
-
-### High
-
+- #pro_grad remove useless components and eslint erro
 - host {due:2024-06-22}
 1. solve eslint problems @zaki
 2. check host @hazem
 3. team tests @otherTeam
 4. team active @otherTeam
 - 
-- make/userdata +backend
 
-
--  add new tasks  @hazem {due:2024-06-27}
+### High
+-
+-  add new tasks ,mobile/lap/reset  @hazem {due:2024-06-27}
 -  shaib meeting install react  @hazem {due:2024-06-30}
-
-- Note_case_useless_state , statful or not flag,if condition to update state 
-
- 
 - spinner /lazy loading between req and response #pro_grad in  +articleModal,+channelModal,+userArticles,+publModal, on all routes/modals
 -   #pro_grad
 - #pro_grad in /home/addfeed bad mobile screen
-- #pro_grad remove useless components and eslint erro
 
-- +landingpage bad modal  ![alt text](imagesRef/image-5.png)
 - #pro_grad chng spinner of mouse when click to trigger request in +resetpassword pn clik send password send code spinner inside btn
 
 ### In Progress
 - 4. netwerk error #pro_grad @hazem
-
 - #pro_grad in +addfeed  undefined . if rss https://electronicintifada.net/rss.xml(make it resilient)
 - +addfeed style
-- +resetpassword styling
-- #pro_grad search in local 
--  upload videos  @hazem {due:2024-06-27|e2d}
-
-- #pro_grad +PublicChannels bad text general world,.. capital case
-
-- - #pro_grad +<publicChannels/> add countries in same way
-- in +userArticles +discover ,+publicChannels replcae intial articles with spinner #pro_grad
+- #pro_grad pagenationq 
+- shoaib ppt @hazem
+- docs @hazem
 
 
 
 ### Done ✓
+- make/userdata +backend
+
+- Note_case_useless_state , statful or not flag,if condition to update state 
+- redux,spinners,model error 
+
+- +landingpage bad modal  ![alt text](imagesRef/image-5.png)
+-  upload videos  @hazem {due:2024-06-27|e2d}
+- #pro_grad +PublicChannels bad text general world,.. capital case
+- - #pro_grad +<publicChannels/> add countries in same way
+- in +userArticles +discover ,+publicChannels replcae intial articles with spinner #pro_grad
+- +resetpassword styling
 
 - global error manage system with redux
 - add error boundry to catch all thrown errors 
@@ -136,11 +133,12 @@
     - +<Protected/> blanc if invalid token,no popup states
 
   - articles and subsciptions view
-
+#pro_gra bad profile component
     - move +<SubscripedChannels/> into +<homeArticles>
     - add subscription Horizontal into +<homeArticle>
     - onClick list update Displayed Articles...
     - +<Discover> onClick show Articles in +<ArticleModalList>
+- #project_graduation on signup no msg confirm email
 
     - PROS:
       1. user see articles per RSS or all...
