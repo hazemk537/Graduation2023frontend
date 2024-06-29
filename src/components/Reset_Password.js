@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {   useState } from "react";
 import { Link } from "react-router-dom";
 import { faAt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +13,6 @@ function ResetPassword() {
   const [emailInput, setEmailInput] = useState();
   const [passwordInput, setPasswordInput] = useState();
   const [codeInput, setCodeInput] = useState();
-  let inputFields = useState();
   // let NewPasswordRef = useRef(null);
   // let  inputFields[2] = useRef(null);
   let notifySliceState = useSelector((state) => state.notifyState)

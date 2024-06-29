@@ -13,6 +13,8 @@
 }
 
 .form_sign {
+  background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(219,22,22,1) 50%, rgba(252,176,69,1) 100%);
   width: 100%;
   z-index: 5 !important;
   bottom:-300px;
@@ -214,7 +216,7 @@ button:hover {
   right: 10%;
   cursor: pointer;
   border-radius: 50%; 
-  background-color: rgba(245, 245, 245, 0.87);
+  background-color: rgb(26 16 16 / 87%);
   width: 30px; 
   height: 30px; 
   display: flex;
@@ -223,9 +225,9 @@ button:hover {
 }
 
 .reset_link{
-  color:rgb(255, 0, 0);
+  color:rgb(249, 236, 236);
 }
 #X {
-  color: red;
+  color: rgb(248, 242, 242);
   font-size: large;
 }

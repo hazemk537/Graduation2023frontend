@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import   {  useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { actions } from '../redux/slices/NotifySlice';
-import { json } from 'react-router-dom/dist/umd/react-router-dom.development';
 
 function useFetch() {
 
@@ -11,7 +10,6 @@ function useFetch() {
     async function sendRequest(url, options) {
 
         let response
-        dispatch(actions.setPending(`${options?.name}`))
         // this .? handle if the options. is not exist
         if (options.method.toUpperCase() === 'GET') {
 
@@ -55,7 +53,7 @@ function useFetch() {
                     }
 
                     console.log(` response.ok success , jsonData.statusCode success in ${options?.name} ...`)//for devs
-                    if (options.jsonSuccessProp) {
+                    if (options?.jsonSuccessProp) {
 
                         dispatch(actions.setSuccess(`${jsonData[options.jsonSuccessProp]}`))//for user
                         setTimeout(()=>dispatch(actions.setSuccess(``)), 3000)
@@ -75,7 +73,7 @@ function useFetch() {
                 else {
                     console.log(` response.ok success , jsonData.statusCode failed in ${options?.name} ...`)//for devs
                     //an api have jsonData.errors
-                    if (options.jsonFailProp) {
+                    if (options?.jsonFailProp) {
                         //if method exist its arrary
                         if (options.jsonFailProp.foreach) {
                             console.log(jsonData[options.jsonFailProp][0]);
@@ -108,7 +106,7 @@ function useFetch() {
                 let jsonData = await response.json()
 
                 console.log(` response.ok failed   ${options?.name} ...`)//for devs
-                if (options.jsonFailProp) {
+                if (options?.jsonFailProp) {
                     //if method exist its arrary
                     if (options.jsonFailProp.foreach) {
                         console.log(jsonData[options.jsonFailProp][0]);

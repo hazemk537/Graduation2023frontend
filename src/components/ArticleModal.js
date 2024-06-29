@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/SumWindow.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faL, faTimes } from "@fortawesome/free-solid-svg-icons";
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
-import { useSearchParams } from 'react-router-dom';
 
 
 
@@ -102,6 +99,7 @@ function ArticleModal({ data, setArticleModalData }) {
                             opacity: '0.7'
                             , borderRadius: '20px'
                         }}
+                            
 
                             src={data.data.image || data?.data?.thumbnail || briefimg}
                             alt={data.data.description}
@@ -111,12 +109,12 @@ function ArticleModal({ data, setArticleModalData }) {
                         <div className="content">
                             {/* link title */}
                             {/* #Note_case fallback image if err */}
-                            
 
-<div style={{display:'flex'}}>
+
+                            <div style={{ display: 'flex' }}>
                                 <span className={` articelTab ${showSummary ? '' : 'selectedTab'}`} onClick={() => { setshowSummary(false) }} >description</span>
                                 <span className={`articelTab  ${!showSummary ? '' : 'selectedTab'}`} onClick={() => { setshowSummary(true) }}>Summary</span>
-                                </div>
+                            </div>
                             <p
                                 style={{
                                     fontFamily: 'roboto,sans-serif',
@@ -135,6 +133,7 @@ function ArticleModal({ data, setArticleModalData }) {
                                 fontSize: '20px',
                                 fontWeight: 'lighter'
                             }} dangerouslySetInnerHTML={{ __html: data.data.description }}>
+
 
 
                             </div>

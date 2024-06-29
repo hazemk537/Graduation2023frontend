@@ -10,14 +10,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Login_Signup.css";
 import Alert from "./Alert";
-import { useNavigate } from "react-router-dom/dist/umd/react-router-dom.development";
 import useFetch from "../customHooks/useFetch";
 
 function Create_Account({ onClose, onSigninClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [alertMessage, setAlertMessage] = useState(false);
-  const [alertType, setAlertType] = useState(false);
-  let NavigateFn = useNavigate()
+  const [alertMessage, ] = useState(false);
+  const [alertType, ] = useState(false);
 
   const [JsonData, , sendRequest] = useFetch()
 
@@ -154,7 +152,7 @@ function Create_Account({ onClose, onSigninClick }) {
           </div>
         </form>
         <div className="transmitCRT">
-          <button type="button" id="signinBtn" onClick={onSigninClick}>
+          <button  style={{backgroundColor:'black'}}  type="button" id="signinBtn" onClick={onSigninClick}>
             Login
           </button>
         </div>

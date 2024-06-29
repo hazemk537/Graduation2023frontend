@@ -5,7 +5,7 @@ import "../styles/PricingPage.css";
 const PricingPage = () => {
     return (
         <div className="pricing-page">
-            <h1 className="Welcome-message">You're welcome, let's customize your profile</h1>
+            <h1 className="Welcome-message">You're welcome, choose your plan </h1>
 
             <div className="pricing-box-container">
 
@@ -34,12 +34,7 @@ const PricingPage = () => {
 
             </div>
 
-            <footer>
-                <p>
-                    Created with <i className="fa fa-heart"></i> by
-                    <a target="_blank" href="https://github.com/mohamedz133">Mohamed Zaki</a>
-                </p>
-            </footer>
+             
         </div>
     );
 };

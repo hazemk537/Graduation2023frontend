@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import '../styles/ChannelCard.css'
-import useFetch from "../customHooks/useFetch";
 import briefimg from  '../assets/Eo_circle_red_white_letter-b.svg';
-import ModalArticle from "./ChannelModal";
 
 function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, item }) {
 
-  const [alertMessage, setAlertMessage] = useState(false);
-  const [alertType, setAlertType] = useState(false);
+  const [, setAlertMessage] = useState(false);
+  const [, setAlertType] = useState(false);
 
   let token
   // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
