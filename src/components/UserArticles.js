@@ -8,36 +8,30 @@ import Pagination from "./Pagination";
 import '../styles/common.css';
 
 function UserArticles() {
-  const [, setSubscribedChannelsExist] = useState(true); 
-  const [ArticleModalData, setArticleModalData] = useState('');
-  const [RssTitle, setRssTitle] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [totalPages, setTotalPages] = useState(1); 
-  const [loading, setLoading] = useState(true); 
-  const [selectedChannelId, setSelectedChannelId] = useState(null); 
+  const [subscribedChannelsExist, setSubscribedChannelsExist] = useState(true);
+  const [articleModalData, setArticleModalData] = useState('');
+  const [rssTitle, setRssTitle] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1); // Initialize pageNumber to 1
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [selectedChannelId, setSelectedChannelId] = useState(null);
 
   let token;
   if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
     token = JSON.parse(localStorage.getItem('data')).token;
   }
 
-  // if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
-  //   totalPages = JSON.parse(localStorage.getItem('data')).totalPages;
-  // }
-
-   ;
-
   const [jsonData, , sendRequest] = useFetch();
 
   function GetRssArticlesById(id, title) {
     setRssTitle(title);
-    setSelectedChannelId(id); 
+    setSelectedChannelId(id);
+    setPageNumber(1); // Reset pageNumber to 1 when selecting a new channel
 
     if (id) {
       setLoading(true);
 
       const savedPageNumber = localStorage.getItem(`pageNumber_${id}`) || 1;
-      setPageNumber(parseInt(savedPageNumber));
 
       sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=${savedPageNumber}&PageSize=10`, {
         method: 'get', name: 'GETuserArticles', token: token, jsonSuccessProp: 'message', onSucceed: (data) => {
@@ -59,7 +53,7 @@ function UserArticles() {
 
   useEffect(() => {
     if (selectedChannelId) {
-      localStorage.setItem(`pageNumber_${selectedChannelId}`, pageNumber); 
+      localStorage.setItem(`pageNumber_${selectedChannelId}`, pageNumber);
       sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${selectedChannelId}&PageNumber=${pageNumber}&PageSize=10`, {
         method: 'get', name: 'GETuserArticles', token: token, jsonSuccessProp: 'message', onSucceed: (data) => {
           setLoading(false);
@@ -79,8 +73,8 @@ function UserArticles() {
 
   return (
     <>
-      {ArticleModalData && <ArticleModal setArticleModalData={setArticleModalData} data={ArticleModalData} />}
-      <div >
+      {articleModalData && <ArticleModal setArticleModalData={setArticleModalData} data={articleModalData} />}
+      <div>
         <SubscribedList GetRssArticlesById={GetRssArticlesById} loading={loading} />
 
         {
@@ -95,9 +89,9 @@ function UserArticles() {
               </div>
 
               {jsonData.data && jsonData.data.map((item) => (
-              <div className="articles-view">
-                <ArticleCard setArticleModalData={setArticleModalData} key={item.id} item={item} />
-              </div>
+                <div className="articles-view" key={item.id}>
+                  <ArticleCard setArticleModalData={setArticleModalData} item={item} />
+                </div>
               ))}
             </div>
           )
