@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 // import google from "../images/google.svg";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import Alert from "./Alert";
-import { json, useNavigate } from "react-router-dom/dist/umd/react-router-dom.development";
+import {  useNavigate } from "react-router-dom/dist/umd/react-router-dom.development";
 const GLogin = () => {
   const [LoginSuccess, setLoginSuccess] = useState();
   const [alertMessage, setAlertMessage] = useState(false);
   const [alertType, setAlertType] = useState(false);
-  const [ErrState, setErrState] = useState(false);
+  const [ ,setErrState] = useState(false);
  let NavigateFn= useNavigate()
 
   const clienid =

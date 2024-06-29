@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import "../styles/PreviewFeed.css";
 
 const PreviewFeed = ({ channel_obj, articlesArr }) => {

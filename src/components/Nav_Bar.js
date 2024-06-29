@@ -17,13 +17,13 @@ function NavBar({ onClickLogin, onClickCreateAccount }) {
         <ul>
 
           {/* <li><a href="#contact_us" > Contact Us</a></li> */}
-          <li onClick={() => {
+          {/* <li onClick={() => {
             window.scrollTo({
               bottom: 0,
               behavior: "smooth",
             });
 
-          }}>Contact Us</li>
+          }}>Contact Us</li> */}
 
 
           <li><Link to="/pricing" > Pricing</Link></li>

@@ -13,11 +13,40 @@ body::-webkit-scrollbar-thumb {
     z-index: 1000;
     /* background-color: aliceblue; */
 }
+/* .tabBar{
+   
+    width: 80%;
+   
+    background-color: #686666;
+    border-radius: 20px;
+} */
+.articelTab {
+    font-weight: bolder;
+    padding: 26px;
+    display: inline-block;
+    width: 50%;
+    border-radius: 15px;
+    color: bisque;
+}
+.tabBar span:hover{
+    cursor: pointer;
+}
 
+.selectedTab{
+    background-color: black;
+
+}
 .sumwindow {
     background-color: rgb(49, 46, 46);
     width: 600px;
     position: fixed;
+    /* #Note_case_ safe padding , model scrolling still show content inside it correctly */
+    padding-bottom: 100px;
+    /* #Note_case_ bad margin , model scrolling show less content inside it correctly,some content
+    will be unscrollable overflow  because of the margin
+    */
+
+    /* margin-top:10px; */
   
     border-radius: 30px;
     z-index: 981;
@@ -26,7 +55,6 @@ body::-webkit-scrollbar-thumb {
     border: solid 0px rgba(12, 12, 12, 0.726);
     /* display: flex;    /* affect height */
     /* #NOTE_Model_long */
-    margin-top: 20px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -36,8 +64,7 @@ body::-webkit-scrollbar-thumb {
         scrollbar-width: thin;
     /* overflow-wrap: anywhere;     affect height */
 
-    top: 0px;
-    left: calc(50% - 300px);
+     left: calc(50% - 300px);
   
     height: calc(100%);
     overflow: auto;
@@ -84,6 +111,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .Full-Article-button {
+    position: absolute;
+    bottom: 10px;
+    left: 44%;
     cursor: pointer;
     border-radius: 50%;
     background-color: rgba(245, 245, 245);

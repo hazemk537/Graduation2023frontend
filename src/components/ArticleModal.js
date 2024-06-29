@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/SumWindow.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
+import { retry } from '@reduxjs/toolkit/query';
 
 
 
 function ArticleModal({ data, setArticleModalData }) {
+    const [showSummary, setshowSummary] = useState(false)
     //article data in data.data
     console.log(`🖌️ ArticleModal`) // #debug 
     console.log(data) // #debug 
+
+    // function ExtractImage(){
+    {/* #Note_case sometimes img in descirption ,and no src diectly in .link */ }
+
+    // let ImgRegex=new RegExp("(https?:\/\/www.(\w|\W)+.(png|jpg|svg|webp|jpeg))")
+    // #Project_discution #Error_boundry
+    // let imgUrl =data.data.description.match(ImgRegex)[0]?.replace('src="')
+
+    // console.log(data.data.description.match(ImgRegex))
+    // validate url link 
+
+
+    // return data.data?.image|| briefimg
+    // }
+
+    const checkImageUrl = (item) => {
+        {/* #Note_image if  image link is bad ex - ,_ */}
+        let src = item.image
+        console.log(item.image);
+        if (!src?.match(/http(\w|\W)+/)){
+        src = briefimg
+        }
+    
+        return src
+      }
 
     return (
         <>
@@ -76,7 +101,7 @@ function ArticleModal({ data, setArticleModalData }) {
                             fontWeight: '700',
                             borderRadius: '30px',
 
-                        }}>{data.data.category||'No Categories'}</span>
+                        }}>{data.data.category || 'No Categories'}</span>
 
 
                         {/* creation */}
@@ -92,6 +117,8 @@ function ArticleModal({ data, setArticleModalData }) {
                             fontWeight: '700',
                             borderRadius: '30px',
                         }}>{data.data.createdAt.match(/\d+-\d+-\d+/)}</span>
+                        {/* #Note_case sometimes img in descirption ,and no src diectly in .link */}
+
                         <img style={{
                             maxHeight: '400px',
                             width: '100%',
@@ -101,8 +128,14 @@ function ArticleModal({ data, setArticleModalData }) {
                             , borderRadius: '20px'
                         }}
 
-                            src={data.data.image || data?.data?.thumbnail || briefimg}
-                            alt={data.data.description}
+                            src={checkImageUrl(data.data)}
+                            alt=''
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = briefimg;
+                            }}
+
+
 
                         />
                     </div>
@@ -110,6 +143,11 @@ function ArticleModal({ data, setArticleModalData }) {
                             {/* link title */}
                             {/* #Note_case fallback image if err */}
 
+
+                            <div style={{ display: 'flex' }}>
+                                <span className={` articelTab ${showSummary ? '' : 'selectedTab'}`} onClick={() => { setshowSummary(false) }} >description</span>
+                                <span className={`articelTab  ${!showSummary ? '' : 'selectedTab'}`} onClick={() => { setshowSummary(true) }}>Summary</span>
+                            </div>
                             <p
                                 style={{
                                     fontFamily: 'roboto,sans-serif',
@@ -122,40 +160,35 @@ function ArticleModal({ data, setArticleModalData }) {
                                 }                    </p>
 
                             {/* description */}
-                            <div>                            <p style={{
+                            {!showSummary && <div style={{
                                 color: 'beige',
                                 marginLeft: '3rem',
                                 fontSize: '20px',
                                 fontWeight: 'lighter'
-                            }}>{data.data.description}</p>
-
-</div>
-
-                            {/* summary */}
-
-                            <div style={{
-                                display: 'flex',
-                                fontSize: '20px',
-                                placeContent: 'center',
-                                /* border-left: aliceblue s,lid 1px; */
-                                color: 'burlywood',
-                                fontWeight: '700',
-                                borderBottomStyle: 'double',
-                            }} >
-
-                                <span style={{
-                                    fontFamily: 'fantasy',
-                                    fontSize: '15px',
-                                    fontWeight: 'bold'
-                                }}>Summary </span>
-                                {/* if first not fond display second #Note_case fallback render */}
-                                <p> {data.data.summarized || 'no summarization Available'} </p>
+                            }} dangerouslySetInnerHTML={{ __html: data.data.description }}>
 
 
                             </div>
+                            }
+                            {/* summary */}
+                            {showSummary &&
+                                <div style={{
+                                    display: 'flex',
+                                    fontSize: '20px',
+                                    placeContent: 'center',
+                                    /* border-left: aliceblue s,lid 1px; */
+                                    color: 'burlywood',
+                                    fontWeight: '700',
+                                }} >
 
+                                    {/* if first not fond display second #Note_case fallback render */}
+                                    <p className='p_summarization'> {data.data.summarized || 'no summarization Available'} </p>
+
+
+                                </div>
+                            }
                         </div></>}
-                <button style={{marginTop:'20px',marginBottom:'20px'}} className='Full-Article-button'>
+                <button style={{ marginTop: '20px', marginBottom: '20px' }} className='Full-Article-button'>
                     <a target='_blank' rel="noreferrer" href={`${data.data.link}`}>
                         <svg className='Full-Article' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <g fill="currentColor">

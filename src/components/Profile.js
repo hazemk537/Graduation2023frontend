@@ -40,16 +40,16 @@ const ProfileImage = ({ userName, userImage, userAccount }) => {
           <div className="menu-item-user">
             <div>
               <img className='avatar' src={userImage} alt="User Avatar" />
-              <p>{userName}</p>
+              {/* <p>{userName}</p> */}
             </div>
-            <div>
+            {/* <div>
               <p><a className='jump' href='#'>{userAccount}</a></p>
-            </div>
+            </div> */}
           </div>
 
           <div className="menu-item">
-            <span><img className='svg' src={settings} alt="Settings Icon" /></span>
-            <a className='jump' href='#'>Account Settings</a>
+            {/* <span><img className='svg' src={settings} alt="Settings Icon" /></span>
+            <a className='jump' href='#'>Account Settings</a> */}
           </div>
 
           <div className="menu-item" onClick={handleLogout}>

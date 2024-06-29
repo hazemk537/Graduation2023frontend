@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import Spinner from './Spinner';
 import ArticleCard from "./ArticleCard";
@@ -6,7 +7,7 @@ import useFetch from "../customHooks/useFetch";
 import ArticleModal from "./ArticleModal";
 
 function UserArticles() {
-  const [subscribedChannelsExist, setSubscribedChannelsExist] = useState(true); // Define setSubscribedChannelsExist
+  const [ , setSubscribedChannelsExist] = useState(true); // Define setSubscribedChannelsExist
 
   const [ArticleModalData, setArticleModalData] = useState('');
   const [RssTitle, setRssTitle] = useState(null);

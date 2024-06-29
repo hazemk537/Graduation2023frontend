@@ -1,44 +1,86 @@
 import React, { useEffect, useState } from "react";
 import ChannelsView from "./ChannelsView";
 import "../styles/publicChannels.css";
-import { faL } from "@fortawesome/free-solid-svg-icons";
-import ModalArticle from "./ChannelModal";
 import useFetch from "../customHooks/useFetch";
-const categories = ["general", "world", "nation", "business", "technology", "entertainment", "sports", "science", "health"
+import ChannelModal from "./ChannelModal";
 
-]
+
+const categories = [
+  {
+    "name": "General",
+    "key": "general"
+  },
+  {
+    "name": "World",
+    "key": "world"
+  },
+  {
+    "name": "Nation",
+    "key": "nation"
+  }, {
+    "name": "Sports",
+    "key": "sports"
+  },
+  {
+    "name": "Science",
+    "key": "science"
+  },
+  {
+    "name": "Health",
+    "key": "health"
+  },
+  {
+    "name": "Business",
+    "key": "business"
+  },
+  {
+    "name": "Technology",
+    "key": "technology"
+  },
+  {
+    "name": "Entertainment",
+    "key": "entertainment"
+  }]
 
 
 const countries = [
   {
     "name": "Egypt",
-    "key": "eg"
+    "key": "eg",
+    "lang": "ar",
   },
   {
     "name": "Australia",
-    "key": "au"
+    "key": "au",
+    "lang": "any",
+
   },
   {
     "name": "Brazil",
-    "key": "br"
+    "lang": "any",
+    "key": "br",
   },
   {
     "name": "Canada",
+    "lang": "any",
     "key": "ca"
   },
   {
     "name": "China",
+    "lang": "any",
     "key": "cn"
   },
   {
     "name": "France",
+    "lang": "any",
     "key": "fr"
   }]
 
 function PublicChannels() {
-  const [selectedSpan, setSelectedSpan] = useState(1)//catgory
+  const [selectedSpan, setSelectedSpan] = useState(0)//catgory
   const [selectedCountry, setSelectedCountry] = useState(0)//country
   const [categorisHover, setCategorisHover] = useState(false)
+
   //#todo move this state to seperate compoent to avoid useless re-render
   //#todo set err state if ex: no internet connection and display msg
   //#todo if go back from any page , should fetch from loval storge no rerequest
@@ -47,9 +89,10 @@ function PublicChannels() {
   const [data, , sendRequest] = useFetch()
 
 
+
   useEffect(() => {
 
-    sendRequest(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan]}&lang=ar&country=${countries[selectedCountry].key}&max=50&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'GnewsAPI', jsonSuccessProp: null, jsonFailProp: 'errors' })
+    sendRequest(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan].key}&lang=${countries[selectedCountry].lang}&country=${countries[selectedCountry].key}&max=20&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'GnewsAPI', jsonFailProp: 'errors' })
 
   }, [selectedSpan, selectedCountry])
 
@@ -74,6 +117,8 @@ function PublicChannels() {
 
   return (
     <>
+      {/* suitable to be above all elements not children */}
+
       <h1 className="public_channels_h1"> World top headlines..</h1>
 
       <div style={{
@@ -110,7 +155,7 @@ function PublicChannels() {
 
               }}
               >
-                {item}
+                {item.name}
               </p>
 
               {index === selectedSpan && <span style={{
@@ -170,7 +215,7 @@ function PublicChannels() {
           )
         })}
       </div >
-      <ChannelsView type="public_channels" channels={modifiedArticles} />
+      <ChannelsView type="public_channels" channels={modifiedArticles}  />
     </>
 
   );

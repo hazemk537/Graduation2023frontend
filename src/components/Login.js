@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAt, faLock, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Login_Signup.css";
@@ -11,7 +11,7 @@ function LoginForm({ onClose, onSignupClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const NavigateFn = useNavigate()
   //to not render success at begining
-  const [jsonData, d, sendRequest] = useFetch()
+  const [, , sendRequest] = useFetch()
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -92,7 +92,7 @@ function LoginForm({ onClose, onSignupClick }) {
             <b className="reset">
               forget password{" "}
 
-              <Link to={'/Reset_Password'} >
+              <Link style={{color:'black'}}  to={'/Reset_Password'} >
                 click here
 
               </Link>
@@ -100,7 +100,7 @@ function LoginForm({ onClose, onSignupClick }) {
           </div>
         </form>
         <div className="transmit">
-          <button type="button" id="signupBtn" onClick={onSignupClick}>
+          <button style={{backgroundColor:'black'}}  type="button" id="signupBtn" onClick={onSignupClick}>
             Sign up
           </button>
         </div>

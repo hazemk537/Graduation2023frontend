@@ -51,7 +51,6 @@ top: 0;
 .nav_bar li a{
     display: flex;
     text-align: left;
-    padding: 16px 40px;
     text-decoration: none;
     color: whitesmoke;
 

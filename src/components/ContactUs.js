@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/contactus.css";
-import { height } from "@fortawesome/free-solid-svg-icons/fa0";
 function ContactUs() {
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -45,6 +45,7 @@
 - #pro_grad remove useless components and eslint erro
 
 - +landingpage bad modal  ![alt text](imagesRef/image-5.png)
+- #pro_grad chng spinner of mouse when click to trigger request in +resetpassword pn clik send password send code spinner inside btn
 
 ### In Progress
 - 4. netwerk error #pro_grad @hazem
@@ -53,22 +54,21 @@
 - +addfeed style
 - +resetpassword styling
 - #pro_grad search in local 
-- global error manage system with redux
 -  upload videos  @hazem {due:2024-06-27|e2d}
-- add error boundry to catch all thrown errors 
-#TEST ex: rm token, try go /home @zaki
-- #pro_grad modal styling
 
-- - #pro_grad +<publicChannels/> add countries in same way
 - #pro_grad +PublicChannels bad text general world,.. capital case
 
+- - #pro_grad +<publicChannels/> add countries in same way
 - in +userArticles +discover ,+publicChannels replcae intial articles with spinner #pro_grad
-
-- #pro_grad chng spinner of mouse when click to trigger request in +resetpassword pn clik send password send code spinner inside btn
 
 
 
 ### Done ✓
+
+- global error manage system with redux
+- add error boundry to catch all thrown errors 
+#TEST ex: rm token, try go /home @zaki
+- #pro_grad modal styling
 - #pro_grad <Subscriptions/> on click bad rectangle on border radius
 
 - #pro_grad rm hacker image ,change project name in +landingPage be briefed  +landingPage +<Login/>
