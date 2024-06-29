@@ -9,12 +9,12 @@ let feedLink;
 
 
 const AddFeed = () => {
-  const [jsonData, , sendRequest] = useFetch();
+  const [, , sendRequest] = useFetch();
 
   //we need feedlink it once ,no need to use state
   // states are used if we need ,to reload ui after js value change.
-  const [alertMessage, setAlertMessage] = useState(false);
-  const [alertType, setAlertType] = useState(false);
+  const [alertMessage, ] = useState(false);
+  const [alertType, ] = useState(false);
 
   const [channel_obj, setChannelObj] = useState({
     channel_img_url: "",
