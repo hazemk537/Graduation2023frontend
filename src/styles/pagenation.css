@@ -2,7 +2,7 @@
   .pagenation_parent{
     align-items: center;
     justify-content: center;
-    padding-left: 10px;
+    padding-left: 10%;
       display: flex;
       gap: 20px;
       position: fixed;

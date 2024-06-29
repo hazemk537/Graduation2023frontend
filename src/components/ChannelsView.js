@@ -22,8 +22,9 @@ function ChannelsView({   pageNumber,setPageNumber,parrallelDiscover, setTrigger
     return (
       <>
         {ModalData && <ChannelModal setModalData={setModalData} data={ModalData} />}
-        <div className={`gallary_items ${type}_class`}>
         <Pagination  pageNumber={pageNumber} setPageNumber={setPageNumber}/>
+
+        <div className={`gallary_items ${type}_class`}>
 
           {channels.map((item, id) => (
             <ChannelCard
