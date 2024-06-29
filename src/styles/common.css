@@ -1,7 +1,6 @@
 .verticalCards {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
     align-items: center;
     justify-content: flex-start;
     position: fixed;
@@ -9,24 +8,33 @@
     right: 1rem;
     z-index: 5;
     width: 13%;
-    height: 70vh; 
-    border-left: 2px solid #cccccc86; 
-    padding-left: 1rem; 
-    padding-right: 2rem; 
-    overflow-y: scroll; 
+    height: 70vh;
+    border-left: 2px solid #cccccc86;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    overflow-y: scroll;
     overflow-x: hidden;
-    border-radius: 5%;
+    border-radius: 10px;
     box-shadow: 5px 0 10px rgb(172, 172, 172);
-}
-.articlesNavbar{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 67px;
-        position: absolute;
-        top: 20px;
-        z-index: 37;
-}
+    
+  }
+  
+  .articlesNavbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:67px;
+    position: absolute;
+    top: 20px;
+    z-index: 37px;
+  }
+  
+  .articles-view {
+    display:grid;
+    margin-top: 5%;
+
+  }
+ 
 .verticalCards::-webkit-scrollbar {
     width: 10px;
 }
