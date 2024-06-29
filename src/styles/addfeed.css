@@ -49,3 +49,17 @@
   background-color: red;
   color: white;
 }
+
+.search-input{
+  color:red;
+    border-radius: 27px;
+    margin-top: 0.5rem;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: large;
+    font-weight: bolder;
+}
