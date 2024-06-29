@@ -3,11 +3,6 @@ import ChannelCard from "./ChannelCard";
 import "../styles/ChannelsView.css";
 import Spinner from "./Spinner";
 import ChannelModal from "./ChannelModal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-faPlus,faMinus
-
-} from "@fortawesome/free-solid-svg-icons";
 import Pagination from "./Pagination";
 function ChannelsView({   pageNumber,setPageNumber,parrallelDiscover, setTriggerFetch, channels, type }) {
   const [ModalData, setModalData] = useState('')

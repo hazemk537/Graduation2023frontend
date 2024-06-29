@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Profile.css';
 import logout from "../images/logout.svg";
-import settings from "../images/settings.svg";
 
-const ProfileImage = ({ userName, userImage, userAccount }) => {
+const ProfileImage = ({  userImage  }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -54,7 +53,7 @@ const ProfileImage = ({ userName, userImage, userAccount }) => {
 
           <div className="menu-item" onClick={handleLogout}>
             <span><img className='svg' src={logout} alt="Logout Icon" /></span>
-            <a className='jump' href='#'>Logout</a>
+            <span className='jump' >Logout</span>
           </div>
         </div>
       )}

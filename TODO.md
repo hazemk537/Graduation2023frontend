@@ -40,7 +40,7 @@
 ### In Progress
 - host and bugs
 - docs @hazem
-
+- simple tasks
 -  shaib meeting @hazem {due:2024-06-30}
 
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ChannelsView from "./ChannelsView";
 import "../styles/publicChannels.css";
 import useFetch from "../customHooks/useFetch";
-import ChannelModal from "./ChannelModal";
 
 
 const categories = [
@@ -94,6 +93,7 @@ function PublicChannels() {
 
     sendRequest(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan].key}&lang=${countries[selectedCountry].lang}&country=${countries[selectedCountry].key}&max=20&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'GnewsAPI', jsonFailProp: 'errors' })
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSpan, selectedCountry])
 
 

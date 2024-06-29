@@ -1,5 +1,3 @@
-import { faMinus, faPlus, faArrowAltCircleLeft, faTentArrowLeftRight } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../styles/pagenation.css'
 import React from 'react'
 

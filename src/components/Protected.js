@@ -27,6 +27,7 @@ function Protected({ children, showLoginPopupfn }) {
       throw new Error('Plz, Login First')
 
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function handleCorrectToken() {
