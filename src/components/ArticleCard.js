@@ -56,7 +56,9 @@ function ArticleCard({ item, setArticleModalData }) {
           fontSize: '1rem',
           color: '#c5c5c5',
           height: '1.3rem',
-          display: 'inline-block'
+          display: 'inline-block',
+          fontFamily: 'Arial'
+
         }}>{item.description.substring(0, 90)} ...</p>
       </div>
 
@@ -70,10 +72,10 @@ function ArticleCard({ item, setArticleModalData }) {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 
           {item?.createdAt.match(/\d+-\d+-\d+/) ? <span style={{
-            fontFamily: 'fantasy'
-            , fontSize: '1.5rem',
-            fontWeight: '600',
-            color: 'beige'
+            fontFamily: 'Arial'
+            , fontSize: '1rem',
+            fontWeight: '800',
+            color: '#990000'
           }}>{item?.createdAt.match(/\d+-\d+-\d+/)[0]}</span> : 'no date'}</div>
 
 

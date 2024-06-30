@@ -1,27 +1,24 @@
   
-
   .pagenation_parent{
     align-items: center;
     justify-content: center;
+    padding-left: 10%;
       display: flex;
       gap: 20px;
       position: fixed;
       top: 29px;
       z-index: 20;
-  
-
   }
-  .pagenation_parent_inc{
-  } .pagenation_parent_inc:hover{
-cursor: pointer;
-  } .pagenation_parent_dec{
-    
-  } .pagenation_parent_pg_no{
+ 
+ .pagenation_parent_inc:hover{
+  cursor: pointer;
+
+} 
+
+ .pagenation_parent_pg_no{
     padding: 10px;
-    background-color: brown;
-    /* border-left: aliceblue; */
-    /* border-right: solid; */
-    color: rgb(190 189 200);
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
     border-radius: 8px;
     font-weight: bold;
     
