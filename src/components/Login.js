@@ -56,7 +56,6 @@ function LoginForm({ onClose, onSignupClick }) {
                 icon={faAt}
                 beat
                 id="awesome1"
-                style={{ color: "#0740b0" }}
               />
               <input type="email" required placeholder="Email"
                 name="email" />
@@ -66,7 +65,6 @@ function LoginForm({ onClose, onSignupClick }) {
                 icon={faLock}
                 beat
                 id="awesome1"
-                style={{ color: "#0740b0" }}
               />
               <input
                 type={passwordVisible ? "text" : "password"}

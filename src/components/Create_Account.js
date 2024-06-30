@@ -63,7 +63,6 @@ function Create_Account({ onClose, onSigninClick }) {
               icon={faUser}
               beat
               id="awesome1"
-              style={{ color: "#1d3ee2" }}
             />
             <input
               type="text"
@@ -80,7 +79,6 @@ function Create_Account({ onClose, onSigninClick }) {
               beat
 
               id="awesome1"
-              style={{ color: "#1d3ee2" }}
             />
             <input
               type="text"
@@ -96,7 +94,6 @@ function Create_Account({ onClose, onSigninClick }) {
               icon={faAt}
               beat
               id="awesome1"
-              style={{ color: "#0740b0" }}
             />
 
             <input type="email" required placeholder="Email" name="email" />
@@ -127,7 +124,6 @@ function Create_Account({ onClose, onSigninClick }) {
               icon={faLock}
               beat
               id="awesome1"
-              style={{ color: "#1d3ee2" }}
             />
             <input
               type={passwordVisible ? "text" : "password"}
