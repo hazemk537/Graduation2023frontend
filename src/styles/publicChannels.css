@@ -1,13 +1,12 @@
+
 .public_channels_h1 {
     font-family: "Bebas Neue", sans-serif;
-    font-size: 8rem;
+    font-size: 6rem;
     background-color: rgb(255, 0, 0);
-    color: rgb(219, 218, 216);
-    padding: 2rem;
+    color: rgb(255, 255, 255);
+    padding: 1rem;
     border-radius: 20px;
 }
-
-.selectedCountryOrCategry {}
 
 .public_channels_class {
     z-index: 0;
@@ -17,8 +16,8 @@
 
 @media (max-width: 768px) {
     .public_channels_h1 {
-        font-size: 4rem;
-        padding: 1rem;
+        font-size: 3rem;
+        padding: .5rem;
     }
 
     .dropdown {
@@ -29,11 +28,22 @@
     }
 
     .dropdown select {
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 1rem;
+        padding: 0.4rem;
+        height: 50%;
+        margin-inline: 8%;
+        border-radius: 20px;
+        border:1px solid rgb(58, 58, 58);
+        outline: rgba(0, 0, 0,1);
+        font-size: 1.5rem;
+        background-color: rgb(255, 255, 255);
+        color: rgba(255, 0, 0,1);
+        box-shadow: 8px  8px 0px rgba(255, 255, 255, 0.5);
+        margin-top: 0px;
+        background-color: rgb(255, 255, 255);
+        align-items: center;
+        justify-content: center;
     }
+
 }
 
 @media (min-width: 769px) {

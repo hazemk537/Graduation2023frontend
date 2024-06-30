@@ -4,24 +4,24 @@ import "../styles/publicChannels.css";
 import useFetch from "../customHooks/useFetch";
 
 const categories = [
-    { "name": "General", "key": "general" },
-    { "name": "World", "key": "world" },
-    { "name": "Nation", "key": "nation" },
-    { "name": "Sports", "key": "sports" },
-    { "name": "Science", "key": "science" },
-    { "name": "Health", "key": "health" },
-    { "name": "Business", "key": "business" },
-    { "name": "Technology", "key": "technology" },
-    { "name": "Entertainment", "key": "entertainment" }
+    { name: "General", key: "general" },
+    { name: "World", key: "world" },
+    { name: "Nation", key: "nation" },
+    { name: "Sports", key: "sports" },
+    { name: "Science", key: "science" },
+    { name: "Health", key: "health" },
+    { name: "Business", key: "business" },
+    { name: "Technology", key: "technology" },
+    { name: "Entertainment", key: "entertainment" }
 ];
 
 const countries = [
-    { "name": "Egypt", "key": "eg", "lang": "ar" },
-    { "name": "Australia", "key": "au", "lang": "any" },
-    { "name": "Brazil", "lang": "any", "key": "br" },
-    { "name": "Canada", "lang": "any", "key": "ca" },
-    { "name": "China", "lang": "any", "key": "cn" },
-    { "name": "France", "lang": "any", "key": "fr" }
+    { name: "Egypt", key: "eg", lang: "ar" },
+    { name: "Australia", key: "au", lang: "any" },
+    { name: "Brazil", lang: "any", key: "br" },
+    { name: "Canada", lang: "any", key: "ca" },
+    { name: "China", lang: "any", key: "cn" },
+    { name: "France", lang: "any", key: "fr" }
 ];
 
 function PublicChannels() {
@@ -64,33 +64,61 @@ function PublicChannels() {
 
             {windowWidth > 768 ? (
                 <>
-                    <div className="category-container" style={{ display: 'flex', width: '80%', alignItems: 'center', justifyContent: 'center', cursor: categorisHover ? 'default' : 'pointer' }}>
+                    <div className="category-container"
+                        style={{
+                            display: 'flex', width: '80%', alignItems: 'center',
+                            justifyContent: 'center', cursor: categorisHover ? 'default' : 'pointer'
+                        }}>
                         {categories.map((item, index) => (
-                            <div key={index} style={{ width: '11.1%' }} onMouseEnter={() => setCategorisHover(true)} onMouseOut={() => setCategorisHover(false)} onClick={() => setSelectedSpan(index)}>
+                            <div key={index}
+                                style={{ width: '11.1%' }}
+                                onMouseEnter={() => setCategorisHover(true)} onMouseOut={() => setCategorisHover(false)}
+                                onClick={() => setSelectedSpan(index)}>
                                 <p style={{ textAlign: 'center' }}>{item.name}</p>
-                                {index === selectedSpan && <span style={{ borderBottomStyle: 'solid', borderColor: 'rgb(255, 0, 0)', display: 'block' }}></span>}
+                                {index === selectedSpan &&
+                                    <span style={{
+                                        borderBottomStyle: 'solid',
+                                        borderColor: 'rgb(255, 0, 0)',
+                                        display: 'block'
+                                    }}></span>}
                             </div>
                         ))}
                     </div>
 
-                    <div className="country-container" style={{ display: 'flex', width: '80%', alignItems: 'center', justifyContent: 'center', cursor: categorisHover ? 'default' : 'pointer', backgroundColor: ' #3b3b3b', borderRadius: '20px' }}>
+                    <div className="country-container"
+                        style={{
+                            display: 'flex', width: '80%',
+                            alignItems: 'center', justifyContent: 'center'
+                            , cursor: categorisHover ? 'default' : 'pointer',
+                            backgroundColor: ' rgba(50,50,50,1)', borderRadius: '20px'
+                        }}>
                         {countries.map((item, index) => (
-                            <div className={index === selectedCountry ? 'selectedCountryOrCategry' : ''} key={index} style={{ width: '11.1%' }} onClick={() => setSelectedCountry(index)}>
+                            <div className={index === selectedCountry ? 'selectedCountryOrCategry' : ''}
+                                key={index} style={{ width: '11.1%' }} onClick={() => setSelectedCountry(index)}>
                                 <p style={{ textAlign: 'center' }}>{item.name}</p>
-                                {index === selectedCountry && <span style={{ borderBottomStyle: 'solid', borderColor: 'rgb(174 161 161)', display: 'block' }}></span>}
+                                {index === selectedCountry && <span style={{
+                                    borderBottomStyle: 'solid',
+                                    borderColor: 'rgb(255 ,0 ,0)', display: 'block'
+                                }}></span>}
                             </div>
                         ))}
                     </div>
                 </>
-            ) : (
+            )
+            
+            
+            : 
+            
+            
+            (
                 <div className="dropdown">
-                    <select value={selectedSpan} onChange={(e) => setSelectedSpan(e.target.value)}>
+                    <select value={selectedSpan} onChange={(e) => setSelectedSpan(parseInt(e.target.value))}>
                         {categories.map((item, index) => (
                             <option key={index} value={index}>{item.name}</option>
                         ))}
                     </select>
 
-                    <select value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)}>
+                <select value={selectedCountry} onChange={(e) => setSelectedCountry(parseInt(e.target.value))}>
                         {countries.map((item, index) => (
                             <option key={index} value={index}>{item.name}</option>
                         ))}
