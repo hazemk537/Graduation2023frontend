@@ -3,104 +3,51 @@ import ChannelsView from "./ChannelsView";
 import "../styles/publicChannels.css";
 import useFetch from "../customHooks/useFetch";
 
-
 const categories = [
-  {
-    "name": "General",
-    "key": "general"
-  },
-  {
-    "name": "World",
-    "key": "world"
-  },
-  {
-    "name": "Nation",
-    "key": "nation"
-  }, {
-    "name": "Sports",
-    "key": "sports"
-  },
-  {
-    "name": "Science",
-    "key": "science"
-  },
-  {
-    "name": "Health",
-    "key": "health"
-  },
-  {
-    "name": "Business",
-    "key": "business"
-  },
-  {
-    "name": "Technology",
-    "key": "technology"
-  },
-  {
-    "name": "Entertainment",
-    "key": "entertainment"
-  }]
-
+    { name: "General", key: "general" },
+    { name: "World", key: "world" },
+    { name: "Nation", key: "nation" },
+    { name: "Sports", key: "sports" },
+    { name: "Science", key: "science" },
+    { name: "Health", key: "health" },
+    { name: "Business", key: "business" },
+    { name: "Technology", key: "technology" },
+    { name: "Entertainment", key: "entertainment" }
+];
 
 const countries = [
-  {
-    "name": "Egypt",
-    "key": "eg",
-    "lang": "ar",
-  },
-  {
-    "name": "Australia",
-    "key": "au",
-    "lang": "any",
-
-  },
-  {
-    "name": "Brazil",
-    "lang": "any",
-    "key": "br",
-  },
-  {
-    "name": "Canada",
-    "lang": "any",
-    "key": "ca"
-  },
-  {
-    "name": "China",
-    "lang": "any",
-    "key": "cn"
-  },
-  {
-    "name": "France",
-    "lang": "any",
-    "key": "fr"
-  }]
+    { name: "Egypt", key: "eg", lang: "ar" },
+    { name: "Australia", key: "au", lang: "any" },
+    { name: "Brazil", lang: "any", key: "br" },
+    { name: "Canada", lang: "any", key: "ca" },
+    { name: "China", lang: "any", key: "cn" },
+    { name: "France", lang: "any", key: "fr" }
+];
 
 function PublicChannels() {
-  const [selectedSpan, setSelectedSpan] = useState(0)//catgory
-  const [selectedCountry, setSelectedCountry] = useState(0)//country
-  const [categorisHover, setCategorisHover] = useState(false)
+    const [selectedSpan, setSelectedSpan] = useState(0);
+    const [selectedCountry, setSelectedCountry] = useState(0);
+    const [categorisHover, setCategorisHover] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [data, , sendRequest] = useFetch();
 
-  //#todo move this state to seperate compoent to avoid useless re-render
-  //#todo set err state if ex: no internet connection and display msg
-  //#todo if go back from any page , should fetch from loval storge no rerequest
-  let apikey = '8e69a1db2fb43edac805be1306b74ae2';
-  //we need the useeffect inside the hook depend only on selectedSpan
-  const [data, , sendRequest] = useFetch()
+    const apikey = '8e69a1db2fb43edac805be1306b74ae2';
 
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
+    useEffect(() => {
+        sendRequest(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan].key}&lang=${countries[selectedCountry].lang}&country=${countries[selectedCountry].key}&max=20&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'GnewsAPI', jsonFailProp: 'errors' });
+    }, [selectedSpan, selectedCountry, sendRequest]);
 
-  useEffect(() => {
-
-    sendRequest(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan].key}&lang=${countries[selectedCountry].lang}&country=${countries[selectedCountry].key}&max=20&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'GnewsAPI', jsonFailProp: 'errors' })
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedSpan, selectedCountry])
-
-
-  let modifiedArticles
-  if (data.articles) {
-    modifiedArticles = data.articles.map((item, index) => {
-      return {
+    let modifiedArticles = data.articles?.map((item, index) => ({
         thumbnail: item.image,
         title: item.title,
         description: item.description,
@@ -109,117 +56,79 @@ function PublicChannels() {
         publishedAt: item.publishedAt,
         src: item.src,
         url: item.url
+    }));
 
-      }
-    })
-  }
+    return (
+        <>
+            <h1 className="public_channels_h1">World top headlines..</h1>
 
+            {windowWidth > 768 ? (
+                <>
+                    <div className="category-container"
+                        style={{
+                            display: 'flex', width: '80%', alignItems: 'center',
+                            justifyContent: 'center', cursor: categorisHover ? 'default' : 'pointer'
+                        }}>
+                        {categories.map((item, index) => (
+                            <div key={index}
+                                style={{ width: '11.1%' }}
+                                onMouseEnter={() => setCategorisHover(true)} onMouseOut={() => setCategorisHover(false)}
+                                onClick={() => setSelectedSpan(index)}>
+                                <p style={{ textAlign: 'center' }}>{item.name}</p>
+                                {index === selectedSpan &&
+                                    <span style={{
+                                        borderBottomStyle: 'solid',
+                                        borderColor: 'rgb(255, 0, 0)',
+                                        display: 'block'
+                                    }}></span>}
+                            </div>
+                        ))}
+                    </div>
 
-  return (
-    <>
-      {/* suitable to be above all elements not children */}
+                    <div className="country-container"
+                        style={{
+                            display: 'flex', width: '80%',
+                            alignItems: 'center', justifyContent: 'center'
+                            , cursor: categorisHover ? 'default' : 'pointer',
+                            backgroundColor: ' rgba(50,50,50,1)', borderRadius: '20px'
+                        }}>
+                        {countries.map((item, index) => (
+                            <div className={index === selectedCountry ? 'selectedCountryOrCategry' : ''}
+                                key={index} style={{ width: '11.1%' }} onClick={() => setSelectedCountry(index)}>
+                                <p style={{ textAlign: 'center' }}>{item.name}</p>
+                                {index === selectedCountry && <span style={{
+                                    borderBottomStyle: 'solid',
+                                    borderColor: 'rgb(255 ,0 ,0)', display: 'block'
+                                }}></span>}
+                            </div>
+                        ))}
+                    </div>
+                </>
+            )
+            
+            
+            : 
+            
+            
+            (
+                <div className="dropdown">
+                    <select value={selectedSpan} onChange={(e) => setSelectedSpan(parseInt(e.target.value))}>
+                        {categories.map((item, index) => (
+                            <option key={index} value={index}>{item.name}</option>
+                        ))}
+                    </select>
 
-      <h1 className="public_channels_h1"> World top headlines..</h1>
+                <select value={selectedCountry} onChange={(e) => setSelectedCountry(parseInt(e.target.value))}>
+                        {countries.map((item, index) => (
+                            <option key={index} value={index}>{item.name}</option>
+                        ))}
+                    </select>
+                </div>
+            )}
 
-      <div style={{
-        display: 'flex',
-        width: '80%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: categorisHover ? 'default' : 'pointer',
-
-      }}
-      >
-
-        {categories.map((item, index) => {
-          return (
-            <div key={index}
-              style={{
-                width: '11.1%',
-
-              }}
-              onMouseEnter={() => { setCategorisHover(true) }}
-
-              onMouseOut={() => { setCategorisHover(false) }}
-
-              onClick={() => {
-                setSelectedSpan(index)
-
-
-              }}
-
-            >
-
-              <p style={{
-                textAlign: 'center',
-
-              }}
-              >
-                {item.name}
-              </p>
-
-              {index === selectedSpan && <span style={{
-                borderBottomStyle: 'solid',
-                borderColor: 'rgb(255, 0, 0)',
-                display: 'block',
-              }}></span>}
-
-            </div>
-          )
-        })}
-
-
-
-
-      </div>
-      <div style={{
-        display: 'flex',
-        width: '80%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: categorisHover ? 'default' : 'pointer',
-
-        backgroundColor: ' #3b3b3b',
-        borderRadius: '20px'
-      }}>
-        {countries.map((item, index) => {
-          return (
-            <div className={index === selectedCountry ? 'selectedCountryOrCategry' : ''} key={index}
-              style={{
-                width: '11.1%',
-
-              }}
-
-              onClick={() => {
-                setSelectedCountry(index)
-
-
-              }}
-
-            >
-
-              <p style={{
-                textAlign: 'center',
-
-              }}
-              >
-                {item.name}
-              </p>
-
-              {index === selectedCountry && <span style={{
-                borderBottomStyle: 'solid',
-                borderColor: 'rgb(174 161 161)',
-                display: 'block',
-              }}></span>}
-            </div>
-          )
-        })}
-      </div >
-      <ChannelsView type="public_channels" channels={modifiedArticles}  />
-    </>
-
-  );
+            <ChannelsView type="public_channels" channels={modifiedArticles} />
+        </>
+    );
 }
 
 export default PublicChannels;
-

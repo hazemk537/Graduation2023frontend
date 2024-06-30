@@ -1,45 +1,63 @@
- 
-
-.landing-page{
-
-    width:100%;
-    height:auto;
+.landing-page {
+    width: 100%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap:5rem;
-    position: relative; 
-    animation: bg-image-animation 10s infinite; 
+    gap: 3rem; /* Reduced gap */
+    position: relative;
+    animation: bg-image-animation 10s infinite;
     background-position: center;
-    background-size:cover
-
+    background-size: cover;
 }
-
-
 
 @keyframes query-animation {
     0% {
-        color:rgb(255, 0, 0) ;
+        color: rgb(255, 0, 0);
     }
-   
-  }@keyframes logo-circle-animation {
+}
+
+@keyframes logo-circle-animation {
     0% {
-        color:rgb(255, 255, 255) ;
+        color: rgb(255, 255, 255);
     }
-   
-  }
-  
+}
 
-  
-  .quote-landingPage {
+.Slogan {
+    height: auto; /* Adjusted height */
+    padding-top: 60px; /* Space for the navbar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top {
+    position: fixed; /* Make it fixed */
+    bottom: 20%; /* Position it at the bottom */
+    right: 3%; /* Position it at the right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: rgba(255, 0, 0, 0.753);
+    color: antiquewhite;
+    font-size: x-large;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.scroll-to-top:hover {
+    background-color: rgb(255, 0, 0, 1);
+    font-size: x-large;
+}
+
+
+.quote-landingPage {
     animation: query-animation 3s infinite;
-
-
-
-} .quote-landingPage {
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 2rem; /* Reduced margin */
+    margin-bottom: 2rem; /* Reduced margin */
     font-family: "Bebas Neue", sans-serif;
     font-size: 2rem;
     letter-spacing: 0.1rem;
@@ -48,18 +66,29 @@
     padding-left: 3rem;
     padding-right: 3rem;
     border-radius: 10px;
-    color: white; 
-    text-align: center; 
-}   
+    color: white;
+    text-align: center;
+}
 
+@media (max-width: 600px) {
+    .landing-page {
+        gap: 1.5rem;
+    }
 
-/* 
+    .quote-landingPage {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.5rem;
+        letter-spacing: 0.5rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        border-radius: 10px;
+    }
 
-@keyframes bg-image-animation {
-    0% { background-image: url('../images/news.jpg'); }
-    25% { background-image: url('../images/news2new.jpg'); }
-    50% { background-image: url('../images/news3.png'); }
-    75% { background-image:url('../images/news4.png');}
-    75% { background-image:url('../images/news.jpg'); 
- 
-}} */
+    .scroll-to-top {
+        bottom: 20%; 
+        right: 3%; 
+        height: 25px;
+        width: 25px;
+        font-size: large;
+    }
+}
