@@ -23,30 +23,40 @@
 -  @backend contact us form  @zaki {due:2024-06-27}
 - #pro_grad remove useless components and eslint erro
 - host {due:2024-06-22}
-1. solve eslint problems @zaki
-2. check host @hazem
-3. team tests @otherTeam
-4. team active @otherTeam
+
 - #pro_grad chng spinner of mouse when click to trigger request in +resetpassword pn clik send password send code spinner inside btn
 - #pro_grad in /home/addfeed bad mobile screen
 
 - spinner /lazy loading between req and response #pro_grad in  +articleModal,+channelModal,+userArticles,+publModal, on all routes/modals
 
 - 4. netwerk error #pro_grad @hazem
+### pending 
+- 2 bugs with +backend
+
+- docs @hazem
 
 ### High
 
 
 ### In Progress
-- host and bugs
-- docs @hazem
-- simple tasks
+
 -  shaib meeting @hazem {due:2024-06-30}
-
-
+- undefined bug when host
+- plz login bug after click home
+- responsive project
+- channel name when unsubscribe all
+- userarticles flex
+- if no subscriptions> 
+   -  close increase/decrease btns
+- if user  show channel articles then unsubscribe
+  - enssure +userArtickles donot show its articles
 ### Done ✓
+- host and bugs
 - #pro_grad pagenation   
-
+1. solve eslint problems @zaki
+2. check host @hazem
+3. team tests @otherTeam
+4. team active @otherTeam
 - #pro_grad in +addfeed  undefined . if rss https://electronicintifada.net/rss.xml(make it resilient)
 - +addfeed style
 
@@ -58,7 +68,7 @@
 - redux,spinners,model error 
 
 - +landingpage bad modal  ![alt text](imagesRef/image-5.png)
--  upload videos  @hazem {due:2024-06-27|e2d}
+-  upload videos  @hazem {due:2024-06-27|e2d} {overdue:2024-06-29}
 - #pro_grad +PublicChannels bad text general world,.. capital case
 - - #pro_grad +<publicChannels/> add countries in same way
 - in +userArticles +discover ,+publicChannels replcae intial articles with spinner #pro_grad
