@@ -10,25 +10,10 @@ function NavBar({ onClickLogin, onClickCreateAccount }) {
           <span>Briefly</span>
         </div>
 
-        <div>
-
-        </div>
-
+        <div className="spans">
         <ul>
-
-          {/* <li><a href="#contact_us" > Contact Us</a></li> */}
-          {/* <li onClick={() => {
-            window.scrollTo({
-              bottom: 0,
-              behavior: "smooth",
-            });
-
-          }}>Contact Us</li> */}
-
-
-          <li><Link to="/pricing" > Pricing</Link></li>
           <li>
-            <span onClick={onClickLogin}>Sign in</span>
+            <span  className="Signin" onClick={onClickLogin}>Sign in</span>
           </li>
 
           <li>
@@ -36,6 +21,9 @@ function NavBar({ onClickLogin, onClickCreateAccount }) {
           </li>
 
         </ul>
+        </div>
+
+
       </nav>
     </div>
   );
