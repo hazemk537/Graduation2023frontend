@@ -8,7 +8,7 @@ import Pagination from "./Pagination";
 import '../styles/common.css';
 
 function UserArticles() {
-  const [subscribedChannelsExist, setSubscribedChannelsExist] = useState(true);
+  const [subscribedChannelsExist, setSubscribedChannelsExist] = useState(false);
   const [articleModalData, setArticleModalData] = useState('');
   const [rssTitle, setRssTitle] = useState(null);
   const [pageNumber, setPageNumber] = useState(1); // Initialize pageNumber to 1
@@ -64,15 +64,21 @@ function UserArticles() {
   }, [pageNumber, selectedChannelId]);
 
   useEffect(() => {
-    if (jsonData.data && jsonData.data.length > 0) {
+    const activeChannel = JSON.parse(localStorage.getItem('activeChannel'));
+
+    if (jsonData.data && jsonData.data.length > 0 && activeChannel) {
       setSubscribedChannelsExist(true);
+
+
     } else {
       setSubscribedChannelsExist(false);
+      setRssTitle(null);
     }
   }, [jsonData]);
 
   return (
     <>
+      {subscribedChannelsExist && <div className="channel-title"><h2>{rssTitle}</h2></div>}
       {articleModalData && <ArticleModal setArticleModalData={setArticleModalData} data={articleModalData} />}
       <div>
         <SubscribedList GetRssArticlesById={GetRssArticlesById} loading={loading} />

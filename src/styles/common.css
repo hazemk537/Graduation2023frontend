@@ -16,6 +16,7 @@
     overflow-x: hidden;
     border-radius: 10px;
     box-shadow: 5px 0 10px rgb(172, 172, 172);
+    background-color: black;
     
   }
   
@@ -140,3 +141,13 @@
     border: 1px solid rgb(5, 5, 5);
 }
 
+.channel-title {
+    color: white;
+    font-size: 1.5rem;
+    top: 12%;
+    transform: translatey(-20%);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
