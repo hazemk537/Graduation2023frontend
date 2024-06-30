@@ -1,5 +1,6 @@
 import React from "react";
 import '../styles/Nav_Bar.css';
+import { Link } from "react-router-dom";
 function NavBar({ onClickLogin, onClickCreateAccount }) {
   return (
     <div>
