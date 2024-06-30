@@ -49,6 +49,7 @@ function UserArticles() {
       GetRssArticlesById(activeChannel.id, activeChannel.title);
       setRssTitle(activeChannel.title);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -61,6 +62,7 @@ function UserArticles() {
         }, jsonFailProp: 'message'
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber, selectedChannelId]);
 
   useEffect(() => {
@@ -81,25 +83,25 @@ function UserArticles() {
       {subscribedChannelsExist && <div className="channel-title"><h2>{rssTitle}</h2></div>}
       {articleModalData && <ArticleModal setArticleModalData={setArticleModalData} data={articleModalData} />}
       <div>
-        <SubscribedList GetRssArticlesById={GetRssArticlesById} loading={loading} />
-
+        <div className="subscribedList">       <SubscribedList GetRssArticlesById={GetRssArticlesById} loading={loading} />
+        </div>
+ 
         {
           loading ? (
             <div className="gallary_items">
               <Spinner />
             </div>
           ) : (
-            <div className="gallary_items">
+            <>
               <div className="articlesNavbar">
                 <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} totalPages={totalPages} />
               </div>
-
-              {jsonData.data && jsonData.data.map((item) => (
-                <div className="articles-view" key={item.id}>
-                  <ArticleCard setArticleModalData={setArticleModalData} item={item} />
+                <div className="gallary_items">
+                  {jsonData.data && jsonData.data.map((item) => (
+                    <ArticleCard key={item.id} setArticleModalData={setArticleModalData} item={item} />
+                  ))}
                 </div>
-              ))}
-            </div>
+            </>
           )
         }
       </div>

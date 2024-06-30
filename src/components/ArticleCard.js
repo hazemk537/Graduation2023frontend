@@ -2,7 +2,7 @@
 import React from "react";
 import useFetch from "../customHooks/useFetch";
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
-function ArticleCard({ item, setArticleModalData }) {
+function ArticleCard({ key,item, setArticleModalData }) {
 
   console.log(`🖌️ ArticleCard`) // #debug
   let token
@@ -31,7 +31,7 @@ function ArticleCard({ item, setArticleModalData }) {
   }
 
   return (
-    <div className="gallary_item" key={item.id}
+    <div className="gallary_item" key={key}
 
       onClick={() => {
         sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData, jsonSuccessProp: 'message', jsonFailProp: 'message' })
