@@ -57,7 +57,7 @@ right: 0;
 
         background-color: rgba(228, 49, 49, 0.897);
         border-radius: 40px;
-        margin-right: 1.2rem;
+        margin-right: 1rem;
     } 
      .nav_bar li span{
         display: flex;
@@ -77,12 +77,12 @@ right: 0;
 
 
     /* Responsive styles */
-@media (max-width: 600px) {
+@media (max-width< 700px) {
 
     
     .nav_bar {
       height: 12%;
-      align-items: start;
+      align-items: flex-start;
     }
  
     .createAccount,
@@ -91,6 +91,7 @@ right: 0;
         background-color: rgba(228, 49, 49, 0.897);
         border-radius: 20px;
         margin-right: 1rem;
+        margin-top: 5%;
     }
 
     .createAccount:hover,
@@ -101,12 +102,36 @@ right: 0;
         box-shadow: 2px  2px white;
     }
 
+    .nav_bar li span{
+        
+        padding: 8px 8px;
+        font-size: 0.7rem;
+    }
     .svg-logo {
         
         margin-top: 2%;
         margin-left: 0px;
         padding-left: 5px;
     }
+    .svg-logo svg{
+        width:3rem;
+        margin-left: 10%;
+        margin-top: 5%;
+    }
+    
+    .nav_bar ul {
+        flex-direction: row;
+        padding-left: 0px;    }
+
+
+.svg-logo span{
+    font-family: "Arial";
+    font-size: 1.3rem;
+    letter-spacing: 0.1rem;
+    font-style: normal;
+    font-weight: bolder;
+    margin-top: 5%;
+}
     
   }
   
