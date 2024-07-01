@@ -51,15 +51,7 @@ function ArticleCard({ key,item, setArticleModalData }) {
       </div>
       <div className="gallary_item_details">
         <h2 style={{ height: '5.3rem' }} className="gallary_item_headding">{item.title}</h2>
-        <p style={{
-          textWrap: 'wrap',
-          fontSize: '1rem',
-          color: '#c5c5c5',
-          height: '1.3rem',
-          display: 'inline-block',
-          fontFamily: 'Arial'
-
-        }}>{item.description.substring(0, 90)} ...</p>
+        <p >{item.description.substring(0, 90)} ...</p>
       </div>
 
 
@@ -69,14 +61,10 @@ function ArticleCard({ key,item, setArticleModalData }) {
       <div className="gallary_item_actions">
         
 
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div>
 
-          {item?.createdAt.match(/\d+-\d+-\d+/) ? <span style={{
-            fontFamily: 'Arial'
-            , fontSize: '1rem',
-            fontWeight: '800',
-            color: '#990000'
-          }}>{item?.createdAt.match(/\d+-\d+-\d+/)[0]}</span> : 'no date'}</div>
+          {item?.createdAt.match(/\d+-\d+-\d+/) ? <span 
+          >{item?.createdAt.match(/\d+-\d+-\d+/)[0]}</span> : 'no date'}</div>
 
 
         <svg

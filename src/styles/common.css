@@ -1,3 +1,4 @@
+/* General styles */
 .verticalCards {
     display: flex;
     flex-direction: column;
@@ -17,25 +18,23 @@
     border-radius: 10px;
     box-shadow: 5px 0 10px rgb(172, 172, 172);
     background-color: black;
-    
-  }
-  
-  .articlesNavbar {
+}
+
+.articlesNavbar {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:67px;
+    gap: 67px;
     position: absolute;
     top: 20px;
     z-index: 37px;
-  }
-  
-  .articles-view {
-    display:grid;
-    margin-top: 5%;
+}
 
-  }
- 
+.articles-view {
+    display: grid;
+    margin-top: 5%;
+}
+
 .verticalCards::-webkit-scrollbar {
     width: 10px;
 }
@@ -46,12 +45,10 @@
     border: 2px solid #ccc;
 }
 
-
 .verticalCards::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 10px;
 }
-
 
 .horizontalCards {
     display: flex;
@@ -113,7 +110,6 @@
 }
 
 .No-channels {
-
     display: flex;
     flex-direction: column;
     background-color: black;
@@ -150,4 +146,77 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
+}
+
+/* Mobile specific styles */
+@media (max-width: 768px) {
+    .verticalCards {
+        display: none;
+    }
+
+    .dropdownContainer {
+        width: 100%;
+    }
+
+    .dropdownToggle {
+        display: block;
+        margin: 10px auto;
+        padding: 10px 20px;
+        background-color: rgba(255, 0, 0, 0.726);
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .dropdownToggle:hover {
+        background-color: rgb(255, 0, 0);
+    }
+
+    .dropdownList {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: black;
+        width: 100%;
+        border: 1px solid #cccccc86;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 5px 0 10px rgb(172, 172, 172);
+    }
+
+    .dropdownItem {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+    }
+
+    .dropdownItem:hover {
+        background-color: rgba(109, 106, 106, 0.548);
+    }
+
+    .dropdownItem img {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .dropdownItem p {
+        flex: 1;
+        margin: 0;
+        color: rgb(225, 217, 217);
+        font-family: 'sans-serif';
+        font-size: 14px;
+        font-weight: 500;
+    }
 }

@@ -5,8 +5,8 @@
     align-items: center;
     height: 100vh;
     background-color: rgb(0, 0, 0); 
-    position: absolute;
-    left: 50%;
+    position: fixed;
+    left: 35%;
     top: 50%;
 }
 
@@ -67,13 +67,10 @@
 }
 
 @media (max-width: 600px) {
-    /* .spin-container {
-        height: 100vh;
-        background-color: rgb(0, 0, 0); 
-        position: fixed;
+    .spin-container {
         left: 35%;
         top: 50%;
-    } */
+    }
 
     .spinner-grow {
         margin: 0.1rem;

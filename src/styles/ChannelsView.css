@@ -8,11 +8,17 @@
   margin-right: 13%;
   margin-left: 10%;
   margin-top: 13%;
-  margin-bottom: 2%;
 }
 
-.nav_bar {
-  z-index: 5;
+/* Media query for tablets and smaller screens */
+@media (max-width: 1024px) {
+  .gallary_items {
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 10%;
+    margin-bottom: 2%;
+    gap: 5%;
+  }
 }
 
 /* Media query for mobile screens */
@@ -24,6 +30,4 @@
     margin-bottom: 2%;
     gap: 5%;
   }
-
-  
 }
