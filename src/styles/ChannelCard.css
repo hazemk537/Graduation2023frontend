@@ -1,77 +1,64 @@
-.gallary_item{
-
-    background-color: rgb(39, 43, 43) ;
+.gallary_item {
+    background-color: rgb(39, 43, 43);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    box-shadow: 5px 5px 5px 5px  rgb(34, 34, 34);
+    box-shadow: 5px 5px 5px 5px rgb(34, 34, 34);
     background-color: rgb(0, 0, 0);
-    padding:1rem;
-    border:2px solid rgb(48, 48, 48);
-    height:70vh;
+    padding: 1rem;
+    border: 2px solid rgb(48, 48, 48);
+    height: 70vh;
     margin: 10px;
     max-height: fit-content !important;
     transition: all 300ms ease-in-out;
     position: relative;
     width: 20vw !important;
     top: 10%;
-
-}
-.gallary_item:hover{
-    /* #todo_4 make  popup effect on the product */
+  }
+  
+  .gallary_item:hover {
     background-color: rgb(22, 22, 22);
-cursor: pointer;
-}
-
-.gallary_item img{
-
-width: 100%;
-height: 100%;
-object-fit: contain;
-border-radius: 10px;
-
-
-}
-.gallary_img_wrapper{
-
-    height:50%;
+    cursor: pointer;
+  }
+  
+  .gallary_item img {
     width: 100%;
-}
-
-.gallary_item_details{
-
-    height:30%;
-    overflow:hidden;
-    font-size: .8rem;
-    /* font-family: Arial, Helvetica, sans-serif; */
-
-}
-/*  #todo_2*/
-
-
-.gallary_item_actions{
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+  
+  .gallary_img_wrapper {
+    height: 50%;
+    width: 100%;
+  }
+  
+  .gallary_item_details {
+    height: 30%;
+    overflow: hidden;
+    font-size: 0.8rem;
+  }
+  
+  .gallary_item_actions {
     display: flex;
     width: 100%;
-    gap:1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.26);
+    gap: 1rem;
     justify-content: space-evenly;
     align-items: center;
-    height:10%;
-
-}
-.gallary_item_actions svg{
+    height: 10%;
+  }
+  
+  .gallary_item_actions svg {
     width: auto;
     height: 1.5rem;
-}
-
-.gallary_item_actions svg:hover{
+  }
+  
+  .gallary_item_actions svg:hover {
     fill: rgb(167, 164, 164);
     stroke: rgb(158, 158, 158);
-    
-}
-
-
-.subscribe_btn {
+  }
+  
+  .subscribe_btn {
     background-color: rgb(163, 24, 24);
     border-radius: 10px;
     width: 50%;
@@ -79,6 +66,7 @@ border-radius: 10px;
     height: 2rem;
     margin: 20px;
   }
+  
   .subscribe_btn:hover {
     color: rgb(0, 0, 0) !important;
     background-color: rgb(255, 0, 0);
@@ -92,13 +80,38 @@ border-radius: 10px;
     border: none;
     height: 2rem;
     margin-top: 20px;
-    /* box-shadow: none !important; */
   }
   
-  .gallary_item{
+  .gallary_item {
     width: 20vw !important;
   }
   
+  /* Media query for mobile screens */
+  @media (max-width: 768px) {
+    .gallary_item {
+      width: 60vw !important;
+      height: 60vh;
+      margin-bottom: 5%;
+    }
   
+    .gallary_img_wrapper {
+      height: auto;
+    }
   
+    .gallary_item_details {
+      height: auto;
+      font-size: .6rem;
+    }
+  
+    .gallary_item_actions {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  
+    .subscribe_btn,
+    .followed_btn {
+      width: 80%;
+      margin: 10px auto;
+    }
+  }
   
