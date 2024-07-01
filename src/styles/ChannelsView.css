@@ -1,5 +1,4 @@
-
-.gallary_items{
+.gallary_items {
   align-items: center;
   justify-content: center;
   display: flex;
@@ -11,6 +10,20 @@
   margin-top: 13%;
   margin-bottom: 2%;
 }
-  .nav_bar{
-    z-index: 5;
+
+.nav_bar {
+  z-index: 5;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .gallary_items {
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 10%;
+    margin-bottom: 2%;
+    gap: 5%;
   }
+
+  
+}

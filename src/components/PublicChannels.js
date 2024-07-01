@@ -31,7 +31,7 @@ function PublicChannels() {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [data, , sendRequest] = useFetch();
 
-    const apikey = '8e69a1db2fb43edac805be1306b74ae2';
+    const apikey = '2ce38e10c9b75f4bbbb2ef73814912ee';
 
     useEffect(() => {
         const handleResize = () => {
