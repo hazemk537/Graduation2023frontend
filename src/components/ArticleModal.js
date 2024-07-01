@@ -6,23 +6,8 @@ import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
 
 function ArticleModal({ data, setArticleModalData }) {
     const [showSummary, setshowSummary] = useState(false)
-    //article data in data.data
     console.log(`🖌️ ArticleModal`) // #debug 
     console.log(data) // #debug 
-
-    // function ExtractImage(){
-    /* #Note_case sometimes img in descirption ,and no src diectly in .link */ 
-
-    // let ImgRegex=new RegExp("(https?:\/\/www.(\w|\W)+.(png|jpg|svg|webp|jpeg))")
-    // #Project_discution #Error_boundry
-    // let imgUrl =data.data.description.match(ImgRegex)[0]?.replace('src="')
-
-    // console.log(data.data.description.match(ImgRegex))
-    // validate url link 
-
-
-    // return data.data?.image|| briefimg
-    // }
 
     const checkImageUrl = (item) => {
         /* #Note_image if  image link is bad ex - ,_ */
@@ -66,20 +51,6 @@ function ArticleModal({ data, setArticleModalData }) {
             </div>
 
             <div className='sumwindow'>
-                {/* <div className="close-button"
-                    onClick={() => {
-                        console.log('clicked close button');
-                        setArticleModalData((old) => {
-                            if (old !== '')
-                                return ''
-
-
-                        })//close modal
-
-                    }}
-                >
-                    <FontAwesomeIcon icon={faTimes} id="X" />
-                </div> */}
 
                 {data?.data &&
                     <> <div style={{
@@ -87,7 +58,6 @@ function ArticleModal({ data, setArticleModalData }) {
                         width: '100%'
                     }}>
 
-                        {/* categories */}
 
                         <span style={{
                             position: 'absolute',
@@ -116,7 +86,6 @@ function ArticleModal({ data, setArticleModalData }) {
                             fontWeight: '700',
                             borderRadius: '30px',
                         }}>{data.data.createdAt.match(/\d+-\d+-\d+/)}</span>
-                        {/* #Note_case sometimes img in descirption ,and no src diectly in .link */}
 
                         <img style={{
                             maxHeight: '400px',
@@ -139,8 +108,6 @@ function ArticleModal({ data, setArticleModalData }) {
                         />
                     </div>
                         <div className="content">
-                            {/* link title */}
-                            {/* #Note_case fallback image if err */}
 
 
                             <div style={{ display: 'flex' }}>
@@ -158,7 +125,6 @@ function ArticleModal({ data, setArticleModalData }) {
                                 {data.data.title
                                 }                    </p>
 
-                            {/* description */}
                             {!showSummary && <div style={{
                                 color: 'beige',
                                 marginLeft: '3rem',
@@ -169,13 +135,11 @@ function ArticleModal({ data, setArticleModalData }) {
 
                             </div>
                             }
-                            {/* summary */}
                             {showSummary &&
                                 <div style={{
                                     display: 'flex',
                                     fontSize: '20px',
                                     placeContent: 'center',
-                                    /* border-left: aliceblue s,lid 1px; */
                                     color: 'burlywood',
                                     fontWeight: '700',
                                 }} >
