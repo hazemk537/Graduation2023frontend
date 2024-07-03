@@ -31,7 +31,8 @@ function ChannelModal({ data, setModalData }) {
                     transform: 'translateX(-50%)', // Center horizontally
                     top: '50%',
                     marginTop: '-150px', // Center vertically
-                    borderRadius: '20px'
+                    borderRadius: '20px',
+                    boxShadow:'4px 4px 0px rgba(250, 248, 248, 0.514)'
                 }}
             >
                 <p
