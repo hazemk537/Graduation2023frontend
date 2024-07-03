@@ -6,7 +6,7 @@
 }
 
 .articelTab {
-    font-size: 1rem;
+    font-size: .8rem;
     font-weight: bolder;
     padding: 18px;
     display: inline-block;
@@ -25,7 +25,7 @@
 
 .sumwindow {
     background-color: rgb(49, 46, 46);
-    width: 600px; /* Default width for computer screens */
+    width: 500px; 
     position: fixed;
     padding-bottom: 100px;
     border-radius: 5%;
@@ -91,6 +91,16 @@
     align-items: center;
     margin-top: auto;
 }
+.sumwindow img {
+    margin-top:10%;
+    max-height: 600vh;
+    margin-left: 15%;
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.7;
+    border-radius: 20px;
+}
 
 .Full-Article {
     width: 2rem;
@@ -106,21 +116,62 @@
     background-color: rgba(255, 0, 0);
 }
 
+.summary{
+    display: flex;
+    font-size:15px ;
+    place-content: center;
+    color:burlywood;
+    font-weight: 700;
+}
+
+.category{
+
+
+    position:absolute;
+    top:20px;
+    left:10px;
+    color:#eaeaea;
+    z-index: 153;
+    background-color: #b33434;
+    padding: 10px;
+    font-weight: 700;
+    border-radius: 30px;
+    font-size: .8rem;
+}
+
+.date{
+    position: absolute;
+    top:20px;
+    right:10px;
+    color:#eaeaea;
+    z-index: 153;
+    background-color: #b33434;
+    padding: 10px;
+    font-weight: 700;
+    border-radius: 30px;
+    font-size: .8rem;
+}
+
+
+
+
 /* Media Query for Mobile Screens */
 @media (max-width: 768px) {
 
     .articelTab {
-        font-size: .6rem;
+        font-size: .7rem;
         padding: 10px;
         border-radius: 10px;
         color: bisque;
         
     }
+    .summary{
+        font-size:12px ;
 
-    /* span{
-        font-size:.2rem;
+    }
+    
 
-    } */
+
     .sum_p {
         font-size: 12.5px;
         line-height: 1;
@@ -132,21 +183,37 @@
         left: 50%;
         transform: translateX(-50%);
         top: 5%;
-        height: calc(90%);
+        height: calc(85%);
         max-width: 100%;
         padding: 20px;
         border-radius: 8%;
         box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.418);
     }
 
-    /* .content {
+    .sumwindow img {
+        max-height: 90vh;
+        width: 70vw;
+        height: 90%;
+        margin-top:18%;
+        object-fit: contain;
+        opacity: 0.7;
+        border-radius: 20px;
+        margin-left: 0%;
+
+    }
+
+    .content {
         padding: 2px;
-    } */
+    }
 
     .Full-Article-button {
         bottom: 20px;
         width: 30px;
         height: 30px;
+    }
+    .category,.date{
+
+        font-size: .5rem;
     }
 
 }

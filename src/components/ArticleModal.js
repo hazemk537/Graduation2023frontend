@@ -62,48 +62,14 @@ function ArticleModal({ data, setArticleModalData }) {
 
                         {/* categories */}
 
-                        <span  
-                            style={{
-                            position: 'absolute',
-                            top: '20px',
-                            left: '10px',
-                            color: '#eaeaea',
-                            zIndex: '153',
-                            backgroundColor: '#b33434',
-                            padding: '10px',
-                            fontWeight: '700',
-                            borderRadius: '30px',
-                            fontSize:'.8rem',
-                        }}>{data.data.category || 'No Categories'}</span>
+                        <span className='category' >{data.data.category || 'No Categories'}</span>
 
 
                         {/* creation */}
-                        <span 
-                            style={{
-                            position: 'absolute',
-                            top: '20px',
-                            right: '10px',
-                            color: '#eaeaea',
-                            zIndex: '153',
-                            backgroundColor: '#b33434',
-                            padding: '10px',
-                            fontWeight: '700',
-                            borderRadius: '30px',
-                            fontSize:'.8rem',
-
-                        }}>{data.data.createdAt.match(/\d+-\d+-\d+/)}</span>
+                        <span  className='date'>{data.data.createdAt.match(/\d+-\d+-\d+/)}</span>
                         {/* #Note_case sometimes img in descirption ,and no src diectly in .link */}
 
-                        <img style={{
-                            maxHeight: '400px',
-                            marginLeft:'25%',
-                            width: '50%',
-                            height: 'auto',
-                            objectFit: 'contain',
-                            opacity: '0.7'
-                            , borderRadius: '20px'
-                        }}
-
+                        <img 
                             src={checkImageUrl(data.data)}
                             alt=''
                             onError={(e) => {
@@ -136,7 +102,7 @@ function ArticleModal({ data, setArticleModalData }) {
                                 }                    </p>
 
                             {/* description */}
-                            {!showSummary && <div style={{
+                            {!showSummary && <div    style={{
                                 color: 'beige',
                                 marginLeft: '3rem',
                                 fontSize: '.9rem',
@@ -148,14 +114,7 @@ function ArticleModal({ data, setArticleModalData }) {
                             }
                             {/* summary */}
                             {showSummary &&
-                                <div style={{
-                                    display: 'flex',
-                                    fontSize: '20px',
-                                    placeContent: 'center',
-                                    /* border-left: aliceblue s,lid 1px; */
-                                    color: 'burlywood',
-                                    fontWeight: '700',
-                                }} >
+                                <div className='summary' >
 
                                     {/* if first not fond display second #Note_case fallback render */}
                                     <p className='p_summarization'> {data.data.summarized || 'no summarization Available'} </p>
