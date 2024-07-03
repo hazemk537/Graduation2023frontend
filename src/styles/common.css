@@ -119,6 +119,7 @@
 }
 
 .No-channels button {
+    position: fixed;
     padding: 10px 20px;
     background-color: rgba(255, 0, 0, 0.726);
     border-radius: 20%;
@@ -128,13 +129,18 @@
     font-size: large;
     color: rgba(255, 255, 255, 0.753);
     height: 70px;
-    margin-top: 20px;
+    margin-top:20%;
 }
 
 .No-channels button:hover {
     background-color: rgb(255, 0, 0);
     color: white;
     border: 1px solid rgb(5, 5, 5);
+}
+
+.No-channels h1{
+    position: fixed;
+    text-align: center;
 }
 
 .channel-title {
@@ -150,28 +156,37 @@
 
 /* Mobile specific styles */
 @media (max-width: 768px) {
+    .channel-title {
+        color: rgb(255, 0, 0);
+        font-size: 1rem;
+        top: 15%;
+       
+    }
     .verticalCards {
         display: none;
     }
 
-    .dropdownContainer {
-        width: 100%;
-    }
-
-    .dropdownToggle {
-        display: block;
-        margin: 10px auto;
-        padding: 10px 20px;
-        background-color: rgba(255, 0, 0, 0.726);
+    .dropdownButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 30%;
+        right: .5rem;
+        background-color: rgba(90, 90, 90, 0.726);
         border: none;
-        border-radius: 5px;
-        color: white;
-        font-weight: bold;
+        border-radius: 50%;
+        padding: 0;
+        width: 2.5rem;
+        height: 2.5rem;
         cursor: pointer;
+        z-index: 10;
     }
 
-    .dropdownToggle:hover {
-        background-color: rgb(255, 0, 0);
+    .dropdownButton img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
     }
 
     .dropdownList {
@@ -181,10 +196,17 @@
         justify-content: flex-start;
         background-color: black;
         width: 100%;
+        max-width: 80%;
+        max-height: 60vh;
+        overflow-y: auto;
         border: 1px solid #cccccc86;
         border-radius: 10px;
         padding: 1rem;
         box-shadow: 5px 0 10px rgb(172, 172, 172);
+        position: fixed;
+        top:31%;
+        right: 15%;
+        z-index: 1100;
     }
 
     .dropdownItem {
@@ -218,5 +240,50 @@
         font-family: 'sans-serif';
         font-size: 14px;
         font-weight: 500;
+    }
+
+    /* Add this CSS for the selected dropdown item */
+    .selectedDropdownItem {
+        background-color: rgba(76, 76, 77, 0.685);
+        box-shadow: 2px 0px 10px white;
+        border-radius: 5px;
+    }
+
+    .dropdownList::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .dropdownList::-webkit-scrollbar-thumb {
+        background-color: #fd0404c7;
+        border-radius: 10px;
+        border: 2px solid #ccc;
+    }
+
+    .dropdownList::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+
+    .No-channels h1 {
+        font-size: 1.5rem;
+         margin-left: 8%;
+         padding-left:5% ;
+    }
+    
+
+
+    .No-channels button {
+        background-color: rgba(255, 0, 0, 0.726);
+        font-size: 1rem;
+        font-size: medium;
+        height: 50px;
+        margin-top: 50%;
+    }
+    
+    .No-channels button:hover {
+        background-color: rgb(255, 0, 0);
+        color: white;
+        border: 1px solid rgb(5, 5, 5);
     }
 }

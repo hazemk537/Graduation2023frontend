@@ -6,6 +6,7 @@ import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
 
 function ArticleModal({ data, setArticleModalData }) {
     const [showSummary, setshowSummary] = useState(false)
+    //article data in data.data
     console.log(`🖌️ ArticleModal`) // #debug 
     console.log(data) // #debug 
 
@@ -52,14 +53,17 @@ function ArticleModal({ data, setArticleModalData }) {
 
             <div className='sumwindow'>
 
+
                 {data?.data &&
                     <> <div style={{
                         borderBottom: '1px solid rgb(50, 45, 45)',
                         width: '100%'
                     }}>
 
+                        {/* categories */}
 
-                        <span style={{
+                        <span  
+                            style={{
                             position: 'absolute',
                             top: '20px',
                             left: '10px',
@@ -69,13 +73,13 @@ function ArticleModal({ data, setArticleModalData }) {
                             padding: '10px',
                             fontWeight: '700',
                             borderRadius: '30px',
-
+                            fontSize:'.8rem',
                         }}>{data.data.category || 'No Categories'}</span>
 
 
                         {/* creation */}
-                        <span style={{
-
+                        <span 
+                            style={{
                             position: 'absolute',
                             top: '20px',
                             right: '10px',
@@ -85,11 +89,15 @@ function ArticleModal({ data, setArticleModalData }) {
                             padding: '10px',
                             fontWeight: '700',
                             borderRadius: '30px',
+                            fontSize:'.8rem',
+
                         }}>{data.data.createdAt.match(/\d+-\d+-\d+/)}</span>
+                        {/* #Note_case sometimes img in descirption ,and no src diectly in .link */}
 
                         <img style={{
                             maxHeight: '400px',
-                            width: '100%',
+                            marginLeft:'25%',
+                            width: '50%',
                             height: 'auto',
                             objectFit: 'contain',
                             opacity: '0.7'
@@ -108,6 +116,8 @@ function ArticleModal({ data, setArticleModalData }) {
                         />
                     </div>
                         <div className="content">
+                            {/* link title */}
+                            {/* #Note_case fallback image if err */}
 
 
                             <div style={{ display: 'flex' }}>
@@ -119,27 +129,30 @@ function ArticleModal({ data, setArticleModalData }) {
                                     fontFamily: 'roboto,sans-serif',
                                     textDecoration: 'none',
                                     color: 'whitesmoke',
-                                    fontSize: '27px',
+                                    fontSize: '1rem',
                                     fontWeight: 'bold'
                                 }}  >
                                 {data.data.title
                                 }                    </p>
 
+                            {/* description */}
                             {!showSummary && <div style={{
                                 color: 'beige',
                                 marginLeft: '3rem',
-                                fontSize: '20px',
+                                fontSize: '.9rem',
                                 fontWeight: 'lighter'
                             }} dangerouslySetInnerHTML={{ __html: data.data.description }}>
 
 
                             </div>
                             }
+                            {/* summary */}
                             {showSummary &&
                                 <div style={{
                                     display: 'flex',
                                     fontSize: '20px',
                                     placeContent: 'center',
+                                    /* border-left: aliceblue s,lid 1px; */
                                     color: 'burlywood',
                                     fontWeight: '700',
                                 }} >
