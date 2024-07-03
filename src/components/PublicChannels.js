@@ -5,8 +5,8 @@ import useFetch from "../customHooks/useFetch";
 
 const categories = [
     { name: "General", key: "general" },
-    { name: "World", key: "world" },
-    { name: "Nation", key: "nation" },
+    // { name: "World", key: "world" },
+    // { name: "Nation", key: "nation" },
     { name: "Sports", key: "sports" },
     { name: "Science", key: "science" },
     { name: "Health", key: "health" },
@@ -17,11 +17,10 @@ const categories = [
 
 const countries = [
     { name: "Egypt", key: "eg", lang: "ar" },
-    { name: "Australia", key: "au", lang: "any" },
-    { name: "Brazil", lang: "any", key: "br" },
-    { name: "Canada", lang: "any", key: "ca" },
-    { name: "China", lang: "any", key: "cn" },
-    { name: "France", lang: "any", key: "fr" }
+    { name: "United Arab Emirates", key: "ae", lang: "ar" },
+    { name: "Saudi Arabia", lang: "ar", key: "sa" },
+    { name: "United States", lang: "en", key: "us" },
+    { name: "United Kingdom", lang: "en", key: "gb" }
 ];
 
 function PublicChannels() {
@@ -31,7 +30,7 @@ function PublicChannels() {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [data, , sendRequest] = useFetch();
 
-    const apikey = '2ce38e10c9b75f4bbbb2ef73814912ee';
+    const apikey = '7d004691ba5a41539c5f91afd96c786f';
 
     useEffect(() => {
         const handleResize = () => {
@@ -44,14 +43,14 @@ function PublicChannels() {
     }, []);
 
     useEffect(() => {
-        sendRequest(`https://gnews.io/api/v4/top-headlines?category=${categories[selectedSpan].key}&lang=${countries[selectedCountry].lang}&country=${countries[selectedCountry].key}&max=20&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'GnewsAPI', jsonFailProp: 'errors' });
+        sendRequest(`https://newsapi.org/v2/top-headlines?category=${categories[selectedSpan].key}&lang=${countries[selectedCountry].lang}&country=${countries[selectedCountry].key}&apikey=${apikey}`, { useEffect: true, method: 'Get', name: 'newsAPI' });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedSpan, selectedCountry]);
 
     let modifiedArticles = data.articles?.map((item, index) => ({
-        thumbnail: item.image,
+        thumbnail: item.urlToImage,
         title: item.title,
-        description: item.description,
+        description: item.author,
         id: index,
         content: item.content,
         publishedAt: item.publishedAt,

@@ -3,7 +3,7 @@ import ChannelsView from "./ChannelsView";
 import '../styles/discoverChannel.css'
 import Alert from "./Alert";
 function DiscoverChannels() {
-  const [channels, setChannels] = useState();
+  const [channelsJson, setChannelJson] = useState();
 
 
   const [pageNumber, setPageNumber] = useState(1)
@@ -60,10 +60,13 @@ function DiscoverChannels() {
           isCurrentItemSubscribed = subscribtionIdArr.includes(item.id) === false ? 0 : 1
 
         }
+        
         return { ...item, 'subscribed': isCurrentItemSubscribed }
       })
-      setChannels(Newchannels)
-      console.log(Newchannels);
+      allchannelsJson.data=Newchannels
+      setChannelJson(allchannelsJson)
+      // console.log('Newchannels');
+      // console.log(Newchannels);
     }
 
 
@@ -81,7 +84,7 @@ function DiscoverChannels() {
   return (
     <>
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
-      <ChannelsView pageNumber={pageNumber} setPageNumber={setPageNumber}  parrallelDiscover={parrallelDiscover} type="discover_channels" channels={channels} /></>)
+      <ChannelsView  totalPages={channelsJson?.totalPages} pageNumber={pageNumber} setPageNumber={setPageNumber}  parrallelDiscover={parrallelDiscover} type="discover_channels" channels={channelsJson?.data} /></>)
 }
 
 export default DiscoverChannels;

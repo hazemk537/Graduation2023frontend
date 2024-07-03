@@ -4,26 +4,28 @@ import "../styles/ChannelsView.css";
 import Spinner from "./Spinner";
 import ChannelModal from "./ChannelModal";
 import Pagination from "./Pagination";
-function ChannelsView({   pageNumber,setPageNumber,parrallelDiscover, setTriggerFetch, channels, type }) {
+function ChannelsView({  totalPages, pageNumber,setPageNumber,parrallelDiscover, setTriggerFetch, channels, type }) {
   const [ModalData, setModalData] = useState('')
   // when state of model updates scrolling behavior updates 
   // #Note_case direct_manipulate_dom
   useEffect(() => {
 
     const body = document.body;
-    if (ModalData) {
+    if (ModalData && type!=="public_channels") {
       body.style.overflow = 'hidden';
     } else {
       body.style.overflow = 'auto';
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ModalData])
 
   if (channels)
     return (
       <>
-        {ModalData && <ChannelModal setModalData={setModalData} data={ModalData} />}
+              
+              {ModalData &&type!=="public_channels"? <ChannelModal type={type}  setModalData={setModalData} data={ModalData} />:null}
 
-{   type  !=='public_channels'&&   <Pagination  pageNumber={pageNumber} setPageNumber={setPageNumber}/>
+{   type  !=='public_channels'&&   <Pagination totalPages={totalPages}  pageNumber={pageNumber} setPageNumber={setPageNumber}/>
 }
         <div className={`gallary_items ${type}_class`}>
 

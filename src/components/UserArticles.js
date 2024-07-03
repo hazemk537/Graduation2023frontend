@@ -34,11 +34,11 @@ function UserArticles() {
       const savedPageNumber = localStorage.getItem(`pageNumber_${id}`) || 1;
 
       sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=${savedPageNumber}&PageSize=10`, {
-        method: 'get', name: 'GETuserArticles', token: token, jsonSuccessProp: 'message', onSucceed: (data) => {
+        method: 'get', name: 'GETuserArticles', token: token , onSucceed: (data) => {
           setLoading(false);
           // Assume response contains total articles count
           setTotalPages(Math.ceil(data.totalPages)); // Adjust according to your API response
-        }, jsonFailProp: 'message'
+        } 
       });
     }
   }
@@ -56,10 +56,10 @@ function UserArticles() {
     if (selectedChannelId) {
       localStorage.setItem(`pageNumber_${selectedChannelId}`, pageNumber);
       sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${selectedChannelId}&PageNumber=${pageNumber}&PageSize=10`, {
-        method: 'get', name: 'GETuserArticles', token: token, jsonSuccessProp: 'message', onSucceed: (data) => {
+        method: 'get', name: 'GETuserArticles', token: token , onSucceed: (data) => {
           setLoading(false);
           setTotalPages(Math.ceil(data.totalPages));
-        }, jsonFailProp: 'message'
+        } 
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

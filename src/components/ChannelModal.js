@@ -1,3 +1,4 @@
+import { type } from '@testing-library/user-event/dist/type';
 import React from 'react'
 
 
@@ -17,6 +18,7 @@ function ChannelModal({ data, setModalData }) {
                 className="receive_click_div_helper"
                 onClick={() => {
                     console.log('clicked wrapper');
+                    if(type!=="public_channels")
                     setModalData(null)//close modal
 
                 }}

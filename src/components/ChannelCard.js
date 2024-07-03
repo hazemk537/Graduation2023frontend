@@ -91,28 +91,54 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
 
   return (
     <div>
-      <div className="gallary_item"
-        key={item.id}
-        onClick={() => {
-          setModalData(item)
-        }}>
-          {/* #Note_image if 404 image >callback */}
-        <div className="gallary_img_wrapper">
-          <img
-            src={checkImageUrl(item)}
-            alt=''
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src=briefimg
-            }}
-          />
 
-        </div>
-        <div className="gallary_item_details">
-          <h2 className="gallary_item_headding">{item.title}</h2>
-          <p className="gallary_item_description">{item.description}</p>
-        </div>
-      </div>
+     {type==='public_channels'? <a style={{textDecoration:'none'}} href={`${item.url}`}>
+     <div className="gallary_item"
+key={item.id}
+onClick={() => {
+  setModalData(item)
+
+}}>
+  {/* #Note_image if 404 image >callback */}
+<div className="gallary_img_wrapper">
+  <img
+    src={checkImageUrl(item)}
+    alt=''
+    onError={(e) => {
+      e.target.onerror = null;
+      e.target.src=briefimg
+    }}
+  />
+
+</div>
+<div className="gallary_item_details">
+  <h2 className="gallary_item_headding">{item.title}</h2>
+  <p className={type!=="public_channels"?'gallary_item_description':'.gallary_item_descriptio_public_channels'}>{item.description}</p>
+</div>
+</div>
+      </a>:<div className="gallary_item"
+key={item.id}
+onClick={() => {
+  setModalData(item)
+
+}}>
+  {/* #Note_image if 404 image >callback */}
+<div className="gallary_img_wrapper">
+  <img
+    src={checkImageUrl(item)}
+    alt=''
+    onError={(e) => {
+      e.target.onerror = null;
+      e.target.src=briefimg
+    }}
+  />
+
+</div>
+<div className="gallary_item_details">
+  <h2 className="gallary_item_headding">{item.title}</h2>
+  <p className={type!=="public_channels"?'gallary_item_description':'.gallary_item_descriptio_public_channels'}>{item.description}</p>
+</div>
+</div>}
       <div className="gallary_item_actions">
         {type === "subscription_channels" &&
           <button className="subscribe_btn" onClick={() => {

@@ -34,7 +34,7 @@ function ArticleCard({ key,item, setArticleModalData }) {
     <div className="gallary_item" key={key}
 
       onClick={() => {
-        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData, jsonSuccessProp: 'message', jsonFailProp: 'message' })
+        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData  })
 
 
       }}

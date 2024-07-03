@@ -41,7 +41,7 @@ body::-webkit-scrollbar-thumb {
     width: 600px;
     position: fixed;
     /* #Note_case_ safe padding , model scrolling still show content inside it correctly */
-    padding-bottom: 100px;
+    padding-bottom: 139px;
     /* #Note_case_ bad margin , model scrolling show less content inside it correctly,some content
     will be unscrollable overflow  because of the margin
     */

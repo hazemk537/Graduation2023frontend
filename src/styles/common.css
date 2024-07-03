@@ -151,3 +151,16 @@
     transform: translateX(-50%);
     z-index: 5;
 }
+.publicChannels_home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7%;
+    margin-left: 8%;
+    
+}
+.publicChannels_home .country-container{
+    margin-top: 3rem;
+   
+}

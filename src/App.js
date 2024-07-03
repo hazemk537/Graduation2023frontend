@@ -12,7 +12,8 @@ import DiscoverChannels from "./components/DiscoverChannels";
 import UserArticles from "./components/UserArticles";
 import ErrorBoundary from "./components/ErrorBound";
 import Notfound from "./components/Error404";
-
+import PublicChannels from "./components/PublicChannels";
+import './styles/common.css'
 function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showCreateAccountPopup, setShowCreateAccountPopup] = useState(false);
@@ -79,6 +80,11 @@ function App() {
         {
           path: "/home/discover",
           element: <DiscoverChannels />,
+        }
+        ,{
+          path: "/home/publicApi",
+          element:    <div className="publicChannels_home">  <PublicChannels/></div>
+          ,
         },
       ],
     },

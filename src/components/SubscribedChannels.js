@@ -29,6 +29,9 @@ function SubscripedChannels() {
 
   if (jsonData.data) {
     return (<>
+    <div className="title-subscribed-channels">    <h2>Subscribed Channels</h2>
+    </div>
+
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
       <ChannelsView
       pageNumber={pageNumber}

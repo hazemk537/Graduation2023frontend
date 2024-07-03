@@ -94,8 +94,9 @@ const AddFeed = () => {
   return (
 
     <div className="addFeed">
-      {alertType && <Alert alertText={alertMessage} type={alertType} />}
 
+      {alertType && <Alert alertText={alertMessage} type={alertType} />}
+ 
       <div className={`RSS-search-wrapper `}>
         {/* search functionallity #todo_4 */}
         <input
