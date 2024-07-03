@@ -9,6 +9,7 @@
     border: 2px solid rgb(48, 48, 48);
     height: 65vh;
     margin: 10px;
+    margin-bottom: 5%;
     max-height: fit-content !important;
     transition: all 300ms ease-in-out;
     position: relative;
@@ -60,6 +61,11 @@ background-color: rgb(229, 45, 45);
   }
   
   .gallary_item_actions {
+    font-Family: Arial;
+    font-Size: 1rem;
+    font-Weight: 800;
+    color: #990000;
+
     display: flex;
     width: 100%;
     gap: 1rem;
@@ -67,6 +73,7 @@ background-color: rgb(229, 45, 45);
     align-items: center;
     height: 10%;
   }
+
   
   .gallary_item_actions svg {
     width: auto;
@@ -108,12 +115,12 @@ background-color: rgb(229, 45, 45);
   
   /* Media query for mobile screens */
   @media (max-width: 768px) {
+
     .gallary_item {
-      width: 60vw !important;
+      width: 55vw !important;
       height: 60vh;
-      margin-bottom: 5%;
     }
-  
+    
     .gallary_img_wrapper {
       height: auto;
     }
@@ -124,9 +131,18 @@ background-color: rgb(229, 45, 45);
     }
   
     .gallary_item_actions {
-      flex-direction: column;
+      border-top: 1px solid rgba(255, 255, 255, 0.534);
+      flex-direction: row;
       gap: 0.5rem;
+      font-Size: .7rem;
+
     }
+  
+  
+  .gallary_item_actions svg {
+    width: auto;
+    height: 1.2rem;
+  }
   
     .subscribe_btn,
     .followed_btn {

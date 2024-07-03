@@ -1,94 +1,63 @@
-/* body::-webkit-scrollbar-track {
-  background: var(--scrollbarBG);
-}
-body::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG) ;
-  border-radius: 6px;
-  border: 3px solid var(--scrollbarBG);
-} */
 .receive_click_div_helper {
     width: 100vw;
     height: 100vh;
     position: fixed;
     z-index: 1000;
-    /* background-color: aliceblue; */
 }
-/* .tabBar{
-   
-    width: 80%;
-   
-    background-color: #686666;
-    border-radius: 20px;
-} */
+
 .articelTab {
+    font-size: .8rem;
     font-weight: bolder;
-    padding: 26px;
+    padding: 18px;
     display: inline-block;
     width: 50%;
     border-radius: 15px;
     color: bisque;
 }
-.tabBar span:hover{
+
+.tabBar span:hover {
     cursor: pointer;
 }
 
-.selectedTab{
+.selectedTab {
     background-color: black;
-
 }
+
 .sumwindow {
     background-color: rgb(49, 46, 46);
-    width: 600px;
+    width: 500px; 
     position: fixed;
-    /* #Note_case_ safe padding , model scrolling still show content inside it correctly */
-    padding-bottom: 139px;
-    /* #Note_case_ bad margin , model scrolling show less content inside it correctly,some content
-    will be unscrollable overflow  because of the margin
-    */
-
-    /* margin-top:10px; */
-  
-    border-radius: 30px;
+    padding-bottom: 100px;
+    border-radius: 5%;
     z-index: 981;
     opacity: 1;
     box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.39);
     border: solid 0px rgba(12, 12, 12, 0.726);
-    /* display: flex;    /* affect height */
-    /* #NOTE_Model_long */
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: scroll;
-    overflow-x: hidden; */
-        scrollbar-width: thin;
-    /* overflow-wrap: anywhere;     affect height */
-
-     left: calc(50% - 300px);
-  
-    height: calc(100%);
+    left: calc(50% - 300px); /* Center horizontally */
+    margin-top: 1.25%;
+    height: calc(95%); /* 95% of viewport height */
     overflow: auto;
-    /* display: none; */
-
-    /* padding-top:  316px;/ */
-
-
 }
-/* 
-.close-button {
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: rgba(245, 245, 245);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
 
+.sumwindow::-webkit-scrollbar {
+    width: 10px;
+}
+
+.sumwindow::-webkit-scrollbar-thumb {
+    background-color: #fd0404c7;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.sumwindow::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 20px;
+}
 
 .content {
     display: flex;
@@ -97,10 +66,8 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     width: 100%;
     max-height: 900px;
-    scrollbar-width: thin;
     padding-left: 30px;
-    padding-right:30px ;
-
+    padding-right: 30px;
 }
 
 .sum_p {
@@ -117,17 +84,27 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
     border-radius: 50%;
     background-color: rgba(245, 245, 245);
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: auto;
 }
+.sumwindow img {
+    margin-top:10%;
+    max-height: 600vh;
+    margin-left: 15%;
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.7;
+    border-radius: 20px;
+}
 
 .Full-Article {
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
     color: rgb(190, 4, 4);
 }
 
@@ -137,4 +114,106 @@ body::-webkit-scrollbar-thumb {
 
 .Full-Article-button:hover {
     background-color: rgba(255, 0, 0);
+}
+
+.summary{
+    display: flex;
+    font-size:15px ;
+    place-content: center;
+    color:burlywood;
+    font-weight: 700;
+}
+
+.category{
+
+
+    position:absolute;
+    top:20px;
+    left:10px;
+    color:#eaeaea;
+    z-index: 153;
+    background-color: #b33434;
+    padding: 10px;
+    font-weight: 700;
+    border-radius: 30px;
+    font-size: .8rem;
+}
+
+.date{
+    position: absolute;
+    top:20px;
+    right:10px;
+    color:#eaeaea;
+    z-index: 153;
+    background-color: #b33434;
+    padding: 10px;
+    font-weight: 700;
+    border-radius: 30px;
+    font-size: .8rem;
+}
+
+
+
+
+/* Media Query for Mobile Screens */
+@media (max-width: 768px) {
+
+    .articelTab {
+        font-size: .7rem;
+        padding: 10px;
+        border-radius: 10px;
+        color: bisque;
+        
+    }
+    .summary{
+        font-size:12px ;
+
+    }
+    
+
+
+    .sum_p {
+        font-size: 12.5px;
+        line-height: 1;
+        padding-top: 2%;
+    }
+    
+    .sumwindow {
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 5%;
+        height: calc(85%);
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 8%;
+        box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.418);
+    }
+
+    .sumwindow img {
+        max-height: 90vh;
+        width: 70vw;
+        height: 90%;
+        margin-top:18%;
+        object-fit: contain;
+        opacity: 0.7;
+        border-radius: 20px;
+        margin-left: 0%;
+
+    }
+
+    .content {
+        padding: 2px;
+    }
+
+    .Full-Article-button {
+        bottom: 20px;
+        width: 30px;
+        height: 30px;
+    }
+    .category,.date{
+
+        font-size: .5rem;
+    }
+
 }

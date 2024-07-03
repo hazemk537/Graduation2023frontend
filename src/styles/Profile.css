@@ -81,3 +81,11 @@
  .jump{
     color:white
  }
+
+
+ @media (max-width: 768px) {
+    .profile-image img {
+      width: 50px; /* Smaller profile image size for mobile */
+      height: 50px; /* Smaller profile image size for mobile */
+    }
+ }  

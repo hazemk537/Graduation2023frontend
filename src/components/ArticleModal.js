@@ -10,20 +10,6 @@ function ArticleModal({ data, setArticleModalData }) {
     console.log(`🖌️ ArticleModal`) // #debug 
     console.log(data) // #debug 
 
-    // function ExtractImage(){
-    /* #Note_case sometimes img in descirption ,and no src diectly in .link */ 
-
-    // let ImgRegex=new RegExp("(https?:\/\/www.(\w|\W)+.(png|jpg|svg|webp|jpeg))")
-    // #Project_discution #Error_boundry
-    // let imgUrl =data.data.description.match(ImgRegex)[0]?.replace('src="')
-
-    // console.log(data.data.description.match(ImgRegex))
-    // validate url link 
-
-
-    // return data.data?.image|| briefimg
-    // }
-
     const checkImageUrl = (item) => {
         /* #Note_image if  image link is bad ex - ,_ */
         let src = item.image
@@ -66,20 +52,7 @@ function ArticleModal({ data, setArticleModalData }) {
             </div>
 
             <div className='sumwindow'>
-                {/* <div className="close-button"
-                    onClick={() => {
-                        console.log('clicked close button');
-                        setArticleModalData((old) => {
-                            if (old !== '')
-                                return ''
 
-
-                        })//close modal
-
-                    }}
-                >
-                    <FontAwesomeIcon icon={faTimes} id="X" />
-                </div> */}
 
                 {data?.data &&
                     <> <div style={{
@@ -89,44 +62,14 @@ function ArticleModal({ data, setArticleModalData }) {
 
                         {/* categories */}
 
-                        <span style={{
-                            position: 'absolute',
-                            top: '20px',
-                            left: '10px',
-                            color: '#eaeaea',
-                            zIndex: '153',
-                            backgroundColor: '#b33434',
-                            padding: '10px',
-                            fontWeight: '700',
-                            borderRadius: '30px',
-
-                        }}>{data.data.category || 'No Categories'}</span>
+                        <span className='category' >{data.data.category || 'No Categories'}</span>
 
 
                         {/* creation */}
-                        <span style={{
-
-                            position: 'absolute',
-                            top: '20px',
-                            right: '10px',
-                            color: '#eaeaea',
-                            zIndex: '153',
-                            backgroundColor: '#b33434',
-                            padding: '10px',
-                            fontWeight: '700',
-                            borderRadius: '30px',
-                        }}>{data.data.createdAt.match(/\d+-\d+-\d+/)}</span>
+                        <span  className='date'>{data.data.createdAt.match(/\d+-\d+-\d+/)}</span>
                         {/* #Note_case sometimes img in descirption ,and no src diectly in .link */}
 
-                        <img style={{
-                            maxHeight: '400px',
-                            width: '100%',
-                            height: 'auto',
-                            objectFit: 'contain',
-                            opacity: '0.7'
-                            , borderRadius: '20px'
-                        }}
-
+                        <img 
                             src={checkImageUrl(data.data)}
                             alt=''
                             onError={(e) => {
@@ -152,17 +95,17 @@ function ArticleModal({ data, setArticleModalData }) {
                                     fontFamily: 'roboto,sans-serif',
                                     textDecoration: 'none',
                                     color: 'whitesmoke',
-                                    fontSize: '27px',
+                                    fontSize: '1rem',
                                     fontWeight: 'bold'
                                 }}  >
                                 {data.data.title
                                 }                    </p>
 
                             {/* description */}
-                            {!showSummary && <div style={{
+                            {!showSummary && <div    style={{
                                 color: 'beige',
                                 marginLeft: '3rem',
-                                fontSize: '20px',
+                                fontSize: '.9rem',
                                 fontWeight: 'lighter'
                             }} dangerouslySetInnerHTML={{ __html: data.data.description }}>
 
@@ -171,14 +114,7 @@ function ArticleModal({ data, setArticleModalData }) {
                             }
                             {/* summary */}
                             {showSummary &&
-                                <div style={{
-                                    display: 'flex',
-                                    fontSize: '20px',
-                                    placeContent: 'center',
-                                    /* border-left: aliceblue s,lid 1px; */
-                                    color: 'burlywood',
-                                    fontWeight: '700',
-                                }} >
+                                <div className='summary' >
 
                                     {/* if first not fond display second #Note_case fallback render */}
                                     <p className='p_summarization'> {data.data.summarized || 'no summarization Available'} </p>

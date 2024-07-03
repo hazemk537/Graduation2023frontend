@@ -1,10 +1,10 @@
+/* addfeed.css */
 
 .search {
   width: 100%;
   position: relative;
   display: flex;
 }
-
 
 .RSS-search-wrapper {
   border-radius: 20px;
@@ -17,19 +17,16 @@
   width: 100%;
   max-width: 480px;
   color: black;
-  box-shadow:  10px 10px  0  rgba(255, 255, 255, 0.541);
+  box-shadow: 10px 10px 0 rgba(255, 255, 255, 0.541);
   overflow: hidden;
-  margin-left:10% !important;
-
+  margin-left: 10% !important;
 }
 
-
-.addFeed{
-  display:flex;
-  gap:30px;
-  align-items:center;
-  justify-content:center;
-
+.addFeed {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
   width: 60%;
   position: absolute;
   top: 50%;
@@ -49,17 +46,65 @@
   color: black;
 }
 
+.search-input {
+  color: red;
+  border-radius: 27px;
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: large;
+  font-weight: bolder;
+}
 
-.search-input{
-  color:red;
-    border-radius: 27px;
-    margin-top: 0.5rem;
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 20px;
-    font-size: large;
-    font-weight: bolder;
+/* Responsive styles */
+@media (max-width: 768px) {
+  .RSS-search-wrapper {
+    height: 40px;
+    max-width: 80%; /* Adjust width for mobile */
+    margin-left: 10% !important; /* Adjust margin for mobile */
+  }
+
+  .addFeed {
+    flex-direction: column; /* Stack items vertically on mobile */
+    width: 90%; /* Adjust width for mobile */
+    gap: 20px; /* Reduce gap for mobile */
+    top: 50%; /* Adjust top position */
+    transform: translate(-50%, -50%);
+  }
+
+  .search-input {
+    padding: 8px; /* Adjust padding for mobile */
+    font-size: 14px; /* Adjust font size for mobile */
+    margin-top: 10px; /* Remove margin for mobile */
+  }
+
+  .sub_btn {
+    top: 90%; /* Adjust position for mobile */
+    left: 50%; /* Center button on mobile */
+    transform: translateX(-50%); /* Center button horizontally */
+  }
+}
+
+@media (max-width: 480px) {
+  .RSS-search-wrapper {
+    height: 30px;
+    margin-left: 10%;
+    width: 90%;
+  }
+
+  .search-input {
+    padding: 6px; /* Adjust padding for smaller screens */
+    font-size: 12px; /* Adjust font size for smaller screens */
+  }
+
+  .sub_btn {
+    background-color: rgb(214, 2, 2);
+    padding: 5px; /* Adjust padding for smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
 }
