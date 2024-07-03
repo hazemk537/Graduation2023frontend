@@ -24,6 +24,8 @@
 }
 
 .sumwindow {
+    padding-bottom: 139px;
+
     background-color: rgb(49, 46, 46);
     width: 500px; 
     position: fixed;

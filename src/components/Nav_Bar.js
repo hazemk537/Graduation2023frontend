@@ -1,12 +1,13 @@
 import React from "react";
 import '../styles/Nav_Bar.css';
+import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
 function NavBar({ onClickLogin, onClickCreateAccount }) {
   return (
     <div>
 
       <nav className="nav_bar">
         <div className="svg-logo">
-          {/* <briefimg/> */}
+          <img style={{width:'3rem'}} src={briefimg} alt="logo"/>
           <span>Briefly</span>
         </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ChannelModal({ data, setModalData }) {
+function ChannelModal({type, data, setModalData }) {
     return (
         <>
             <div
