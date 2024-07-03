@@ -7,7 +7,6 @@ import { SubscriptionsSvg } from "../svgIcons/SubscriptionsSvg";
 import { DiscoverThin } from "../svgIcons/DiscoverSvg";
 import Alert from "../components/Alert";
 import { useSelector } from "react-redux";
-import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faAnchor } from "@fortawesome/free-solid-svg-icons";
 
