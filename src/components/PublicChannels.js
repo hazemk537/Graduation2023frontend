@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ChannelsView from "./ChannelsView";
 import "../styles/publicChannels.css";
+import "../styles/common.css";
+
 import useFetch from "../customHooks/useFetch";
 
 const categories = [
@@ -86,12 +88,8 @@ function PublicChannels() {
                     </div>
 
                     <div className="country-container"
-                        style={{
-                            display: 'flex', width: '80%',
-                            alignItems: 'center', justifyContent: 'center'
-                            , cursor: categorisHover ? 'default' : 'pointer',
-                            backgroundColor: ' rgba(50,50,50,1)', borderRadius: '20px'
-                        }}>
+                    style={{cursor: categorisHover ? 'default' : 'pointer'}}
+                         >
                         {countries.map((item, index) => (
                             <div className={index === selectedCountry ? 'selectedCountryOrCategry' : ''}
                                 key={index} style={{ width: '11.1%' }} onClick={() => setSelectedCountry(index)}>

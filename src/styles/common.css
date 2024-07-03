@@ -312,3 +312,16 @@
     margin-top: 3rem;
    
 }
+
+.country-container{
+    width: 77%;
+    font-size: 0.8rem;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+ background-color: rgba(50,50,50,1);
+ border-radius: 20px;
+                            
+     
+   
+}
