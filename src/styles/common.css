@@ -303,7 +303,9 @@
     align-items: center;
     justify-content: center;
     margin-top: 7%;
-    margin-left: 8%;
+    margin-left: 3%;
+    font-size: 13px;
+
     
 }
 .publicChannels_home .country-container{
