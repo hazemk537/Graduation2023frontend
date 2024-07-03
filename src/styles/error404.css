@@ -141,7 +141,7 @@
   padding: 10px 20px;
   font-size: 1.2rem;
   font-weight: bold;
-  color: #ffff;
+  color: #fff;
   background-color: #ff0000;
   border: none;
   border-radius: 5px;
@@ -152,4 +152,26 @@
 
 .back-to-home-button:hover {
   background-color: #cc0000;
+}
+
+@media (max-width: 768px) {
+  .title, .description {
+    font-size: 3rem;
+  }
+
+  .back-to-home-button {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title, .description {
+    font-size: 2rem;
+  }
+
+  .back-to-home-button {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
 }

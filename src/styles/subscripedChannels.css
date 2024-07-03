@@ -1,5 +1,38 @@
+.subscription_channels_class {
+  margin-top: 20vh;
+  margin-bottom: 0px;
+}
 
-.subscription_channels_class{
-margin-top: 20vh;
+/* No subscriptions text */
+.no-sub-txt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: fantasy;
+}
 
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .subscription_channels_class {
+    margin-top: 10vh;
+    margin-bottom: 10px;
+  }
+
+  .no-sub-txt {
+    font-size: 1.2em;
+    padding: 0 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .subscription_channels_class {
+    margin-top: 5vh;
+  }
+
+  .no-sub-txt {
+    font-size: 1em;
+    padding: 0 10px;
+  }
 }
