@@ -95,12 +95,12 @@
   
   /* Media query for mobile screens */
   @media (max-width: 768px) {
+
     .gallary_item {
-      width: 60vw !important;
+      width: 55vw !important;
       height: 60vh;
-      margin-bottom: 5%;
     }
-  
+    
     .gallary_img_wrapper {
       height: auto;
     }
@@ -111,6 +111,7 @@
     }
   
     .gallary_item_actions {
+      border-top: 1px solid rgba(255, 255, 255, 0.534);
       flex-direction: row;
       gap: 0.5rem;
       font-Size: .7rem;

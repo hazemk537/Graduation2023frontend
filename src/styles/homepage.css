@@ -1,3 +1,5 @@
+/* homepage.css */
+
 .homepage-container {
   width: 100%;
   display: flex;
@@ -19,92 +21,27 @@
   z-index: 10;
   background-color: #171619;
 }
-.flex-homepage {
-  display: flex;
-  align-items: center;
-  gap: 5vw;
-  width: 100vw;
-  height: 100vh;
-  flex-flow: flex-start;
-}
-.homepage-sidebar {
-  position: fixed;
-  top: 25%;
-}
 
 .homepage-header-left,
 .homepage-header-right {
   display: flex;
   align-items: center;
 }
+
 .homepage-header-left {
   flex-grow: 1;
 }
+
 .homepage-header-right button {
   margin-left: 10px;
 }
-
-/* LOGOOOOOOO */
 
 .svg2-logo {
   border-radius: 50%;
   width: 3rem;
   height: auto;
   margin-left: 2%;
-
-  box-shadow: 10px 5px 5px rgb(63, 38, 38);
-}
-
-.svg2-logo {
-  fill: rgb(255, 0, 0);
-}
-.svg2-logo {
   fill: rgb(255, 255, 255);
-}
-
-.homepage-search-wrapper {
-  border-radius: 20px;
-  background-color: rgb(255, 255, 255);
-  padding-right: 12px;
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 480px;
-  color: black;
-  box-shadow: 10px 10px 0 rgba(255, 255, 255, 0.541);
-  overflow: hidden;
-  margin-left: 25% !important;
-}
-
-.hidden {
-  display: none;
-}
-
-.homepage-search-wrapper:hover {
-  background-color: white;
-  color: black;
-}
-
-.search-homepage-input {
-  border: none;
-  flex: 1;
-  outline: none;
-  height: 100%;
-  padding: 0 20px;
-  font-size: 16px;
-  background-color: #cddbee00;
-  color: #fff;
-}
-.search-homepage-input:placeholder {
-  color: #fff;
-  opacity: 0.6;
-}
-
-.search-homepage-input :focus {
-  background-color: white;
-  color: black;
 }
 
 .profile-btn-homepage {
@@ -113,29 +50,27 @@
   background-color: transparent;
   display: flex;
   align-items: center;
-  padding-left: 12px;
+  padding-left: 8px; /* Adjusted for smaller screens */
   border-left: 2px solid #ddd;
 }
+
 .profile-btn-homepage img {
-  width: 32px;
-  height: 32px;
+  width: 28px; /* Adjusted for smaller screens */
+  height: 28px; /* Adjusted for smaller screens */
   -o-object-fit: cover;
   object-fit: cover;
   border-radius: 50%;
   margin-right: 4px;
 }
-.profile-btn-homepage span {
-  color: #fff;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 700;
-}
 
 .homepage-sidebar {
+  position: fixed;
+  top: 25%;
   padding: 40px 16px;
   display: flex;
   flex-direction: column;
 }
+
 .homepage-sidebar-link,
 .add-feed-link {
   color: #fff;
@@ -167,4 +102,7 @@
   width: 100%;
   padding: 20%;
 }
+
+
+
 

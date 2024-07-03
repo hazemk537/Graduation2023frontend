@@ -110,7 +110,11 @@ function SubscribedList({ GetRssArticlesById, loading }) {
                 ) : (
                     <div>
                         <button className="dropdownButton" onClick={toggleDropdown}>
-                            <img src={jsonData.data[selectedChannel].image} alt="" />
+                            <img src={jsonData.data[selectedChannel].image} alt="" 
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = briefimg;
+                              }}/>
                         </button>
                         {showDropdown && (
                             <div className="dropdownList">
@@ -120,7 +124,11 @@ function SubscribedList({ GetRssArticlesById, loading }) {
                                         className={`dropdownItem ${selectedChannel === index ? 'selectedDropdownItem' : ''}`}
                                         onClick={() => handleChannelClick(option, index)}
                                     >
-                                        <img src={option.image} alt="" />
+                                        <img src={option.image} alt="" 
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src = briefimg;
+                                          }}/>
                                         <p>{option.title}</p>
                                     </div>
                                 ))}
