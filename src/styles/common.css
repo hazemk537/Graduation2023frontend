@@ -160,7 +160,7 @@
         }
     .channel-title {
         position:fixed;
-        color: rgb(255, 0, 0);
+        color: rgb(253, 253, 253);
         font-size: .7rem;
         top: 15%;
         border-bottom: 1px solid rgba(255, 255, 255, 0.342);
@@ -190,7 +190,7 @@
         width: 2.5rem;
         height: 2.5rem;
         cursor: pointer;
-        z-index: 10;
+        z-index: 5;
     }
 
     .dropdownButton img {
@@ -216,7 +216,7 @@
         position: fixed;
         top:31%;
         right: 15%;
-        z-index: 1100;
+        z-index: 8;
     }
 
     .dropdownItem {
