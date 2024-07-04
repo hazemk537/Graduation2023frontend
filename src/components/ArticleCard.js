@@ -1,48 +1,41 @@
-
 import React from "react";
 import useFetch from "../customHooks/useFetch";
-import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSave, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-function ArticleCard({ key, item, setArticleModalData }) {
+import briefimg from '../assets/Eo_circle_red_white_letter-b.svg';
+import SaveDelBtn from './SaveDelBtn';
 
-  console.log(`🖌️ ArticleCard`) // #debug
-  let token
+function ArticleCard({ key, item, setArticleModalData }) {
+  console.log(`🖌️ ArticleCard`); // #debug
+  let token;
   // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
   if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
-
-    token = JSON.parse(localStorage.getItem('data')).token
+    token = JSON.parse(localStorage.getItem('data')).token;
   }
 
-  const [, , sendRequest] = useFetch()
-  const [LikedArticleState, , likeArticleRequest] = useFetch()
-  const [SavedArticleState, , saveArticleRequest] = useFetch()
+  const [, , sendRequest] = useFetch();
+  const [LikedArticleState, , likeArticleRequest] = useFetch();
+  const [SavedArticleState, , saveArticleRequest] = useFetch();
+
   function handleSetModalData(jsonData) {
-    setArticleModalData(jsonData)
+    setArticleModalData(jsonData);
   }
 
   const checkImageUrl = (item) => {
     /* #Note_image if  image link is bad ex - ,_ */
-    let src = item?.image
+    let src = item?.image;
     // console.log(item.image);
     // #graduation_disccution error boundry
     // if src=none/null/number no match
     if (!src?.match(/http(\w|\W)+/)) {
-      src = briefimg
+      src = briefimg;
     }
-
-    return src
+    return src;
   }
 
   return (
     <div className="gallary_item" key={key}
-
       onClick={() => {
-        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item?.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData })
-
-
+        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item?.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData });
       }}
-
     >
       <div className="gallary_img_wrapper">
         <img
@@ -55,20 +48,15 @@ function ArticleCard({ key, item, setArticleModalData }) {
       </div>
       <div className="gallary_item_details">
         <h2 style={{ height: '5.3rem' }} className="gallary_item_headding">{item?.title}</h2>
-        <p >{item?.description.substring(0, 90)} ...</p>
+        <p>{item?.description.substring(0, 90)} ...</p>
       </div>
 
-
-
-
-
       <div className="gallary_item_actions">
-
         <div>
-          {item?.createdAt?.match(/\d+-\d+-\d+/) ? <span
-          >{item?.createdAt?.match(/\d+-\d+-\d+/)[0]}</span> : 'no date'}</div>
+          {item?.createdAt?.match(/\d+-\d+-\d+/) ? <span>{item?.createdAt?.match(/\d+-\d+-\d+/)[0]}</span> : 'no date'}
+        </div>
 
-
+        <div><SaveDelBtn articleId={item?.id} /></div>
 
         <svg
           className="gallary_item_action_comment"
@@ -84,21 +72,11 @@ function ArticleCard({ key, item, setArticleModalData }) {
             <path d="M327.494 279.633 324 284l-3.494-4.367c-6.042-1.278-10.514-5.77-10.514-11.132 0-6.355 6.272-11.507 14.008-11.507s14.008 5.152 14.008 11.507c0 5.362-4.472 9.854-10.514 11.132M324 255c-8.837 0-16 6.143-16 13.72 0 6.249 4.877 11.512 11.542 13.169l4.458 5.112 4.459-5.112c6.664-1.657 11.541-6.92 11.541-13.169 0-7.577-7.163-13.72-16-13.72">
               {'{" "}'}
             </path>
-            {'{" "}{" "}{" "}'}
+            {'{" "}{" "}'}
           </g>
         </svg>
-        {/* <FontAwesomeIcon  onClick={() => {
-        likeArticleRequest(`https://brieflynews.runasp.net/api/v1/Article/AddLikeArticle/${item?.id}`, { method: 'POST', name: 'POSTArticleLike', token: token })
-
-
-      }}className={LikedArticleState?"lightWhite":"boldWhite"} icon={faSave} />
-        <FontAwesomeIcon  className={SavedArticleState?"lightWhite":"boldWhite"} icon={faThumbsUp} /> */}
-
-
       </div>
-
-
-    </div >
+    </div>
   );
 }
 
