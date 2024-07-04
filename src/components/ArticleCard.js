@@ -2,8 +2,6 @@
 import React from "react";
 import useFetch from "../customHooks/useFetch";
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSave, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 function ArticleCard({ key, item, setArticleModalData }) {
 
   console.log(`🖌️ ArticleCard`) // #debug
@@ -15,8 +13,6 @@ function ArticleCard({ key, item, setArticleModalData }) {
   }
 
   const [, , sendRequest] = useFetch()
-  const [LikedArticleState, , likeArticleRequest] = useFetch()
-  const [SavedArticleState, , saveArticleRequest] = useFetch()
   function handleSetModalData(jsonData) {
     setArticleModalData(jsonData)
   }
@@ -55,6 +51,7 @@ function ArticleCard({ key, item, setArticleModalData }) {
       </div>
       <div className="gallary_item_details">
         <h2 style={{ height: '5.3rem' }} className="gallary_item_headding">{item?.title}</h2>
+
         <p >{item?.description.substring(0, 90)} ...</p>
       </div>
 
@@ -87,13 +84,7 @@ function ArticleCard({ key, item, setArticleModalData }) {
             {'{" "}{" "}{" "}'}
           </g>
         </svg>
-        {/* <FontAwesomeIcon  onClick={() => {
-        likeArticleRequest(`https://brieflynews.runasp.net/api/v1/Article/AddLikeArticle/${item?.id}`, { method: 'POST', name: 'POSTArticleLike', token: token })
-
-
-      }}className={LikedArticleState?"lightWhite":"boldWhite"} icon={faSave} />
-        <FontAwesomeIcon  className={SavedArticleState?"lightWhite":"boldWhite"} icon={faThumbsUp} /> */}
-
+        
 
       </div>
 

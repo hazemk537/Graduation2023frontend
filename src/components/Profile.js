@@ -16,12 +16,11 @@ const ProfileImage = ({  userImage  }) => {
     let data = JSON.parse(localStorage.getItem('data'));
 
     // Check if the data object and token exist
-    if (data && data.token) {
+    if (data ) {
       // Remove the token from the data object
-      delete data.token;
       
       // Save the updated data object back to local storage
-      localStorage.setItem('data', JSON.stringify(data));
+      localStorage.clear('data')
     }
     
     // Redirect to the home page after removing the token

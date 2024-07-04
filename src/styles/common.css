@@ -371,3 +371,17 @@ justify-content: center;
      
    
 }
+
+
+.gallary_item_descriptio_public_channels{font-weight: 700;
+    font-weight: bolder;
+    position: absolute;
+    background-color: black;
+    bottom: 0;
+    left: 8%;
+    right: 1%;
+    color: #fbfbfb;
+    padding: 0.2rem;
+    font-family: Amiri, cursive;
+    font-size: .9rem;
+    }

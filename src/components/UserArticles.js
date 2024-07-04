@@ -82,13 +82,13 @@ function UserArticles() {
     <>
       {subscribedChannelsExist && <div className="channel-title"><h2>{rssTitle}</h2></div>}
       {articleModalData && <ArticleModal setArticleModalData={setArticleModalData} data={articleModalData} />}
-      <div>
+      <div className="div_userArticles">
         <div className="subscribedList">       <SubscribedList GetRssArticlesById={GetRssArticlesById} loading={loading} />
         </div>
 
         {
           loading ? (
-            <div className="gallary_items div_userArticles">
+            <div className="gallary_items ">
               <Spinner />
             </div>
           ) : (
