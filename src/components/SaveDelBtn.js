@@ -7,9 +7,9 @@ const StarIcon = ({ filled }) => (
     width="24"
     height="24"
     viewBox="0 0 24 24"
-    fill={filled ? 'gold' : 'grey'}
-    stroke="white"
-    strokeWidth="1"
+    fill={filled ? 'red' : 'none'}
+    stroke="red"
+    strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
     xmlns="http://www.w3.org/2000/svg"
@@ -47,6 +47,8 @@ const SaveDelBtn = ({ articleId }) => {
     // Determine the endpoint and method based on the save state
     const url = `https://BrieflyNews.runasp.net/api/v1/Article/${isSaved ? 'DeleteUserSaveArticle' : 'SaveUserArticle'}/${articleId}`;
     const method = isSaved ? 'DELETE' : 'POST';
+
+    console.log(`Sending request to ${url} with method ${method}`);
 
     // Make the request
     sendRequest(url, {
