@@ -7,9 +7,9 @@ const StarIcon = ({ filled }) => (
     width="24"
     height="24"
     viewBox="0 0 24 24"
-    fill={filled ? 'red' : 'none'}
-    stroke="red"
-    strokeWidth="2"
+    fill={filled ? 'gold' : 'grey'}
+    stroke="white"
+    strokeWidth="1"
     strokeLinecap="round"
     strokeLinejoin="round"
     xmlns="http://www.w3.org/2000/svg"
