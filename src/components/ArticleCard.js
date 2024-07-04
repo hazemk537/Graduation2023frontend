@@ -2,7 +2,9 @@
 import React from "react";
 import useFetch from "../customHooks/useFetch";
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
-function ArticleCard({ key,item, setArticleModalData }) {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSave, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+function ArticleCard({ key, item, setArticleModalData }) {
 
   console.log(`🖌️ ArticleCard`) // #debug
   let token
@@ -13,18 +15,20 @@ function ArticleCard({ key,item, setArticleModalData }) {
   }
 
   const [, , sendRequest] = useFetch()
+  const [LikedArticleState, , likeArticleRequest] = useFetch()
+  const [SavedArticleState, , saveArticleRequest] = useFetch()
   function handleSetModalData(jsonData) {
     setArticleModalData(jsonData)
   }
 
   const checkImageUrl = (item) => {
     /* #Note_image if  image link is bad ex - ,_ */
-    let src = item.image
+    let src = item?.image
     // console.log(item.image);
     // #graduation_disccution error boundry
     // if src=none/null/number no match
-    if (!src?.match(/http(\w|\W)+/)){
-    src = briefimg
+    if (!src?.match(/http(\w|\W)+/)) {
+      src = briefimg
     }
 
     return src
@@ -34,7 +38,7 @@ function ArticleCard({ key,item, setArticleModalData }) {
     <div className="gallary_item" key={key}
 
       onClick={() => {
-        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData  })
+        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item?.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData })
 
 
       }}
@@ -50,8 +54,8 @@ function ArticleCard({ key,item, setArticleModalData }) {
           }} />
       </div>
       <div className="gallary_item_details">
-        <h2 style={{ height: '5.3rem' }} className="gallary_item_headding">{item.title}</h2>
-        <p >{item.description.substring(0, 90)} ...</p>
+        <h2 style={{ height: '5.3rem' }} className="gallary_item_headding">{item?.title}</h2>
+        <p >{item?.description.substring(0, 90)} ...</p>
       </div>
 
 
@@ -59,12 +63,11 @@ function ArticleCard({ key,item, setArticleModalData }) {
 
 
       <div className="gallary_item_actions">
-        
 
         <div>
+          {item?.createdAt?.match(/\d+-\d+-\d+/) ? <span
+          >{item?.createdAt?.match(/\d+-\d+-\d+/)[0]}</span> : 'no date'}</div>
 
-          {item?.createdAt.match(/\d+-\d+-\d+/) ? <span 
-          >{item?.createdAt.match(/\d+-\d+-\d+/)[0]}</span> : 'no date'}</div>
 
 
         <svg
@@ -84,7 +87,14 @@ function ArticleCard({ key,item, setArticleModalData }) {
             {'{" "}{" "}{" "}'}
           </g>
         </svg>
-        
+        {/* <FontAwesomeIcon  onClick={() => {
+        likeArticleRequest(`https://brieflynews.runasp.net/api/v1/Article/AddLikeArticle/${item?.id}`, { method: 'POST', name: 'POSTArticleLike', token: token })
+
+
+      }}className={LikedArticleState?"lightWhite":"boldWhite"} icon={faSave} />
+        <FontAwesomeIcon  className={SavedArticleState?"lightWhite":"boldWhite"} icon={faThumbsUp} /> */}
+
+
       </div>
 
 

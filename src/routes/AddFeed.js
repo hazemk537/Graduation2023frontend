@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import PreviewFeed from "../components/PreviewFeed.js";
 import Alert from "../components/Alert.js";
 import '../styles/addfeed.css'
+import '../styles/common.css'
 import useFetch from "../customHooks/useFetch.js";
 // https://www.smh.com.au/rss/feed.xml
 
@@ -13,8 +14,8 @@ const AddFeed = () => {
 
   //we need feedlink it once ,no need to use state
   // states are used if we need ,to reload ui after js value change.
-  const [alertMessage, ] = useState(false);
-  const [alertType, ] = useState(false);
+  const [alertMessage,] = useState(false);
+  const [alertType,] = useState(false);
 
   const [channel_obj, setChannelObj] = useState({
     channel_img_url: "",
@@ -50,21 +51,25 @@ const AddFeed = () => {
         };
 
         setChannelObj(channel_obj1);
-        setShowPreview(true); // Show PreviewFeed after search
-        const articles = xmlDoc.querySelectorAll("item");
-        for (let i = 0; i < articles.length; i++) {
-          const innerHtmlChildren = new DOMParser().parseFromString(articles[i].innerHTML, 'text/html');
-          const article_obj1 = {
-            article_description: innerHtmlChildren.querySelector("description").textContent,
-            article_title: innerHtmlChildren.querySelector("title").textContent,
-            article_pubDate: innerHtmlChildren.querySelector("pubDate").textContent
-          };
-          console.log(article_obj1);
-        }
+        console.log(channel_obj1);
+        // #Note_case empty input show bad view
+        if (channel_obj.channel_title) {
+          setShowPreview(true); // Show PreviewFeed after search
+          const articles = xmlDoc.querySelectorAll("item");
+          for (let i = 0; i < articles.length; i++) {
+            const innerHtmlChildren = new DOMParser().parseFromString(articles[i].innerHTML, 'text/html');
+            const article_obj1 = {
+              article_description: innerHtmlChildren.querySelector("description").textContent,
+              article_title: innerHtmlChildren.querySelector("title").textContent,
+              article_pubDate: innerHtmlChildren.querySelector("pubDate").textContent
+            };
+            console.log(article_obj1);
+          }
 
-        // Clear the input field after search
-        // will make input.current.value empty
-        inputRef.current.value = "";
+          // Clear the input field after search
+          // will make input.current.value empty
+          inputRef.current.value = "";
+        }
       });
   };
 
@@ -92,43 +97,46 @@ const AddFeed = () => {
 
   }
   return (
-
-    <div className="addFeed">
-
-      {alertType && <Alert alertText={alertMessage} type={alertType} />}
- 
-      <div className={`RSS-search-wrapper `}>
-        {/* search functionallity #todo_4 */}
-        <input
-          className="search-input"
-          type="text"
-          ref={inputRef}
-          placeholder="Add Rss link"
-          onKeyPress={handleKeyPress}
-        />
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={20}
-          height={20}
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          className="feather feather-search"
-          viewBox="0 0 24 24"
-        >
-          <defs />
-          <circle cx={11} cy={11} r={8} />
-          <path d="M21 21l-4.35-4.35" />
-        </svg>
+    <>
+      <div className="centerFlex RSS-search-wrapper-p-div">
+        <p className={` `}>Enter Rss URL below and hit enter</p>
       </div>
+      <div className="addFeed">
 
-      {showPreview && <PreviewFeed feedLink={feedLink} showPreview={showPreview} channel_obj={channel_obj} addCustomFeed={addCustomFeed}/>}
-      {/* show if preview is visible */}
-      
-    </div>
+        {alertType && <Alert alertText={alertMessage} type={alertType} />}
+
+        <div className={`RSS-search-wrapper`}>
+          {/* search functionallity #todo_4 */}
+          <input
+            className="search-input"
+            type="text"
+            ref={inputRef}
+            onKeyPress={handleKeyPress}
+          />
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={20}
+            height={20}
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            className="feather feather-search"
+            viewBox="0 0 24 24"
+          >
+            <defs />
+            <circle cx={11} cy={11} r={8} />
+            <path d="M21 21l-4.35-4.35" />
+          </svg>
+        </div>
+
+        {showPreview && <PreviewFeed feedLink={feedLink} showPreview={showPreview} channel_obj={channel_obj} addCustomFeed={addCustomFeed} />}
+        {/* show if preview is visible */}
+
+      </div>
+    </>
   );
 };
 

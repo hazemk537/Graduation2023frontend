@@ -30,7 +30,7 @@ function SubscripedChannels() {
 
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
       <ChannelsView
-      pageNumber={pageNumber}
+      className={'gallary_items_subscribed_Channels'}
         setPageNumber={setPageNumber}
         setTriggerFetch={setTriggerFetch}
         type="subscription_channels"

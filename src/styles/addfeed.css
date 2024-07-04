@@ -21,6 +21,13 @@
   overflow: hidden;
   margin-left: 10% !important;
 }
+.RSS-search-wrapper-p {
+  position: absolute;
+  top: -66%;
+  font-size: 1.3rem;
+  left: 32%;
+  font-weight: 700;  
+}
 
 .addFeed {
   display: flex;

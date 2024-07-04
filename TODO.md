@@ -30,16 +30,22 @@
 - spinner /lazy loading between req and response #pro_grad in  +articleModal,+channelModal,+userArticles,+publModal, on all routes/modals
 
 - 4. netwerk error #pro_grad @hazem
+- pageNumber bad in local storage
+
 ### pending 
 - 2 bugs with +backend
 
 - docs @hazem
 
 ### High
-
+-   comments apis
+-  glogin problem +login
+-  save  article
+-  bad description in +landingPage 
 
 ### In Progress
-
+- searcg bar
+- bad api cors error
 -  shaib meeting @hazem {due:2024-06-30}
 - undefined bug when host
 - plz login bug after click home
@@ -237,8 +243,8 @@
 
 
 - this account works :
-  user: xr3c9k2yua@dpptd.com
-  password:Mazefdn@12311
+  user: hazemk537@gmail.com
+  password:Ahmed@1234
 
 -
 ## react Book
@@ -262,13 +268,9 @@ https://www.singaporelawwatch.sg/Portals/0/RSS/Headlines.xml
 
 ## apis
 
-- auth
+- 
   https://www.postman.com/ahmedelshafey/workspace/newsapi/collection/26431110-9cce8afc-99db-415c-9403-8633d3895de4?action=share&creator=26431110&active-environment=26431110-756a9d34-ad97-4aae-9b2c-82a98b47e7a7
   > note:
 
 1. 😃 there is a typo-error in the CheckValidationToken endpoint
 2. Make it POST instead GET
-
-- articles https://www.postman.com/ahmedelshafey/workspace/newsapi/collection/26431110-cca3c635-ca3e-407c-89e7-c86e5637d7c3?action=share&creator=26431110&active-environment=26431110-756a9d34-ad97-4aae-9b2c-82a98b47e7a7
-
-- rss https://www.postman.com/ahmedelshafey/workspace/newsapi/collection/26431110-621620a6-e40f-4e4c-a517-57efdd3e0f0f?action=share&creator=26431110&active-environment=26431110-756a9d34-ad97-4aae-9b2c-82a98b47e7a7

@@ -73,6 +73,9 @@ function useFetch() {
                 else {
                     console.log(` response.ok success , jsonData.statusCode failed in ${options?.name} ...`)//for devs
                     //an api have jsonData.errors
+                    if (options?.onFailed) {
+                        options.onFailed(jsonData)
+                    }
                     if (options?.jsonFailProp) {
                         //if method exist its arrary
                         if (options.jsonFailProp.foreach) {

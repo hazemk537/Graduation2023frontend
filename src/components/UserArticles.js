@@ -34,11 +34,11 @@ function UserArticles() {
       const savedPageNumber = localStorage.getItem(`pageNumber_${id}`) || 1;
 
       sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=${savedPageNumber}&PageSize=10`, {
-        method: 'get', name: 'GETuserArticles', token: token , onSucceed: (data) => {
+        method: 'get', name: 'GETuserArticles', token: token, onSucceed: (data) => {
           setLoading(false);
           // Assume response contains total articles count
           setTotalPages(Math.ceil(data.totalPages)); // Adjust according to your API response
-        } 
+        }, jsonFailProp: 'message'
       });
     }
   }
@@ -56,10 +56,10 @@ function UserArticles() {
     if (selectedChannelId) {
       localStorage.setItem(`pageNumber_${selectedChannelId}`, pageNumber);
       sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${selectedChannelId}&PageNumber=${pageNumber}&PageSize=10`, {
-        method: 'get', name: 'GETuserArticles', token: token , onSucceed: (data) => {
+        method: 'get', name: 'GETuserArticles', token: token, onSucceed: (data) => {
           setLoading(false);
           setTotalPages(Math.ceil(data.totalPages));
-        } 
+        }
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -85,10 +85,10 @@ function UserArticles() {
       <div>
         <div className="subscribedList">       <SubscribedList GetRssArticlesById={GetRssArticlesById} loading={loading} />
         </div>
- 
+
         {
           loading ? (
-            <div className="gallary_items">
+            <div className="gallary_items div_userArticles">
               <Spinner />
             </div>
           ) : (
@@ -96,7 +96,7 @@ function UserArticles() {
               <div className="articlesNavbar">
                 <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} totalPages={totalPages} />
               </div>
-                <div className="gallary_items">
+                <div className="gallary_items div_userArticles ">
                   {jsonData.data && jsonData.data.map((item) => (
                     <ArticleCard key={item.id} setArticleModalData={setArticleModalData} item={item} />
                   ))}
@@ -104,6 +104,10 @@ function UserArticles() {
             </>
           )
         }
+
+        {/* {[{ title: 'test title', description: 'test description' ,id:12321}].map((item) => (
+          <ArticleCard key={item.id} setArticleModalData={setArticleModalData} item={item} />
+        ))} */}
       </div>
     </>
   );

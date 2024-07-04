@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import ChannelCard from "./ChannelCard";
 import "../styles/ChannelsView.css";
+import "../styles/common.css";
 import Spinner from "./Spinner";
 import ChannelModal from "./ChannelModal";
 import Pagination from "./Pagination";
-function ChannelsView({  totalPages, pageNumber,setPageNumber,parrallelDiscover, setTriggerFetch, channels, type }) {
+function ChannelsView({ totalPages, pageNumber,setPageNumber,parrallelDiscover, setTriggerFetch, channels, type }) {
   const [ModalData, setModalData] = useState('')
   // when state of model updates scrolling behavior updates 
   // #Note_case direct_manipulate_dom
+  // console.log(`-----------------------`)
   useEffect(() => {
 
     const body = document.body;
@@ -27,6 +29,7 @@ function ChannelsView({  totalPages, pageNumber,setPageNumber,parrallelDiscover,
 
 {   type  !=='public_channels'&&   <Pagination totalPages={totalPages}  pageNumber={pageNumber} setPageNumber={setPageNumber}/>
 }
+
         <div className={`gallary_items ${type}_class`}>
 
           {channels.map((item, id) => (
@@ -42,6 +45,17 @@ function ChannelsView({  totalPages, pageNumber,setPageNumber,parrallelDiscover,
         </div>
       </>
     );
+
+    // #Note_case empty data
+    else if (channels?.data===undefined){
+      return(
+      <div className={`gallary_items ${type}_class`}>
+        <p className="noDataText">
+        There is no data
+        </p>
+      </div>)
+
+    }
   else {
     return (
       <div className={`gallary_items ${type}_class`}>

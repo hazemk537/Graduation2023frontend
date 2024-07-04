@@ -19,6 +19,7 @@ function MainLandingPage({
   const [showWelcomeModal, setWelcomeModal] = useState(false)
   const [showErrModal,] = useState(false)
   const [errContent,] = useState('')
+  const [isLoginned,setIsloginned]=useState(false)
   let notifySliceState = useSelector((state) => state.notifyState)
 
 
@@ -38,6 +39,7 @@ useEffect(() => {
   //#Note_Case_only_strict_format only this is allowed by API, if user changed in localStorage 
 
   // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
+
   if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
 
 
@@ -49,7 +51,7 @@ useEffect(() => {
 
     if (TokenData.token && TokenData.refreshToken) {
 
-      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onSucceed: handleExpiredToken })
+      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onSucceed: handleExpiredToken,onFailed:()=>{setIsloginned(true) ;console.log('setting user as  login');} })
 
     }
   }
@@ -85,6 +87,7 @@ return (
     {showErrModal && <Alert type='err' alertText={errContent} />}
 
     <NavBar
+       isLoginned={isLoginned}
       onClickLogin={onClickLogin}
       onClickCreateAccount={onClickCreateAccount}
     />
