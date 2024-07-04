@@ -38,13 +38,13 @@
 - docs @hazem
 
 ### High
--   comments apis
+-  comments apis
 -  glogin problem +login
 -  save  article  api
--  bad description in +landingPage 
 
 ### In Progress
 - searcg bar
+-  bad description in +landingPage 
 - bad api cors error
 -  shaib meeting @hazem {due:2024-06-30}
 - undefined bug when host
