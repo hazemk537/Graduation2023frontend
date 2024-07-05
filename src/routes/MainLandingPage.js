@@ -43,9 +43,8 @@ useEffect(() => {
   // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
 // #Note_case
 // when we say loaded styles 
-// user havenot token in localStorage > display with (login plz)
-// user have token and we found its valid 
-// unless show bad Netwerk message 
+// user have invalid token in localStorage > display with (login plz)
+// user have valid token in localStorage > display with (go account)
   if (localStorage.getItem("data") !== undefined && localStorage.getItem("data") !== null) {
 
 
@@ -60,9 +59,13 @@ useEffect(() => {
       sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onSucceed: handleExpiredToken,onOkFailed:()=>{setIsloginned(true) ;setLoadedStyles(true)} })
 
     }
-  }else {
+  }else  if (localStorage.getItem("data") === undefined || localStorage.getItem("data") === null) {
     setLoadedStyles(true)
   }
+else{
+  setLoadedStyles(true)
+
+}
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
 

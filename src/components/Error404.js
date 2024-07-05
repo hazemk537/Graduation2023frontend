@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/error404.css'; // Assuming you have the necessary styles in this file
 
-const Error404 = ({ goHomeDisplay,errorType, errorMessage }) => {
+const Error404 = ({ errorType, errorMessage }) => {
     
   let displayMessage = "An error occurred";
 
@@ -20,9 +20,9 @@ const Error404 = ({ goHomeDisplay,errorType, errorMessage }) => {
         <div className="title glitch">
           {displayMessage}
         </div>
-       { goHomeDisplay&&goHomeDisplay!=='false' ?<Link to="/">
+        <Link to="/">
           <button className="back-to-home-button">Back to Home</button>
-        </Link>:null}
+        </Link>
       </div>
     </div>
   );
