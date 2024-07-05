@@ -20,19 +20,9 @@ const HeartIcon = ({ filled }) => (
 
 const LikeDislikeBtn = ({articleId}) => {
   const [isLiked, setIsLiked] = useState(false);
-  // const [articleId, setArticleId] = useState(null);
   const [, , sendRequest] = useFetch();
 
-  // useEffect(() => {
-  //   const storedArticleId = localStorage.getItem('articleId');
-  //   setArticleId(storedArticleId);
-
-  //   // const likedArticles = JSON.parse(localStorage.getItem('likedArticles')) || {};
-  //   // if (likedArticles[storedArticleId]) {
-  //   //   setIsLiked(true);
-  //   // }
-  // }, []);
-
+  
   const handleToggleLike = async (e) => {
     e.stopPropagation(); 
 
