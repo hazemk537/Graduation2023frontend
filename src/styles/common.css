@@ -1,3 +1,26 @@
+.addComment{
+
+}
+.commentsParent{
+
+}
+.globalComment{
+    padding-left: 2rem;
+
+}
+
+.localComment{
+
+padding-left: 3rem;
+}
+.localCommentActions{
+
+}
+.globalCommentActions{
+
+}
+
+
 .verticalCards {
     display: flex;
     flex-direction: column;
@@ -7,11 +30,11 @@
     top: 25%;
     right: 1rem;
     z-index: 5;
-    width: 13%;
+    width: 14vw;
+    padding-left: 0.7rem;
+    padding-right: 0.2rem;
     height: 70vh;
     border-left: 2px solid #cccccc86;
-    padding-left: 1rem;
-    padding-right: 2rem;
     overflow-y: scroll;
     overflow-x: hidden;
     border-radius: 10px;
@@ -104,8 +127,10 @@ justify-content: center;
 }
 
 .channelTitle {
+    overflow-wrap: anywhere;
+
     font-family: 'sans-serif';
-    font-size: 14px;
+    font-size: 0.7rem;
     font-weight: 500;
     color: rgb(225, 217, 217);
 }
@@ -128,18 +153,20 @@ justify-content: center;
 .channelsHover {
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     display: flex;
+    padding: 1rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-right: 1rem;
+    /* margin-right: 1rem; */
     width: 100%;
-    margin-left: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    /* margin-left: 1rem; */
+    /* padding-top: 1rem; */
+    /* padding-bottom: 1rem; */
+    /* padding-right: 1rem; */
+    /* padding-left: 1rem; */
     border-radius: 16px;
 }
 
@@ -371,3 +398,17 @@ justify-content: center;
      
    
 }
+
+
+.gallary_item_descriptio_public_channels{font-weight: 700;
+    font-weight: bolder;
+    position: absolute;
+    background-color: black;
+    bottom: 0;
+    left: 8%;
+    right: 1%;
+    color: #fbfbfb;
+    padding: 0.2rem;
+    font-family: Amiri, cursive;
+    font-size: .9rem;
+    }

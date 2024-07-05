@@ -8,6 +8,7 @@ import PublicChannels from "../components/PublicChannels.js";
 import Alert from "../components/Alert.js";
 import useFetch from "../customHooks/useFetch.js";
 import { useSelector } from "react-redux";
+import Spinner from "../components/Spinner.js";
 
 function MainLandingPage({
   stateShowLoginPopup,
@@ -16,10 +17,11 @@ function MainLandingPage({
   onClickCreateAccount,
 }) {
 
-  const [showWelcomeModal, setWelcomeModal] = useState(false)
   const [showErrModal,] = useState(false)
   const [errContent,] = useState('')
   const [isLoginned,setIsloginned]=useState(false)
+  // #Note_case used to diable ui  until useEffect finish checking userLogin
+  const [loadedStyles,setLoadedStyles]=useState(false)
   let notifySliceState = useSelector((state) => state.notifyState)
 
 
@@ -39,8 +41,11 @@ useEffect(() => {
   //#Note_Case_only_strict_format only this is allowed by API, if user changed in localStorage 
 
   // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
-
-  if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
+// #Note_case
+// when we say loaded styles 
+// user have invalid token in localStorage > display with (login plz)
+// user have valid token in localStorage > display with (go account)
+  if (localStorage.getItem("data") !== undefined && localStorage.getItem("data") !== null) {
 
 
     let TokenData = {
@@ -49,12 +54,18 @@ useEffect(() => {
     }
 
 
-    if (TokenData.token && TokenData.refreshToken) {
+    if (TokenData.token && TokenData.refreshtoken) {
 
-      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onSucceed: handleExpiredToken,onFailed:()=>{setIsloginned(true) ;console.log('setting user as  login');} })
+      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onSucceed: handleExpiredToken,onOkFailed:()=>{setIsloginned(true) ;setLoadedStyles(true)} })
 
     }
+  }else  if (localStorage.getItem("data") === undefined || localStorage.getItem("data") === null) {
+    setLoadedStyles(true)
   }
+else{
+  setLoadedStyles(true)
+
+}
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
 
@@ -63,12 +74,13 @@ function handleExpiredToken() {
   localStorage.setItem('data', JSON.stringify(jsonData.data))
 
 
-
 }
 
 return (
-  <div className="landing-page">
-    {notifySliceState.message.payload && <Alert type={notifySliceState.type} alertText={notifySliceState.message.payload} />}
+
+  <>
+ {loadedStyles ? <div className="landing-page">
+    {notifySliceState?.message?.payload && <Alert type={notifySliceState?.type} alertText={notifySliceState?.message?.payload} />}
 
     {stateShowLoginPopup && !stateshowCreateAccountPopup && (
       <Login onClose={onClickLogin} onSignupClick={onClickCreateAccount} />
@@ -79,11 +91,6 @@ return (
         onSigninClick={onClickLogin}
       />
     )}
-    {showWelcomeModal && <Alert onClose={() => {
-      setWelcomeModal(false)
-      localStorage.setItem('welcomeScreen', 'false')
-    }
-    } type='welcome' alertText='please, login/signup ' />}
     {showErrModal && <Alert type='err' alertText={errContent} />}
 
     <NavBar
@@ -103,7 +110,8 @@ return (
     <div className="scroll-to-top" onClick={handleScrollTop}>
       <i className="fa fa-arrow-up"></i>
     </div>
-  </div>
+  </div>:<Spinner/>}
+  </>
 )
 }
 

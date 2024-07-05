@@ -103,7 +103,7 @@ function useFetch() {
 
 
             } else {
-                if (options?.onOk) {
+                if (options?.onOkFailed) {
                     options.onOkFailed(response)
                 }
                 let jsonData = await response.json()

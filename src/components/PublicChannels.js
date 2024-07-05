@@ -49,15 +49,15 @@ function PublicChannels() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedSpan, selectedCountry]);
 
-    let modifiedArticles = data.articles?.map((item, index) => ({
-        thumbnail: item.urlToImage,
-        title: item.title,
-        description: item.author,
+    let modifiedArticles = data?.articles?.map((item, index) => ({
+        thumbnail: item?.urlToImage,
+        title: item?.title,
+        description: item?.author,
         id: index,
-        content: item.content,
-        publishedAt: item.publishedAt,
-        src: item.src,
-        url: item.url
+        content: item?.content,
+        publishedAt: item?.publishedAt,
+        src: item?.src,
+        url: item?.url
     }));
 
     return (
@@ -71,12 +71,12 @@ function PublicChannels() {
                             display: 'flex', width: '80%', alignItems: 'center',
                             justifyContent: 'center', cursor: categorisHover ? 'default' : 'pointer'
                         }}>
-                        {categories.map((item, index) => (
+                        {categories?.map((item, index) => (
                             <div key={index}
                                 style={{ width: '11.1%' }}
                                 onMouseEnter={() => setCategorisHover(true)} onMouseOut={() => setCategorisHover(false)}
                                 onClick={() => setSelectedSpan(index)}>
-                                <p style={{ textAlign: 'center' }}>{item.name}</p>
+                                <p style={{ textAlign: 'center' }}>{item?.name}</p>
                                 {index === selectedSpan &&
                                     <span style={{
                                         borderBottomStyle: 'solid',
@@ -90,10 +90,10 @@ function PublicChannels() {
                     <div className="country-container"
                     style={{cursor: categorisHover ? 'default' : 'pointer'}}
                          >
-                        {countries.map((item, index) => (
+                        {countries?.map((item, index) => (
                             <div className={index === selectedCountry ? 'selectedCountryOrCategry' : ''}
                                 key={index} style={{ width: '11.1%' }} onClick={() => setSelectedCountry(index)}>
-                                <p style={{ textAlign: 'center' }}>{item.name}</p>
+                                <p style={{ textAlign: 'center' }}>{item?.name}</p>
                                 {index === selectedCountry && <span style={{
                                     borderBottomStyle: 'solid',
                                     borderColor: 'rgb(255 ,0 ,0)', display: 'block'
@@ -112,13 +112,13 @@ function PublicChannels() {
                 <div className="dropdown">
                     <select value={selectedSpan} onChange={(e) => setSelectedSpan(parseInt(e.target.value))}>
                         {categories.map((item, index) => (
-                            <option key={index} value={index}>{item.name}</option>
+                            <option key={index} value={index}>{item?.name}</option>
                         ))}
                     </select>
 
                 <select value={selectedCountry} onChange={(e) => setSelectedCountry(parseInt(e.target.value))}>
-                        {countries.map((item, index) => (
-                            <option key={index} value={index}>{item.name}</option>
+                        {countries?.map((item, index) => (
+                            <option key={index} value={index}>{item?.name}</option>
                         ))}
                     </select>
                 </div>

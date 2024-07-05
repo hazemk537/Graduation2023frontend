@@ -8,12 +8,12 @@ function ArticleCard({ item, setArticleModalData }) { // Removed the `key` prop 
   console.log(`🖌️ ArticleCard`); // #debug
   let token;
 
+
   if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
     token = JSON.parse(localStorage.getItem('data')).token;
   }
 
-  const [, , sendRequest] = useFetch();
-
+  const [, , sendRequest] = useFetch()
   function handleSetModalData(jsonData) {
     setArticleModalData(jsonData);
   }
@@ -43,7 +43,10 @@ function ArticleCard({ item, setArticleModalData }) { // Removed the `key` prop 
       </div>
       <div className="gallary_item_details">
         <h2 style={{ height: '5.3rem' }} className="gallary_item_headding">{item?.title}</h2>
-        <p>{item?.description.substring(0, 90)} ...</p>
+
+
+        <p >{item?.description.substring(0, 90)} ...</p>
+
       </div>
 
       <div className="gallary_item_actions">
@@ -67,6 +70,7 @@ function ArticleCard({ item, setArticleModalData }) { // Removed the `key` prop 
             </path>
           </g>
         </svg>
+
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../styles/ChannelCard.css'
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg';
-
+import '../styles/common.css'
 function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, item }) {
 
   const [, setAlertMessage] = useState(false);
@@ -16,11 +16,11 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
 
   const checkImageUrl = (item) => {
     /* #Note_image if  image link is bad ex - ,_ */
-    let src = item.image
-    // console.log(item.image);
+    let src = item?.image
+    // console.log(item?.image);
     // #graduation_disccution error boundry
-    if (!src?.match(/http(\w|\W)+/)){
-    src = briefimg
+    if (!src?.match(/http(\w|\W)+/)) {
+      src = briefimg
     }
 
     return src
@@ -92,58 +92,60 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
   return (
     <div>
 
-     {type==='public_channels'? <a style={{textDecoration:'none'}} href={`${item.url}`}>
-     <div className="gallary_item"
-key={item.id}
-onClick={() => {
-  setModalData(item)
+      {type === 'public_channels' ? 
+      (<a style={{ textDecoration: 'none' }} href={`${item?.url}`}>
+        <div className="gallary_item"
+          key={item?.id}
+          onClick={() => {
+            setModalData(item)
 
-}}>
-  {/* #Note_image if 404 image >callback */}
-<div className="gallary_img_wrapper">
-  <img
-    src={checkImageUrl(item)}
-    alt=''
-    onError={(e) => {
-      e.target.onerror = null;
-      e.target.src=briefimg
-    }}
-  />
+          }}>
+          {/* #Note_image if 404 image >callback */}
+          <div className="gallary_img_wrapper">
+            <img
+              src={checkImageUrl(item)}
+              alt=''
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = briefimg
+              }}
+            />
 
-</div>
-<div className="gallary_item_details">
-  <h2 className="gallary_item_headding">{item.title}</h2>
-  <p className={type!=="public_channels"?'gallary_item_description':'.gallary_item_descriptio_public_channels'}>{item.description}</p>
-</div>
-</div>
-      </a>:<div className="gallary_item"
-key={item.id}
-onClick={() => {
-  setModalData(item)
+          </div>
+          <div className="gallary_item_details">
+            <h2 className="gallary_item_headding">{item?.title}</h2>
+            <p className={type !== "public_channels" ? 'gallary_item_description' : 'gallary_item_descriptio_public_channels'}>{item?.description}</p>
+          </div>
+        </div>
+      </a>) :
+      ( <div className="gallary_item"
+        key={item?.id}
+        onClick={() => {
+          setModalData(item)
 
-}}>
-  {/* #Note_image if 404 image >callback */}
-<div className="gallary_img_wrapper">
-  <img
-    src={checkImageUrl(item)}
-    alt=''
-    onError={(e) => {
-      e.target.onerror = null;
-      e.target.src=briefimg
-    }}
-  />
+        }}>
+        {/* #Note_image if 404 image >callback */}
+        <div className="gallary_img_wrapper">
+          <img
+            src={checkImageUrl(item)}
+            alt=''
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = briefimg
+            }}
+          />
 
-</div>
-<div className="gallary_item_details">
-  <h2 className="gallary_item_headding">{item.title}</h2>
-  <p className={type!=="public_channels"?'gallary_item_description':'.gallary_item_descriptio_public_channels'}>{item.description}</p>
-</div>
-</div>}
+        </div>
+        <div className="gallary_item_details">
+          <h2 className="gallary_item_headding">{item?.title}</h2>
+          <p className={type !== "public_channels" ? 'gallary_item_description' : 'gallary_item_descriptio_public_channels'}>{item?.description}</p>
+        </div>
+      </div>)}
       <div className="gallary_item_actions">
         {type === "subscription_channels" &&
           <button className="subscribe_btn" onClick={() => {
             new Promise((resolve, reject) => {
-              unsubscribeHandler(resolve, item.id);
+              unsubscribeHandler(resolve, item?.id);
             }).then(() => {
               setTriggerFetch((old) => !old);
             });
@@ -151,10 +153,10 @@ onClick={() => {
             UnFollow
           </button>
         }
-        {type === "discover_channels" && item.subscribed ?
+        {type === "discover_channels" && item?.subscribed ?
           <button className="subscribe_btn" onClick={() => {
             new Promise((resolve, reject) => {
-              unsubscribeHandler(resolve, item.id);
+              unsubscribeHandler(resolve, item?.id);
             }).then(() => {
               parrallelDiscover();
             });
@@ -163,10 +165,10 @@ onClick={() => {
           </button>
           : null
         }
-        {!item.subscribed && type === "discover_channels" &&
+        {!item?.subscribed && type === "discover_channels" &&
           <button className="subscribe_btn" onClick={() => {
             new Promise((resolve, reject) => {
-              subscribeHandler(resolve, item.id);
+              subscribeHandler(resolve, item?.id);
             }).then(() => {
               parrallelDiscover();
             });

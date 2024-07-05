@@ -4,7 +4,7 @@ import '../styles/Spinner.css';
 const Spinner = ({style}) => {
     return (
         <div style={style} className='spin-container'>
-            <div>Loading .</div>
+            {/* <div>Loading .</div> */}
             
             <div className="spinner-grow text-success1" role="status">
                 <span className="sr-only"></span>

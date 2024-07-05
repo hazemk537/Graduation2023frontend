@@ -5,7 +5,7 @@ import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
 
 
 function ArticleModal({ data, setArticleModalData }) {
-    const [showSummary, setshowSummary] = useState(false)
+    const [showTab, setshowTab] = useState(0)
     //article data in data.data
     console.log(`🖌️ ArticleModal`) // #debug 
     console.log(data) // #debug 
@@ -87,8 +87,9 @@ function ArticleModal({ data, setArticleModalData }) {
 
 
                             <div style={{ display: 'flex' }}>
-                                <span className={` articelTab ${showSummary ? '' : 'selectedTab'}`} onClick={() => { setshowSummary(false) }} >description</span>
-                                <span className={`articelTab  ${!showSummary ? '' : 'selectedTab'}`} onClick={() => { setshowSummary(true) }}>Summary</span>
+                                <span className={` articelTab ${showTab===0 ?'selectedTab' :'' }`} onClick={() => { setshowTab(0) }} >Description</span>
+                                <span className={`articelTab  ${showTab===1 ?'selectedTab' :'' }`} onClick={() => { setshowTab(1) }}>Summary</span>
+                                <span className={`articelTab  ${showTab===2 ?'selectedTab' :'' }`} onClick={() => { setshowTab(2) }}>Comments</span>
                             </div>
                             <p
                                 style={{
@@ -102,7 +103,7 @@ function ArticleModal({ data, setArticleModalData }) {
                                 }                    </p>
 
                             {/* description */}
-                            {!showSummary && <div    style={{
+                            {showTab===0 && <div    style={{
                                 color: 'beige',
                                 marginLeft: '3rem',
                                 fontSize: '.9rem',
@@ -113,12 +114,19 @@ function ArticleModal({ data, setArticleModalData }) {
                             </div>
                             }
                             {/* summary */}
-                            {showSummary &&
+                            {showTab===1 &&
                                 <div className='summary' >
 
                                     {/* if first not fond display second #Note_case fallback render */}
                                     <p className='p_summarization'> {data.data.summarized || 'no summarization Available'} </p>
 
+
+                                </div>
+                            }{/* comments */}
+                            {showTab===2 &&
+                                <div className='comments' >
+
+                                    comme
 
                                 </div>
                             }

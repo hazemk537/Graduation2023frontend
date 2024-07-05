@@ -32,7 +32,7 @@ function ChannelsView({ totalPages, pageNumber,setPageNumber,parrallelDiscover, 
 
         <div className={`gallary_items ${type}_class`}>
 
-          {channels.map((item, id) => (
+          {channels?.map((item, id) => (
             <ChannelCard
               parrallelDiscover={parrallelDiscover}
               setTriggerFetch={setTriggerFetch}
