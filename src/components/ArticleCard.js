@@ -2,7 +2,7 @@ import React from "react";
 import useFetch from "../customHooks/useFetch";
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg';
 import SaveDelBtn from './SaveDelBtn';
-
+import LikeDislikeBtn from './LikeDislikeBtn'
 function ArticleCard({ item, setArticleModalData }) { // Removed the `key` prop here as it's not used
 
   console.log(`🖌️ ArticleCard`); // #debug
@@ -52,7 +52,7 @@ function ArticleCard({ item, setArticleModalData }) { // Removed the `key` prop 
         </div>
 
         <div><SaveDelBtn articleId={item?.id} /></div>
-
+        <div><LikeDislikeBtn articleId={item?.id}/></div>
         <svg
           className="gallary_item_action_comment"
           viewBox="0 0 32 32"

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Spinner from './Spinner';
 import ArticleCard from './ArticleCard';
 import Pagination from './Pagination';
-// import SaveDelBtn from './SaveDelBtn';
 import '../styles/common.css';
 
 const SavedArticles = () => {
@@ -22,13 +21,6 @@ const SavedArticles = () => {
       if (parsedData && parsedData.pageSize) {
         setPageSize(parsedData.pageSize);
       }
-    }
-  }, []);
-
-  useEffect(() => {
-    const storedData = localStorage.getItem("data");
-    if (storedData && storedData !== 'undefined') {
-      const parsedData = JSON.parse(storedData);
       if (parsedData && parsedData.pageNumber) {
         setPageNumber(parsedData.pageNumber);
       }
@@ -36,8 +28,24 @@ const SavedArticles = () => {
   }, []);
 
   useEffect(() => {
-    const url = `https://BrieflyNews.runasp.net/api/v1/Article/GetAllUserSavedArticles?PageNumber=${pageNumber}&PageSize=${pageSize}`;
+    // Save data to localStorage when token, pageSize, or pageNumber change
+    const dataToStore = {
+      token,
+      pageSize,
+      pageNumber
+    };
+    localStorage.setItem("data", JSON.stringify(dataToStore));
+  }, [token, pageSize, pageNumber]);
+
+  useEffect(() => {
+    // Fetch data from API when token, pageNumber, or pageSize change
     const fetchData = async () => {
+      if (!token) {
+        setData(null);
+        return;
+      }
+
+      const url = `https://BrieflyNews.runasp.net/api/v1/Article/GetAllUserSavedArticles?PageNumber=${pageNumber}&PageSize=${pageSize}`;
       try {
         const response = await fetch(url, {
           headers: {
@@ -45,19 +53,36 @@ const SavedArticles = () => {
           }
         });
         const result = await response.json();
-        setData(result); // Set fetched data
+
+        setData(result); // Set fetched 
+        
         if (result && result.succeeded) {
           setTotalPages(result.totalPages);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
+        setData(null); // Clear data on error
       }
     };
+
     fetchData();
-  }, [token, pageNumber, pageSize]);
+  }, [token, pageNumber, pageSize]);  // add state , changed in save , unsave btn ,sending function of set data 
+
+  const handleLogout = () => {
+    // Implement logout logic to clear token and related data
+    setToken(null);
+    setPageNumber(1); // Reset page number
+    setData(null); // Clear saved data
+    localStorage.removeItem("data"); // Clear localStorage
+  };
 
   if (!token) {
-    return <div>Please log in to view saved articles.</div>;
+    return (
+      <div>
+        <div>Please log in to view saved articles.</div>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+    );
   }
 
   if (!data) {
@@ -80,7 +105,6 @@ const SavedArticles = () => {
             {data.data.map((article) => (
               <div key={article.id} className="articleCardContainer">
                 <ArticleCard item={article} />
-                {/* <SaveDelBtn articleId={article.id} /> */}
               </div>
             ))}
           </div>

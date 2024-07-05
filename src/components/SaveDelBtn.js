@@ -7,7 +7,7 @@ const StarIcon = ({ filled }) => (
     width="24"
     height="24"
     viewBox="0 0 24 24"
-    fill={filled ? 'red' : 'none'}
+    fill={filled ? 'red' : 'white'}
     stroke="red"
     strokeWidth="2"
     strokeLinecap="round"
@@ -21,7 +21,7 @@ const StarIcon = ({ filled }) => (
 
 const SaveDelBtn = ({ articleId }) => {
   const [isSaved, setIsSaved] = useState(false);
-  const [, , sendRequest] = useFetch();
+  const [JsonData, , sendRequest] = useFetch();
 
   useEffect(() => {
     // Check local storage for saved state

@@ -8,7 +8,7 @@ const Alert = ({ alertText, type }) => {
       { alertText && alertText!=='undefined'? (<div className="alert_container"  >
         <div className={`alert_component ${type === '404' ? 'error404_class' : `${type}_class`}`}>
           {/* escape undefined messages */}
-          {<div className="text">{alertText}</div>
+          {<div className="text">{}</div>
           }        </div>
       </div>):null}
 
