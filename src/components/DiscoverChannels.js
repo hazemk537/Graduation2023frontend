@@ -90,6 +90,7 @@ function DiscoverChannels() {
     <>
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
 
+      <div className="channel-title"><h2>Discover Our Channels</h2></div>
       <div
         className={`homepage-search-wrapper   `}
       >
@@ -118,8 +119,12 @@ function DiscoverChannels() {
           <path d="M21 21l-4.35-4.35" />
         </svg>
       </div>
-
-      <ChannelsView totalPages={channelsJson?.totalPages} pageNumber={pageNumber} setPageNumber={setPageNumber} parrallelDiscover={parrallelDiscover} type="discover_channels" channels={channelsJson?.data} /></>)
+        <ChannelsView 
+        className={'gallary_items_discover_channels'}
+        totalPages={channelsJson?.totalPages}
+         pageNumber={pageNumber} setPageNumber={setPageNumber} 
+         parrallelDiscover={parrallelDiscover} type="discover_channels" 
+         channels={channelsJson?.data} /></>)
 }
 
 export default DiscoverChannels;

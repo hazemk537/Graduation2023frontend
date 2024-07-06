@@ -100,7 +100,7 @@ const SavedArticles = () => {
 
   return (
     <div>
-      <h1>Saved Articles</h1>
+      <div className="channel-title"><h2>Saved Articles</h2></div>
       {data.data && data.data.length > 0 ? (
         <>
           <div className="articlesNavbar">

@@ -31,6 +31,8 @@ padding-left: 3rem;
 .commentFormSection{
     
 }
+
+
 .verticalCards {
     display: flex;
     flex-direction: column;
@@ -81,7 +83,7 @@ justify-content: center;
     justify-content: center;
     gap: 1rem;
 
-    margin-top: 10%;
+    margin-top: 12%;
     margin-left: 37%;
 }
 .homepage-search-wrapper>svg:hover{
@@ -138,16 +140,20 @@ justify-content: center;
 
 .channelTitle {
     overflow-wrap: anywhere;
-
     font-family: 'sans-serif';
     font-size: 0.7rem;
     font-weight: 500;
-    color: rgb(225, 217, 217);
+    color: rgb(255, 255, 255);
 }
+
 
 .channelTitleBox {
     width: 60%;
 }
+
+
+
+
 
 .channelImage {
     width: 100%;
@@ -226,7 +232,7 @@ justify-content: center;
 }
 
 .channel-title {
-    color: white;
+    color: rgb(184, 1, 1);
     font-size: 1.5rem;
     top: 12%;
     transform: translatey(-20%);
@@ -237,13 +243,24 @@ justify-content: center;
 
 /* Mobile specific styles */
 @media (max-width: 768px) {
+    .homepage-search-wrapper{
+
+        margin-top: 37%;
+        width: 60%;
+        margin-left: 20%;
+        position: fixed;
+        background-color: black;
+        z-index: 10 !important;
+
+    }
+
     .articlesNavbar {
         gap: 2%;
         top: 0%;
         }
     .channel-title {
         position:fixed;
-        color: rgb(253, 253, 253);
+        color: rgb(255, 255, 255);
         font-size: .7rem;
         top: 15%;
         border-bottom: 1px solid rgba(255, 255, 255, 0.342);
@@ -379,6 +396,19 @@ justify-content: center;
         color: white;
         border: 1px solid rgb(5, 5, 5);
     }
+
+    .homepage-search-wrapper{
+
+        margin-top: 37%;
+        width: 60%;
+        margin-left: 20%;
+        position: fixed;
+        background-color: black;
+        z-index: 10 !important;
+
+    }
+
+
 }
 .publicChannels_home{
     display: flex;
