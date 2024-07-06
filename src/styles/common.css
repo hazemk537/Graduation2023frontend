@@ -139,6 +139,8 @@ justify-content: center;
 }
 
 .channelTitle {
+    display: flex;
+    flex-direction: row;
     overflow-wrap: anywhere;
     font-family: 'sans-serif';
     font-size: 0.7rem;
@@ -152,7 +154,10 @@ justify-content: center;
 }
 
 
-
+.feather-feather-search{
+    width: 30px;
+    height: 30px;
+}
 
 
 .channelImage {
@@ -253,7 +258,12 @@ justify-content: center;
         z-index: 10 !important;
 
     }
-
+    .feather-feather-search{
+        width: 20px;
+        height: 20px;
+    }
+    
+    
     .articlesNavbar {
         gap: 2%;
         top: 0%;
