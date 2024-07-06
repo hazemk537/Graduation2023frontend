@@ -8,7 +8,13 @@
     padding-left: 2rem;
 
 }
+.addCommentComment{
 
+
+}
+.repliesCommentActions{
+
+}
 .localComment{
 
 padding-left: 3rem;
@@ -19,8 +25,12 @@ padding-left: 3rem;
 .globalCommentActions{
 
 }
+.editCommentglobalForm{
 
-
+}
+.commentFormSection{
+    
+}
 .verticalCards {
     display: flex;
     flex-direction: column;

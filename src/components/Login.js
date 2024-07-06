@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAt, faLock, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Login_Signup.css";
@@ -6,6 +6,7 @@ import GLogin from "./Google_Login";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import useFetch from "../customHooks/useFetch";
+import { jwtDecode } from "jwt-decode";
 
 function LoginForm({ onClose, onSignupClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -26,7 +27,7 @@ function LoginForm({ onClose, onSignupClick }) {
     //#todo_4 email Email usr_mail >> map
     const data = { 'Email': email, 'password': password };
     //#Note_case_useless_state direct receive updated json value insteead of using state (uselessState)
-    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/Login`, { method: 'POST', name: 'POSTlogin', body: data, onSucceed: handleSuccessSignIn ,jsonSuccessProp:'message',jsonFailProp:'message'})
+    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/Login`, { method: 'POST', name: 'POSTlogin', body: data, onSucceed: handleSuccessSignIn, jsonSuccessProp: 'message', jsonFailProp: 'message' })
   };
 
 
@@ -36,6 +37,7 @@ function LoginForm({ onClose, onSignupClick }) {
 
 
     localStorage.setItem('data', JSON.stringify(jsonData.data))
+    localStorage.setItem('userData', JSON.stringify(jwtDecode(jsonData.data.token)))
 
     NavigateFn('/home', { replace: true })
 
@@ -88,7 +90,7 @@ function LoginForm({ onClose, onSignupClick }) {
             <b className="reset">
               forget password{" "}
 
-              <Link   to={'/Reset_Password'} >
+              <Link to={'/Reset_Password'} >
                 click here
 
               </Link>
@@ -96,7 +98,7 @@ function LoginForm({ onClose, onSignupClick }) {
           </div>
         </form>
         <div className="transmit">
-          <button   type="button" id="signupBtn" onClick={onSignupClick}>
+          <button type="button" id="signupBtn" onClick={onSignupClick}>
             Sign up
           </button>
         </div>

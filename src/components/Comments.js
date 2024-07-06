@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/common.css'
-import AddComment from './AddComment'
-import GlobalComment from './GlobalComment'
+import AddComment from './AddArticleComment'
 import useFetch from '../customHooks/useFetch'
-import Comment from '../../Comment'
-
+import Comment from './Comment'
 function Comments({ articleId }) {
     let [comments, , sendRequest] = useFetch()
     const [triggerFetchComments, setTriggerFetchComments] = useState()
@@ -21,18 +19,25 @@ function Comments({ articleId }) {
             }, [triggerFetchComments]);
 
         }
-    })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [triggerFetchComments])
+
     return (
         <div className='commentsParent'>
-            <AddComment articleId={articleId} />
+            <AddComment
+                articleId={articleId}
+                setTriggerFetchComments={setTriggerFetchComments}
 
+            />
 
+            {/* #NOTE_CASE auto handle  */}
             {
                 comments?.data?.map((item) => {
                     return (
                         <Comment
+                            articleId={articleId}
                             setTriggerFetchComments={setTriggerFetchComments}
-                            id={item.id}
+                            key={item.id}
                             data={item}
                         />
                     )
