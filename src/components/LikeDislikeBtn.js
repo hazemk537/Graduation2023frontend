@@ -18,11 +18,18 @@ const HeartIcon = ({ filled }) => (
   </svg>
 );
 
-const LikeDislikeBtn = ({articleId}) => {
+const LikeDislikeBtn = ({ articleId }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [, , sendRequest] = useFetch();
 
-  
+  // Retrieve the liked state from localStorage when the component mounts
+  useEffect(() => {
+    const likedArticles = JSON.parse(localStorage.getItem('likedArticles')) || {};
+    if (likedArticles[articleId]) {
+      setIsLiked(true);
+    }
+  }, [articleId]);
+
   const handleToggleLike = async (e) => {
     e.stopPropagation(); 
 
@@ -47,7 +54,6 @@ const LikeDislikeBtn = ({articleId}) => {
     console.log(`Sending request to ${url} with method ${method} and articleId ${articleId}`);
 
     // Make the request
-
     sendRequest(url, {
       method: method,
       name: isLiked ? 'DeleteLikeArticle' : 'AddLikeArticle',
@@ -72,8 +78,7 @@ const LikeDislikeBtn = ({articleId}) => {
         console.error(`An error occurred while ${isLiked ? 'disliking' : 'liking'} the article:`, error);
       }
     });
-
-};
+  };
 
   return (
     <div onClick={handleToggleLike}>
