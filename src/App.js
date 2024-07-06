@@ -13,6 +13,7 @@ import UserArticles from "./components/UserArticles";
 import ErrorBoundary from "./components/ErrorBound";
 import Notfound from "./components/Error404";
 import PublicChannels from "./components/PublicChannels";
+import SavedArticles from "./components/SavedArtices";
 import './styles/common.css'
 function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
@@ -84,6 +85,11 @@ function App() {
         ,{
           path: "/home/publicApi",
           element:    <div className="publicChannels_home">  <PublicChannels/></div>
+          ,
+        },
+        ,{
+          path: "/home/SavedArticles",
+          element:    <div className="SavedArticles_home">  <SavedArticles/></div>
           ,
         },
       ],

@@ -96,7 +96,7 @@ function UserArticles() {
               <div className="articlesNavbar">
                 <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} totalPages={totalPages} />
               </div>
-                <div className="gallary_items div_userArticles ">
+                <div className="gallary_items ">
                   {jsonData.data && jsonData.data.map((item) => (
                     <ArticleCard key={item.id} setArticleModalData={setArticleModalData} item={item} />
                   ))}
