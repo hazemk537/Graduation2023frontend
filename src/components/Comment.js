@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import useFetch from '../customHooks/useFetch';
 import { actions } from '../redux/slices/NotifySlice';
 import { useDispatch } from 'react-redux';
-import AddcommentComment from './AddcommentComment';
-import { jwtDecode } from 'jwt-decode';
 
 function Comment(props) {
     const [likedComments, setLikedComments] = useState([])
@@ -14,6 +12,7 @@ function Comment(props) {
     const dispatch = useDispatch()
 
     const editInputRef = useRef()
+    const addCommentRef = useRef()
     // 0 or the id of edit view
     let token
     let userName
@@ -25,16 +24,19 @@ function Comment(props) {
 
     const [, , sendRequest] = useFetch()
 
-  
+
     function editComment(id) {
 
         // #NOte_case check against token,send value schema
         if (token !== undefined && token != null && editInputRef.current.value !== '')
 
-            sendRequest(`https://brieflynews.runasp./api/v1/CommentsArticle/EditCommentArticle?text=${editInputRef.current.value}&commentId=${id}`, {
+            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/EditCommentArticle?text=${editInputRef.current.value}&commentId=${id}`, {
                 method: 'PUT', name: 'PUTeditComment', token: token, onSucceed: () => {
-                    props.setTriggerFetchComments((old)=>!old)
+                    props.setTriggerFetchComments((old) => !old)
                     dispatch(actions.setSuccess(`Comment Edit Successfully`))
+                    // #NOTE_CASE hide form after editing the comment
+                    seteditCommentViewForm(false)
+
 
                 }
             });
@@ -52,9 +54,9 @@ function Comment(props) {
         if (token !== undefined || token != null)
 
             sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/DeleteCommentArticle/${props?.data?.id}`, {
-                method: 'DELETE', name: 'deleteComment', token: token, onSucceed: () => 
-                    
-                    props.setTriggerFetchComments((old)=>!old)
+                method: 'DELETE', name: 'deleteComment', token: token, onSucceed: () =>
+
+                    props.setTriggerFetchComments((old) => !old)
 
 
             });
@@ -69,36 +71,54 @@ function Comment(props) {
                 method: 'POST', name: 'likeComment', token: token, onSucceed: () => {
                     // #NOTE_case to rerender component and show dislike/like
 
-                    props.setTriggerFetchComments((old)=>!old)
-                    setLikedComments(likedComments?.push(id))
+                    let tempLikedComments = likedComments
+                    tempLikedComments.push(id)
+                    // #Note_case persistant while rerenders
+
+                    localStorage.setItem('likedComments', JSON.stringify(tempLikedComments))
+                    setLikedComments(tempLikedComments)
+                    props.setTriggerFetchComments((old) => !old)
+
+
+
                 }
             });
     }
 
     function dislikeComment(id) {
         if (token !== undefined || token != null) {
-            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/DeleteLikeCommentArticle/${id}}`, {
+            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/DeleteLikeCommentArticle/${id}`, {
                 method: 'POST', name: 'dislikeComment', token: token, onSucceed: () => {
                     // #NOTE_case to rerender component and show dislike/like
 
-                    let newLikedArr = likedComments?.map((item) => item !== id)
-                    // #NOte_case dislike after like ,means empty
-                    setLikedComments(newLikedArr | [])
+                    let newLikedArr = likedComments?.filter((item) => {
+                        return (item !== id)
+                    })
+                    // // #NOte_case dislike after like ,means empty
+                    localStorage.setItem('likedComments', JSON.stringify(newLikedArr))
+                    setLikedComments(newLikedArr)
+                    props.setTriggerFetchComments((old) => !old)
+                    // #Note_case persistant while rerenders
 
-
-                    props.setTriggerFetchComments((old)=>!old)
                 }
             });
         }
     }
-    function sendcommentComment(text,id) {
-        if (token !== undefined || token != null)
+    function sendcommentComment(id) {
+        if (token !== undefined && token != null && addCommentRef.current.value)
 
-            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/AddLocalCommentArticle?text=${text}&articleId=${props.articleId}&parentcommentId=${id}`, {
-                method: 'POST', name: 'commentComment', token: token, onSucceed: () =>
-                    props.setTriggerFetchComments((old)=>!old)
+            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/AddLocalCommentArticle?text=${addCommentRef.current.value}&articleId=${props.articleId}&parentcommentId=${id}`, {
+                method: 'POST', name: 'commentComment', token: token, onSucceed: () => {
+                    props.setTriggerFetchComments((old) => !old)
+
+                    addCommentRef.current.value = ''
+                    setaddcommitViewForm(false)
+                }
 
             });
+        // addCommentRef.current.value = ''
+        // setaddcommitViewForm(false)
+
     }
 
 
@@ -118,8 +138,16 @@ function Comment(props) {
             setLikedComments(JSON.parse(localStorage.getItem('likedComments')))
         }
     }, [])
+    useEffect(() => {
+
+        if (editCommentViewForm === true) {
+            editInputRef.current.value = props?.data?.text
+
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [editCommentViewForm])
     return (
-        <div style={{backgroundColor:'GrayText'}}className='globalComment' key={props.id}>
+        <div style={{ backgroundColor: 'GrayText' }} className='globalComment' key={props.id}>
             {/* #NOTE_CASE edit /show comment */}
             {
                 editCommentViewForm === props?.data?.id
@@ -139,23 +167,18 @@ function Comment(props) {
             <p>{props.data.postedDate}</p>
             <p>{props.data.likes}</p>
             <p>{props.data.userName}</p>
-            {props.data.replies && <p onClick={() => setShowReplies(true)}> show replies</p>}
-
-
+            {props.data.replies?.length > 0 && <p onClick={() => setShowReplies(true)}> show replies</p>}
 
 
             <div className='globalCommentActions'>
 
                 {authorizedEditing(props?.data?.userName) && <>
 
-                    <br />
-                    <span onClick={() => {
+                    \                    <span onClick={() => {
                         seteditCommentViewForm(props?.data?.id)
                         // #NOte_case intial comment data when edit
-                        editInputRef.current.value = props?.data?.title
                     }}>edit</span>
-                    <br />
-
+                    \
                     <span onClick={() => deleteComment(props?.data?.id)}>delete</span>
 
 
@@ -163,8 +186,15 @@ function Comment(props) {
 
                 <span onClick={() => {
                     // /* #edit */
-                    if (likedComments?.findIndex((item) => item === props?.data?.id) === -1) {
-                        console.log(props?.data?.id);
+                    let ifLiked
+                    try {
+                        ifLiked = likedComments?.findIndex((item) => item === props?.data?.id)
+                    }
+                    catch (err) {
+                        console.log(err);
+                        console.log(likedComments);
+                    }
+                    if (ifLiked === -1) {
 
                         likeComment(props?.data?.id)
                     }
@@ -191,10 +221,36 @@ function Comment(props) {
             </div>
 
 
-            {addcommitViewForm === props?.data?.id && <AddcommentComment  sendcommentComment={sendcommentComment} toggleEditView={setaddcommitViewForm} type={'localComment'} id={props.id} />}
+            {addcommitViewForm === props?.data?.id &&
+
+                <div className='addCommentComment'>
 
 
+                    <input
+                        type='text'
+                        ref={addCommentRef}
+                    />
+                    <button onClick={() => { sendcommentComment(props?.data?.id) }} >Submit</button>
+                </div>
 
+            }
+
+
+            {showReplies &&
+
+                props.data.replies.map((item) => {
+                    return (
+                        <Comment
+                            parentCommentId={props.data.id}
+                            setTriggerFetchComments={props.setTriggerFetchComments}
+                            articleId={props.articleId}
+                            key={item.id}
+                            data={item} />
+                    )
+                })
+
+
+            }
 
 
         </div>)

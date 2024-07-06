@@ -3,6 +3,7 @@ import React, {  useState } from "react";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import Alert from "./Alert";
 import {  useNavigate } from "react-router-dom/dist/umd/react-router-dom.development";
+import { jwtDecode } from "jwt-decode";
 const GLogin = () => {
   const [LoginSuccess, setLoginSuccess] = useState();
   const [alertMessage, setAlertMessage] = useState(false);
@@ -37,6 +38,8 @@ const GLogin = () => {
                   if (jsonData.statusCode === 200) {
 
                     localStorage.setItem('data', JSON.stringify(jsonData.data))
+                    localStorage.setItem('userData', JSON.stringify(jwtDecode(jsonData.data.token)))
+
                     console.log(jsonData.data)
                     setErrState(false);
                     setAlertType("success");
