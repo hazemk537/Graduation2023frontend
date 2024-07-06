@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import '../styles/common.css'
 import useFetch from '../customHooks/useFetch'
-function AddComment({ articleId }) {
+function AddArticleComment({ articleId,setTriggerFetchComments }) {
 
     let addCommentRef = useRef()
     let [, , sendRequest] = useFetch()
@@ -18,7 +18,7 @@ function AddComment({ articleId }) {
                     // clear field
                     // #NOte_case commend succeed
                     addCommentRef.current.value = ''
-                }
+                    setTriggerFetchComments((old)=>!old)             }
             });
         }
     }
@@ -33,9 +33,9 @@ function AddComment({ articleId }) {
                 ref={addCommentRef}
 
             />
-            <button onClick={sendAddComment} >Submit</button>
+            <button onClick={()=>sendAddComment()} >Submit</button>
         </div>
     )
 }
 
-export default AddComment
+export default AddArticleComment

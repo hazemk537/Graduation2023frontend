@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/SumWindow.css';
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
+import AddArticleComment from './AddArticleComment';
+import Comments from './Comments';
 
 
 
@@ -14,12 +16,12 @@ function ArticleModal({ data, setArticleModalData }) {
         /* #Note_image if  image link is bad ex - ,_ */
         let src = item.image
         console.log(item.image);
-        if (!src?.match(/http(\w|\W)+/)){
-        src = briefimg
+        if (!src?.match(/http(\w|\W)+/)) {
+            src = briefimg
         }
-    
+
         return src
-      }
+    }
 
     return (
         <>
@@ -66,10 +68,10 @@ function ArticleModal({ data, setArticleModalData }) {
 
 
                         {/* creation */}
-                        <span  className='date'>{data.data.createdAt.match(/\d+-\d+-\d+/)}</span>
+                        <span className='date'>{data.data.createdAt.match(/\d+-\d+-\d+/)}</span>
                         {/* #Note_case sometimes img in descirption ,and no src diectly in .link */}
 
-                        <img 
+                        <img
                             src={checkImageUrl(data.data)}
                             alt=''
                             onError={(e) => {
@@ -87,9 +89,9 @@ function ArticleModal({ data, setArticleModalData }) {
 
 
                             <div style={{ display: 'flex' }}>
-                                <span className={` articelTab ${showTab===0 ?'selectedTab' :'' }`} onClick={() => { setshowTab(0) }} >Description</span>
-                                <span className={`articelTab  ${showTab===1 ?'selectedTab' :'' }`} onClick={() => { setshowTab(1) }}>Summary</span>
-                                <span className={`articelTab  ${showTab===2 ?'selectedTab' :'' }`} onClick={() => { setshowTab(2) }}>Comments</span>
+                                <span className={` articelTab ${showTab === 0 ? 'selectedTab' : ''}`} onClick={() => { setshowTab(0) }} >Description</span>
+                                <span className={`articelTab  ${showTab === 1 ? 'selectedTab' : ''}`} onClick={() => { setshowTab(1) }}>Summary</span>
+                                <span className={`articelTab  ${showTab === 2 ? 'selectedTab' : ''}`} onClick={() => { setshowTab(2) }}>Comments</span>
                             </div>
                             <p
                                 style={{
@@ -103,7 +105,7 @@ function ArticleModal({ data, setArticleModalData }) {
                                 }                    </p>
 
                             {/* description */}
-                            {showTab===0 && <div    style={{
+                            {showTab === 0 && <div style={{
                                 color: 'beige',
                                 marginLeft: '3rem',
                                 fontSize: '.9rem',
@@ -114,7 +116,7 @@ function ArticleModal({ data, setArticleModalData }) {
                             </div>
                             }
                             {/* summary */}
-                            {showTab===1 &&
+                            {showTab === 1 &&
                                 <div className='summary' >
 
                                     {/* if first not fond display second #Note_case fallback render */}
@@ -123,10 +125,10 @@ function ArticleModal({ data, setArticleModalData }) {
 
                                 </div>
                             }{/* comments */}
-                            {showTab===2 &&
+                            {showTab === 2 &&
                                 <div className='comments' >
 
-                                    comme
+                                    <Comments articleId={data.data.id} />
 
                                 </div>
                             }
