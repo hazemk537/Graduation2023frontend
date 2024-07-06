@@ -6,9 +6,9 @@ const HeartIcon = ({ filled }) => (
     width="24"
     height="24"
     viewBox="0 0 24 24"
-    fill={filled ? 'red' : 'white'}
-    stroke="red"
-    strokeWidth="2"
+    fill={filled ? 'red' : 'grey'}
+    stroke="black"
+    strokeWidth="1"
     strokeLinecap="round"
     strokeLinejoin="round"
     xmlns="http://www.w3.org/2000/svg"
