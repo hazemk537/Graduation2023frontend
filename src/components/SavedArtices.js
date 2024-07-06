@@ -7,9 +7,10 @@ import '../styles/common.css';
 const SavedArticles = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [token, setToken] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1); 
+  const [pageNumber, setPageNumber] = useState(1);
   const [data, setData] = useState(null); // State to hold fetched data
   const [pageSize, setPageSize] = useState(10); // Default pageSize
+  const [refetch, setRefetch] = useState(false); // State to trigger refetch
 
   useEffect(() => {
     const storedData = localStorage.getItem("data");
@@ -38,7 +39,7 @@ const SavedArticles = () => {
   }, [token, pageSize, pageNumber]);
 
   useEffect(() => {
-    // Fetch data from API when token, pageNumber, or pageSize change
+    // Fetch data from API when token, pageNumber, pageSize, or refetch change
     const fetchData = async () => {
       if (!token) {
         setData(null);
@@ -54,7 +55,7 @@ const SavedArticles = () => {
         });
         const result = await response.json();
 
-        setData(result); // Set fetched 
+        setData(result); // Set fetched data
         
         if (result && result.succeeded) {
           setTotalPages(result.totalPages);
@@ -66,7 +67,7 @@ const SavedArticles = () => {
     };
 
     fetchData();
-  }, [token, pageNumber, pageSize]);  // add state , changed in save , unsave btn ,sending function of set data 
+  }, [token, pageNumber, pageSize, refetch]);  // Added refetch to dependencies
 
   const handleLogout = () => {
     // Implement logout logic to clear token and related data
@@ -74,6 +75,10 @@ const SavedArticles = () => {
     setPageNumber(1); // Reset page number
     setData(null); // Clear saved data
     localStorage.removeItem("data"); // Clear localStorage
+  };
+
+  const handleRefetch = () => {
+    setRefetch(prev => !prev); // Toggle refetch state to trigger re-fetch
   };
 
   if (!token) {
@@ -104,7 +109,7 @@ const SavedArticles = () => {
           <div className="gallary_items div_userArticles">
             {data.data.map((article) => (
               <div key={article.id} className="articleCardContainer">
-                <ArticleCard item={article} />
+                <ArticleCard item={article}  onUnsave={handleRefetch} />
               </div>
             ))}
           </div>

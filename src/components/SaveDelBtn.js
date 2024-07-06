@@ -19,9 +19,9 @@ const StarIcon = ({ filled }) => (
   </svg>
 );
 
-const SaveDelBtn = ({ articleId }) => {
+const SaveDelBtn = ({ articleId, onUnsave }) => {
   const [isSaved, setIsSaved] = useState(false);
-  const [JsonData, , sendRequest] = useFetch();
+  const [, , sendRequest] = useFetch();
 
   useEffect(() => {
     // Check local storage for saved state
@@ -69,6 +69,11 @@ const SaveDelBtn = ({ articleId }) => {
             savedArticles[articleId] = true;
           }
           localStorage.setItem('savedArticles', JSON.stringify(savedArticles));
+
+          // Trigger the onUnsave callback
+          if (onUnsave) {
+            onUnsave();
+          }
         }
       },
       onFailed: (error) => {
