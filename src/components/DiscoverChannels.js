@@ -3,124 +3,113 @@ import ChannelsView from "./ChannelsView";
 import '../styles/discoverChannel.css'
 import '../styles/common.css'
 import Alert from "./Alert";
+
 function DiscoverChannels() {
-  const [searchTrigger, setSearchTrigger] = useState()
+  const [searchTrigger, setSearchTrigger] = useState(false);
   const [channelsJson, setChannelJson] = useState();
-
-
-  const [pageNumber, setPageNumber] = useState(1)
+  const [pageNumber, setPageNumber] = useState(1);
   const [alertMessage,] = useState(false);
   const [alertType,] = useState(false);
-  let searchInputRef=useRef()
-  //to not render success at begining
+  let searchInputRef = useRef();
+  let token = JSON.parse(localStorage.getItem('data')).token;
 
-  let token = JSON.parse(localStorage.getItem('data')).token
-
-  async function parrallelDiscover(allAllchannelsJsonPromise, subscribedChannelJsonPromise) {
-    //parallel fetch all subscriptions and all channels ,merge them 
-    //add subscribed filed in all subscriptions
-    let allAllchannelsPromise
-    
-     allAllchannelsPromise = fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/GetAll?search=${searchInputRef.current.value}&PageNumber=${pageNumber}&PageSize=7`, {
+  async function parrallelDiscover(searchQuery = '') {
+    let allAllchannelsPromise = fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/GetAll?search=${searchQuery}&PageNumber=${pageNumber}&PageSize=7`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
     });
-  
+
     let subscribedChannelsPromise = fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
-    })
-    let [allChannelsResponse, subscribedChannelsResponse] = await Promise.all([allAllchannelsPromise, subscribedChannelsPromise])
-    if (allChannelsResponse.ok) {
-      console.log('allChannelsResponse.ok...')
+    });
 
-    }
+    let [allChannelsResponse, subscribedChannelsResponse] = await Promise.all([allAllchannelsPromise, subscribedChannelsPromise]);
 
+    if (allChannelsResponse.ok && subscribedChannelsResponse.ok) {
+      let allchannelsJson = await allChannelsResponse.json();
+      let subscribedChannelJson = await subscribedChannelsResponse.json();
 
+      let subscribtionIdArr = subscribedChannelJson.data?.map((item) => item.id);
 
-    if (subscribedChannelsResponse.ok) {
-      console.log('subscribedChannelsResponse.ok...')
-
-
-    }
-    if (allChannelsResponse.ok & subscribedChannelsResponse.ok) {
-
-      //add subscribed field to all channels json
-      //  setState(Newchannels)
-      let allchannelsJson = await allChannelsResponse.json()
-      let subscribedChannelJson = await subscribedChannelsResponse.json()
-
-      // if data empty  subscribedChannelJson.data will be undefined
-      let subscribtionIdArr = subscribedChannelJson.data?.map((item) => item.id)
-
-      console.log('subscribtionIdArr ...');
-      console.log(subscribtionIdArr);
-
-      let isCurrentItemSubscribed = 0
+      let isCurrentItemSubscribed = 0;
 
       let Newchannels = allchannelsJson?.data?.map((item) => {
-        if (subscribtionIdArr?.findIndex)//isarray
-        {
-          isCurrentItemSubscribed = subscribtionIdArr.includes(item.id) === false ? 0 : 1
+        isCurrentItemSubscribed = subscribtionIdArr?.includes(item.id) ? 1 : 0;
+        return { ...item, 'subscribed': isCurrentItemSubscribed };
+      });
 
-        }
-
-        return { ...item, 'subscribed': isCurrentItemSubscribed }
-      })
-      allchannelsJson.data = Newchannels
-      setChannelJson(allchannelsJson)
-      // console.log('Newchannels');
-      // console.log(Newchannels);
+      allchannelsJson.data = Newchannels;
+      setChannelJson(allchannelsJson);
     }
-
-
-
   }
+
   useEffect(() => {
-    // http://BrieflyNews.runasp.net/api/v1/Rss/GetAll?PageNumber=1&PageSize=5
-
-    parrallelDiscover()
-
+    parrallelDiscover();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber,searchTrigger]);
+  }, [pageNumber]);
+
+  const handleSearchIconClick = () => {
+    setSearchTrigger(!searchTrigger);
+  };
+
+  const handleSearchInputChange = (e) => {
+    if (e.key === 'Enter') {
+      parrallelDiscover(searchInputRef.current.value);
+      setSearchTrigger(!searchTrigger);
+
+    }
+  };
 
   return (
     <>
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
 
-      <div
-        className={`homepage-search-wrapper   `}
-      >
-        {/* search functionallity #todo_4 */}
-        <input ref={searchInputRef} className="search-input" type="text" placeholder="Search" />
-
+      <div className="channel-title">
+        <h2>Discover Our Channels 
         <svg
-        onClick={()=>{
-        setSearchTrigger((old)=>!old)
-
-
-        }}
+          onClick={handleSearchIconClick}
           xmlns="http://www.w3.org/2000/svg"
-          width={20}
-          height={20}
           fill="none"
-          stroke="currentColor"
+          stroke="Red"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          className="feather feather-search"
+          className="feather-feather-search"
           viewBox="0 0 24 24"
+          style={{ marginLeft: '10px',marginTop:'2%', cursor: 'pointer' }}
         >
           <defs />
           <circle cx={11} cy={11} r={8} />
           <path d="M21 21l-4.35-4.35" />
         </svg>
+        </h2>
+   
+        {searchTrigger &&
+          <input
+          style={{marginTop:'-5%'}}
+            ref={searchInputRef}
+            className="search-input"
+            type="text"
+            placeholder=" Write a Channel Name"
+            onKeyDown={handleSearchInputChange}
+          />
+        }
       </div>
 
-      <ChannelsView totalPages={channelsJson?.totalPages} pageNumber={pageNumber} setPageNumber={setPageNumber} parrallelDiscover={parrallelDiscover} type="discover_channels" channels={channelsJson?.data} /></>)
+      <ChannelsView
+        className={'gallary_items_discover_channels'}
+        totalPages={channelsJson?.totalPages}
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+        parrallelDiscover={parrallelDiscover}
+        type="discover_channels"
+        channels={channelsJson?.data}
+      />
+    </>
+  );
 }
 
 export default DiscoverChannels;
-
