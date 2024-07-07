@@ -140,16 +140,7 @@ function SubscribedList({ GetRssArticlesById, loading }) {
         );
     } else {
         return (
-            <div className='No-channels'
-                style={{
-                    color: 'white',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    fontFamily: 'Arial',
-                    height: '100vh',
-                }}
-            >
+            <div className='No-channels'>
                 <h1>No Subscriptions, Subscribe to show articles </h1>
                 <button
                     onClick={() => navigate('/home/discover')}
