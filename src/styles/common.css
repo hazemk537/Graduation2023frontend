@@ -12,8 +12,53 @@
 .commentsParent{
 
 }
+.comments{
+    width: 90%;
+}
 .globalComment{
-    padding-left: 2rem;
+    /* background-color: graytext; */
+    border: #b46b6b solid;
+    border-radius: 11%;
+    padding-left: 1rem;
+    margin-top: 2rem;
+    margin-right: 1rem;
+
+}
+.metadataComment{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 1rem;
+    border-top: #8f7f73 solid 1px;
+    border-bottom: #8f7f73 solid 1px;
+    height: 2rem;
+}
+.metadataComment_date{
+   
+}
+.metadataComment_userName{
+
+}
+.metadataComment_user_date{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap:1rem;
+    position: relative;
+}.metadataComment_user_date > img{
+    height: 3rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+}
+
+
+
+.metadataComment_likes{
+
+}
+.metadataComment_text{
 
 }
 .addCommentComment{
@@ -31,6 +76,14 @@ padding-left: 3rem;
 
 }
 .globalCommentActions{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}.globalCommentActions>span>img{
+    height: 2rem;
+    width: auto;
+    
 
 }
 .editCommentglobalForm{

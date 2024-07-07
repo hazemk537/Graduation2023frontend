@@ -59,5 +59,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "svg.preview.background": "black"
 }

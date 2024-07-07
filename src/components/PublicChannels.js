@@ -20,7 +20,7 @@ const categories = [
 const countries = [
     { name: "Egypt", key: "eg", lang: "ar" },
     { name: "United Arab Emirates", key: "ae", lang: "ar" },
-    { name: "Saudi Arabia", lang: "ar", key: "sa" },
+    // { name: "Saudi Arabia", lang: "ar", key: "sa" },
     { name: "United States", lang: "en", key: "us" },
     { name: "United Kingdom", lang: "en", key: "gb" }
 ];

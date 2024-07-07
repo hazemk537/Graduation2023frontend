@@ -3,6 +3,13 @@ import useFetch from '../customHooks/useFetch';
 import { actions } from '../redux/slices/NotifySlice';
 import { useDispatch } from 'react-redux';
 
+import userIcon from "../assets/user.svg"
+import likeIcon from "../assets/like.svg"
+import filledLike from "../assets/filledLike.svg"
+import deleteIcon from "../assets/delete.svg"
+import commentIcon from "../assets/comment.svg"
+import editIcon from "../assets/edit.svg"
+
 function Comment(props) {
     const [likedComments, setLikedComments] = useState([])
 
@@ -146,8 +153,18 @@ function Comment(props) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [editCommentViewForm])
+    // #Note_case check if liked comment
+    let ifLiked = likedComments?.findIndex((item) => item === props?.data?.id)
+
     return (
-        <div style={{ backgroundColor: 'GrayText' }} className='globalComment' key={props.id}>
+        <div className='globalComment' key={props.id}>
+
+            <div className='metadataComment_user_date' >
+                <img src={userIcon} alt="userIcon" />
+                <p className='metadataComment_userName'>{props.data.userName}</p>
+
+            </div>
+
             {/* #NOTE_CASE edit /show comment */}
             {
                 editCommentViewForm === props?.data?.id
@@ -158,37 +175,48 @@ function Comment(props) {
 
                     </div>
                     :
-                    <p>{props?.data?.text}</p>
+                    <p className='metadataComment_text' >{props?.data?.text}</p>
 
 
             }
 
+            <div className='metadataComment'>
 
-            <p>{props.data.postedDate}</p>
-            <p>{props.data.likes}</p>
-            <p>{props.data.userName}</p>
-            {props.data.replies?.length > 0 && <p onClick={() => setShowReplies(true)}> show replies</p>}
+                <p className='metadataComment_date'>{props.data.postedDate?.match(/\d+-\d+-\d+/)}</p>
+                {props.data.replies?.length > 0 && <p onClick={() => setShowReplies(true)}>  replies</p>}
+                <p className='metadataComment_likes'>{props.data.likes} likes</p>
+
+
+            </div>
+
+
 
 
             <div className='globalCommentActions'>
 
+
                 {authorizedEditing(props?.data?.userName) && <>
 
-                    \                    <span onClick={() => {
+                    <span onClick={() => {
                         seteditCommentViewForm(props?.data?.id)
                         // #NOte_case intial comment data when edit
-                    }}>edit</span>
-                    \
-                    <span onClick={() => deleteComment(props?.data?.id)}>delete</span>
+                    }}>
+
+                        <img src={editIcon} alt='edit' />
+                    </span>
+                    <span onClick={() => deleteComment(props?.data?.id)}>
+
+                        <img src={deleteIcon} alt='delete' />
+
+
+                    </span>
 
 
                 </>}
 
                 <span onClick={() => {
                     // /* #edit */
-                    let ifLiked
                     try {
-                        ifLiked = likedComments?.findIndex((item) => item === props?.data?.id)
                     }
                     catch (err) {
                         console.log(err);
@@ -204,14 +232,20 @@ function Comment(props) {
 
                 }
 
-                } > like/dislike
+                } >
+
+                    {<img src={ifLiked!==-1?filledLike:likeIcon} alt='like' />}
                 </span>
 
 
 
                 <span onClick={() => {
                     setaddcommitViewForm(props?.data?.id)
-                }} >comment</span>
+                }} >
+
+                    <img src={commentIcon} alt='comment' />
+
+                </span>
 
 
                 {/* #NOTE_Case global comment id not local comment id */}

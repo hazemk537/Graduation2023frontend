@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Profile.css';
 import logout from "../images/logout.svg";
+import userIcon from "../assets/user.svg"
 
 const ProfileImage = ({  userImage  }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,14 +31,14 @@ const ProfileImage = ({  userImage  }) => {
   return (
     <div className="profile-container">
       <div className="profile-image" onClick={toggleDropdown}>
-        <img src={userImage} alt="User Avatar" />
+        <img src={userIcon} alt="User Avatar" />
       </div>
 
       {isOpen && (
         <div className="dropdown-menu">
           <div className="menu-item-user">
             <div>
-              <img className='avatar' src={userImage} alt="User Avatar" />
+              <img className='avatar' src={userIcon} alt="User Avatar" />
               {/* <p>{userName}</p> */}
             </div>
             {/* <div>
