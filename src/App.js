@@ -86,7 +86,7 @@ function App() {
           path: "/home/publicApi",
           element:    <div className="publicChannels_home">  <PublicChannels/></div>
           ,
-        },
+        }
         ,{
           path: "/home/SavedArticles",
           element:    <div className="SavedArticles_home">  <SavedArticles/></div>
