@@ -1,11 +1,12 @@
-import React, { useRef } from 'react'
-import '../styles/common.css'
-import useFetch from '../customHooks/useFetch'
-function AddArticleComment({ articleId,setTriggerFetchComments }) {
+import React, { useRef } from 'react';
+import useFetch from '../customHooks/useFetch';
+import '../styles/AddArticleComment.css';
 
-    let addCommentRef = useRef()
-    let [, , sendRequest] = useFetch()
-    function sendAddComment() {
+function AddArticleComment({ articleId, setTriggerFetchComments }) {
+    const addCommentRef = useRef();
+    const [, , sendRequest] = useFetch();
+
+    const sendAddComment = () => {
         let token;
 
         if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
@@ -14,28 +15,33 @@ function AddArticleComment({ articleId,setTriggerFetchComments }) {
 
         if (addCommentRef.current?.value && articleId) {
             sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/AddGeneralCommentArticle?text=${addCommentRef.current.value}&articleId=${articleId}`, {
-                method: 'POST', name: 'POSTGlobalComment', token: token, jsonFailProp: 'message', jsonSuccessProp: 'message', onSucceed: () => {
-                    // clear field
-                    // #NOte_case commend succeed
-                    addCommentRef.current.value = ''
-                    setTriggerFetchComments((old)=>!old)             }
+                method: 'POST',
+                name: 'POSTGlobalComment',
+                token: token,
+                jsonFailProp: 'message',
+                jsonSuccessProp: 'message',
+                onSucceed: () => {
+                    addCommentRef.current.value = '';
+                    setTriggerFetchComments(old => !old);
+                }
             });
         }
-    }
-
+    };
 
     return (
-        <div className='addComment'>
-
-
-            <input
-                type='text'
-                ref={addCommentRef}
-
-            />
-            <button onClick={()=>sendAddComment()} >Submit</button>
+        <div className="addComment">
+            
+                <textarea
+                    className="textarea"
+                    ref={addCommentRef}
+                    placeholder='Add a comment...'
+                />
+            
+            
+                <button className="button" onClick={sendAddComment}>Submit</button>
+            
         </div>
-    )
+    );
 }
 
-export default AddArticleComment
+export default AddArticleComment;
