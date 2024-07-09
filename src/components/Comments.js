@@ -4,7 +4,6 @@ import AddComment from './AddArticleComment'
 import useFetch from '../customHooks/useFetch'
 import Comment from './Comment'
 function Comments({ articleId }) {
-    let [isLoadedStyles,setIsloadedStyles]=useState()
     let [comments, , sendRequest] = useFetch()
     const [triggerFetchComments, setTriggerFetchComments] = useState()
 
