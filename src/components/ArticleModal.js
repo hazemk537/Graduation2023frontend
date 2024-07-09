@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/SumWindow.css';
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
-import AddArticleComment from './AddArticleComment';
 import Comments from './Comments';
 
 

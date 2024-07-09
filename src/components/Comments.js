@@ -30,6 +30,11 @@ function Comments({ articleId }) {
 
     return (
         <div className='commentsParent'>
+              <AddComment
+                articleId={articleId}
+                setTriggerFetchComments={setTriggerFetchComments}
+
+            />
 
             {/* #NOTE_CASE auto handle  */}
             {
@@ -46,11 +51,7 @@ function Comments({ articleId }) {
 
             }
 
-            <AddComment
-                articleId={articleId}
-                setTriggerFetchComments={setTriggerFetchComments}
-
-            />
+          
 
 
         </div>

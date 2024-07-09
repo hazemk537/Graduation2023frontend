@@ -35,20 +35,20 @@
 ### pending 
 
 ### High
-5. +articlemodal reltaed artivles 
--  6. Date color shadow
--  7. Comments before add comment 
-- userarticles bug
-
+- +articlemodal reltaed artivles api
+- +discover replace 2 apis with 1 api using subscribed boolean
+-  +articleModal link svg ,
+- +comments coddingHorror breaked 
+- 
 
 
 
 ### In Progress
--  comments apis
--  save  article  api
 ### Done ✓
 - 2 bugs with +backend
-
+- userarticles bug
+-  comments apis
+-  save  article  api
 - docs @hazem
 
 - searcg bar
