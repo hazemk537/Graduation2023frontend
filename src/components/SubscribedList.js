@@ -52,7 +52,9 @@ function SubscribedList({ GetRssArticlesById, loading }) {
                     GetRssArticlesById(storedActiveChannel.id, storedActiveChannel.title);
                 } else {
                     const firstChannel = jsonData.data[0];
-                    setActiveChannel({ id: firstChannel.id, title: firstChannel.title });
+                    setActiveChannel({ id: firstChannel.id });
+                    console.log(firstChannel);
+                    // console.log('------------------------------');
                     GetRssArticlesById(firstChannel.id, firstChannel.title);
                 }
             }

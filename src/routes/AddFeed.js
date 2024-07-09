@@ -100,7 +100,10 @@ const AddFeed = () => {
     <>
       <div className="centerFlex RSS-search-wrapper-p-div">
         <p className={` `}>Enter Rss URL below and hit enter</p>
+       
+
       </div>
+      <p className={`rss_info`}> An RSS link is a web address that directs to an RSS feed, typically ending in <span className="redTag">.rss</span> or <span >.xml</span>, allowing users to subscribe and access updates from a website in a standardized format.</p>
       <div className="addFeed">
 
         {alertType && <Alert alertText={alertMessage} type={alertType} />}

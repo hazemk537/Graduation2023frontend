@@ -3,6 +3,8 @@ import useFetch from "../customHooks/useFetch";
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg';
 import SaveDelBtn from './SaveDelBtn';
 import LikeDislikeBtn from './LikeDislikeBtn';
+import eyeIcon from '../assets/eye.svg'
+import heartIcon from '../assets/heart.svg'
 
 const ArticleCard = ({ item, setArticleModalData, onUnsave }) => { // Added onUnsave prop
 
@@ -32,6 +34,18 @@ const ArticleCard = ({ item, setArticleModalData, onUnsave }) => { // Added onUn
         sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item?.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData });
       }}
     >
+      <div>
+        <div className="likesArticle">
+
+        <img src={heartIcon} alt="likes"/>
+        <span>{item.likes}</span>
+        </div>
+
+        <div  className="viewsArticle">
+
+          <img src={eyeIcon} alt="likes"/>
+          <span>{item.views}</span>
+        </div>      </div>
       <div className="gallary_img_wrapper">
         <img
           src={checkImageUrl(item)}
@@ -53,7 +67,7 @@ const ArticleCard = ({ item, setArticleModalData, onUnsave }) => { // Added onUn
         </div>
 
         <div><SaveDelBtn articleId={item?.id} onUnsave={onUnsave} /></div>
-        <div><LikeDislikeBtn articleId={item?.id}/></div>
+        <div><LikeDislikeBtn articleId={item?.id} /></div>
         {/* <svg
           className="gallary_item_action_comment"
           viewBox="0 0 32 32"

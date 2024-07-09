@@ -5,7 +5,7 @@ import "../styles/common.css";
 import Spinner from "./Spinner";
 import ChannelModal from "./ChannelModal";
 import Pagination from "./Pagination";
-function ChannelsView({ totalPages, pageNumber,setPageNumber,parrallelDiscover, setTriggerFetch, channels, type }) {
+function ChannelsView({ totalPages, pageNumber, setPageNumber, parrallelDiscover, setTriggerFetch, channels, type }) {
   const [ModalData, setModalData] = useState('')
   // when state of model updates scrolling behavior updates 
   // #Note_case direct_manipulate_dom
@@ -13,22 +13,21 @@ function ChannelsView({ totalPages, pageNumber,setPageNumber,parrallelDiscover, 
   useEffect(() => {
 
     const body = document.body;
-    if (ModalData && type!=="public_channels") {
+    if (ModalData && type !== "public_channels") {
       body.style.overflow = 'hidden';
     } else {
       body.style.overflow = 'auto';
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ModalData])
-
+  // #Note_case if channels is not empty
   if (channels)
     return (
       <>
-              
-              {ModalData &&type!=="public_channels"? <ChannelModal type={type}  setModalData={setModalData} data={ModalData} />:null}
+        {ModalData && type !== "public_channels" ? <ChannelModal type={type} setModalData={setModalData} data={ModalData} /> : null}
 
-{   type  !=='public_channels'&&   <Pagination totalPages={totalPages}  pageNumber={pageNumber} setPageNumber={setPageNumber}/>
-}
+        {type !== 'public_channels' && <Pagination totalPages={totalPages} pageNumber={pageNumber} setPageNumber={setPageNumber} />
+        }
 
         <div className={`gallary_items ${type}_class`}>
 
@@ -46,16 +45,18 @@ function ChannelsView({ totalPages, pageNumber,setPageNumber,parrallelDiscover, 
       </>
     );
 
-    // #Note_case empty data
-    else if (channels?.data===undefined){
-      return(
+  // #Note_case empty data return null in channels
+  // else if (channels?.data === undefined) {
+  else if (channels === null) {
+
+    return (
       <div className={`gallary_items ${type}_class`}>
         <p className="noDataText">
-        There is no data
+          There is no data
         </p>
       </div>)
 
-    }
+  }
   else {
     return (
       <div className={`gallary_items ${type}_class`}>

@@ -13,6 +13,7 @@
     width: 50%;
     border-radius: 15px;
     color: bisque;
+    margin-top: 1rem;
 }
 
 .tabBar span:hover {
@@ -20,13 +21,14 @@
 }
 
 .selectedTab {
-    background-color: black;
+    background-color: rgb(188, 0, 0);
+
 }
 
 .sumwindow {
     padding-bottom: 139px;
 
-    background-color: rgb(86 79 79);
+    background-color: black;
     width: 500px; 
     position: fixed;
     padding-bottom: 100px;

@@ -33,16 +33,24 @@
 - pageNumber bad in local storage
 
 ### pending 
+
+### High
+5. +articlemodal reltaed artivles 
+-  6. Date color shadow
+-  7. Comments before add comment 
+- userarticles bug
+
+
+
+
+### In Progress
+-  comments apis
+-  save  article  api
+### Done ✓
 - 2 bugs with +backend
 
 - docs @hazem
 
-### High
--  comments apis
--  glogin problem +login
--  save  article  api
-
-### In Progress
 - searcg bar
 -  bad description in +landingPage 
 - bad api cors error
@@ -56,7 +64,21 @@
    -  close increase/decrease btns
 - if user  show channel articles then unsubscribe
   - enssure +userArtickles donot show its articles
-### Done ✓
+
+- redirect in blank page
+- bad styling +publicApi
+-  1. +addrss text
+2. +savedarticles title
+3. Follow!unfollow color
+4. +profile username
+6.
+8. Icons +comments h
+9. Icons styling
+-  10.  Saved articles , message alert +savedsrtivles
+-  11. Modalarticle black background
+-  12. Favicon
+-  13. AlertRed always
+-  14. +Discover follow bad unfollow backend
 - host and bugs
 - #pro_grad pagenation   
 1. solve eslint problems @zaki

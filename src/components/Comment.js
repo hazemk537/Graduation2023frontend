@@ -40,16 +40,16 @@ function Comment(props) {
             sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/EditCommentArticle?text=${editInputRef.current.value}&commentId=${id}`, {
                 method: 'PUT', name: 'PUTeditComment', token: token, onSucceed: () => {
                     props.setTriggerFetchComments((old) => !old)
-                    dispatch(actions.setSuccess(`Comment Edit Successfully`))
                     // #NOTE_CASE hide form after editing the comment
                     seteditCommentViewForm(false)
 
 
-                }
+                }, jsonFailProp: 'message',
+                jsonSuccessProp: 'message',
             });
 
 
-        else if (editInputRef.current.value !== '') {
+        else if (editInputRef.current.value === '') {
             dispatch(actions.setError(`Comment cannot be empty`))
 
         }
@@ -63,7 +63,8 @@ function Comment(props) {
             sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/DeleteCommentArticle/${props?.data?.id}`, {
                 method: 'DELETE', name: 'deleteComment', token: token, onSucceed: () =>
 
-                    props.setTriggerFetchComments((old) => !old)
+                    props.setTriggerFetchComments((old) => !old), jsonFailProp: 'message',
+                jsonSuccessProp: 'message',
 
 
             });
@@ -120,7 +121,8 @@ function Comment(props) {
 
                     addCommentRef.current.value = ''
                     setaddcommitViewForm(false)
-                }
+                }, jsonFailProp: 'message',
+                jsonSuccessProp: 'message',
 
             });
         // addCommentRef.current.value = ''
@@ -147,10 +149,11 @@ function Comment(props) {
     }, [])
     useEffect(() => {
 
-        if (editCommentViewForm === true) {
+        if (editCommentViewForm) {
             editInputRef.current.value = props?.data?.text
 
         }
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [editCommentViewForm])
     // #Note_case check if liked comment
@@ -170,7 +173,8 @@ function Comment(props) {
                 editCommentViewForm === props?.data?.id
                     ?
                     <div className='editCommentParent'>
-                        <input type='text' ref={editInputRef} />
+
+                        <textarea  ref={editInputRef} />
                         <button onClick={() => { editComment(props?.data?.id) }}>Submit</button>
 
                     </div>
@@ -234,7 +238,7 @@ function Comment(props) {
 
                 } >
 
-                    {<img src={ifLiked!==-1?filledLike:likeIcon} alt='like' />}
+                    {<img src={ifLiked !== -1 ? filledLike : likeIcon} alt='like' />}
                 </span>
 
 
@@ -260,8 +264,7 @@ function Comment(props) {
                 <div className='addCommentComment'>
 
 
-                    <input
-                        type='text'
+                    <textarea
                         ref={addCommentRef}
                     />
                     <button onClick={() => { sendcommentComment(props?.data?.id) }} >Submit</button>

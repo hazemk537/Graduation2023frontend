@@ -3,12 +3,14 @@ import ChannelsView from "./ChannelsView";
 import '../styles/subscripedChannels.css';
 import Alert from "./Alert";
 import useFetch from "../customHooks/useFetch";
+import { useNavigate } from "react-router";
 
 function SubscripedChannels() {
   const [triggerFetch, setTriggerFetch] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   const [alertMessage] = useState(false);
   const [alertType] = useState(false);
+  const navigateFn=useNavigate()
   let token;
 
   if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
@@ -30,17 +32,25 @@ function SubscripedChannels() {
 
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
       <ChannelsView
-      className={'gallary_items_subscribed_Channels'}
+       totalPages={jsonData.totalPages}
+        pageNumber={jsonData.pageNumber}
+        className={'gallary_items_subscribed_Channels'}
         setPageNumber={setPageNumber}
         setTriggerFetch={setTriggerFetch}
         type="subscription_channels"
         channels={jsonData.data} /></>)
   }
-  else {
+    // #Note_case no data case if no ddata api returns null in data not empty array
+    else if (jsonData?.data===null) {
     return (
-      <div className='no-sub-txt'>
-        <h1>There are No Subscriptions</h1>
-      </div>
+      <div className='No-channels'>
+                <h1>No Subscriptions, Subscribe to show articles </h1>
+                <button
+                    onClick={() => navigateFn('/home/discover')}
+                >
+                    Discover
+                </button>
+            </div>
     );
   }
 }

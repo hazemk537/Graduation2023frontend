@@ -4,6 +4,7 @@ import AddComment from './AddArticleComment'
 import useFetch from '../customHooks/useFetch'
 import Comment from './Comment'
 function Comments({ articleId }) {
+    let [isLoadedStyles,setIsloadedStyles]=useState()
     let [comments, , sendRequest] = useFetch()
     const [triggerFetchComments, setTriggerFetchComments] = useState()
 
@@ -22,13 +23,14 @@ function Comments({ articleId }) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [triggerFetchComments])
 
+
+    
+
+
+
+
     return (
         <div className='commentsParent'>
-            <AddComment
-                articleId={articleId}
-                setTriggerFetchComments={setTriggerFetchComments}
-
-            />
 
             {/* #NOTE_CASE auto handle  */}
             {
@@ -45,6 +47,11 @@ function Comments({ articleId }) {
 
             }
 
+            <AddComment
+                articleId={articleId}
+                setTriggerFetchComments={setTriggerFetchComments}
+
+            />
 
 
         </div>

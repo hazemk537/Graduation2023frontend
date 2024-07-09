@@ -19,9 +19,9 @@ function MainLandingPage({
 
   const [showErrModal,] = useState(false)
   const [errContent,] = useState('')
-  const [isLoginned,setIsloginned]=useState(false)
+  const [isLoginned, setIsloginned] = useState(false)
   // #Note_case used to diable ui  until useEffect finish checking userLogin
-  const [loadedStyles,setLoadedStyles]=useState(false)
+  const [loadedStyles, setLoadedStyles] = useState(false)
   let notifySliceState = useSelector((state) => state.notifyState)
 
 
@@ -34,85 +34,91 @@ function MainLandingPage({
 
 
 
-const [jsonData, , sendRequest] = useFetch()
-console.log(jsonData);
-useEffect(() => {
-  //first step to check token,to have one
-  //#Note_Case_only_strict_format only this is allowed by API, if user changed in localStorage 
+  const [jsonData, , sendRequest] = useFetch()
+  console.log(jsonData);
+  useEffect(() => {
+    //first step to check token,to have one
+    //#Note_Case_only_strict_format only this is allowed by API, if user changed in localStorage 
 
-  // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
-// #Note_case
-// when we say loaded styles 
-// user have invalid token in localStorage > display with (login plz)
-// user have valid token in localStorage > display with (go account)
-  if (localStorage.getItem("data") !== undefined && localStorage.getItem("data") !== null) {
+    // first cond to avoid bad data:undefined ,value,second avoid if it data entry not exist in localstorage
+    // #Note_case
+    // when we say loaded styles 
+    // user have invalid token in localStorage > display with (login plz)
+    // user have valid token in localStorage > display with (go account)
+    if (localStorage.getItem("data") !== undefined && localStorage.getItem("data") !== null) {
 
 
-    let TokenData = {
-      token: JSON.parse(localStorage.getItem("data"))?.token,
-      refreshtoken: JSON.parse(localStorage.getItem("data"))?.refreshToken?.refreshTokenString
+      let TokenData = {
+        token: JSON.parse(localStorage.getItem("data"))?.token,
+        refreshtoken: JSON.parse(localStorage.getItem("data"))?.refreshToken?.refreshTokenString
+      }
+
+
+      if (TokenData.token && TokenData.refreshtoken) {
+
+        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, {
+          method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onSucceed: () => {
+            handleExpiredToken()
+            setLoadedStyles(true)
+
+          }, onOkFailed: () => { setIsloginned(true); setLoadedStyles(true) }
+        })
+
+      }
+    } else if (localStorage.getItem("data") === undefined || localStorage.getItem("data") === null) {
+      setLoadedStyles(true)
     }
-
-
-    if (TokenData.token && TokenData.refreshtoken) {
-
-      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, { method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onSucceed: handleExpiredToken,onOkFailed:()=>{setIsloginned(true) ;setLoadedStyles(true)} })
+    else {
+      setLoadedStyles(true)
 
     }
-  }else  if (localStorage.getItem("data") === undefined || localStorage.getItem("data") === null) {
-    setLoadedStyles(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  function handleExpiredToken() {
+
+    localStorage.setItem('data', JSON.stringify(jsonData.data))
+
+
   }
-else{
-  setLoadedStyles(true)
 
-}
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [])
+  return (
 
-function handleExpiredToken() {
+    <>
+      {loadedStyles ? <div className="landing-page">
+        {notifySliceState?.message?.payload && <Alert type={notifySliceState?.type} alertText={notifySliceState?.message?.payload} />}
 
-  localStorage.setItem('data', JSON.stringify(jsonData.data))
+        {stateShowLoginPopup && !stateshowCreateAccountPopup && (
+          <Login onClose={onClickLogin} onSignupClick={onClickCreateAccount} />
+        )}
+        {!stateShowLoginPopup && stateshowCreateAccountPopup && (
+          <CreateAccount
+            onClose={onClickCreateAccount}
+            onSigninClick={onClickLogin}
+          />
+        )}
+        {showErrModal && <Alert type='err' alertText={errContent} />}
 
+        <NavBar
+          isLoginned={isLoginned}
+          onClickLogin={onClickLogin}
+          onClickCreateAccount={onClickCreateAccount}
+        />
+        <div className="Slogan">
+          <div className="quote-landingPage">
+            <h1>Be Briefed!</h1>
+            <h1>Be Brilliant!</h1>
+          </div>
+        </div>
+        <PublicChannels />
+        {/* <ContactUs /> */}
 
-}
-
-return (
-
-  <>
- {loadedStyles ? <div className="landing-page">
-    {notifySliceState?.message?.payload && <Alert type={notifySliceState?.type} alertText={notifySliceState?.message?.payload} />}
-
-    {stateShowLoginPopup && !stateshowCreateAccountPopup && (
-      <Login onClose={onClickLogin} onSignupClick={onClickCreateAccount} />
-    )}
-    {!stateShowLoginPopup && stateshowCreateAccountPopup && (
-      <CreateAccount
-        onClose={onClickCreateAccount}
-        onSigninClick={onClickLogin}
-      />
-    )}
-    {showErrModal && <Alert type='err' alertText={errContent} />}
-
-    <NavBar
-       isLoginned={isLoginned}
-      onClickLogin={onClickLogin}
-      onClickCreateAccount={onClickCreateAccount}
-    />
-    <div className="Slogan">
-      <div className="quote-landingPage">
-        <h1>Be Briefed!</h1>
-        <h1>Be Brilliant!</h1>
-      </div>
-    </div>
-    <PublicChannels />
-    {/* <ContactUs /> */}
-
-    <div className="scroll-to-top" onClick={handleScrollTop}>
-      <i className="fa fa-arrow-up"></i>
-    </div>
-  </div>:<Spinner/>}
-  </>
-)
+        <div className="scroll-to-top" onClick={handleScrollTop}>
+          <i className="fa fa-arrow-up"></i>
+        </div>
+      </div> : <Spinner />}
+    </>
+  )
 }
 
 export default MainLandingPage;

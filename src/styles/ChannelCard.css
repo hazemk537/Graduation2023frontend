@@ -55,7 +55,7 @@ background-color: rgb(229, 45, 45);
   }
   
   .gallary_item_details {
-    height: 30%;
+    height: 138%;
     overflow: hidden;
     font-size: 0.8rem;
   }
@@ -64,8 +64,6 @@ background-color: rgb(229, 45, 45);
     font-Family: Arial;
     font-Size: 1rem;
     font-Weight: 800;
-    color: #990000;
-
     display: flex;
     width: 100%;
     gap: 1rem;
@@ -90,12 +88,14 @@ background-color: rgb(229, 45, 45);
     border-radius: 10px;
     width: 50%;
     border: none;
+    color: #d9cfcf;
+
     height: 2rem;
     margin: 20px;
   }
   
   .subscribe_btn:hover {
-    color: rgb(0, 0, 0) !important;
+    color:white !important;
     background-color: rgb(255, 0, 0);
   }
   

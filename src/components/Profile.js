@@ -4,7 +4,7 @@ import '../styles/Profile.css';
 import logout from "../images/logout.svg";
 import userIcon from "../assets/user.svg"
 
-const ProfileImage = ({  userImage  }) => {
+const ProfileImage = ({ userImage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -17,16 +17,20 @@ const ProfileImage = ({  userImage  }) => {
     let data = JSON.parse(localStorage.getItem('data'));
 
     // Check if the data object and token exist
-    if (data ) {
+    if (data) {
       // Remove the token from the data object
-      
+
       // Save the updated data object back to local storage
       localStorage.clear('data')
     }
-    
+
     // Redirect to the home page after removing the token
     navigate('/');
   };
+  let userName = ''
+  if ((localStorage.getItem('userData') !== null && localStorage.getItem('userData') !== undefined)) {
+    userName = JSON.parse(localStorage.getItem('userData')).UserName
+  }
 
   return (
     <div className="profile-container">
@@ -39,7 +43,7 @@ const ProfileImage = ({  userImage  }) => {
           <div className="menu-item-user">
             <div>
               <img className='avatar' src={userIcon} alt="User Avatar" />
-              {/* <p>{userName}</p> */}
+              <p>{userName}</p>
             </div>
             {/* <div>
               <p><a className='jump' href='#'>{userAccount}</a></p>

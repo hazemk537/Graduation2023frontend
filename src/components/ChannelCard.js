@@ -93,7 +93,7 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
     <div>
 
       {type === 'public_channels' ? 
-      (<a style={{ textDecoration: 'none' }} href={`${item?.url}`}>
+      (<a target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} href={`${item?.url}`}>
         <div className="gallary_item"
           key={item?.id}
           onClick={() => {
@@ -148,6 +148,11 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
               unsubscribeHandler(resolve, item?.id);
             }).then(() => {
               setTriggerFetch((old) => !old);
+              // #NOTE_CASE if the removed was the  activeChannel (from localStorage) remove it
+              if (JSON.parse(localStorage.getItem('activeChannel'))?.id===item?.id) 
+                localStorage.setItem('activeChannel',null)
+
+
             });
           }}>
             UnFollow

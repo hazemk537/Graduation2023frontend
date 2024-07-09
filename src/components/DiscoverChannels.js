@@ -30,6 +30,8 @@ function DiscoverChannels() {
 
     if (allChannelsResponse.ok && subscribedChannelsResponse.ok) {
       let allchannelsJson = await allChannelsResponse.json();
+      console.log('GetDiscover');
+      console.log(allchannelsJson);
       let subscribedChannelJson = await subscribedChannelsResponse.json();
 
       let subscribtionIdArr = subscribedChannelJson.data?.map((item) => item.id);
@@ -42,6 +44,7 @@ function DiscoverChannels() {
       });
 
       allchannelsJson.data = Newchannels;
+
       setChannelJson(allchannelsJson);
     }
   }

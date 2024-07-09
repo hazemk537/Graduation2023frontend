@@ -13,11 +13,12 @@ const SavedArticles = () => {
   const [refetch, setRefetch] = useState(false); // State to trigger refetch
 
   useEffect(() => {
-    const storedData = localStorage.getItem("data");
+    const storedData = localStorage.getItem("savedDataPagination");
+    const token = JSON.parse(localStorage.getItem("data")).token
     if (storedData && storedData !== 'undefined') {
       const parsedData = JSON.parse(storedData);
-      if (parsedData && parsedData.token) {
-        setToken(parsedData.token);
+      if (parsedData && token) {
+        setToken(token);
       }
       if (parsedData && parsedData.pageSize) {
         setPageSize(parsedData.pageSize);
@@ -31,12 +32,11 @@ const SavedArticles = () => {
   useEffect(() => {
     // Save data to localStorage when token, pageSize, or pageNumber change
     const dataToStore = {
-      token,
       pageSize,
       pageNumber
     };
-    localStorage.setItem("data", JSON.stringify(dataToStore));
-  }, [token, pageSize, pageNumber]);
+    localStorage.setItem("savedDataPagination", JSON.stringify(dataToStore));
+  }, [pageSize, pageNumber]);
 
   useEffect(() => {
     // Fetch data from API when token, pageNumber, pageSize, or refetch change
@@ -56,7 +56,7 @@ const SavedArticles = () => {
         const result = await response.json();
 
         setData(result); // Set fetched data
-        
+
         if (result && result.succeeded) {
           setTotalPages(result.totalPages);
         }
@@ -109,7 +109,7 @@ const SavedArticles = () => {
           <div className="gallary_items div_userArticles">
             {data.data.map((article) => (
               <div key={article.id} className="articleCardContainer">
-                <ArticleCard item={article}  onUnsave={handleRefetch} />
+                <ArticleCard item={article} onUnsave={handleRefetch} />
               </div>
             ))}
           </div>
