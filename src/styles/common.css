@@ -12,6 +12,12 @@
 .commentsParent{
 
 }
+.redInput{
+    border: 1px solid red !important;
+    border: 2px solid red !important;
+    box-shadow: 10px 10px 0 rgb(155 42 42 / 54%) !important;
+    /* background-color: red !important;
+}
 .redTag{
     padding: 0.2rem;
     background-color: #4a4a4a;

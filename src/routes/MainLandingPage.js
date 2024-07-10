@@ -57,7 +57,7 @@ function MainLandingPage({
       if (TokenData.token && TokenData.refreshtoken) {
 
         sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, {
-          method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onSucceed: () => {
+          method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onOk: () => {
             handleExpiredToken()
             setLoadedStyles(true)
 
@@ -85,6 +85,7 @@ function MainLandingPage({
   return (
 
     <>
+      {/* #NOTE_CASE no refreshtoken api */}
       {loadedStyles ? <div className="landing-page">
         {notifySliceState?.message?.payload && <Alert type={notifySliceState?.type} alertText={notifySliceState?.message?.payload} />}
 
@@ -116,7 +117,13 @@ function MainLandingPage({
         <div className="scroll-to-top" onClick={handleScrollTop}>
           <i className="fa fa-arrow-up"></i>
         </div>
-      </div> : <Spinner />}
+      </div> :<>
+      
+      <Spinner />
+      {/* #NOTE_CASE no refreshtoken api */}
+      {/* <p>if it is infintly loading , servers are down</p> */}
+      </>}
+
     </>
   )
 }

@@ -27,50 +27,59 @@ const AddFeed = () => {
   });
   const [showPreview, setShowPreview] = useState(false); // State to control visibility of PreviewFeed
 
+  const [rssLinkValidateErr, setrssLinkValidateErr] = useState('')
+
   const inputRef = useRef(null);
 
   const handleSearch = () => {
-    console.log(feedLink);
-
-    const UrlBase = "https://cors.eu.org/";
-    fetch(UrlBase + inputRef.current.value)
-      .then((response) => response.text())
-      .then((xmlText) => {
-        console.log(xmlText);
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, "text/xml");
 
 
-        // #graduation_discution thow error
-        const channel_obj1 = {
-          channel_description: xmlDoc.querySelector("description")?.textContent,
-          channel_img_title: xmlDoc.querySelector("image title ")?.textContent,
-          channel_img_url: xmlDoc.querySelector("image url")?.textContent,
-          channel_title: xmlDoc.querySelector("title")?.textContent,
-          channel_pubDate: xmlDoc.querySelector("pubDate")?.textContent
-        };
+    if (rssLinkValidateErr === null) {
+      console.log(feedLink);
 
-        setChannelObj(channel_obj1);
-        console.log(channel_obj1);
-        // #Note_case empty input show bad view
-        if (channel_obj.channel_title) {
-          setShowPreview(true); // Show PreviewFeed after search
-          const articles = xmlDoc.querySelectorAll("item");
-          for (let i = 0; i < articles.length; i++) {
-            const innerHtmlChildren = new DOMParser().parseFromString(articles[i].innerHTML, 'text/html');
-            const article_obj1 = {
-              article_description: innerHtmlChildren.querySelector("description").textContent,
-              article_title: innerHtmlChildren.querySelector("title").textContent,
-              article_pubDate: innerHtmlChildren.querySelector("pubDate").textContent
-            };
-            console.log(article_obj1);
+      const UrlBase = "https://cors.eu.org/";
+      fetch(UrlBase + inputRef.current.value)
+        .then((response) => response.text())
+        .then((xmlText) => {
+          console.log(xmlText);
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+
+          // #graduation_discution thow error
+          const channel_obj1 = {
+            channel_description: xmlDoc.querySelector("description")?.textContent,
+            channel_img_title: xmlDoc.querySelector("image title ")?.textContent,
+            channel_img_url: xmlDoc.querySelector("image url")?.textContent,
+            channel_title: xmlDoc.querySelector("title")?.textContent,
+            channel_pubDate: xmlDoc.querySelector("pubDate")?.textContent
+          };
+
+          setChannelObj(channel_obj1);
+          console.log(channel_obj1);
+          // #Note_case empty input show bad view
+          if (channel_obj.channel_title) {
+            setShowPreview(true); // Show PreviewFeed after search
+            const articles = xmlDoc.querySelectorAll("item");
+            for (let i = 0; i < articles.length; i++) {
+              const innerHtmlChildren = new DOMParser().parseFromString(articles[i].innerHTML, 'text/html');
+              const article_obj1 = {
+                article_description: innerHtmlChildren.querySelector("description").textContent,
+                article_title: innerHtmlChildren.querySelector("title").textContent,
+                article_pubDate: innerHtmlChildren.querySelector("pubDate").textContent
+              };
+              console.log(article_obj1);
+            }
+
+            // Clear the input field after search
+            // will make input.current.value empty
+            inputRef.current.value = "";
           }
 
-          // Clear the input field after search
-          // will make input.current.value empty
-          inputRef.current.value = "";
-        }
-      });
+
+        })
+    }
+
   };
 
   const handleKeyPress = (event) => {
@@ -83,6 +92,7 @@ const AddFeed = () => {
     }
   };
   function addCustomFeed(feedLink) {
+
     let token = JSON.parse(localStorage.getItem('data')).token
     console.log(feedLink);
     sendRequest(`https://BrieflyNews.runasp.net/api/v1/Rss/CreateUserRss?rssUrl=${feedLink}`, {
@@ -100,7 +110,7 @@ const AddFeed = () => {
     <>
       <div className="centerFlex RSS-search-wrapper-p-div">
         <p className={` `}>Enter Rss URL below and hit enter</p>
-       
+
 
       </div>
       <p className={`rss_info`}> An RSS link is a web address that directs to an RSS feed, typically ending in <span className="redTag">.rss</span> or <span >.xml</span>, allowing users to subscribe and access updates from a website in a standardized format.</p>
@@ -108,14 +118,32 @@ const AddFeed = () => {
 
         {alertType && <Alert alertText={alertMessage} type={alertType} />}
 
-        <div className={`RSS-search-wrapper`}>
+        <div className={`RSS-search-wrapper ${rssLinkValidateErr === '' ? '' : 'redInput'} `}>
           {/* search functionallity #todo_4 */}
           <input
-            className="search-input"
+            className={`search-input  `}
             type="text"
-            ref={inputRef}
+
+            onChange={(event) => {
+
+              let inputval = event.target.value
+              if (inputval?.match(/https?:\/\/(\w)+.(rss|xml)/)) {
+                // #Note_case validate input
+
+                setrssLinkValidateErr('')
+
+              }
+              else {
+                // setrssLinkValidateErr('check url')
+
+              }
+
+
+            }}
             onKeyPress={handleKeyPress}
           />
+
+          {rssLinkValidateErr !=='' && <p>{rssLinkValidateErr}</p>}
 
           <svg
             xmlns="http://www.w3.org/2000/svg"

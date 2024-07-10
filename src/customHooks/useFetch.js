@@ -1,4 +1,4 @@
-import   {  useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { actions } from '../redux/slices/NotifySlice';
 
@@ -11,6 +11,7 @@ function useFetch() {
 
         let response
         // this .? handle if the options. is not exist
+        console.log(`Request  ${options.name}`);
         if (options.method.toUpperCase() === 'GET') {
 
             response = await fetch(url, {
@@ -38,6 +39,8 @@ function useFetch() {
         }
 
         try {
+            console.log('Response object');
+            console.log(response);
 
             if (response.ok) {
 
@@ -56,7 +59,7 @@ function useFetch() {
                     if (options?.jsonSuccessProp) {
 
                         dispatch(actions.setSuccess(`${jsonData[options.jsonSuccessProp]}`))//for user
-                        setTimeout(()=>dispatch(actions.setSuccess(``)), 3000)
+                        setTimeout(() => dispatch(actions.setSuccess(``)), 3000)
 
                     }
                     console.log(`jsonData`)
@@ -87,7 +90,7 @@ function useFetch() {
                             dispatch(actions.setError(`${jsonData[options.jsonFailProp]}`))
 
                         }
-                        setTimeout(()=>dispatch(actions.setError(``)), 2000)
+                        setTimeout(() => dispatch(actions.setError(``)), 2000)
 
 
                     }
@@ -119,7 +122,7 @@ function useFetch() {
                         dispatch(actions.setError(`${jsonData[options.jsonFailProp]}`))
 
                     }
-                    setTimeout(()=>dispatch(actions.setError(``)), 3000)
+                    setTimeout(() => dispatch(actions.setError(``)), 3000)
 
                 }
                 setData(jsonData)
