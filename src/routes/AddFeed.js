@@ -95,7 +95,7 @@ const AddFeed = () => {
 
     let token = JSON.parse(localStorage.getItem('data')).token
     console.log(feedLink);
-    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Rss/CreateUserRss?rssUrl=${feedLink}`, {
+    sendRequest(`https://localhost:7250/api/v1/Rss/CreateUserRss?rssUrl=${feedLink}`, {
       method: 'POST', name: 'POSTADDrss', token: token, jsonSuccessProp: 'message', onSucceed: () => {
 
       }, jsonFailProp: 'message'

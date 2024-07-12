@@ -20,7 +20,7 @@ function SubscripedChannels() {
   const [jsonData, , sendRequest] = useFetch();
 
   useEffect(() => {
-    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All?PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GETSubscribedRss', token: token });
+    sendRequest(`https://localhost:7250/api/v1/Rss/SubscribedRss/All?PageNumber=${pageNumber}&PageSize=10`, { method: 'get', name: 'GETSubscribedRss', token: token });
     console.log(pageNumber);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [triggerFetch, pageNumber]);

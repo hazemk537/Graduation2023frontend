@@ -14,7 +14,7 @@ function AddArticleComment({ articleId, setTriggerFetchComments }) {
         }
 
         if (addCommentRef.current?.value && articleId) {
-            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/AddGeneralCommentArticle?text=${addCommentRef.current.value}&articleId=${articleId}`, {
+            sendRequest(`https://localhost:7250/api/v1/CommentsArticle/AddGeneralCommentArticle?text=${addCommentRef.current.value}&articleId=${articleId}`, {
                 method: 'POST',
                 name: 'POSTGlobalComment',
                 token: token,

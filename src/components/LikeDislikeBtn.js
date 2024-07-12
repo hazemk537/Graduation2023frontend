@@ -48,7 +48,7 @@ const LikeDislikeBtn = ({ articleId }) => {
     }
 
     // Determine the endpoint based on the like state
-    const url = `https://brieflynews.runasp.net/api/v1/Article/${isLiked ? 'DeleteLikeArticle' : 'AddLikeArticle'}/${articleId}`;
+    const url = `https://localhost:7250/api/v1/Article/${isLiked ? 'DeleteLikeArticle' : 'AddLikeArticle'}/${articleId}`;
     const method = 'POST';
 
     console.log(`Sending request to ${url} with method ${method} and articleId ${articleId}`);

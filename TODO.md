@@ -36,11 +36,13 @@
 
 ### High
 - +articlemodal reltaed artivles api
-- +discover replace 2 apis with 1 api using subscribed boolean
 -  +articleModal link svg ,
 ,+comments coddingHorror breaked 
-- add comment styling and bad cors error
 - +addrss validation
+- follow/unfollow
+- pagniation
+- red message on save,empty modal
+
 
 
 

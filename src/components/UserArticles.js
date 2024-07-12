@@ -33,7 +33,7 @@ function UserArticles() {
       setLoading(true);
 
 
-      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=1&PageSize=10`, {
+      sendRequest(`https://localhost:7250/api/v1/Article/GetAllRssArticles?Rssid=${id}&PageNumber=1&PageSize=10`, {
         method: 'get', name: 'GETuserArticles', token: token, onSucceed: (data) => {
           setLoading(false);
           // Assume response contains total articles count
@@ -57,7 +57,7 @@ function UserArticles() {
   useEffect(() => {
     // #Note_case if current channel is x ,then user unsubscirbe it, we should remove it from localstorage  
     if (selectedChannelId) {
-      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetAllRssArticles?Rssid=${selectedChannelId}&PageNumber=${pageNumber}&PageSize=10`, {
+      sendRequest(`https://localhost:7250/api/v1/Article/GetAllRssArticles?Rssid=${selectedChannelId}&PageNumber=${pageNumber}&PageSize=10`, {
         method: 'get', name: 'GETuserArticles', token: token, onOk: (data) => {
           setLoading(false);
           setTotalPages(Math.ceil(data.totalPages));

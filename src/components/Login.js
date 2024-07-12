@@ -27,7 +27,7 @@ function LoginForm({ onClose, onSignupClick }) {
     //#todo_4 email Email usr_mail >> map
     const data = { 'Email': email, 'password': password };
     //#Note_case_useless_state direct receive updated json value insteead of using state (uselessState)
-    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/Login`, { method: 'POST', name: 'POSTlogin', body: data, onSucceed: handleSuccessSignIn, jsonSuccessProp: 'message', jsonFailProp: 'message' })
+    sendRequest(`https://localhost:7250/api/v1/Auth/Login`, { method: 'POST', name: 'POSTlogin', body: data, onSucceed: handleSuccessSignIn, jsonSuccessProp: 'message', jsonFailProp: 'message' })
   };
 
 

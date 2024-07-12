@@ -45,7 +45,7 @@ const SaveDelBtn = ({ articleId, onUnsave }) => {
     }
 
     // Determine the endpoint and method based on the save state
-    const url = `https://BrieflyNews.runasp.net/api/v1/Article/${isSaved ? 'DeleteUserSaveArticle' : 'SaveUserArticle'}/${articleId}`;
+    const url = `https://localhost:7250/api/v1/Article/${isSaved ? 'DeleteUserSaveArticle' : 'SaveUserArticle'}/${articleId}`;
     const method = isSaved ? 'DELETE' : 'POST';
 
     console.log(`Sending request to ${url} with method ${method}`);

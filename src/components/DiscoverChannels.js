@@ -14,13 +14,13 @@ function DiscoverChannels() {
   let token = JSON.parse(localStorage.getItem('data')).token;
 
   async function parrallelDiscover(searchQuery = '') {
-    let allAllchannelsPromise = fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/GetAll?search=${searchQuery}&PageNumber=${pageNumber}&PageSize=7`, {
+    let allAllchannelsPromise = fetch(`https://localhost:7250/api/v1/Rss/GetAll?search=${searchQuery}&PageNumber=${pageNumber}&PageSize=7`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
     });
 
-    let subscribedChannelsPromise = fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All`, {
+    let subscribedChannelsPromise = fetch(`https://localhost:7250/api/v1/Rss/SubscribedRss/All`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }

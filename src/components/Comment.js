@@ -37,7 +37,7 @@ function Comment(props) {
         // #NOte_case check against token,send value schema
         if (token !== undefined && token != null && editInputRef.current.value !== '')
 
-            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/EditCommentArticle?text=${editInputRef.current.value}&commentId=${id}`, {
+            sendRequest(`https://localhost:7250/api/v1/CommentsArticle/EditCommentArticle?text=${editInputRef.current.value}&commentId=${id}`, {
                 method: 'PUT', name: 'PUTeditComment', token: token, onSucceed: () => {
                     props.setTriggerFetchComments((old) => !old)
                     // #NOTE_CASE hide form after editing the comment
@@ -60,7 +60,7 @@ function Comment(props) {
     function deleteComment() {
         if (token !== undefined || token != null)
 
-            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/DeleteCommentArticle/${props?.data?.id}`, {
+            sendRequest(`https://localhost:7250/api/v1/CommentsArticle/DeleteCommentArticle/${props?.data?.id}`, {
                 method: 'DELETE', name: 'deleteComment', token: token, onSucceed: () =>
 
                     props.setTriggerFetchComments((old) => !old), jsonFailProp: 'message',
@@ -75,7 +75,7 @@ function Comment(props) {
     function likeComment(id) {
         if (token !== undefined || token != null)
 
-            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/AddLikeCommentArticle/${id}`, {
+            sendRequest(`https://localhost:7250/api/v1/CommentsArticle/AddLikeCommentArticle/${id}`, {
                 method: 'POST', name: 'likeComment', token: token, onSucceed: () => {
                     // #NOTE_case to rerender component and show dislike/like
 
@@ -95,7 +95,7 @@ function Comment(props) {
 
     function dislikeComment(id) {
         if (token !== undefined || token != null) {
-            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/DeleteLikeCommentArticle/${id}`, {
+            sendRequest(`https://localhost:7250/api/v1/CommentsArticle/DeleteLikeCommentArticle/${id}`, {
                 method: 'POST', name: 'dislikeComment', token: token, onSucceed: () => {
                     // #NOTE_case to rerender component and show dislike/like
 
@@ -115,7 +115,7 @@ function Comment(props) {
     function sendcommentComment(id) {
         if (token !== undefined && token != null && addCommentRef.current.value)
 
-            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/AddLocalCommentArticle?text=${addCommentRef.current.value}&articleId=${props.articleId}&parentcommentId=${id}`, {
+            sendRequest(`https://localhost:7250/api/v1/CommentsArticle/AddLocalCommentArticle?text=${addCommentRef.current.value}&articleId=${props.articleId}&parentcommentId=${id}`, {
                 method: 'POST', name: 'commentComment', token: token, onSucceed: () => {
                     props.setTriggerFetchComments((old) => !old)
 

@@ -39,7 +39,7 @@ function SubscribedList({ GetRssArticlesById, loading }) {
     }, []);
 
     useEffect(() => {
-        sendRequest('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', { method: 'GET', name: 'GetSubscribedList', token: token });
+        sendRequest('https://localhost:7250/api/v1/Rss/SubscribedRss/All', { method: 'GET', name: 'GetSubscribedList', token: token });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

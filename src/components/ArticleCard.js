@@ -5,7 +5,7 @@ import SaveDelBtn from './SaveDelBtn';
 import LikeDislikeBtn from './LikeDislikeBtn';
 import eyeIcon from '../assets/eye.svg'
 import heartIcon from '../assets/heart.svg'
-
+import '../styles/common.css'
 const ArticleCard = ({ item, setArticleModalData, onUnsave }) => { // Added onUnsave prop
 
   console.log(`🖌️ ArticleCard`); // #debug
@@ -31,7 +31,7 @@ const ArticleCard = ({ item, setArticleModalData, onUnsave }) => { // Added onUn
   return (
     <div className="gallary_item" key={item.id}
       onClick={() => {
-        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Article/GetRssArticle/${item?.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData });
+        sendRequest(`https://localhost:7250/api/v1/Article/GetRssArticle/${item?.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData });
       }}
     >
       <div>
