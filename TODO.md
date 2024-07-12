@@ -38,7 +38,10 @@
 
 - +articleModal link svg ,
 - +comments coddingHorror breaked 
+
 - +addrss validation
+- bad z-index
+- 
 - responsive
 
 

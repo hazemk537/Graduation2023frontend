@@ -82,7 +82,7 @@ function SubscribedList({ GetRssArticlesById, loading }) {
                 <Spinner />
             </div>
         );
-    } else if (jsonData.data && jsonData.data.length > 0) {
+    } else if (jsonData.data && jsonData?.data?.length > 0) {
         return (
             <div>
                 {windowWidth > 768 ? (
@@ -141,7 +141,8 @@ function SubscribedList({ GetRssArticlesById, loading }) {
                 )}
             </div>
         );
-    } else {
+        // #nOTE_cASE should be no elements solve bad transient state tryit
+    } else if((jsonData.data && jsonData?.data?.length ===0)) {
         return (
             <div className='No-channels'>
                 <h1>No Subscriptions, Subscribe to show articles </h1>

@@ -58,7 +58,7 @@ function UserArticles() {
     // #Note_case if current channel is x ,then user unsubscirbe it, we should remove it from localstorage  
     if (selectedChannelId) {
       sendRequest(`https://localhost:7250/api/v1/Article/GetAllRssArticles?Rssid=${selectedChannelId}&PageNumber=${pageNumber}&PageSize=10`, {
-        method: 'get', name: 'GETuserArticles', token: token, onOk: (data) => {
+        method: 'get', name: 'GETuserArticles', token: token, onSucceed: (data) => {
           setLoading(false);
           setTotalPages(Math.ceil(jsonData?.totalPages));
         }, onFailed: () => { setLoading(false) }
