@@ -51,7 +51,7 @@ function UserArticles() {
       setRssTitle(activeChannel.title);
     }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -66,24 +66,36 @@ function UserArticles() {
 
       });
     }
-  else{
-    // #Note_case happens if we unsubscribed all channels
-    setLoading(false);
+    else {
+      // #Note_case happens if we unsubscribed all channels
+      setLoading(false);
 
-  }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber, selectedChannelId]);
 
-  
+
 
   return (
     <>
-        {<div className="channel-title"><h2>{rssTitle}</h2></div>}
-        {articleModalData && <ArticleModal  setArticleModalData={setArticleModalData} data={articleModalData} />}
+      {<div className="channel-title"><h2>{rssTitle}</h2></div>}
+      {articleModalData && <ArticleModal setArticleModalData={setArticleModalData} data={articleModalData} />}
 
       <div className="div_userArticles">
-        <div className="subscribedList">       <SubscribedList GetRssArticlesById={GetRssArticlesById} loading={loading} />
+
+        <div className="subscribedList">
+          <SubscribedList GetRssArticlesById={GetRssArticlesById} loading={loading} />
         </div>
+        {
+
+          jsonData?.data === null
+          &&
+          <div className={`gallary_items `}>
+            <p className="noDataText">
+              There is no data
+            </p>
+          </div>
+        }
         {
           // #NOTE_CASE ENSSURE   DATA has no 0 length
           loading ? (
@@ -103,17 +115,7 @@ function UserArticles() {
             </>
           )
         }
-        {
 
-          jsonData?.data === null && <p className="noDataText">
-            There is no data
-          </p>
-        }
-
-
-        {/* {[{ title: 'test title', description: 'test description' ,id:12321}].map((item) => (
-          <ArticleCard key={item.id} setArticleModalData={setArticleModalData} item={item} />
-        ))} */}
       </div>
     </>
   );
