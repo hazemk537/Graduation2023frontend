@@ -102,8 +102,9 @@
     height: auto;
     /* margin-top: 10%; */
     height: auto;
-    object-fit: cover;
-    opacity: 0.7;
+    /* #Note_Case tryit if all articles id is 4 , bad small image in related section */
+    object-fit: contain;
+        opacity: 0.7;
     /* border-radius: 20px;*/
 }
 
@@ -135,7 +136,6 @@
     position:absolute;
     top:20px;
     left:10px;
-    color:#eaeaea;
     z-index: 153;
     background-color: #b33434;
     padding: 10px;

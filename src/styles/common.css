@@ -194,7 +194,7 @@ padding-left: 3rem;
     background-color: black;
 }
 .div_userArticles{
-    margin-top: 30vh;
+    margin-top: 20vh;
 }
 .centerFlex{
 display: flex;
@@ -449,12 +449,13 @@ border: 1px solid red;
 .channel-title {
     color: rgb(184, 1, 1);
     font-size: 1.5rem;
-    top: 12%;
+    top: 15%;
+    text-align: center;
     transform: translatey(-20%);
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
+    position: relative;
+    /* left: 83%; */
+    /* transform: translateX(-50%);*/
+    }
 
 /* Mobile specific styles */
 @media (max-width: 768px) {

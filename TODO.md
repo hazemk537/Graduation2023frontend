@@ -33,20 +33,18 @@
 - pageNumber bad in local storage
 
 ### pending 
-
+- +articleModal link svg ,
+- +comments if many comments breaked 
 ### High
 
-- +articleModal link svg ,
-- +comments coddingHorror breaked 
-
 - +addrss validation
-- bad z-index
-- 
 - responsive
 
 
 ### In Progress
 ### Done ✓
+- bad z-index
+
 - follow/unfollow
 - red message on save,empty modal
 - descriptoion rm
