@@ -35,21 +35,18 @@
 ### pending 
 
 ### High
--  +articleModal link svg ,
+
+- +articleModal link svg ,
 - +comments coddingHorror breaked 
-
 - +addrss validation
-
-
-
-- follow/unfollow
-- red message on save,empty modal
 - responsive
-- descriptoion rm
+
 
 ### In Progress
 ### Done ✓
-
+- follow/unfollow
+- red message on save,empty modal
+- descriptoion rm
 - +articlemodal reltaed artivles api
 - pagniation
 
