@@ -42,7 +42,7 @@
 - follow/unfollow
 - pagniation
 - red message on save,empty modal
-
+- responsive
 - descriptoion rm
 
 ### In Progress

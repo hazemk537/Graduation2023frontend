@@ -79,7 +79,7 @@ function UserArticles() {
   return (
     <>
         {<div className="channel-title"><h2>{rssTitle}</h2></div>}
-        {articleModalData && <ArticleModal setArticleModalData={setArticleModalData} data={articleModalData} />}
+        {articleModalData && <ArticleModal  setArticleModalData={setArticleModalData} data={articleModalData} />}
 
       <div className="div_userArticles">
         <div className="subscribedList">       <SubscribedList GetRssArticlesById={GetRssArticlesById} loading={loading} />

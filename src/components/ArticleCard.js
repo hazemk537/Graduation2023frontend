@@ -31,7 +31,7 @@ const ArticleCard = ({ item, setArticleModalData, onUnsave }) => { // Added onUn
   return (
     <div className="gallary_item" key={item.id}
       onClick={() => {
-        sendRequest(`https://localhost:7250/api/v1/Article/GetRssArticle/${item?.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData });
+        sendRequest(`https://localhost:7250/api/v1/Article/GetRssArticle/${10}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData });
       }}
     >
       <div>
@@ -68,20 +68,7 @@ const ArticleCard = ({ item, setArticleModalData, onUnsave }) => { // Added onUn
 
         <div><SaveDelBtn articleId={item?.id} onUnsave={onUnsave} /></div>
         <div><LikeDislikeBtn articleId={item?.id} /></div>
-        {/* <svg
-          className="gallary_item_action_comment"
-          viewBox="0 0 32 32"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="#5c5757"
-          stroke="#5c5757"
-        >
-          <g strokeWidth={0} />
-          <g strokeLinecap="round" strokeLinejoin="round" />
-          <g stroke="none" fillRule="evenodd" transform="translate(-308 -255)">
-            <path d="M327.494 279.633 324 284l-3.494-4.367c-6.042-1.278-10.514-5.77-10.514-11.132 0-6.355 6.272-11.507 14.008-11.507s14.008 5.152 14.008 11.507c0 5.362-4.472 9.854-10.514 11.132M324 255c-8.837 0-16 6.143-16 13.72">
-            </path>
-          </g>
-        </svg> */}
+        
 
       </div>
     </div>
