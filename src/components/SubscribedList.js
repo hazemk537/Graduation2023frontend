@@ -39,7 +39,8 @@ function SubscribedList({ GetRssArticlesById, loading }) {
     }, []);
 
     useEffect(() => {
-        sendRequest('https://localhost:7250/api/v1/Rss/SubscribedRss/All', { method: 'GET', name: 'GetSubscribedList', token: token });
+        // #Note_case workarround get all rss without 10 by defauklt,without pagenation
+        sendRequest('https://localhost:7250/api/v1/Rss/SubscribedRss/All?PageNumber=1&PageSize=1000', { method: 'GET', name: 'GetSubscribedList', token: token });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

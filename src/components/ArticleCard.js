@@ -58,7 +58,7 @@ const ArticleCard = ({ item, setArticleModalData, onUnsave }) => { // Added onUn
       <div className="gallary_item_details">
         <h2 style={{ height: '5.3rem' }} className="gallary_item_headding">{item?.title}</h2>
 
-        <p>{item?.description.substring(0, 90)} ...</p>
+        {/* <p>{item?.description.substring(0, 90)} ...</p> */}
       </div>
 
       <div className="gallary_item_actions">

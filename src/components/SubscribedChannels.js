@@ -32,8 +32,8 @@ function SubscripedChannels() {
 
       {alertType && <Alert alertText={alertMessage} type={alertType} />}
       <ChannelsView
-       totalPages={jsonData.totalPages}
-        pageNumber={jsonData.pageNumber}
+       totalPages={jsonData?.totalPages}
+        pageNumber={jsonData?.pageNumber}
         className={'gallary_items_subscribed_Channels'}
         setPageNumber={setPageNumber}
         setTriggerFetch={setTriggerFetch}

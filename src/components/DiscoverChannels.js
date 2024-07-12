@@ -20,7 +20,7 @@ function DiscoverChannels() {
       }
     });
 
-    let subscribedChannelsPromise = fetch(`https://localhost:7250/api/v1/Rss/SubscribedRss/All`, {
+    let subscribedChannelsPromise = fetch(`https://localhost:7250/api/v1/Rss/SubscribedRss/All?PageNumber=1&PageSize=1000`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -33,6 +33,8 @@ function DiscoverChannels() {
       console.log('GetDiscover');
       console.log(allchannelsJson);
       let subscribedChannelJson = await subscribedChannelsResponse.json();
+      console.log('subscribedChannelJson')
+      console.log(subscribedChannelJson)
 
       let subscribtionIdArr = subscribedChannelJson.data?.map((item) => item.id);
 

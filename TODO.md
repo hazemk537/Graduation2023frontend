@@ -35,18 +35,24 @@
 ### pending 
 
 ### High
-- +articlemodal reltaed artivles api
 -  +articleModal link svg ,
-,+comments coddingHorror breaked 
+- +comments coddingHorror breaked 
+
 - +addrss validation
+
+
+
 - follow/unfollow
-- pagniation
 - red message on save,empty modal
 - responsive
 - descriptoion rm
 
 ### In Progress
 ### Done ✓
+
+- +articlemodal reltaed artivles api
+- pagniation
+
 - 2 bugs with +backend
 - userarticles bug
 -  comments apis
