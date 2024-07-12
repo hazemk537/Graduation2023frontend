@@ -56,7 +56,7 @@ function MainLandingPage({
 
       if (TokenData.token && TokenData.refreshtoken) {
 
-        sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/GenerateRefreshToken`, {
+        sendRequest(`https://localhost:7250/api/v1/Auth/GenerateRefreshToken`, {
           method: 'POST', name: 'GenerateRefreshToken', body: TokenData, onOk: () => {
             handleExpiredToken()
             setLoadedStyles(true)

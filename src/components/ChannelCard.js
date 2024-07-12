@@ -27,7 +27,7 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
   }
 
   const subscribeHandler = (resolve, id) => {
-    fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/RssUserSubscribe/${id}`, {
+    fetch(`https://localhost:7250/api/v1/Rss/RssUserSubscribe/${id}`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }, method: 'POST'
@@ -57,7 +57,7 @@ function ChannelCard({ parrallelDiscover, setTriggerFetch, setModalData, type, i
 
   const unsubscribeHandler = (resolve, id) => {
     console.log(id);
-    fetch(`https://BrieflyNews.runasp.net/api/v1/Rss/RssUserUnSubscribe/${id}`, {
+    fetch(`https://localhost:7250/api/v1/Rss/RssUserUnSubscribe/${id}`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }, method: 'POST'

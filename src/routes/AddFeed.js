@@ -27,67 +27,59 @@ const AddFeed = () => {
   });
   const [showPreview, setShowPreview] = useState(false); // State to control visibility of PreviewFeed
 
-  const [rssLinkValidateErr, setrssLinkValidateErr] = useState('')
-
-  const inputRef = useRef(null);
+  const [rssLink, setRssLink] = useState('')
 
   const handleSearch = () => {
 
-
-    if (rssLinkValidateErr === null) {
-      console.log(feedLink);
-
-      const UrlBase = "https://cors.eu.org/";
-      fetch(UrlBase + inputRef.current.value)
-        .then((response) => response.text())
-        .then((xmlText) => {
-          console.log(xmlText);
-          const parser = new DOMParser();
-          const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+    const UrlBase = "https://cors.eu.org/";
+    fetch(UrlBase + rssLink)
+      .then((response) => response.text())
+      .then((xmlText) => {
+        console.log(xmlText);
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "text/xml");
 
 
-          // #graduation_discution thow error
-          const channel_obj1 = {
-            channel_description: xmlDoc.querySelector("description")?.textContent,
-            channel_img_title: xmlDoc.querySelector("image title ")?.textContent,
-            channel_img_url: xmlDoc.querySelector("image url")?.textContent,
-            channel_title: xmlDoc.querySelector("title")?.textContent,
-            channel_pubDate: xmlDoc.querySelector("pubDate")?.textContent
-          };
+        // #graduation_discution thow error
+        const channel_obj1 = {
+          channel_description: xmlDoc.querySelector("description")?.textContent,
+          channel_img_title: xmlDoc.querySelector("image title ")?.textContent,
+          channel_img_url: xmlDoc.querySelector("image url")?.textContent,
+          channel_title: xmlDoc.querySelector("title")?.textContent,
+          channel_pubDate: xmlDoc.querySelector("pubDate")?.textContent
+        };
 
-          setChannelObj(channel_obj1);
-          console.log(channel_obj1);
-          // #Note_case empty input show bad view
-          if (channel_obj.channel_title) {
-            setShowPreview(true); // Show PreviewFeed after search
-            const articles = xmlDoc.querySelectorAll("item");
-            for (let i = 0; i < articles.length; i++) {
-              const innerHtmlChildren = new DOMParser().parseFromString(articles[i].innerHTML, 'text/html');
-              const article_obj1 = {
-                article_description: innerHtmlChildren.querySelector("description").textContent,
-                article_title: innerHtmlChildren.querySelector("title").textContent,
-                article_pubDate: innerHtmlChildren.querySelector("pubDate").textContent
-              };
-              console.log(article_obj1);
-            }
-
-            // Clear the input field after search
-            // will make input.current.value empty
-            inputRef.current.value = "";
+        setChannelObj(channel_obj1);
+        console.log(channel_obj1);
+        // #Note_case empty input show bad view
+        if (channel_obj.channel_title) {
+          setShowPreview(true); // Show PreviewFeed after search
+          const articles = xmlDoc.querySelectorAll("item");
+          for (let i = 0; i < articles.length; i++) {
+            const innerHtmlChildren = new DOMParser().parseFromString(articles[i].innerHTML, 'text/html');
+            const article_obj1 = {
+              article_description: innerHtmlChildren.querySelector("description").textContent,
+              article_title: innerHtmlChildren.querySelector("title").textContent,
+              article_pubDate: innerHtmlChildren.querySelector("pubDate").textContent
+            };
+            console.log(article_obj1);
           }
 
+          // Clear the input field after search
+          // will make input.current.value empty
+          setRssLink("")
+        }
 
-        })
-    }
+
+      })
+
 
   };
 
   const handleKeyPress = (event) => {
     //reserve it before clear the field
-    feedLink = inputRef.current.value
-    console.log(feedLink);
 
-    if (event.key === "Enter") {
+    if (event.key === "Enter"&&rssLink?.match(/https?:\/\/(\w|\W)+.(rss|xml)/) && rssLink !== '' ) {
       handleSearch();
     }
   };
@@ -95,7 +87,7 @@ const AddFeed = () => {
 
     let token = JSON.parse(localStorage.getItem('data')).token
     console.log(feedLink);
-    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Rss/CreateUserRss?rssUrl=${feedLink}`, {
+    sendRequest(`https://localhost:7250/api/v1/Rss/CreateUserRss?rssUrl=${feedLink}`, {
       method: 'POST', name: 'POSTADDrss', token: token, jsonSuccessProp: 'message', onSucceed: () => {
 
       }, jsonFailProp: 'message'
@@ -118,32 +110,23 @@ const AddFeed = () => {
 
         {alertType && <Alert alertText={alertMessage} type={alertType} />}
 
-        <div className={`RSS-search-wrapper ${rssLinkValidateErr === '' ? '' : 'redInput'} `}>
+        <div className={`RSS-search-wrapper  `}>
           {/* search functionallity #todo_4 */}
           <input
             className={`search-input  `}
             type="text"
-
             onChange={(event) => {
-
-              let inputval = event.target.value
-              if (inputval?.match(/https?:\/\/(\w)+.(rss|xml)/)) {
-                // #Note_case validate input
-
-                setrssLinkValidateErr('')
-
-              }
-              else {
-                // setrssLinkValidateErr('check url')
-
-              }
-
-
+              setRssLink(event.target.value)
             }}
             onKeyPress={handleKeyPress}
+          // #Note_case validate input
           />
 
-          {rssLinkValidateErr !=='' && <p>{rssLinkValidateErr}</p>}
+
+
+
+
+          <p>{!rssLink?.match(/https?:\/\/(\w|\W)+.(rss|xml)/) && rssLink !== '' ? "Link is not xml or rss" : null}</p>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"

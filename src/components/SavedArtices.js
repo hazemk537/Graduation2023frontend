@@ -46,7 +46,7 @@ const SavedArticles = () => {
         return;
       }
 
-      const url = `https://BrieflyNews.runasp.net/api/v1/Article/GetAllUserSavedArticles?PageNumber=${pageNumber}&PageSize=${pageSize}`;
+      const url = `https://localhost:7250/api/v1/Article/GetAllUserSavedArticles?PageNumber=${pageNumber}&PageSize=${pageSize}`;
       try {
         const response = await fetch(url, {
           headers: {

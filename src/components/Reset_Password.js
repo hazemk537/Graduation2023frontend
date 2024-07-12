@@ -92,14 +92,14 @@ function ResetPassword() {
             onChange={(event) => setEmailInput(event.target.value)}
             value={emailInput}
             onKeyPress={(event) => handleKeyPress(event, () => {
-              sendgetResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/SendResetpassword`, { method: 'POST', name: 'POSTsendgetResetCode', body: { 'email': emailInput }, onSucceed: sendCodeHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
+              sendgetResetCode(`https://localhost:7250/api/v1/Auth/SendResetpassword`, { method: 'POST', name: 'POSTsendgetResetCode', body: { 'email': emailInput }, onSucceed: sendCodeHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
             })}
           />
         </div>}
 
         {!togglesCodeForm && <div>
           <button onClick={() => {
-            sendgetResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/SendResetpassword`, { method: 'POST', name: 'POSTsendgetResetCode', body: { 'email': emailInput }, onSucceed: sendCodeHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
+            sendgetResetCode(`https://localhost:7250/api/v1/Auth/SendResetpassword`, { method: 'POST', name: 'POSTsendgetResetCode', body: { 'email': emailInput }, onSucceed: sendCodeHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
           }}>send code </button>
         </div>}
 
@@ -120,13 +120,13 @@ function ResetPassword() {
                 onChange={(event) => setCodeInput(event.target.value)}
                 value={codeInput}
                 onKeyPress={(event) => handleKeyPress(event, () => {
-                  sendconfirmResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/ConfirmResetPassword`, { method: 'POST', name: 'POSTsendconfirmResetCode', body: { 'email': emailInput, 'code': codeInput }, onSucceed: verifyCodeHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
+                  sendconfirmResetCode(`https://localhost:7250/api/v1/Auth/ConfirmResetPassword`, { method: 'POST', name: 'POSTsendconfirmResetCode', body: { 'email': emailInput, 'code': codeInput }, onSucceed: verifyCodeHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
                 })}
               />
             </div>
             <div>
               <button id="sub_btn" onClick={() => {
-                sendconfirmResetCode(`https://BrieflyNews.runasp.net/api/v1/Auth/ConfirmResetPassword`, { method: 'POST', name: 'POSTsendconfirmResetCode', body: { 'email': emailInput, 'code': codeInput }, onSucceed: verifyCodeHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
+                sendconfirmResetCode(`https://localhost:7250/api/v1/Auth/ConfirmResetPassword`, { method: 'POST', name: 'POSTsendconfirmResetCode', body: { 'email': emailInput, 'code': codeInput }, onSucceed: verifyCodeHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
               }}>
                 Enter Code
               </button>
@@ -150,7 +150,7 @@ function ResetPassword() {
               value={passwordInput}
               onChange={(event) => setPasswordInput(event.target.value)}
               onKeyPress={(event) => handleKeyPress(event, () => {
-                sendNewPassword(`https://BrieflyNews.runasp.net/api/v1/Auth/Resetpassword`, { method: 'POST', name: 'POSTsendNewPaasword', body: { 'email': emailInput, 'password': passwordInput }, onSucceed: resetPasswordHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
+                sendNewPassword(`https://localhost:7250/api/v1/Auth/Resetpassword`, { method: 'POST', name: 'POSTsendNewPaasword', body: { 'email': emailInput, 'password': passwordInput }, onSucceed: resetPasswordHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
               })}
             />
             <span className="show" onClick={togglePasswordVisibility}>
@@ -161,7 +161,7 @@ function ResetPassword() {
             <button
               className="resetPassword_btn"
               onClick={() => {
-                sendNewPassword(`https://BrieflyNews.runasp.net/api/v1/Auth/Resetpassword`, { method: 'POST', name: 'POSTsendNewPaasword', body: { 'email': emailInput, 'password': passwordInput }, onSucceed: resetPasswordHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
+                sendNewPassword(`https://localhost:7250/api/v1/Auth/Resetpassword`, { method: 'POST', name: 'POSTsendNewPaasword', body: { 'email': emailInput, 'password': passwordInput }, onSucceed: resetPasswordHandler, jsonSuccessProp: 'message', jsonFailProp: 'message' })
               }}
             >
               Submit

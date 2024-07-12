@@ -12,6 +12,45 @@
 .commentsParent{
 
 }
+.relatedArticles{
+
+}
+.relatedArticle{
+    border-radius: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    background-color: #1a1414;
+    padding: 0.5rem;
+    position: relative;
+}
+.relatedArticle img{
+    width: 5rem !important;
+
+    height: 5rem !important;
+    border-radius: 24% !important; 
+    padding:0 !important;
+    margin:0 !important;
+    margin-left: 1.2rem !important;
+}
+
+.relatedArticle >p{
+    width: 61%;
+     
+}
+.relatedArticle:hover{
+    background-color: #7a6d6d83;
+
+     
+}
+.relatedArticle >span{
+     
+   top: 55% !important;
+
+}
+
 .redInput{
     border: 1px solid red !important;
     border: 2px solid red !important;
@@ -155,7 +194,7 @@ padding-left: 3rem;
     background-color: black;
 }
 .div_userArticles{
-    margin-top: 30vh;
+    margin-top: 20vh;
 }
 .centerFlex{
 display: flex;
@@ -410,12 +449,13 @@ border: 1px solid red;
 .channel-title {
     color: rgb(184, 1, 1);
     font-size: 1.5rem;
-    top: 12%;
+    top: 15%;
+    text-align: center;
     transform: translatey(-20%);
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
+    position: relative;
+    /* left: 83%; */
+    /* transform: translateX(-50%);*/
+    }
 
 /* Mobile specific styles */
 @media (max-width: 768px) {

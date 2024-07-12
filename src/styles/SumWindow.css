@@ -95,14 +95,17 @@
     margin-top: auto;
 }
 .sumwindow img {
-    margin-top:10%;
-    max-height: 600vh;
-    margin-left: 15%;
-    width: 70%;
+ /* #NOTE_CASE avoid center image ,avoid small and big images */
+    max-height: 40vh;
+    /* margin-left: 15%; */
+    width: 100%;
     height: auto;
+    /* margin-top: 10%; */
+    height: auto;
+    /* #Note_Case tryit if all articles id is 4 , bad small image in related section */
     object-fit: contain;
-    opacity: 0.7;
-    border-radius: 20px;
+        opacity: 0.7;
+    /* border-radius: 20px;*/
 }
 
 .Full-Article {
@@ -133,7 +136,6 @@
     position:absolute;
     top:20px;
     left:10px;
-    color:#eaeaea;
     z-index: 153;
     background-color: #b33434;
     padding: 10px;

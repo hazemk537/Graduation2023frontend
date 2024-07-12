@@ -25,7 +25,7 @@ const GLogin = () => {
               // setGtoken(credentialResponse.credential);
 
               fetch(
-                `https://BrieflyNews.runasp.net/api/v1/Auth/Login-Google?tokenId=${credentialResponse.credential}`,
+                `https://localhost:7250/api/v1/Auth/Login-Google?tokenId=${credentialResponse.credential}`,
                 {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },

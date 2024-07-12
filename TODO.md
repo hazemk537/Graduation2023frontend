@@ -33,19 +33,24 @@
 - pageNumber bad in local storage
 
 ### pending 
-
+- +articleModal link svg ,
+- +comments if many comments breaked 
 ### High
-- +articlemodal reltaed artivles api
-- +discover replace 2 apis with 1 api using subscribed boolean
--  +articleModal link svg ,
-,+comments coddingHorror breaked 
-- add comment styling and bad cors error
-- +addrss validation
 
+- +addrss validation
+- responsive
 
 
 ### In Progress
 ### Done ✓
+- bad z-index
+
+- follow/unfollow
+- red message on save,empty modal
+- descriptoion rm
+- +articlemodal reltaed artivles api
+- pagniation
+
 - 2 bugs with +backend
 - userarticles bug
 -  comments apis

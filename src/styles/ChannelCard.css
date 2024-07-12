@@ -7,7 +7,7 @@
     background-color: rgb(0, 0, 0);
     padding: 1rem;
     border: 2px solid rgb(48, 48, 48);
-    height: 65vh;
+    height: 55vh;
     margin: 10px;
     margin-bottom: 5%;
     max-height: fit-content !important;
@@ -55,7 +55,6 @@ background-color: rgb(229, 45, 45);
   }
   
   .gallary_item_details {
-    height: 138%;
     overflow: hidden;
     font-size: 0.8rem;
   }
