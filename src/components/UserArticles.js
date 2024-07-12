@@ -37,7 +37,7 @@ function UserArticles() {
         method: 'get', name: 'GETuserArticles', token: token, onSucceed: (data) => {
           setLoading(false);
           // Assume response contains total articles count
-          setTotalPages(Math.ceil(data.totalPages)); // Adjust according to your API response
+          setTotalPages(Math.ceil(jsonData?.totalPages)); // Adjust according to your API response
         }, jsonFailProp: 'message'
       });
     }
@@ -60,7 +60,7 @@ function UserArticles() {
       sendRequest(`https://localhost:7250/api/v1/Article/GetAllRssArticles?Rssid=${selectedChannelId}&PageNumber=${pageNumber}&PageSize=10`, {
         method: 'get', name: 'GETuserArticles', token: token, onOk: (data) => {
           setLoading(false);
-          setTotalPages(Math.ceil(data.totalPages));
+          setTotalPages(Math.ceil(jsonData?.totalPages));
         }, onFailed: () => { setLoading(false) }
         // #Note_CASE empty data ,loading finshed
 

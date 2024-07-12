@@ -43,8 +43,7 @@
 - pagniation
 - red message on save,empty modal
 
-
-
+- descriptoion rm
 
 ### In Progress
 ### Done ✓
