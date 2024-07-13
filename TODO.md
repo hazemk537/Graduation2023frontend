@@ -39,12 +39,13 @@
 
 
 
+### In Progress
+### Done ✓
 - +articleModal link svg 
 - +comments if many comments breaked 
 - redux
 - bad red
-### In Progress
-### Done ✓
+
 - +addrss validation
 - responsive
 

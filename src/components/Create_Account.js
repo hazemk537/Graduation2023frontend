@@ -50,7 +50,6 @@ function Create_Account({ onClose, onSigninClick }) {
   
   return (
     <>
-      {alertMessage && <Alert type={alertType} alertText={alertMessage} />}
       <div className="form_sign">
         <div className="close-button" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} id="X" />

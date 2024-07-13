@@ -79,7 +79,7 @@ const AddFeed = () => {
   const handleKeyPress = (event) => {
     //reserve it before clear the field
 
-    if (event.key === "Enter"&&rssLink?.match(/https?:\/\/(\w|\W)+.(rss|xml)/) && rssLink !== '' ) {
+    if (event.key === "Enter"&&rssLink?.match(/https?:\/\/(\w|\W)+\.(rss|xml)/) && rssLink !== '' ) {
       handleSearch();
     }
   };
@@ -108,7 +108,6 @@ const AddFeed = () => {
       <p className={`rss_info`}> An RSS link is a web address that directs to an RSS feed, typically ending in <span className="redTag">.rss</span> or <span >.xml</span>, allowing users to subscribe and access updates from a website in a standardized format.</p>
       <div className="addFeed">
 
-        {alertType && <Alert alertText={alertMessage} type={alertType} />}
 
         <div className={`RSS-search-wrapper  `}>
           {/* search functionallity #todo_4 */}
@@ -126,7 +125,7 @@ const AddFeed = () => {
 
 
 
-          <p>{!rssLink?.match(/https?:\/\/(\w|\W)+.(rss|xml)/) && rssLink !== '' ? "Link is not xml or rss" : null}</p>
+          <p>{!rssLink?.match(/https?:\/\/(\w|\W)+\.(rss|xml)/) && rssLink !== '' ? "Link is not xml or rss" : null}</p>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"

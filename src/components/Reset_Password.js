@@ -59,7 +59,7 @@ function ResetPassword() {
 
   return (
     <div className="reset_page">
-      {notifySliceState.message.payload && <Alert type={notifySliceState.type} alertText={notifySliceState.message.payload} />}
+      {notifySliceState.message?.payload  && <Alert type={notifySliceState.type} alertText={notifySliceState.message.payload} />}
 
       <div className="reset_container">
         {!toggleSuccessReset && <h2>Reset your password</h2>}
