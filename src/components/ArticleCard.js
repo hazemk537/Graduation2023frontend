@@ -31,7 +31,8 @@ const ArticleCard = ({ item, setArticleModalData, onUnsave }) => { // Added onUn
   return (
     <div className="gallary_item" key={item.id}
       onClick={() => {
-        sendRequest(`https://localhost:7250/api/v1/Article/GetRssArticle/${item?.id}`, { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData });
+        sendRequest(`https://localhost:7250/api/v1/Article/GetRssArticle/${item?.id}`,
+           { method: 'get', name: 'GetArticleData', token: token, onSucceed: handleSetModalData });
       }}
     >
       <div>

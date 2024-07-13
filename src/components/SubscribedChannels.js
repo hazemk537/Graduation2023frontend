@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ChannelsView from "./ChannelsView";
 import '../styles/subscripedChannels.css';
-import Alert from "./Alert";
 import useFetch from "../customHooks/useFetch";
 import { useNavigate } from "react-router";
 
 function SubscripedChannels() {
   const [triggerFetch, setTriggerFetch] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
-  const [alertMessage] = useState(false);
-  const [alertType] = useState(false);
+
   const navigateFn=useNavigate()
   let token;
 
@@ -30,7 +28,6 @@ function SubscripedChannels() {
     <div className="channel-title">    <h2>Subscribed Channels</h2>
     </div>
 
-      {alertType && <Alert alertText={alertMessage} type={alertType} />}
       <ChannelsView
        totalPages={jsonData?.totalPages}
         pageNumber={jsonData?.pageNumber}

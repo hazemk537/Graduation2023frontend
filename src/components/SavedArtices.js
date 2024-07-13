@@ -94,9 +94,7 @@ const SavedArticles = () => {
     return <Spinner />;
   }
 
-  if (!data.succeeded) {
-    return <div>{data.message}</div>;
-  }
+ 
 
   return (
     <div>
