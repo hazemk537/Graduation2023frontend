@@ -8,7 +8,7 @@ const Alert = ({ alertText, type }) => {
 
   return (
     <>
-{/* #NOTE_CASE error type */}
+{/* #NOTE_CASE error type tryit , bad red error*/}
 
       {alertText &&typeof(alertText)==='string'&& alertText !== undefined && alertText !== '' && alertText !== ' ' ?
         (<div className="alert_container"  >
