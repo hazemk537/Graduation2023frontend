@@ -140,7 +140,7 @@ function ArticleModal({ data, setArticleModalData }) {
                             }
                         </div></>}
                         {showTab !== 3 &&
-                <button style={{ marginTop: '20px', marginBottom: '20px' }} className='Full-Article-button'>
+                <button className='Full-Arti»cle-button'>
                     <a target='_blank' rel="noreferrer" href={`${data.data.link}`}>
                         <svg className='Full-Article' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <g fill="currentColor">

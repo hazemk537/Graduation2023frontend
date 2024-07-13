@@ -71,7 +71,7 @@
     width: auto;
     position: absolute;
     top: 2.2rem;
-    right:1rem;
+    right:0.5rem;
     gap: 0.3rem;
 
 }
@@ -83,7 +83,7 @@
     width: auto;
     position: absolute;
     top: 2.2rem;
-    left:1rem;
+    left:0.5rem;
 
     gap: 0.3rem;
 }
@@ -187,11 +187,20 @@ padding-left: 3rem;
     padding-right: 0.2rem;
     height: 70vh;
     border-left: 2px solid #cccccc86;
-    overflow-y: scroll;
+    overflow-y : scroll;
     overflow-x: hidden;
     border-radius: 10px;
     box-shadow: 5px 0 10px rgb(172, 172, 172);
     background-color: black;
+}
+.rsslink_err{
+    position: absolute;
+
+    top: 8vh;
+
+    color: red;
+
+    font-weight: 800;
 }
 .div_userArticles{
     margin-top: 20vh;
@@ -631,7 +640,10 @@ border: 1px solid red;
     .dropdownList::-webkit-scrollbar {
         width: 10px;
     }
-
+    .noDataText {
+        font-family: 'Bebas Neue';
+        font-size: 2rem;
+    }
     .dropdownList::-webkit-scrollbar-thumb {
         background-color: #fd0404c7;
         border-radius: 10px;
