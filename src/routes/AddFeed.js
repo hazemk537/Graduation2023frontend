@@ -79,9 +79,11 @@ const AddFeed = () => {
   const handleKeyPress = (event) => {
     //reserve it before clear the field
 
-    if (event.key === "Enter"&&rssLink?.match(/https?:\/\/(\w|\W)+\.(rss|xml)/) && rssLink !== '' ) {
+    if (event.key === "Enter"&&rssLink?.match(/https?:\/\/(\w|\W)+\.(rss|xml)/)  ) {
       handleSearch();
     }
+    else
+    setShowPreview(false)
   };
   function addCustomFeed(feedLink) {
 
