@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, {  useState } from "react";
 import PreviewFeed from "../components/PreviewFeed.js";
-import Alert from "../components/Alert.js";
 import '../styles/addfeed.css'
 import '../styles/common.css'
 import useFetch from "../customHooks/useFetch.js";
@@ -14,8 +13,6 @@ const AddFeed = () => {
 
   //we need feedlink it once ,no need to use state
   // states are used if we need ,to reload ui after js value change.
-  const [alertMessage,] = useState(false);
-  const [alertType,] = useState(false);
 
   const [channel_obj, setChannelObj] = useState({
     channel_img_url: "",
@@ -79,9 +76,11 @@ const AddFeed = () => {
   const handleKeyPress = (event) => {
     //reserve it before clear the field
 
-    if (event.key === "Enter"&&rssLink?.match(/https?:\/\/(\w|\W)+\.(rss|xml)/) && rssLink !== '' ) {
+    if (event.key === "Enter"&&rssLink?.match(/https?:\/\/(\w|\W)+\.(rss|xml)/)  ) {
       handleSearch();
     }
+    else
+    setShowPreview(false)
   };
   function addCustomFeed(feedLink) {
 

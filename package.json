@@ -1,6 +1,7 @@
 {
   "name": "smartnews",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@extractus/article-extractor": "^8.0.7",
@@ -8,6 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-oauth/google": "^0.12.1",
     "@reduxjs/toolkit": "^2.2.5",
+    "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

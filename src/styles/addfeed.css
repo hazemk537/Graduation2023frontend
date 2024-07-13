@@ -67,7 +67,7 @@
   color: rgb(0, 0, 0);
   border-radius: 27px;
   margin-top: 0.5rem;
-  width: 50%;
+  width: 100%;
   padding: 10px;
   font-size: 14px;
   margin-bottom: 10px;
@@ -107,7 +107,7 @@
     padding-left: .6rem;
     border-left: beige solid 2.5px;
     font-size: .8rem;
-    bottom: 10vh;
+    bottom: 3vh;
     left: 20%;
 } 
   
@@ -120,6 +120,7 @@
   }
 
   .search-input {
+    width:100%;
     padding: 8px; /* Adjust padding for mobile */
     font-size: 14px; /* Adjust font size for mobile */
     margin-top: 10px; /* Remove margin for mobile */
