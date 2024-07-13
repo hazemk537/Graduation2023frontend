@@ -27,13 +27,12 @@ const AddFeed = () => {
   });
   const [showPreview, setShowPreview] = useState(false); // State to control visibility of PreviewFeed
 
-  const inputRef = useRef(null);
+  const [rssLink, setRssLink] = useState('')
 
   const handleSearch = () => {
-    console.log(feedLink);
 
     const UrlBase = "https://cors.eu.org/";
-    fetch(UrlBase + inputRef.current.value)
+    fetch(UrlBase + rssLink)
       .then((response) => response.text())
       .then((xmlText) => {
         console.log(xmlText);
@@ -68,24 +67,27 @@ const AddFeed = () => {
 
           // Clear the input field after search
           // will make input.current.value empty
-          inputRef.current.value = "";
+          setRssLink("")
         }
-      });
+
+
+      })
+
+
   };
 
   const handleKeyPress = (event) => {
     //reserve it before clear the field
-    feedLink = inputRef.current.value
-    console.log(feedLink);
 
-    if (event.key === "Enter") {
+    if (event.key === "Enter"&&rssLink?.match(/https?:\/\/(\w|\W)+.(rss|xml)/) && rssLink !== '' ) {
       handleSearch();
     }
   };
   function addCustomFeed(feedLink) {
+
     let token = JSON.parse(localStorage.getItem('data')).token
     console.log(feedLink);
-    sendRequest(`https://BrieflyNews.runasp.net/api/v1/Rss/CreateUserRss?rssUrl=${feedLink}`, {
+    sendRequest(`https://localhost:7250/api/v1/Rss/CreateUserRss?rssUrl=${feedLink}`, {
       method: 'POST', name: 'POSTADDrss', token: token, jsonSuccessProp: 'message', onSucceed: () => {
 
       }, jsonFailProp: 'message'
@@ -100,7 +102,7 @@ const AddFeed = () => {
     <>
       <div className="centerFlex RSS-search-wrapper-p-div">
         <p className={` `}>Enter Rss URL below and hit enter</p>
-       
+
 
       </div>
       <p className={`rss_info`}> An RSS link is a web address that directs to an RSS feed, typically ending in <span className="redTag">.rss</span> or <span >.xml</span>, allowing users to subscribe and access updates from a website in a standardized format.</p>
@@ -108,14 +110,23 @@ const AddFeed = () => {
 
         {alertType && <Alert alertText={alertMessage} type={alertType} />}
 
-        <div className={`RSS-search-wrapper`}>
+        <div className={`RSS-search-wrapper  `}>
           {/* search functionallity #todo_4 */}
           <input
-            className="search-input"
+            className={`search-input  `}
             type="text"
-            ref={inputRef}
+            onChange={(event) => {
+              setRssLink(event.target.value)
+            }}
             onKeyPress={handleKeyPress}
+          // #Note_case validate input
           />
+
+
+
+
+
+          <p>{!rssLink?.match(/https?:\/\/(\w|\W)+.(rss|xml)/) && rssLink !== '' ? "Link is not xml or rss" : null}</p>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"

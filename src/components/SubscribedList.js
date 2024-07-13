@@ -39,7 +39,8 @@ function SubscribedList({ GetRssArticlesById, loading }) {
     }, []);
 
     useEffect(() => {
-        sendRequest('https://BrieflyNews.runasp.net/api/v1/Rss/SubscribedRss/All', { method: 'GET', name: 'GetSubscribedList', token: token });
+        // #Note_case workarround get all rss without 10 by defauklt,without pagenation
+        sendRequest('https://localhost:7250/api/v1/Rss/SubscribedRss/All?PageNumber=1&PageSize=1000', { method: 'GET', name: 'GetSubscribedList', token: token });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -81,7 +82,7 @@ function SubscribedList({ GetRssArticlesById, loading }) {
                 <Spinner />
             </div>
         );
-    } else if (jsonData.data && jsonData.data.length > 0) {
+    } else if (jsonData.data && jsonData?.data?.length > 0) {
         return (
             <div>
                 {windowWidth > 768 ? (
@@ -140,7 +141,8 @@ function SubscribedList({ GetRssArticlesById, loading }) {
                 )}
             </div>
         );
-    } else {
+        // #nOTE_cASE should be no elements solve bad transient state tryit
+    } else if((jsonData.data && jsonData?.data?.length ===0)) {
         return (
             <div className='No-channels'>
                 <h1>No Subscriptions, Subscribe to show articles </h1>

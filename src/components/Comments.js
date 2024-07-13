@@ -14,7 +14,7 @@ function Comments({ articleId }) {
         if (localStorage.getItem("data") !== 'undefined' && localStorage.getItem("data") !== null) {
             token = JSON.parse(localStorage.getItem('data')).token;
 
-            sendRequest(`https://brieflynews.runasp.net/api/v1/CommentsArticle/GetAllCommentsArticle/${articleId}`, {
+            sendRequest(`https://localhost:7250/api/v1/CommentsArticle/GetAllCommentsArticle/${articleId}`, {
                 method: 'get', name: 'GETComments', token: token,
             }, [triggerFetchComments]);
 
@@ -30,6 +30,11 @@ function Comments({ articleId }) {
 
     return (
         <div className='commentsParent'>
+              <AddComment
+                articleId={articleId}
+                setTriggerFetchComments={setTriggerFetchComments}
+
+            />
 
             {/* #NOTE_CASE auto handle  */}
             {
@@ -46,11 +51,7 @@ function Comments({ articleId }) {
 
             }
 
-            <AddComment
-                articleId={articleId}
-                setTriggerFetchComments={setTriggerFetchComments}
-
-            />
+          
 
 
         </div>

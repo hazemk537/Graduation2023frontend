@@ -34,21 +34,32 @@
 
 ### pending 
 
+
 ### High
-5. +articlemodal reltaed artivles 
--  6. Date color shadow
--  7. Comments before add comment 
-- userarticles bug
 
 
 
-
+- +articleModal link svg 
+- +comments if many comments breaked 
+- redux
+- bad red
 ### In Progress
+### Done ✓
+- +addrss validation
+- responsive
+
+- bad z-index
+
+- follow/unfollow
+- red message on save,empty modal
+- descriptoion rm
+- +articlemodal reltaed artivles api
+- pagniation
+
+- 2 bugs with +backend
+- userarticles bug
 -  comments apis
 -  save  article  api
-### Done ✓
-- 2 bugs with +backend
-
 - docs @hazem
 
 - searcg bar

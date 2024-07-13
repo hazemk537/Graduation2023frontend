@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/SumWindow.css';
 import briefimg from '../assets/Eo_circle_red_white_letter-b.svg'
-import AddArticleComment from './AddArticleComment';
 import Comments from './Comments';
+import RelatedArticles from './RelatedArticles';
 
 
 
@@ -92,6 +92,7 @@ function ArticleModal({ data, setArticleModalData }) {
                                 <span className={` articelTab ${showTab === 0 ? 'selectedTab' : ''}`} onClick={() => { setshowTab(0) }} >Description</span>
                                 <span className={`articelTab  ${showTab === 1 ? 'selectedTab' : ''}`} onClick={() => { setshowTab(1) }}>Summary</span>
                                 <span className={`articelTab  ${showTab === 2 ? 'selectedTab' : ''}`} onClick={() => { setshowTab(2) }}>Comments</span>
+                                <span className={`articelTab  ${showTab === 3 ? 'selectedTab' : ''}`} onClick={() => { setshowTab(3) }}>RelatedArticles</span>
                             </div>
                             <p
                                 style={{
@@ -124,7 +125,8 @@ function ArticleModal({ data, setArticleModalData }) {
 
 
                                 </div>
-                            }{/* comments */}
+                            }
+                            {/* comments */}
                             {showTab === 2 &&
                                 <div className='comments' >
 
@@ -132,7 +134,12 @@ function ArticleModal({ data, setArticleModalData }) {
 
                                 </div>
                             }
+                             {/* RelatedArticles */}
+                             {showTab === 3 &&
+                                    <RelatedArticles setArticleModalData={setArticleModalData} data={data?.data?.clusters} />
+                            }
                         </div></>}
+                        {showTab !== 3 &&
                 <button style={{ marginTop: '20px', marginBottom: '20px' }} className='Full-Article-button'>
                     <a target='_blank' rel="noreferrer" href={`${data.data.link}`}>
                         <svg className='Full-Article' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -144,7 +151,7 @@ function ArticleModal({ data, setArticleModalData }) {
                             </g>
                         </svg>
                     </a>
-                </button>
+                </button>}
             </div >
 
 

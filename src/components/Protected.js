@@ -18,7 +18,7 @@ function Protected({ children, showLoginPopupfn }) {
     // #Note_case: Token not defined 
 
     if (token) {
-      sendRequest(`https://BrieflyNews.runasp.net/api/v1/Auth/CheckValidationToken?token=${token}`, { method: 'POST', name: 'POSTcheckToken', onOk: handleCorrectToken, onOkFailed: handleBadToken })
+      sendRequest(`https://localhost:7250/api/v1/Auth/CheckValidationToken?token=${token}`, { method: 'POST', name: 'POSTcheckToken', onOk: handleCorrectToken, onOkFailed: handleBadToken })
     }
       // #Note_case: User Not Logined
 
