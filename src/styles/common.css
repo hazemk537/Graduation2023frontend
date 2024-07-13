@@ -411,6 +411,54 @@ border: 1px solid red;
     transform: translateX(-50%);
 }
 
+
+
+
+
+
+.publicChannels_home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7%;
+    margin-left: 3%;
+    font-size: 13px;
+
+    
+}
+.publicChannels_home .country-container{
+    margin-top: 3rem;
+   
+}
+
+.country-container{
+    width: 77%;
+    font-size: 0.8rem;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    background-color: rgba(50,50,50,1);
+    border-radius: 20px;
+                            
+     
+   
+}
+
+
+.gallary_item_descriptio_public_channels{font-weight: 700;
+    font-weight: bolder;
+    position: absolute;
+    background-color: black;
+    bottom: 0;
+    left: 8%;
+    right: 1%;
+    color: #fbfbfb;
+    padding: 0.2rem;
+    font-family: Amiri, cursive;
+    font-size: .9rem;
+    }
+
 /* Mobile specific styles */
 @media (max-width: 768px) {
     .homepage-search-wrapper{
@@ -584,47 +632,21 @@ border: 1px solid red;
 
     }
 
-
-}
-.publicChannels_home{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 7%;
-    margin-left: 3%;
-    font-size: 13px;
+    .publicChannels_home{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 35%;
+        margin-left: 10%;
+        font-size: 10px;
+    
+        
+    }
 
     
-}
-.publicChannels_home .country-container{
-    margin-top: 3rem;
-   
-}
-
-.country-container{
-    width: 77%;
-    font-size: 0.8rem;
-    align-items: center;
-    justify-content: space-around;
-    display: flex;
-    background-color: rgba(50,50,50,1);
-    border-radius: 20px;
-                            
-     
-   
-}
 
 
-.gallary_item_descriptio_public_channels{font-weight: 700;
-    font-weight: bolder;
-    position: absolute;
-    background-color: black;
-    bottom: 0;
-    left: 8%;
-    right: 1%;
-    color: #fbfbfb;
-    padding: 0.2rem;
-    font-family: Amiri, cursive;
-    font-size: .9rem;
-    }
+
+
+}
