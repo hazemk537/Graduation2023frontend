@@ -33,16 +33,21 @@
 - pageNumber bad in local storage
 
 ### pending 
-- +articleModal link svg ,
-- +comments if many comments breaked 
+
+
 ### High
 
+
+
+- +articleModal link svg 
+- +comments if many comments breaked 
+- redux
+- bad red
+### In Progress
+### Done ✓
 - +addrss validation
 - responsive
 
-
-### In Progress
-### Done ✓
 - bad z-index
 
 - follow/unfollow
