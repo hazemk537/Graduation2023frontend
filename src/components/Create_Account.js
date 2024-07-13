@@ -9,13 +9,10 @@ import {
 
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Login_Signup.css";
-import Alert from "./Alert";
 import useFetch from "../customHooks/useFetch";
 
 function Create_Account({ onClose, onSigninClick }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [alertMessage, ] = useState(false);
-  const [alertType, ] = useState(false);
 
   const [JsonData, , sendRequest] = useFetch()
 

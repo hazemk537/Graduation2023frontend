@@ -36,8 +36,6 @@
 
 
 ### High
-- compiled errors
-- responsive
 - website demo no host,no hazem laptop
 
 ### In Progress
@@ -45,8 +43,11 @@
 - +articleModal link svg 
 - +comments if many comments breaked 
 - redux
+- responsive
+
 - bad red
 - +addrss validation
+- compiled errors
 
 
 
