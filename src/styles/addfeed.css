@@ -21,12 +21,11 @@
   overflow: hidden;
   margin-left: 10% !important;
 }
-.RSS-search-wrapper-p {
-  position: absolute;
-  top: -66%;
-  font-size: 1.3rem;
+.RSS-search-wrapper p {
+  font-size: .8rem;
   left: 32%;
-  font-weight: 700;  
+  font-weight: 700;
+  color: red;  
 }
 
 .addFeed {
@@ -42,19 +41,30 @@
 }
 
 .sub_btn {
-  background-color: #808080;
+  background-color: #ca0101;
+  color: rgb(0, 0, 0);
+  box-shadow: 3px 3px 0px rgb(165, 165, 165);
+  width: 90px;
+  height:50px;
   border-radius: 8px;
   position: fixed;
   padding: 7px;
   font-weight: 700;
   top: 109%;
-  left: 70%;
+  left: 80%;
   cursor: pointer;
-  color: black;
+  
 }
 
+.sub_btn:hover{
+  background-color: #ff0000;
+  color: rgba(255, 255, 255, 0.829);
+  box-shadow: 3px 3px 0px white;
+}
+
+
 .search-input {
-  color: red;
+  color: rgb(0, 0, 0);
   border-radius: 27px;
   margin-top: 0.5rem;
   width: 100%;
@@ -67,6 +77,15 @@
   font-weight: bolder;
 }
 
+.RSS-search-wrapper-p-div {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  font-size: 1.8rem;
+  font-weight: 700;  
+}
+
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .RSS-search-wrapper {
@@ -75,11 +94,28 @@
     margin-left: 10% !important; /* Adjust margin for mobile */
   }
 
+  .RSS-search-wrapper-p-div {
+    position: absolute;
+    top: 20%;
+    font-size: 1.3rem;
+    left: 25%;
+    width: 60%;
+    font-weight: 700;  
+  }
+  .rss_info{
+    width: 70%;
+    padding-left: .6rem;
+    border-left: beige solid 2.5px;
+    font-size: .8rem;
+    bottom: 10vh;
+    left: 20%;
+} 
+  
   .addFeed {
     flex-direction: column; /* Stack items vertically on mobile */
     width: 90%; /* Adjust width for mobile */
     gap: 20px; /* Reduce gap for mobile */
-    top: 50%; /* Adjust top position */
+    top: 55%; /* Adjust top position */
     transform: translate(-50%, -50%);
   }
 
@@ -94,9 +130,26 @@
     left: 50%; /* Center button on mobile */
     transform: translateX(-50%); /* Center button horizontally */
   }
+
+  .sub_btn {
+    background-color: rgb(214, 2, 2);
+    padding: 5px; 
+    font-size: 14px; 
+    color:white
+  }
+  
+  .sub_btn {
+    padding: 5px;
+    font-size: 0.8rem;
+    left: 50%;
+    margin-top: 15%;
+    transform: translateX(-50%);
+    
+  }
+
 }
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .RSS-search-wrapper {
     height: 30px;
     margin-left: 10%;
@@ -104,14 +157,15 @@
   }
 
   .search-input {
-    padding: 6px; /* Adjust padding for smaller screens */
-    font-size: 12px; /* Adjust font size for smaller screens */
+    padding: 6px; 
+    font-size: 12px; 
   }
 
   .sub_btn {
     background-color: rgb(214, 2, 2);
-    padding: 5px; /* Adjust padding for smaller screens */
-    font-size: 14px; /* Adjust font size for smaller screens */
+    padding: 5px; 
+    font-size: 14px; 
+    color:white
   }
 
-}
+} */
