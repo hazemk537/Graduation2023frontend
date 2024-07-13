@@ -87,8 +87,9 @@ function UserArticles() {
           <SubscribedList GetRssArticlesById={GetRssArticlesById} loading={loading} />
         </div>
         {
-
-          jsonData?.data === null
+// #NOTE_CASE bad transient tryit
+          // jsonData?.data === null
+          jsonData?.data?.length===0
           &&
           <div className={`gallary_items `}>
             <p className="noDataText">

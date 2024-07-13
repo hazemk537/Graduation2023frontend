@@ -101,7 +101,7 @@ const AddFeed = () => {
   return (
     <>
       <div className="centerFlex RSS-search-wrapper-p-div">
-        <p className={` `}>Enter Rss URL below and hit enter</p>
+        <p className={``}>Enter Rss URL below and hit enter</p>
 
 
       </div>
@@ -125,7 +125,7 @@ const AddFeed = () => {
 
 
 
-          <p>{!rssLink?.match(/https?:\/\/(\w|\W)+\.(rss|xml)/) && rssLink !== '' ? "Link is not xml or rss" : null}</p>
+          <p className="rsslink_err">{!rssLink?.match(/https?:\/\/(\w|\W)+\.(rss|xml)/) && rssLink !== '' ? "Link is not xml or rss" : null}</p>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
