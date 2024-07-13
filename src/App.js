@@ -60,9 +60,9 @@ function App() {
       path: "/home",
       element: (
         <ErrorBoundary>
-          <Protected>
+          {/* <Protected> */}
             <HomePage />
-          </Protected>
+          {/* </Protected> */}
         </ErrorBoundary>
       ),
       children: [
