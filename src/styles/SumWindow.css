@@ -85,6 +85,7 @@
 .Full-Article-button {
     position: absolute;
     left: 44%;
+    bottom:0;
     cursor: pointer;
     border-radius: 50%;
     background-color: rgba(245, 245, 245);
@@ -94,6 +95,9 @@
     justify-content: center;
     align-items: center;
     margin-top: auto;
+}
+.back-articleModal-btn{
+display: none;
 }
 .sumwindow img {
  /* #NOTE_CASE avoid center image ,avoid small and big images */
@@ -183,6 +187,16 @@
         line-height: 1;
         padding-top: 2%;
     }
+    .back-articleModal-btn{
+        display: block;
+        width: 30%;
+        background-color: #e91e1e;
+        margin-left: 36%;
+        font-size: 1.3rem;
+        padding: 5px;
+        text-align: center;
+        border-radius: 19%;
+        }
     
     .sumwindow {
         width: 100%;

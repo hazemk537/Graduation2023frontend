@@ -54,6 +54,7 @@ function ArticleModal({ data, setArticleModalData }) {
             </div>
 
             <div className='sumwindow'>
+                <span onClick={()=>{setArticleModalData('')}}className='back-articleModal-btn'>Back</span>
 
 
                 {data?.data &&
@@ -139,8 +140,8 @@ function ArticleModal({ data, setArticleModalData }) {
                                     <RelatedArticles setArticleModalData={setArticleModalData} data={data?.data?.clusters} />
                             }
                         </div></>}
-                        {showTab !== 3 &&
-                <button className='Full-Arti»cle-button'>
+                        {showTab === 0 &&
+                <button className='Full-Article-button'>
                     <a target='_blank' rel="noreferrer" href={`${data.data.link}`}>
                         <svg className='Full-Article' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <g fill="currentColor">
@@ -155,7 +156,7 @@ function ArticleModal({ data, setArticleModalData }) {
             </div >
 
 
-        </>
+        </>  
     );
 }
 
