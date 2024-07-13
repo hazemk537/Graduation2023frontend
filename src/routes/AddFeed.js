@@ -79,7 +79,7 @@ const AddFeed = () => {
   const handleKeyPress = (event) => {
     //reserve it before clear the field
 
-    if (event.key === "Enter"&&rssLink?.match(/https?:\/\/(\w|\W)+.(rss|xml)/) && rssLink !== '' ) {
+    if (event.key === "Enter"&&rssLink?.match(/https?:\/\/(\w|\W)+\.(rss|xml)/) && rssLink !== '' ) {
       handleSearch();
     }
   };
@@ -126,7 +126,7 @@ const AddFeed = () => {
 
 
 
-          <p>{!rssLink?.match(/https?:\/\/(\w|\W)+.(rss|xml)/) && rssLink !== '' ? "Link is not xml or rss" : null}</p>
+          <p>{!rssLink?.match(/https?:\/\/(\w|\W)+\.(rss|xml)/) && rssLink !== '' ? "Link is not xml or rss" : null}</p>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
